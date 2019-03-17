@@ -36,15 +36,21 @@
             this.textBoxCoordY = new System.Windows.Forms.TextBox();
             this.labelTargetCorner = new System.Windows.Forms.Label();
             this.textBoxCorner = new System.Windows.Forms.TextBox();
+            this.chkbAlwaysOnTop = new System.Windows.Forms.CheckBox();
+            this.lblCoordX = new System.Windows.Forms.Label();
+            this.lblCoordY = new System.Windows.Forms.Label();
+            this.lblCorner = new System.Windows.Forms.Label();
+            this.btbTestAdress = new System.Windows.Forms.Button();
+            this.btnCameraCorner = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(61, 166);
+            this.button1.Location = new System.Drawing.Point(15, 175);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(244, 51);
+            this.button1.Size = new System.Drawing.Size(132, 51);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Рыбачим";
+            this.button1.Text = "Бежим";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -61,7 +67,7 @@
             // 
             this.textBoxCoordX.Location = new System.Drawing.Point(159, 23);
             this.textBoxCoordX.Name = "textBoxCoordX";
-            this.textBoxCoordX.Size = new System.Drawing.Size(181, 20);
+            this.textBoxCoordX.Size = new System.Drawing.Size(122, 20);
             this.textBoxCoordX.TabIndex = 2;
             // 
             // labelTargetY
@@ -77,7 +83,7 @@
             // 
             this.textBoxCoordY.Location = new System.Drawing.Point(159, 70);
             this.textBoxCoordY.Name = "textBoxCoordY";
-            this.textBoxCoordY.Size = new System.Drawing.Size(181, 20);
+            this.textBoxCoordY.Size = new System.Drawing.Size(122, 20);
             this.textBoxCoordY.TabIndex = 4;
             // 
             // labelTargetCorner
@@ -93,14 +99,80 @@
             // 
             this.textBoxCorner.Location = new System.Drawing.Point(159, 115);
             this.textBoxCorner.Name = "textBoxCorner";
-            this.textBoxCorner.Size = new System.Drawing.Size(181, 20);
+            this.textBoxCorner.Size = new System.Drawing.Size(122, 20);
             this.textBoxCorner.TabIndex = 6;
+            // 
+            // chkbAlwaysOnTop
+            // 
+            this.chkbAlwaysOnTop.AutoSize = true;
+            this.chkbAlwaysOnTop.Checked = true;
+            this.chkbAlwaysOnTop.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkbAlwaysOnTop.Location = new System.Drawing.Point(320, 272);
+            this.chkbAlwaysOnTop.Name = "chkbAlwaysOnTop";
+            this.chkbAlwaysOnTop.Size = new System.Drawing.Size(126, 17);
+            this.chkbAlwaysOnTop.TabIndex = 7;
+            this.chkbAlwaysOnTop.Text = "Поверх других окон";
+            this.chkbAlwaysOnTop.UseVisualStyleBackColor = true;
+            this.chkbAlwaysOnTop.CheckedChanged += new System.EventHandler(this.chkbAlwaysOnTop_CheckedChanged);
+            // 
+            // lblCoordX
+            // 
+            this.lblCoordX.AutoSize = true;
+            this.lblCoordX.Location = new System.Drawing.Point(317, 26);
+            this.lblCoordX.Name = "lblCoordX";
+            this.lblCoordX.Size = new System.Drawing.Size(131, 13);
+            this.lblCoordX.TabIndex = 8;
+            this.lblCoordX.Text = "<-Задайте адрес памяти";
+            // 
+            // lblCoordY
+            // 
+            this.lblCoordY.AutoSize = true;
+            this.lblCoordY.Location = new System.Drawing.Point(317, 73);
+            this.lblCoordY.Name = "lblCoordY";
+            this.lblCoordY.Size = new System.Drawing.Size(131, 13);
+            this.lblCoordY.TabIndex = 9;
+            this.lblCoordY.Text = "<-Задайте адрес памяти";
+            // 
+            // lblCorner
+            // 
+            this.lblCorner.AutoSize = true;
+            this.lblCorner.Location = new System.Drawing.Point(317, 118);
+            this.lblCorner.Name = "lblCorner";
+            this.lblCorner.Size = new System.Drawing.Size(131, 13);
+            this.lblCorner.TabIndex = 10;
+            this.lblCorner.Text = "<-Задайте адрес памяти";
+            // 
+            // btbTestAdress
+            // 
+            this.btbTestAdress.Location = new System.Drawing.Point(159, 175);
+            this.btbTestAdress.Name = "btbTestAdress";
+            this.btbTestAdress.Size = new System.Drawing.Size(122, 51);
+            this.btbTestAdress.TabIndex = 11;
+            this.btbTestAdress.Text = "Проверка адресов памяти";
+            this.btbTestAdress.UseVisualStyleBackColor = true;
+            this.btbTestAdress.Click += new System.EventHandler(this.btbTestAdress_Click);
+            // 
+            // btnCameraCorner
+            // 
+            this.btnCameraCorner.Location = new System.Drawing.Point(304, 175);
+            this.btnCameraCorner.Name = "btnCameraCorner";
+            this.btnCameraCorner.Size = new System.Drawing.Size(132, 51);
+            this.btnCameraCorner.TabIndex = 12;
+            this.btnCameraCorner.Text = "Поворот камеры";
+            this.btnCameraCorner.UseVisualStyleBackColor = true;
+            this.btnCameraCorner.Click += new System.EventHandler(this.btnCameraCorner_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 246);
+            this.ClientSize = new System.Drawing.Size(448, 290);
+            this.Controls.Add(this.btnCameraCorner);
+            this.Controls.Add(this.btbTestAdress);
+            this.Controls.Add(this.lblCorner);
+            this.Controls.Add(this.lblCoordY);
+            this.Controls.Add(this.lblCoordX);
+            this.Controls.Add(this.chkbAlwaysOnTop);
             this.Controls.Add(this.textBoxCorner);
             this.Controls.Add(this.labelTargetCorner);
             this.Controls.Add(this.textBoxCoordY);
@@ -128,6 +200,12 @@
         private System.Windows.Forms.TextBox textBoxCoordY;
         private System.Windows.Forms.Label labelTargetCorner;
         private System.Windows.Forms.TextBox textBoxCorner;
+        private System.Windows.Forms.CheckBox chkbAlwaysOnTop;
+        private System.Windows.Forms.Label lblCoordX;
+        private System.Windows.Forms.Label lblCoordY;
+        private System.Windows.Forms.Label lblCorner;
+        private System.Windows.Forms.Button btbTestAdress;
+        private System.Windows.Forms.Button btnCameraCorner;
     }
 }
 

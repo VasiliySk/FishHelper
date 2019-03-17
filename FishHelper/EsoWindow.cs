@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -31,6 +32,12 @@ namespace FishHelper
 
         [DllImport("user32.dll", EntryPoint = "GetWindowThreadProcessId")]
         private static extern int GetWindowThreadProcessIdNative(IntPtr hWnd, out int lpdwProcessId);
+
+        [DllImport("user32.dll", EntryPoint = "SetCursorPos")]
+        private static extern bool SetCursorPosNative(int X, int Y);
+
+        [DllImport("user32.dll", EntryPoint = "GetCursorPos")]
+        private static extern bool GetCursorPosNative(out Point lpPoint);
 
         [Flags]
         public enum WindowMessages : uint
@@ -85,6 +92,16 @@ namespace FishHelper
         public int GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId)
         {
             return GetWindowThreadProcessIdNative(hWnd, out lpdwProcessId);
+        }
+
+        public bool SetCursorPos(int X, int Y)
+        {
+            return SetCursorPosNative( X,  Y);
+        }
+
+        public bool GetCursorPos(out Point lpPoint)
+        {
+            return GetCursorPosNative(out lpPoint);
         }
 
     }
