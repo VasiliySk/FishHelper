@@ -19,6 +19,8 @@ namespace FishHelper
             var addr = long.Parse(textBoxCoordX.Text, System.Globalization.NumberStyles.HexNumber);
 
             EsoWindow esoWindow = new EsoWindow();
+            Hero hero = new Hero();
+
             IntPtr hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
                         
             if (hWnd.ToInt32() > 0) //If found
