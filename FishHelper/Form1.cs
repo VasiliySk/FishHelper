@@ -120,24 +120,12 @@ namespace FishHelper
             IntPtr hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
             var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd, out pid);
             processHandle = esoWindow.OpenProcess(0x10, false, pid);
-            var buffer = new byte[8];
+           
             //Активируем окно, прожимаем дважды кноку мыши 
-            ActivateEsoWindow(hWnd);   
+            ActivateEsoWindow(hWnd);
 
-            Point cursorPosition =new Point();
+            hero.turnCorner(esoWindow, textBoxCorner.Text, processHandle, txtTargetCorner.Text);          
 
-            esoWindow.GetCursorPos(out cursorPosition);
-
-            var addr = long.Parse(textBoxCorner.Text, System.Globalization.NumberStyles.HexNumber);
-            var result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
-
-            while (BitConverter.ToDouble(buffer, 0)<300) {
-                //mouse_event(MouseFlags.Absolute | MouseFlags.Move, x, y, 0, UIntPtr.Zero);
-                esoWindow.SetCursorPos(cursorPosition.X-1, cursorPosition.Y);
-                result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
-                Thread.Sleep(10);
-            }
-            
             esoWindow.CloseHandle(processHandle);
         }       
 
