@@ -127,7 +127,21 @@ namespace FishHelper
             hero.turnCorner(esoWindow, textBoxCorner.Text, processHandle, txtTargetCorner.Text);          
 
             esoWindow.CloseHandle(processHandle);
-        }       
+        }
 
+        private void btnTargetRun_Click(object sender, EventArgs e)
+        {
+            IntPtr hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
+            var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd, out pid);
+            processHandle = esoWindow.OpenProcess(0x10, false, pid);
+
+            //Активируем окно, прожимаем дважды кноку мыши 
+            ActivateEsoWindow(hWnd);
+
+            //Бежим к цели
+            hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text,textBoxCoordY.Text,textBoxCorner.Text,txtboxXTarget.Text,txtboxYTarget.Text,txtTargetCorner.Text);
+
+            esoWindow.CloseHandle(processHandle);
+        }
     }
 }
