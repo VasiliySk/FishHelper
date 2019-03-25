@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Threading;
 using System.Windows.Forms;
 using static FishHelper.EsoWindow;
@@ -13,9 +14,8 @@ namespace FishHelper
         int pid; //Идентификатор игры
         EsoWindow esoWindow;
         Hero hero;
-        IntPtr bytesRead;
-        private System.Threading.Timer timer;
-        private IntPtr processHandle;
+        IntPtr bytesRead;        
+        private IntPtr processHandle;        
 
         public Form1()
         {
@@ -26,35 +26,6 @@ namespace FishHelper
             //Инициализируем классы
             esoWindow = new EsoWindow();
             hero = new Hero();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            var addr = long.Parse(textBoxCoordX.Text, System.Globalization.NumberStyles.HexNumber);  
-            IntPtr hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
-                        
-            if (hWnd.ToInt32() > 0) //If found
-            {                
-                double targetX = 37.0d;
-                var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd,out pid);              
-                processHandle = esoWindow.OpenProcess(0x10, false, pid);
-                var buffer = new byte[8];
-                IntPtr bytesRead;
-                //Активируем окно, прожимаем дважды кноку мыши 
-                ActivateEsoWindow(hWnd);
-                //Бежим до заданной точки
-                var result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
-                while (targetX > BitConverter.ToDouble(buffer, 0))
-                {
-                    esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)System.Windows.Forms.Keys.W), new IntPtr(0));
-                    System.Threading.Thread.Sleep(100);
-                    result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
-                }
-
-                esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)System.Windows.Forms.Keys.W), new IntPtr(0));
-                esoWindow.CloseHandle(processHandle);
-            }
         }
 
         //Делаем окно Always on Top
@@ -107,11 +78,11 @@ namespace FishHelper
         {
             esoWindow.SetForegroundWindow(hWnd); //Активируем окно
             System.Threading.Thread.Sleep(1000);
-            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_LBUTTONDOWN, new IntPtr(0), new IntPtr(0));
-            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_LBUTTONUP, new IntPtr(0), new IntPtr(0));
+            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_RBUTTONDOWN, new IntPtr(0), new IntPtr(0));
+            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_RBUTTONUP, new IntPtr(0), new IntPtr(0));
             System.Threading.Thread.Sleep(1000);
-            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_LBUTTONDOWN, new IntPtr(0), new IntPtr(0));
-            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_LBUTTONUP, new IntPtr(0), new IntPtr(0));
+            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_RBUTTONDOWN, new IntPtr(0), new IntPtr(0));
+            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_RBUTTONUP, new IntPtr(0), new IntPtr(0));
             System.Threading.Thread.Sleep(1000);
         }
 
@@ -143,5 +114,21 @@ namespace FishHelper
 
             esoWindow.CloseHandle(processHandle);
         }
+
+        private void btnFishing_Click(object sender, EventArgs e)
+        {
+            
+            IntPtr hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
+            var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd, out pid);
+            processHandle = esoWindow.OpenProcess(0x10, false, pid);
+
+            //Активируем окно, прожимаем дважды кноку мыши 
+            ActivateEsoWindow(hWnd);
+
+            hero.Fishing(esoWindow, hWnd);
+
+            esoWindow.CloseHandle(processHandle);
+        }
+        
     }
 }

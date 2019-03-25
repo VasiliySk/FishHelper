@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,6 +17,9 @@ namespace FishHelper
     {
         enum TargetStatus {X_bigger_Y_bigger,X_less_Y_less, X_bigger_Y_less, X_less_Y_bigger };
         TargetStatus tStatus;
+        private const String fishHole = "81-32-3C-53-F9-56-8E-3A-52-79-B2-EA-7B-CD-EA-F0"; //Рыбное место
+        private const String waitFish = "DC-EF-62-B0-A3-E0-24-C6-44-6D-0C-2A-2C-D1-95-51"; //Закинули удочку, ждем рыбу.
+        private const String catchFish = "F5-65-2C-94-18-EB-D4-6F-36-BE-EC-60-31-1C-3C-6B"; //Вытягиваем рыбу
 
         //Заготовка под бег
         public void Run(EsoWindow esoWindow, IntPtr processHandle, IntPtr hWnd, String xAddress, String yAdress, String cAdress, String xTarget, String yTarget, String cTarget) {
@@ -90,9 +94,52 @@ namespace FishHelper
                
 
         //Заготовка под рыбалку
-        public void Fishing()
+        public void Fishing(EsoWindow esoWindow, IntPtr hWnd)
         {
+            bool stopFish = false;
 
+            Bitmap bitmap = new Bitmap(30, 3); //Задаем размер считываемой области
+            Graphics graphics = Graphics.FromImage(bitmap as Image);
+
+            //Объекты для расчета хэш кода картинки
+            ImageConverter converter = new ImageConverter();
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            byte[] rawImageData;
+            byte[] hash;
+            String actualHash;
+
+            while (!stopFish)
+            {
+                graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size); // Задаем первыми двумя цифрами координаты начала (верхний левый угол) считываемого прямоугольника 
+
+                //Рассчитываем хэш код картинки            
+                rawImageData = converter.ConvertTo(bitmap, typeof(byte[])) as byte[];
+                hash = md5.ComputeHash(rawImageData);
+                //конвертируем в строку
+                actualHash = BitConverter.ToString(hash);
+                switch (actualHash)
+                {
+                    case fishHole:                        
+                        esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)System.Windows.Forms.Keys.E), new IntPtr(0));
+                        Thread.Sleep(70);
+                        esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)System.Windows.Forms.Keys.E), new IntPtr(0));
+                        break;
+                    case waitFish:                        
+                        break;
+                    case catchFish:                        
+                        Thread.Sleep(500);
+                        esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)System.Windows.Forms.Keys.E), new IntPtr(0));
+                        Thread.Sleep(70);
+                        esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)System.Windows.Forms.Keys.E), new IntPtr(0));
+                        Thread.Sleep(3000);
+                        break;
+                    default:                        
+                        stopFish = true;
+                        break;
+                }
+
+                Thread.Sleep(500);
+            }
         }
 
         //Поворот камеры
