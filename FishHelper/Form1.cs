@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -19,7 +20,11 @@ namespace FishHelper
 
         public Form1()
         {
+            BindingList<FishPath> data = new BindingList<FishPath>(); //Специальный список List с вызовом события обновления внутреннего состояния, необходимого для автообновления datagridview
+            data.Add(new FishPath(20, 50, 57, true));
             InitializeComponent();
+            dataGridView1.DataSource = data;
+            data.Add(new FishPath(20.1f, 50.2f, 57.12f, true));
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, Screen.PrimaryScreen.Bounds.Height - Convert.ToInt32(this.Height*1.5));//Переносим окно в левый нижний угол
             this.TopMost = true;
@@ -76,14 +81,17 @@ namespace FishHelper
 
         private void ActivateEsoWindow(IntPtr hWnd)
         {
+            Random random = new Random();
             esoWindow.SetForegroundWindow(hWnd); //Активируем окно
-            System.Threading.Thread.Sleep(1000);
+            Thread.Sleep(random.Next(1000, 2000));
             esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_RBUTTONDOWN, new IntPtr(0), new IntPtr(0));
+            Thread.Sleep(random.Next(500,1000));
             esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_RBUTTONUP, new IntPtr(0), new IntPtr(0));
-            System.Threading.Thread.Sleep(1000);
+            Thread.Sleep(random.Next(500, 1000));
             esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_RBUTTONDOWN, new IntPtr(0), new IntPtr(0));
+            Thread.Sleep(random.Next(500, 1000));
             esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_RBUTTONUP, new IntPtr(0), new IntPtr(0));
-            System.Threading.Thread.Sleep(1000);
+            Thread.Sleep(random.Next(500, 1000));
         }
 
         private void btnCameraCorner_Click(object sender, EventArgs e)
@@ -129,6 +137,24 @@ namespace FishHelper
 
             esoWindow.CloseHandle(processHandle);
         }
-        
+
+        private void btnRunAndFish_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+            IntPtr hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
+            var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd, out pid);
+            processHandle = esoWindow.OpenProcess(0x10, false, pid);
+
+            //Активируем окно, прожимаем дважды кноку мыши 
+            ActivateEsoWindow(hWnd);
+
+            //Бежим к цели и потом рыбачим
+            hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, txtboxXTarget.Text, txtboxYTarget.Text, txtTargetCorner.Text);
+            Thread.Sleep(random.Next(1000, 2000));
+            hero.Fishing(esoWindow, hWnd);
+
+        }
+
+       
     }
 }

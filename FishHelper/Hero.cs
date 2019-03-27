@@ -90,6 +90,8 @@ namespace FishHelper
             }
 
             esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)System.Windows.Forms.Keys.W), new IntPtr(0));
+
+            turnCorner(esoWindow, cAdress, processHandle, cTarget);
         }
                
 
@@ -97,6 +99,7 @@ namespace FishHelper
         public void Fishing(EsoWindow esoWindow, IntPtr hWnd)
         {
             bool stopFish = false;
+            Random random = new Random();
 
             Bitmap bitmap = new Bitmap(30, 3); //Задаем размер считываемой области
             Graphics graphics = Graphics.FromImage(bitmap as Image);
@@ -121,24 +124,24 @@ namespace FishHelper
                 {
                     case fishHole:                        
                         esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)System.Windows.Forms.Keys.E), new IntPtr(0));
-                        Thread.Sleep(70);
+                        Thread.Sleep(random.Next(70,100));
                         esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)System.Windows.Forms.Keys.E), new IntPtr(0));
                         break;
                     case waitFish:                        
                         break;
                     case catchFish:                        
-                        Thread.Sleep(500);
+                        Thread.Sleep(random.Next(500, 1000));
                         esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)System.Windows.Forms.Keys.E), new IntPtr(0));
-                        Thread.Sleep(70);
+                        Thread.Sleep(random.Next(70, 100));
                         esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)System.Windows.Forms.Keys.E), new IntPtr(0));
-                        Thread.Sleep(3000);
+                        Thread.Sleep(random.Next(3000, 4000));
                         break;
                     default:                        
                         stopFish = true;
                         break;
                 }
 
-                Thread.Sleep(500);
+                Thread.Sleep(random.Next(500, 1000));
             }
         }
 

@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EsoWindow.cs" />
+    <Compile Include="FishPath.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

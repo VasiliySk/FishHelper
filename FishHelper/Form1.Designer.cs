@@ -50,6 +50,13 @@
             this.btnTargetRun = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnFishing = new System.Windows.Forms.Button();
+            this.btnRunAndFish = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.colomnX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.сolumnFish = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelTargetX
@@ -105,7 +112,7 @@
             this.chkbAlwaysOnTop.AutoSize = true;
             this.chkbAlwaysOnTop.Checked = true;
             this.chkbAlwaysOnTop.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkbAlwaysOnTop.Location = new System.Drawing.Point(310, 292);
+            this.chkbAlwaysOnTop.Location = new System.Drawing.Point(310, 518);
             this.chkbAlwaysOnTop.Name = "chkbAlwaysOnTop";
             this.chkbAlwaysOnTop.Size = new System.Drawing.Size(126, 17);
             this.chkbAlwaysOnTop.TabIndex = 7;
@@ -221,7 +228,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 219);
+            this.label4.Location = new System.Drawing.Point(9, 236);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(229, 13);
             this.label4.TabIndex = 20;
@@ -229,7 +236,7 @@
             // 
             // btnFishing
             // 
-            this.btnFishing.Location = new System.Drawing.Point(16, 246);
+            this.btnFishing.Location = new System.Drawing.Point(12, 205);
             this.btnFishing.Name = "btnFishing";
             this.btnFishing.Size = new System.Drawing.Size(132, 28);
             this.btnFishing.TabIndex = 21;
@@ -237,11 +244,57 @@
             this.btnFishing.UseVisualStyleBackColor = true;
             this.btnFishing.Click += new System.EventHandler(this.btnFishing_Click);
             // 
+            // btnRunAndFish
+            // 
+            this.btnRunAndFish.Location = new System.Drawing.Point(159, 205);
+            this.btnRunAndFish.Name = "btnRunAndFish";
+            this.btnRunAndFish.Size = new System.Drawing.Size(132, 28);
+            this.btnRunAndFish.TabIndex = 22;
+            this.btnRunAndFish.Text = "Бежим и рыбачим";
+            this.btnRunAndFish.UseVisualStyleBackColor = true;
+            this.btnRunAndFish.Click += new System.EventHandler(this.btnRunAndFish_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colomnX,
+            this.columnY,
+            this.columnC,
+            this.сolumnFish});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 262);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.Size = new System.Drawing.Size(436, 239);
+            this.dataGridView1.TabIndex = 23;
+            // 
+            // colomnX
+            // 
+            this.colomnX.HeaderText = "X";
+            this.colomnX.Name = "colomnX";
+            // 
+            // columnY
+            // 
+            this.columnY.HeaderText = "Y";
+            this.columnY.Name = "columnY";
+            // 
+            // columnC
+            // 
+            this.columnC.HeaderText = "Угол";
+            this.columnC.Name = "columnC";
+            // 
+            // сolumnFish
+            // 
+            this.сolumnFish.HeaderText = "Рыба";
+            this.сolumnFish.Name = "сolumnFish";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 314);
+            this.ClientSize = new System.Drawing.Size(451, 547);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnRunAndFish);
             this.Controls.Add(this.btnFishing);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnTargetRun);
@@ -269,6 +322,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Помощник рыболова";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,6 +350,12 @@
         private System.Windows.Forms.Button btnTargetRun;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnFishing;
+        private System.Windows.Forms.Button btnRunAndFish;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colomnX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnC;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn сolumnFish;
     }
 }
 
