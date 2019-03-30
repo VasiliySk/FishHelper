@@ -2,8 +2,10 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using static FishHelper.EsoWindow;
@@ -15,22 +17,23 @@ namespace FishHelper
         int pid; //Идентификатор игры
         EsoWindow esoWindow;
         Hero hero;
+        FishHelperFile fishHelperFile;
         IntPtr bytesRead;        
-        private IntPtr processHandle;        
+        private IntPtr processHandle;
+        BindingList<FishPath> data;
 
         public Form1()
         {
-            BindingList<FishPath> data = new BindingList<FishPath>(); //Специальный список List с вызовом события обновления внутреннего состояния, необходимого для автообновления datagridview
-            data.Add(new FishPath(20, 50, 57, true));
+            data = new BindingList<FishPath>(); //Специальный список List с вызовом события обновления внутреннего состояния, необходимого для автообновления datagridview            
             InitializeComponent();
-            dataGridView1.DataSource = data;
-            data.Add(new FishPath(20.1f, 50.2f, 57.12f, true));
+            dataGridView1.DataSource = data;           
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, Screen.PrimaryScreen.Bounds.Height - Convert.ToInt32(this.Height*1.5));//Переносим окно в левый нижний угол
             this.TopMost = true;
             //Инициализируем классы
             esoWindow = new EsoWindow();
             hero = new Hero();
+            fishHelperFile = new FishHelperFile();
         }
 
         //Делаем окно Always on Top
@@ -153,8 +156,94 @@ namespace FishHelper
             Thread.Sleep(random.Next(1000, 2000));
             hero.Fishing(esoWindow, hWnd);
 
+            esoWindow.CloseHandle(processHandle);
         }
 
-       
+        //Удаляем выделенную строку
+        private void btnRemoveRow_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewCell oneCell in dataGridView1.SelectedCells)
+            {
+                
+                if (oneCell.Selected)
+                    dataGridView1.Rows.RemoveAt(oneCell.RowIndex);
+            }
+        }
+
+        private void btnConsol_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(data.Count);
+            for (int i = 0; i < data.Count; i++)
+            {
+                Console.WriteLine(data[i].tCorner);
+            }            
+        }
+        
+        //Добавляем строку
+        private void btnAddRow_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewCell oneCell in dataGridView1.SelectedCells)
+            {
+
+                if (oneCell.Selected)
+                    data.Insert(oneCell.RowIndex, new FishPath());
+            }
+        }
+
+        //Выход из приложения
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        //Открываем файл
+        private void OpenFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fishHelperFile.OpenFile(openFileDialog1, data, saveToolStripMenuItem);
+        }
+
+        //Сохраняем файл
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fishHelperFile.SaveFile();
+        }
+
+        //Сохраняем файл как...
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fishHelperFile.SaveFileAs(saveFileDialog1, data, saveToolStripMenuItem);
+        }
+
+        //Бежим и рыбачим по списку
+        private void btnGoGoGo_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+            IntPtr hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
+            var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd, out pid);
+            processHandle = esoWindow.OpenProcess(0x10, false, pid);
+
+            //Активируем окно, прожимаем дважды кноку мыши 
+            ActivateEsoWindow(hWnd);
+
+
+            for (int i=0; i<data.Count; i++)
+            {
+                if (data[i].holeType == true)
+                {
+                    //Бежим к цели и потом рыбачим
+                    hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
+                    Thread.Sleep(random.Next(1000, 2000));
+                    hero.Fishing(esoWindow, hWnd);
+                    Thread.Sleep(random.Next(1000, 2000));
+                }
+                else
+                {
+                    //Бежим к цели
+                    hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
+                    Thread.Sleep(random.Next(1000, 2000));
+                }
+            }
+            esoWindow.CloseHandle(processHandle);
+        }
     }
 }

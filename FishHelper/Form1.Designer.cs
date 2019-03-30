@@ -52,11 +52,20 @@
             this.btnFishing = new System.Windows.Forms.Button();
             this.btnRunAndFish = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.colomnX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.сolumnFish = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnRemoveRow = new System.Windows.Forms.Button();
+            this.btnConsol = new System.Windows.Forms.Button();
+            this.btnAddRow = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btnGoGoGo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelTargetX
@@ -112,7 +121,7 @@
             this.chkbAlwaysOnTop.AutoSize = true;
             this.chkbAlwaysOnTop.Checked = true;
             this.chkbAlwaysOnTop.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkbAlwaysOnTop.Location = new System.Drawing.Point(310, 518);
+            this.chkbAlwaysOnTop.Location = new System.Drawing.Point(320, 527);
             this.chkbAlwaysOnTop.Name = "chkbAlwaysOnTop";
             this.chkbAlwaysOnTop.Size = new System.Drawing.Size(126, 17);
             this.chkbAlwaysOnTop.TabIndex = 7;
@@ -228,7 +237,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 236);
+            this.label4.Location = new System.Drawing.Point(9, 462);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(229, 13);
             this.label4.TabIndex = 20;
@@ -257,42 +266,111 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colomnX,
-            this.columnY,
-            this.columnC,
-            this.сolumnFish});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 262);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 239);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(436, 239);
+            this.dataGridView1.Size = new System.Drawing.Size(424, 186);
             this.dataGridView1.TabIndex = 23;
             // 
-            // colomnX
+            // btnRemoveRow
             // 
-            this.colomnX.HeaderText = "X";
-            this.colomnX.Name = "colomnX";
+            this.btnRemoveRow.Location = new System.Drawing.Point(159, 431);
+            this.btnRemoveRow.Name = "btnRemoveRow";
+            this.btnRemoveRow.Size = new System.Drawing.Size(132, 28);
+            this.btnRemoveRow.TabIndex = 24;
+            this.btnRemoveRow.Text = "Удалить строку";
+            this.btnRemoveRow.UseVisualStyleBackColor = true;
+            this.btnRemoveRow.Click += new System.EventHandler(this.btnRemoveRow_Click);
             // 
-            // columnY
+            // btnConsol
             // 
-            this.columnY.HeaderText = "Y";
-            this.columnY.Name = "columnY";
+            this.btnConsol.Location = new System.Drawing.Point(12, 478);
+            this.btnConsol.Name = "btnConsol";
+            this.btnConsol.Size = new System.Drawing.Size(132, 28);
+            this.btnConsol.TabIndex = 25;
+            this.btnConsol.Text = "Консоль";
+            this.btnConsol.UseVisualStyleBackColor = true;
+            this.btnConsol.Click += new System.EventHandler(this.btnConsol_Click);
             // 
-            // columnC
+            // btnAddRow
             // 
-            this.columnC.HeaderText = "Угол";
-            this.columnC.Name = "columnC";
+            this.btnAddRow.Location = new System.Drawing.Point(12, 431);
+            this.btnAddRow.Name = "btnAddRow";
+            this.btnAddRow.Size = new System.Drawing.Size(132, 28);
+            this.btnAddRow.TabIndex = 26;
+            this.btnAddRow.Text = "Добавить строку";
+            this.btnAddRow.UseVisualStyleBackColor = true;
+            this.btnAddRow.Click += new System.EventHandler(this.btnAddRow_Click);
             // 
-            // сolumnFish
+            // menuStrip1
             // 
-            this.сolumnFish.HeaderText = "Рыба";
-            this.сolumnFish.Name = "сolumnFish";
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(451, 24);
+            this.menuStrip1.TabIndex = 27;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Text = "Открыть";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenFileToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Enabled = false;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Сохранить";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Text = "Сохранить как...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Выход";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // btnGoGoGo
+            // 
+            this.btnGoGoGo.Location = new System.Drawing.Point(304, 431);
+            this.btnGoGoGo.Name = "btnGoGoGo";
+            this.btnGoGoGo.Size = new System.Drawing.Size(132, 28);
+            this.btnGoGoGo.TabIndex = 28;
+            this.btnGoGoGo.Text = "Вперед по списку!";
+            this.btnGoGoGo.UseVisualStyleBackColor = true;
+            this.btnGoGoGo.Click += new System.EventHandler(this.btnGoGoGo_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(451, 547);
+            this.Controls.Add(this.btnGoGoGo);
+            this.Controls.Add(this.btnAddRow);
+            this.Controls.Add(this.btnConsol);
+            this.Controls.Add(this.btnRemoveRow);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnRunAndFish);
             this.Controls.Add(this.btnFishing);
@@ -316,13 +394,17 @@
             this.Controls.Add(this.labelTargetY);
             this.Controls.Add(this.textBoxCoordX);
             this.Controls.Add(this.labelTargetX);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Помощник рыболова";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -352,10 +434,18 @@
         private System.Windows.Forms.Button btnFishing;
         private System.Windows.Forms.Button btnRunAndFish;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colomnX;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnY;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnC;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn сolumnFish;
+        private System.Windows.Forms.Button btnRemoveRow;
+        private System.Windows.Forms.Button btnConsol;
+        private System.Windows.Forms.Button btnAddRow;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button btnGoGoGo;
     }
 }
 

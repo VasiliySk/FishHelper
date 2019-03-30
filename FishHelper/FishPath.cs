@@ -9,17 +9,22 @@ namespace FishHelper
     //Класс, отвечающий за сохранение данных о точках рыбной ловли
     class FishPath
     {
-        public float xCoord { get; set; }
-        public float yCoord { get; set; }
-        public float tCorner { get; set; }
+        public String xCoord { get; set; }
+        public String yCoord { get; set; }
+        public String tCorner { get; set; }
         public bool holeType { get; set; }
 
-        public FishPath(float xcoord, float ycoord, float tcorner, bool holetype)
+        public FishPath(String xcoord, String ycoord, String tcorner, bool holetype)
         {
             this.xCoord = xcoord;
             this.yCoord = ycoord;
             this.tCorner = tcorner;
             this.holeType = holetype;
         }
+
+        public FishPath()
+        {
+        }
+
     }
 }
