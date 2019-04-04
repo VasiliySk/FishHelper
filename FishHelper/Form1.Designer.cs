@@ -64,6 +64,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnGoGoGo = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -121,7 +122,7 @@
             this.chkbAlwaysOnTop.AutoSize = true;
             this.chkbAlwaysOnTop.Checked = true;
             this.chkbAlwaysOnTop.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkbAlwaysOnTop.Location = new System.Drawing.Point(320, 527);
+            this.chkbAlwaysOnTop.Location = new System.Drawing.Point(320, 578);
             this.chkbAlwaysOnTop.Name = "chkbAlwaysOnTop";
             this.chkbAlwaysOnTop.Size = new System.Drawing.Size(126, 17);
             this.chkbAlwaysOnTop.TabIndex = 7;
@@ -326,7 +327,7 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.openToolStripMenuItem.Text = "Открыть";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenFileToolStripMenuItem_Click);
             // 
@@ -334,21 +335,21 @@
             // 
             this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.saveToolStripMenuItem.Text = "Сохранить";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.saveAsToolStripMenuItem.Text = "Сохранить как...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.exitToolStripMenuItem.Text = "Выход";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -362,11 +363,19 @@
             this.btnGoGoGo.UseVisualStyleBackColor = true;
             this.btnGoGoGo.Click += new System.EventHandler(this.btnGoGoGo_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(16, 513);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(420, 20);
+            this.textBox1.TabIndex = 29;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 547);
+            this.ClientSize = new System.Drawing.Size(451, 607);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnGoGoGo);
             this.Controls.Add(this.btnAddRow);
             this.Controls.Add(this.btnConsol);
@@ -402,6 +411,8 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Помощник рыболова";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -446,6 +457,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button btnGoGoGo;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

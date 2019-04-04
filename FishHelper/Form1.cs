@@ -21,6 +21,7 @@ namespace FishHelper
         IntPtr bytesRead;        
         private IntPtr processHandle;
         BindingList<FishPath> data;
+        private LowLevelKeyboardListener _listener; //  Слушаем нажатие клавиш
 
         public Form1()
         {
@@ -244,6 +245,25 @@ namespace FishHelper
                 }
             }
             esoWindow.CloseHandle(processHandle);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            _listener = new LowLevelKeyboardListener();
+            _listener.OnKeyPressed += _listener_OnKeyPressed;
+
+            _listener.HookKeyboard();
+        }
+
+        void _listener_OnKeyPressed(object sender, KeyPressedArgs e)
+        {
+            this.textBox1.Text += e.KeyPressed.ToString();
+            if(e.KeyPressed == Keys.F12) this.Close();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _listener.UnHookKeyboard();
         }
     }
 }
