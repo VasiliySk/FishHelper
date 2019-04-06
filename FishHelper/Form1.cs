@@ -18,15 +18,18 @@ namespace FishHelper
         EsoWindow esoWindow;
         Hero hero;
         FishHelperFile fishHelperFile;
-        IntPtr bytesRead;        
+        IntPtr bytesRead;
+        IntPtr hWnd;
         private IntPtr processHandle;
         BindingList<FishPath> data;
         private LowLevelKeyboardListener _listener; //  Слушаем нажатие клавиш
+        public static bool stopAction;
 
         public Form1()
         {
             data = new BindingList<FishPath>(); //Специальный список List с вызовом события обновления внутреннего состояния, необходимого для автообновления datagridview            
             InitializeComponent();
+            stopAction = false;
             dataGridView1.DataSource = data;           
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, Screen.PrimaryScreen.Bounds.Height - Convert.ToInt32(this.Height*1.5));//Переносим окно в левый нижний угол
@@ -51,13 +54,10 @@ namespace FishHelper
         }
 
         private void btbTestAdress_Click(object sender, EventArgs e)
-        {
-            IntPtr hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
-            var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd, out pid);
-            processHandle = esoWindow.OpenProcess(0x10, false, pid);
+        {            
             var buffer = new byte[8];
             //Активируем окно, прожимаем дважды кноку мыши 
-            ActivateEsoWindow(hWnd);
+            ActivateEsoWindow();
 
             if (textBoxCoordX.Text != "")
             {
@@ -83,9 +83,13 @@ namespace FishHelper
             esoWindow.CloseHandle(processHandle);
         }
 
-        private void ActivateEsoWindow(IntPtr hWnd)
+        private void ActivateEsoWindow()
         {
+            stopAction = false;
             Random random = new Random();
+            hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
+            var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd, out pid);
+            processHandle = esoWindow.OpenProcess(0x10, false, pid);            
             esoWindow.SetForegroundWindow(hWnd); //Активируем окно
             Thread.Sleep(random.Next(1000, 2000));
             esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_RBUTTONDOWN, new IntPtr(0), new IntPtr(0));
@@ -99,58 +103,54 @@ namespace FishHelper
         }
 
         private void btnCameraCorner_Click(object sender, EventArgs e)
-        {
-            IntPtr hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
-            var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd, out pid);
-            processHandle = esoWindow.OpenProcess(0x10, false, pid);
-           
-            //Активируем окно, прожимаем дважды кноку мыши 
-            ActivateEsoWindow(hWnd);
+        {     
+            //Запуск в отдельном потоке, что бы можно было слушать нажатие клавиш в основном потоке.
+            (new Thread(delegate ()
+            {
+                //Активируем окно, прожимаем дважды кноку мыши 
+                ActivateEsoWindow();
 
-            hero.turnCorner(esoWindow, textBoxCorner.Text, processHandle, txtTargetCorner.Text);          
+                hero.turnCorner(esoWindow, textBoxCorner.Text, processHandle, txtTargetCorner.Text);
 
-            esoWindow.CloseHandle(processHandle);
+                esoWindow.CloseHandle(processHandle);
+            })).Start();            
         }
 
         private void btnTargetRun_Click(object sender, EventArgs e)
         {
-            IntPtr hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
-            var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd, out pid);
-            processHandle = esoWindow.OpenProcess(0x10, false, pid);
-
-            //Активируем окно, прожимаем дважды кноку мыши 
-            ActivateEsoWindow(hWnd);
+            //Запуск в отдельном потоке, что бы можно было слушать нажатие клавиш в основном потоке.
+            (new Thread(delegate ()
+            {
+                //Активируем окно, прожимаем дважды кноку мыши 
+                ActivateEsoWindow();
 
             //Бежим к цели
             hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text,textBoxCoordY.Text,textBoxCorner.Text,txtboxXTarget.Text,txtboxYTarget.Text,txtTargetCorner.Text);
 
             esoWindow.CloseHandle(processHandle);
+            })).Start();
         }
 
         private void btnFishing_Click(object sender, EventArgs e)
         {
-            
-            IntPtr hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
-            var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd, out pid);
-            processHandle = esoWindow.OpenProcess(0x10, false, pid);
-
-            //Активируем окно, прожимаем дважды кноку мыши 
-            ActivateEsoWindow(hWnd);
+            //Запуск в отдельном потоке, что бы можно было слушать нажатие клавиш в основном потоке.
+            (new Thread(delegate ()
+            {
+                //Активируем окно, прожимаем дважды кноку мыши 
+                ActivateEsoWindow();
 
             hero.Fishing(esoWindow, hWnd);
 
             esoWindow.CloseHandle(processHandle);
+            })).Start();
         }
 
         private void btnRunAndFish_Click(object sender, EventArgs e)
         {
-            Random random = new Random();
-            IntPtr hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
-            var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd, out pid);
-            processHandle = esoWindow.OpenProcess(0x10, false, pid);
+            Random random = new Random();          
 
             //Активируем окно, прожимаем дважды кноку мыши 
-            ActivateEsoWindow(hWnd);
+            ActivateEsoWindow();
 
             //Бежим к цели и потом рыбачим
             hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, txtboxXTarget.Text, txtboxYTarget.Text, txtTargetCorner.Text);
@@ -218,14 +218,13 @@ namespace FishHelper
         //Бежим и рыбачим по списку
         private void btnGoGoGo_Click(object sender, EventArgs e)
         {
-            Random random = new Random();
-            IntPtr hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
-            var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd, out pid);
-            processHandle = esoWindow.OpenProcess(0x10, false, pid);
+            //Запуск в отдельном потоке, что бы можно было слушать нажатие клавиш в основном потоке.
+            (new Thread(delegate ()
+            {
+                Random random = new Random();           
 
             //Активируем окно, прожимаем дважды кноку мыши 
-            ActivateEsoWindow(hWnd);
-
+            ActivateEsoWindow();
 
             for (int i=0; i<data.Count; i++)
             {
@@ -245,6 +244,7 @@ namespace FishHelper
                 }
             }
             esoWindow.CloseHandle(processHandle);
+            })).Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -255,10 +255,10 @@ namespace FishHelper
             _listener.HookKeyboard();
         }
 
-        void _listener_OnKeyPressed(object sender, KeyPressedArgs e)
-        {
-            this.textBox1.Text += e.KeyPressed.ToString();
-            if(e.KeyPressed == Keys.F12) this.Close();
+        //При нажатии на F12 останавливаем выполнение операции.
+        void _listener_OnKeyPressed(object sender, KeyPressedArgs e)        {
+
+            if (e.KeyPressed == Keys.F12) stopAction = true;
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)

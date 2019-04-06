@@ -46,8 +46,7 @@ namespace FishHelper
             double actualC = BitConverter.ToDouble(bufferC, 0);
             //Переводим целевые значения из String в Double с использованием заданного
             double targetX = Convert.ToDouble(xTarget, nfi);
-            double targetY = Convert.ToDouble(yTarget, nfi);
-            double targetC = Convert.ToDouble(cTarget, nfi);
+            double targetY = Convert.ToDouble(yTarget, nfi);          
             //Расчет катетов прямоугольного треугольника
             double katetX = Math.Abs(targetX - actualX);
             double katetY = Math.Abs(targetY - actualY);
@@ -68,7 +67,7 @@ namespace FishHelper
 
             if ((targetX > actualX) && (targetY < actualY)) //Если целевой X больше, а Y - меньше
             {
-                turnCorner(esoWindow, cAdress, processHandle, Convert.ToString(360 - cornerA));
+                turnCorner(esoWindow, cAdress, processHandle, Convert.ToString(270 + cornerA));
                 tStatus = TargetStatus.X_bigger_Y_less;
             }
 
@@ -81,21 +80,22 @@ namespace FishHelper
             //Бежим к цели
             while (ReachTarget(targetX, actualX, targetY, actualY))
             {
+                if (Form1.stopAction) break;
                 esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)System.Windows.Forms.Keys.W), new IntPtr(0));
-                System.Threading.Thread.Sleep(50);
+                Thread.Sleep(50);
                 resultX = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addrX), bufferX, (uint)bufferX.Length, out bytesRead);
                 resultY = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addrY), bufferY, (uint)bufferY.Length, out bytesRead);
                 actualX = BitConverter.ToDouble(bufferX, 0);
                 actualY = BitConverter.ToDouble(bufferY, 0);
             }
 
-            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)System.Windows.Forms.Keys.W), new IntPtr(0));
+            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)Keys.W), new IntPtr(0));
 
-            turnCorner(esoWindow, cAdress, processHandle, cTarget);
+            if (!cTarget.Equals("")) turnCorner(esoWindow, cAdress, processHandle, cTarget);
         }
                
 
-        //Заготовка под рыбалку
+        //Рыбачим
         public void Fishing(EsoWindow esoWindow, IntPtr hWnd)
         {
             bool stopFish = false;
@@ -113,6 +113,7 @@ namespace FishHelper
 
             while (!stopFish)
             {
+                if (Form1.stopAction) break;
                 graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size); // Задаем первыми двумя цифрами координаты начала (верхний левый угол) считываемого прямоугольника 
 
                 //Рассчитываем хэш код картинки            
@@ -186,6 +187,7 @@ namespace FishHelper
 
                 while (lenghtCorner> counterCorner)
                 {
+                    if (Form1.stopAction) break;
                     esoWindow.SetCursorPos(cursorPosition.X - 3, cursorPosition.Y);
                     result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);                    
                     counterCorner = BitConverter.ToDouble(buffer, 0) - previousCorner + counterCorner;
@@ -200,6 +202,7 @@ namespace FishHelper
 
                 while (lenghtCorner > counterCorner)
                 {
+                    if (Form1.stopAction) break;
                     esoWindow.SetCursorPos(cursorPosition.X + 3, cursorPosition.Y);
                     result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
                     counterCorner = previousCorner - BitConverter.ToDouble(buffer, 0) + counterCorner;

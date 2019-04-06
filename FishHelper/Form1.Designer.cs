@@ -64,7 +64,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnGoGoGo = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -122,7 +121,7 @@
             this.chkbAlwaysOnTop.AutoSize = true;
             this.chkbAlwaysOnTop.Checked = true;
             this.chkbAlwaysOnTop.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkbAlwaysOnTop.Location = new System.Drawing.Point(320, 578);
+            this.chkbAlwaysOnTop.Location = new System.Drawing.Point(325, 516);
             this.chkbAlwaysOnTop.Name = "chkbAlwaysOnTop";
             this.chkbAlwaysOnTop.Size = new System.Drawing.Size(126, 17);
             this.chkbAlwaysOnTop.TabIndex = 7;
@@ -363,19 +362,11 @@
             this.btnGoGoGo.UseVisualStyleBackColor = true;
             this.btnGoGoGo.Click += new System.EventHandler(this.btnGoGoGo_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(16, 513);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(420, 20);
-            this.textBox1.TabIndex = 29;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 607);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(451, 537);
             this.Controls.Add(this.btnGoGoGo);
             this.Controls.Add(this.btnAddRow);
             this.Controls.Add(this.btnConsol);
@@ -457,7 +448,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button btnGoGoGo;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
