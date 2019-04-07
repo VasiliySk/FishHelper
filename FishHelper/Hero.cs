@@ -90,10 +90,40 @@ namespace FishHelper
             }
 
             esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)Keys.W), new IntPtr(0));
-
-            if (!cTarget.Equals("")) turnCorner(esoWindow, cAdress, processHandle, cTarget);
+            if (!Form1.stopAction&& cTarget!=null)
+            {
+                if (!cTarget.Equals("")) turnCorner(esoWindow, cAdress, processHandle, cTarget);
+            }
         }
-               
+        
+        public bool isFishHole()
+        {
+            Bitmap bitmap = new Bitmap(30, 3); //Задаем размер считываемой области
+            Graphics graphics = Graphics.FromImage(bitmap as Image);
+
+            //Объекты для расчета хэш кода картинки
+            ImageConverter converter = new ImageConverter();
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            byte[] rawImageData;
+            byte[] hash;
+            String actualHash;
+
+            graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size); // Задаем первыми двумя цифрами координаты начала (верхний левый угол) считываемого прямоугольника 
+
+            //Рассчитываем хэш код картинки            
+            rawImageData = converter.ConvertTo(bitmap, typeof(byte[])) as byte[];
+            hash = md5.ComputeHash(rawImageData);
+            //конвертируем в строку
+            actualHash = BitConverter.ToString(hash);
+
+            switch (actualHash)
+            {
+                case fishHole:
+                    return true;
+                default:
+                    return false;
+            }
+        }
 
         //Рыбачим
         public void Fishing(EsoWindow esoWindow, IntPtr hWnd)

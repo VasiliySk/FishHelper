@@ -121,7 +121,7 @@
             this.chkbAlwaysOnTop.AutoSize = true;
             this.chkbAlwaysOnTop.Checked = true;
             this.chkbAlwaysOnTop.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkbAlwaysOnTop.Location = new System.Drawing.Point(325, 516);
+            this.chkbAlwaysOnTop.Location = new System.Drawing.Point(310, 485);
             this.chkbAlwaysOnTop.Name = "chkbAlwaysOnTop";
             this.chkbAlwaysOnTop.Size = new System.Drawing.Size(126, 17);
             this.chkbAlwaysOnTop.TabIndex = 7;
@@ -158,7 +158,7 @@
             // 
             // btbTestAdress
             // 
-            this.btbTestAdress.Location = new System.Drawing.Point(320, 94);
+            this.btbTestAdress.Location = new System.Drawing.Point(320, 104);
             this.btbTestAdress.Name = "btbTestAdress";
             this.btbTestAdress.Size = new System.Drawing.Size(116, 23);
             this.btbTestAdress.TabIndex = 11;
@@ -168,7 +168,7 @@
             // 
             // btnCameraCorner
             // 
-            this.btnCameraCorner.Location = new System.Drawing.Point(304, 173);
+            this.btnCameraCorner.Location = new System.Drawing.Point(304, 453);
             this.btnCameraCorner.Name = "btnCameraCorner";
             this.btnCameraCorner.Size = new System.Drawing.Size(132, 26);
             this.btnCameraCorner.TabIndex = 12;
@@ -178,7 +178,7 @@
             // 
             // txtTargetCorner
             // 
-            this.txtTargetCorner.Location = new System.Drawing.Point(304, 145);
+            this.txtTargetCorner.Location = new System.Drawing.Point(304, 393);
             this.txtTargetCorner.Name = "txtTargetCorner";
             this.txtTargetCorner.Size = new System.Drawing.Size(132, 20);
             this.txtTargetCorner.TabIndex = 13;
@@ -186,7 +186,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(301, 126);
+            this.label1.Location = new System.Drawing.Point(301, 374);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 13);
             this.label1.TabIndex = 14;
@@ -194,7 +194,7 @@
             // 
             // txtboxXTarget
             // 
-            this.txtboxXTarget.Location = new System.Drawing.Point(12, 145);
+            this.txtboxXTarget.Location = new System.Drawing.Point(12, 393);
             this.txtboxXTarget.Name = "txtboxXTarget";
             this.txtboxXTarget.Size = new System.Drawing.Size(132, 20);
             this.txtboxXTarget.TabIndex = 15;
@@ -202,7 +202,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 126);
+            this.label2.Location = new System.Drawing.Point(13, 374);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 16;
@@ -210,7 +210,7 @@
             // 
             // txtboxYTarget
             // 
-            this.txtboxYTarget.Location = new System.Drawing.Point(159, 145);
+            this.txtboxYTarget.Location = new System.Drawing.Point(159, 393);
             this.txtboxYTarget.Name = "txtboxYTarget";
             this.txtboxYTarget.Size = new System.Drawing.Size(132, 20);
             this.txtboxYTarget.TabIndex = 17;
@@ -218,7 +218,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(156, 126);
+            this.label3.Location = new System.Drawing.Point(156, 374);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 18;
@@ -226,7 +226,7 @@
             // 
             // btnTargetRun
             // 
-            this.btnTargetRun.Location = new System.Drawing.Point(12, 171);
+            this.btnTargetRun.Location = new System.Drawing.Point(12, 419);
             this.btnTargetRun.Name = "btnTargetRun";
             this.btnTargetRun.Size = new System.Drawing.Size(132, 28);
             this.btnTargetRun.TabIndex = 19;
@@ -237,7 +237,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 462);
+            this.label4.Location = new System.Drawing.Point(9, 356);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(229, 13);
             this.label4.TabIndex = 20;
@@ -245,7 +245,7 @@
             // 
             // btnFishing
             // 
-            this.btnFishing.Location = new System.Drawing.Point(12, 205);
+            this.btnFishing.Location = new System.Drawing.Point(159, 419);
             this.btnFishing.Name = "btnFishing";
             this.btnFishing.Size = new System.Drawing.Size(132, 28);
             this.btnFishing.TabIndex = 21;
@@ -255,7 +255,7 @@
             // 
             // btnRunAndFish
             // 
-            this.btnRunAndFish.Location = new System.Drawing.Point(159, 205);
+            this.btnRunAndFish.Location = new System.Drawing.Point(304, 419);
             this.btnRunAndFish.Name = "btnRunAndFish";
             this.btnRunAndFish.Size = new System.Drawing.Size(132, 28);
             this.btnRunAndFish.TabIndex = 22;
@@ -266,15 +266,16 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 239);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 133);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.Size = new System.Drawing.Size(424, 186);
             this.dataGridView1.TabIndex = 23;
+            this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             // 
             // btnRemoveRow
             // 
-            this.btnRemoveRow.Location = new System.Drawing.Point(159, 431);
+            this.btnRemoveRow.Location = new System.Drawing.Point(159, 325);
             this.btnRemoveRow.Name = "btnRemoveRow";
             this.btnRemoveRow.Size = new System.Drawing.Size(132, 28);
             this.btnRemoveRow.TabIndex = 24;
@@ -284,7 +285,7 @@
             // 
             // btnConsol
             // 
-            this.btnConsol.Location = new System.Drawing.Point(12, 478);
+            this.btnConsol.Location = new System.Drawing.Point(12, 453);
             this.btnConsol.Name = "btnConsol";
             this.btnConsol.Size = new System.Drawing.Size(132, 28);
             this.btnConsol.TabIndex = 25;
@@ -294,7 +295,7 @@
             // 
             // btnAddRow
             // 
-            this.btnAddRow.Location = new System.Drawing.Point(12, 431);
+            this.btnAddRow.Location = new System.Drawing.Point(12, 325);
             this.btnAddRow.Name = "btnAddRow";
             this.btnAddRow.Size = new System.Drawing.Size(132, 28);
             this.btnAddRow.TabIndex = 26;
@@ -354,7 +355,7 @@
             // 
             // btnGoGoGo
             // 
-            this.btnGoGoGo.Location = new System.Drawing.Point(304, 431);
+            this.btnGoGoGo.Location = new System.Drawing.Point(304, 325);
             this.btnGoGoGo.Name = "btnGoGoGo";
             this.btnGoGoGo.Size = new System.Drawing.Size(132, 28);
             this.btnGoGoGo.TabIndex = 28;
@@ -366,7 +367,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 537);
+            this.ClientSize = new System.Drawing.Size(451, 502);
             this.Controls.Add(this.btnGoGoGo);
             this.Controls.Add(this.btnAddRow);
             this.Controls.Add(this.btnConsol);

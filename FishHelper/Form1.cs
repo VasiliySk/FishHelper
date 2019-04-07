@@ -233,6 +233,20 @@ namespace FishHelper
                     //Бежим к цели и потом рыбачим
                     hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
                     Thread.Sleep(random.Next(1000, 2000));
+                        int attempt = 0;
+                        //Делаем тридцать попыток начать рыбачить. А вдруг появится лунка )))
+                        while (attempt<30)
+                        {
+                            if (hero.isFishHole())
+                            {
+                                attempt = 30;
+                            }
+                            else
+                            {
+                                Thread.Sleep(random.Next(500, 1500));
+                                attempt++;
+                            }
+                        }    
                     hero.Fishing(esoWindow, hWnd);
                     Thread.Sleep(random.Next(1000, 2000));
                 }
@@ -264,6 +278,35 @@ namespace FishHelper
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             _listener.UnHookKeyboard();
+        }
+
+        //Проверка на вводимые данные в таблицу. Ввести можно только цифры и запятую.
+        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+            if (dataGridView1.CurrentCell.ColumnIndex != 3) //Проверяем все столбцы, кроме последнего
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+        }
+        private void Column1_KeyPress(object sender, KeyPressEventArgs e)        {
+            
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))           
+            { 
+                switch (e.KeyChar) //Обрабатываем точку и запятую
+                {
+                    case '.':
+                        e.KeyChar = ',';
+                        return;
+                    case ',':
+                        return;
+                }               
+                e.Handled = true;
+            }
         }
     }
 }
