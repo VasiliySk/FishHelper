@@ -308,5 +308,10 @@ namespace FishHelper
                 e.Handled = true;
             }
         }
+
+        private void openAdressStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            fishHelperFile.OpenAdressFile(openFileDialog2, textBoxCoordX, textBoxCoordY,textBoxCorner);
+        }
     }
 }

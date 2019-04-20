@@ -176,6 +176,61 @@ namespace FishHelper
             }
         }
 
+        public void turnCornerVer2(EsoWindow esoWindow, String addrText, IntPtr processHandle, String targetCorner)
+        {
+            Point cursorPosition = new Point();
+
+            esoWindow.GetCursorPos(out cursorPosition);
+
+            var buffer = new byte[8];
+            var addr = long.Parse(addrText, NumberStyles.HexNumber);
+            IntPtr bytesRead;
+            var result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
+
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ","; //Задаем запятую, как разделитель между числом и дробной частью
+
+            double trgCorner = Convert.ToDouble(targetCorner, nfi); //Целевой угол
+            double acturalCorner = BitConverter.ToDouble(buffer, 0); //текущий угол
+
+            if (trgCorner > acturalCorner) //Целевой угол больше текущего
+            {
+                if ((trgCorner - acturalCorner) < 180) //Если разница меньше 180, то поворачиваем по часовой стрелке
+                {
+
+                }
+                else //Если разница больше 180, то поворачиваем против часовой стрелки
+                {
+
+                }
+            }
+            else //Целевой угол меньше текущего
+            {
+                if ((acturalCorner - trgCorner) < 180) //Если разница меньше 180, то поворачиваем против часовой стрелки
+                {
+
+                }
+                else //Если разница больше 180, то поворачиваем по часовой стрелке
+                {
+
+                }
+            }
+        }
+
+        //Рассчитываем дистанцию поворота между двумя углами
+        private double CornerDistance(double acturalCorner, double trgCorner)
+        {
+            double cornerDistance;
+            if((acturalCorner> trgCorner)&&((acturalCorner- trgCorner) > 180)) //Обрабатываем ситуацию перехода через 0, в случае если acturalCorner чуть меньше 360, а trgCorner больше 0 и двигаемся по часовой стрелке
+            {
+                cornerDistance = 360 - acturalCorner + trgCorner;
+                return cornerDistance;
+            }
+
+            cornerDistance = Math.Abs(acturalCorner - trgCorner);
+            return cornerDistance;
+        }
+
         //Поворот камеры
 
         public void turnCorner(EsoWindow esoWindow, String addrText, IntPtr processHandle, String targetCorner)
@@ -185,7 +240,7 @@ namespace FishHelper
             esoWindow.GetCursorPos(out cursorPosition);
 
             var buffer = new byte[8];
-            var addr = long.Parse(addrText, System.Globalization.NumberStyles.HexNumber);
+            var addr = long.Parse(addrText, NumberStyles.HexNumber);
             IntPtr bytesRead;
             var result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
 
@@ -216,7 +271,7 @@ namespace FishHelper
                 previousCorner = BitConverter.ToDouble(buffer, 0);
 
                 while (lenghtCorner> counterCorner)
-                {
+                {                    
                     if (Form1.stopAction) break;
                     esoWindow.SetCursorPos(cursorPosition.X - 3, cursorPosition.Y);
                     result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);                    
@@ -231,7 +286,7 @@ namespace FishHelper
                 previousCorner = BitConverter.ToDouble(buffer, 0);
 
                 while (lenghtCorner > counterCorner)
-                {
+                {                    
                     if (Form1.stopAction) break;
                     esoWindow.SetCursorPos(cursorPosition.X + 3, cursorPosition.Y);
                     result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);

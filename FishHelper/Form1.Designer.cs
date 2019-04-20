@@ -60,10 +60,12 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openAdressStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnGoGoGo = new System.Windows.Forms.Button();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -319,6 +321,7 @@
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
+            this.openAdressStripMenuItem,
             this.exitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
@@ -327,7 +330,7 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.openToolStripMenuItem.Text = "Открыть";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenFileToolStripMenuItem_Click);
             // 
@@ -335,21 +338,28 @@
             // 
             this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.saveToolStripMenuItem.Text = "Сохранить";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.saveAsToolStripMenuItem.Text = "Сохранить как...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
+            // 
+            // openAdressStripMenuItem
+            // 
+            this.openAdressStripMenuItem.Name = "openAdressStripMenuItem";
+            this.openAdressStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.openAdressStripMenuItem.Text = "Открыть файл с адресами";
+            this.openAdressStripMenuItem.Click += new System.EventHandler(this.openAdressStripMenuItem1_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.exitToolStripMenuItem.Text = "Выход";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -362,6 +372,10 @@
             this.btnGoGoGo.Text = "Вперед по списку!";
             this.btnGoGoGo.UseVisualStyleBackColor = true;
             this.btnGoGoGo.Click += new System.EventHandler(this.btnGoGoGo_Click);
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
             // 
             // Form1
             // 
@@ -449,6 +463,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button btnGoGoGo;
+        private System.Windows.Forms.ToolStripMenuItem openAdressStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
     }
 }
 

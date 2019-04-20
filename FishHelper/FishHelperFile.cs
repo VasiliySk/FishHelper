@@ -18,13 +18,13 @@ namespace FishHelper
 
         //Открываем файл
         public void OpenFile(OpenFileDialog openFileDialog1, BindingList<FishPath> data, ToolStripMenuItem saveToolStripMenuItem)
-        {
-            data.Clear();
+        {            
             Stream mystr = null;
-            openFileDialog1.Filter = "Fish Helper files (*.fhf)|*.fhf";
-            this.data = data;
+            openFileDialog1.Filter = "Fish Helper files (*.fhf)|*.fhf";            
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                data.Clear();
+                this.data = data;
                 if ((mystr = openFileDialog1.OpenFile()) != null)
                 {
                     filePath = openFileDialog1.FileName;
@@ -158,6 +158,53 @@ namespace FishHelper
             {
                 myWriter.Close();
             }                      
+        }
+
+        //Открываем файл с адресами CheatEngine и загружаем в программу
+        public void OpenAdressFile(OpenFileDialog openFileDialog2, TextBox textBoxCoordX, TextBox textBoxCoordY, TextBox textBoxCorner)
+        {
+            Stream mystr = null;
+
+            openFileDialog2.Filter = "Cheat Engine files (*.CT)|*.CT";
+            if (openFileDialog2.ShowDialog() == DialogResult.OK)
+            {                
+                if ((mystr = openFileDialog2.OpenFile()) != null)
+                {
+                    StreamReader myread = new StreamReader(mystr);                    
+                    int num = 0;
+                    int adressCount = 0; 
+                    try
+                    {
+                        string[] str1 = myread.ReadToEnd().Split('\n');
+                        num = str1.Length;                        
+                        for (int i = 0; i < num; i++)
+                        {
+                            if (str1[i].Contains("RealAddress"))
+                            {
+                                int indexStartOfAdress = str1[i].IndexOf("RealAddress=") + 12; //Определяем место начала адреса
+                                int indexFinishOfAdress = str1[i].IndexOf("/>"); //Определяем место начала адреса                                
+
+                                switch (adressCount)
+                                {
+                                    case 0:
+                                        textBoxCoordX.Text = str1[i].Substring(indexStartOfAdress+1, indexFinishOfAdress- indexStartOfAdress-2); //Вырезаем адрес из найденной строки
+                                        adressCount++;
+                                        break;
+                                    case 1:
+                                        textBoxCoordY.Text = str1[i].Substring(indexStartOfAdress + 1, indexFinishOfAdress - indexStartOfAdress - 2); //Вырезаем адрес из найденной строки
+                                        adressCount++;
+                                        break;
+                                    case 2:
+                                        textBoxCorner.Text = str1[i].Substring(indexStartOfAdress + 1, indexFinishOfAdress - indexStartOfAdress - 2); //Вырезаем адрес из найденной строки
+                                        adressCount++;
+                                        break;
+                                }
+                            }
+                        }                                                
+                    }
+                    catch { }
+                }
+            }
         }
     }
 }
