@@ -39,6 +39,9 @@ namespace FishHelper
         [DllImport("user32.dll", EntryPoint = "GetCursorPos")]
         private static extern bool GetCursorPosNative(out Point lpPoint);
 
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true, EntryPoint = "SetThreadExecutionState")]
+        private static extern EXECUTION_STATE SetThreadExecutionStateNative(EXECUTION_STATE esFlags);
+
         [Flags]
         public enum WindowMessages : uint
         {
@@ -57,6 +60,18 @@ namespace FishHelper
             WM_KEYUP = 0x101,
             WM_SYSKEYDOWN = 0x104,
             WM_SYSKEYUP = 0x105,
+        }
+
+        public enum EXECUTION_STATE : uint
+        {
+            ES_AWAYMODE_REQUIRED = 0x00000040,
+            ES_CONTINUOUS = 0x80000000,
+            ES_DISPLAY_REQUIRED = 0x00000002,
+        }
+
+        public EXECUTION_STATE SetThreadExecutionState(EXECUTION_STATE esFlags)
+        {
+            return SetThreadExecutionStateNative(esFlags);
         }
 
         public IntPtr FindWindow(string className, string windowName)

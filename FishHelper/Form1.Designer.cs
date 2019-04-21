@@ -66,6 +66,8 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnGoGoGo = new System.Windows.Forms.Button();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.btnGoSelect = new System.Windows.Forms.Button();
+            this.btnFishingVer2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -277,9 +279,9 @@
             // 
             // btnRemoveRow
             // 
-            this.btnRemoveRow.Location = new System.Drawing.Point(159, 325);
+            this.btnRemoveRow.Location = new System.Drawing.Point(120, 325);
             this.btnRemoveRow.Name = "btnRemoveRow";
-            this.btnRemoveRow.Size = new System.Drawing.Size(132, 28);
+            this.btnRemoveRow.Size = new System.Drawing.Size(96, 28);
             this.btnRemoveRow.TabIndex = 24;
             this.btnRemoveRow.Text = "Удалить строку";
             this.btnRemoveRow.UseVisualStyleBackColor = true;
@@ -299,7 +301,7 @@
             // 
             this.btnAddRow.Location = new System.Drawing.Point(12, 325);
             this.btnAddRow.Name = "btnAddRow";
-            this.btnAddRow.Size = new System.Drawing.Size(132, 28);
+            this.btnAddRow.Size = new System.Drawing.Size(102, 28);
             this.btnAddRow.TabIndex = 26;
             this.btnAddRow.Text = "Добавить строку";
             this.btnAddRow.UseVisualStyleBackColor = true;
@@ -365,9 +367,9 @@
             // 
             // btnGoGoGo
             // 
-            this.btnGoGoGo.Location = new System.Drawing.Point(304, 325);
+            this.btnGoGoGo.Location = new System.Drawing.Point(222, 325);
             this.btnGoGoGo.Name = "btnGoGoGo";
-            this.btnGoGoGo.Size = new System.Drawing.Size(132, 28);
+            this.btnGoGoGo.Size = new System.Drawing.Size(108, 28);
             this.btnGoGoGo.TabIndex = 28;
             this.btnGoGoGo.Text = "Вперед по списку!";
             this.btnGoGoGo.UseVisualStyleBackColor = true;
@@ -377,11 +379,33 @@
             // 
             this.openFileDialog2.FileName = "openFileDialog2";
             // 
+            // btnGoSelect
+            // 
+            this.btnGoSelect.Location = new System.Drawing.Point(336, 325);
+            this.btnGoSelect.Name = "btnGoSelect";
+            this.btnGoSelect.Size = new System.Drawing.Size(96, 28);
+            this.btnGoSelect.TabIndex = 29;
+            this.btnGoSelect.Text = "Go from select";
+            this.btnGoSelect.UseVisualStyleBackColor = true;
+            this.btnGoSelect.Click += new System.EventHandler(this.btnGoSelect_Click);
+            // 
+            // btnFishingVer2
+            // 
+            this.btnFishingVer2.Location = new System.Drawing.Point(159, 453);
+            this.btnFishingVer2.Name = "btnFishingVer2";
+            this.btnFishingVer2.Size = new System.Drawing.Size(132, 28);
+            this.btnFishingVer2.TabIndex = 30;
+            this.btnFishingVer2.Text = "Рыбачим ver2";
+            this.btnFishingVer2.UseVisualStyleBackColor = true;
+            this.btnFishingVer2.Click += new System.EventHandler(this.btnFishingVer2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(451, 502);
+            this.Controls.Add(this.btnFishingVer2);
+            this.Controls.Add(this.btnGoSelect);
             this.Controls.Add(this.btnGoGoGo);
             this.Controls.Add(this.btnAddRow);
             this.Controls.Add(this.btnConsol);
@@ -465,6 +489,8 @@
         private System.Windows.Forms.Button btnGoGoGo;
         private System.Windows.Forms.ToolStripMenuItem openAdressStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.Button btnGoSelect;
+        private System.Windows.Forms.Button btnFishingVer2;
     }
 }
 

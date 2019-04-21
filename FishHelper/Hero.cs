@@ -23,7 +23,9 @@ namespace FishHelper
 
         //Заготовка под бег
         public void Run(EsoWindow esoWindow, IntPtr processHandle, IntPtr hWnd, String xAddress, String yAdress, String cAdress, String xTarget, String yTarget, String cTarget) {
-            
+
+            if (Form1.stopAction) return; //Прекращаем функцию, если нажато F12
+
             IntPtr bytesRead;
             NumberFormatInfo nfi = new NumberFormatInfo();
             nfi.NumberDecimalSeparator = ","; //Задаем запятую, как разделитель между числом и дробной частью            
