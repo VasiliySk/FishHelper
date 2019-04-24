@@ -34,7 +34,8 @@ namespace FishHelper
             dataGridView1.DataSource = data;           
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, Screen.PrimaryScreen.Bounds.Height - Convert.ToInt32(this.Height*1.5));//Переносим окно в левый нижний угол
-            this.TopMost = true;            
+            this.TopMost = true;
+            cmbSelect.SelectedIndex = 0; //По уполчанию в комбобох ставим первое значение
             //Инициализируем классы
             esoWindow = new EsoWindow();
             esoWindow.SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED);//Запрещаем спящий режим во время работы программы
@@ -222,26 +223,41 @@ namespace FishHelper
         //Бежим и рыбачим по списку
         private void btnGoGoGo_Click(object sender, EventArgs e)
         {
-            RunAndFish(0);
+            bool fishCycle = false;
+            stopAction = false;            
+            do
+            {
+                if (stopAction) return;
+                RunAndFish(0);
+                if (cmbSelect.SelectedIndex == 1) fishCycle = true;
+                if(cmbSelect.SelectedIndex == 2)
+                {
+                    RunAndFishBack(data.Count-1);
+                    fishCycle = true;
+                }
+
+            } while (fishCycle);
+            
         }
 
         private void RunAndFish(int count)
         {
             //Запуск в отдельном потоке, что бы можно было слушать нажатие клавиш в основном потоке.
-            (new Thread(delegate ()
-            {
-                Random random = new Random();
+            Thread MyThread1 = new Thread(delegate ()
+             {
+                 Random random = new Random();
 
-                //Активируем окно, прожимаем дважды кноку мыши 
-                ActivateEsoWindow();
+                 //Активируем окно, прожимаем дважды кноку мыши 
+                 ActivateEsoWindow();
 
-                for (int i = count; i < data.Count; i++)
-                {
-                    if (data[i].holeType == true)
-                    {
+                 for (int i = count; i < data.Count; i++)
+                 {
+                     if (stopAction) return;
+                     if (data[i].holeType == true)
+                     {
                         //Бежим к цели и потом рыбачим
                         hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
-                        Thread.Sleep(random.Next(1000, 2000));
+                         Thread.Sleep(random.Next(1000, 2000));
                         //int attempt = 0;
                         ////Делаем тридцать попыток начать рыбачить. А вдруг появится лунка )))
                         //while (attempt < 30)
@@ -257,6 +273,41 @@ namespace FishHelper
                         //    }
                         //}
                         hero.Fishing(esoWindow, hWnd);
+                         Thread.Sleep(random.Next(1000, 2000));
+                     }
+                     else
+                     {
+                        //Бежим к цели
+                        hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
+                         Thread.Sleep(random.Next(1000, 2000));
+                     }
+                 }
+                 esoWindow.CloseHandle(processHandle);
+             });
+            MyThread1.Start();
+            MyThread1.Join();
+        }
+
+        //Бежим и рыбачим в обратном порядке
+        private void RunAndFishBack(int count)
+        {
+            //Запуск в отдельном потоке, что бы можно было слушать нажатие клавиш в основном потоке.
+            Thread MyThread1 = new Thread(delegate ()
+            {
+                Random random = new Random();
+
+                //Активируем окно, прожимаем дважды кноку мыши 
+                ActivateEsoWindow();
+
+                for (int i = count; i >= 0; i--)
+                {
+                    if (stopAction) return;
+                    if (data[i].holeType == true)
+                    {
+                        //Бежим к цели и потом рыбачим
+                        hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
+                        Thread.Sleep(random.Next(1000, 2000));                       
+                        hero.Fishing(esoWindow, hWnd);
                         Thread.Sleep(random.Next(1000, 2000));
                     }
                     else
@@ -267,7 +318,9 @@ namespace FishHelper
                     }
                 }
                 esoWindow.CloseHandle(processHandle);
-            })).Start();
+            });
+            MyThread1.Start();
+            MyThread1.Join();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -330,7 +383,8 @@ namespace FishHelper
             foreach (DataGridViewCell oneCell in dataGridView1.SelectedCells)
             {
                 if (oneCell.Selected) count = oneCell.RowIndex;                   
-            }
+            }           
+
             RunAndFish(count);
         }
 
@@ -375,6 +429,16 @@ namespace FishHelper
 
                 esoWindow.CloseHandle(processHandle);
             })).Start();
+        }
+              
+        //Автоматическая номерация строк
+        private void dataGridView1_RowPrePaint_1(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            int index = e.RowIndex;
+            string indexStr = (index + 1).ToString();
+            object header = this.dataGridView1.Rows[index].HeaderCell.Value;
+            if (header == null || !header.Equals(indexStr))
+                this.dataGridView1.Rows[index].HeaderCell.Value = indexStr;
         }
     }
 }

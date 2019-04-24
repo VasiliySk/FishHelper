@@ -26,6 +26,7 @@ namespace FishHelper
 
             if (Form1.stopAction) return; //Прекращаем функцию, если нажато F12
 
+            int timeCount = 0;
             IntPtr bytesRead;
             NumberFormatInfo nfi = new NumberFormatInfo();
             nfi.NumberDecimalSeparator = ","; //Задаем запятую, как разделитель между числом и дробной частью            
@@ -83,8 +84,14 @@ namespace FishHelper
             while (ReachTarget(targetX, actualX, targetY, actualY))
             {
                 if (Form1.stopAction) break;
+                if (timeCount > 30000)
+                {
+                    Form1.stopAction = true;
+                    break;
+                }
                 esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)System.Windows.Forms.Keys.W), new IntPtr(0));
                 Thread.Sleep(50);
+                timeCount = timeCount + 50;
                 resultX = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addrX), bufferX, (uint)bufferX.Length, out bytesRead);
                 resultY = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addrY), bufferY, (uint)bufferY.Length, out bytesRead);
                 actualX = BitConverter.ToDouble(bufferX, 0);
