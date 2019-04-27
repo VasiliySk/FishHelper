@@ -112,10 +112,10 @@ namespace FishHelper
             //Запуск в отдельном потоке, что бы можно было слушать нажатие клавиш в основном потоке.
             (new Thread(delegate ()
             {
-                //Активируем окно, прожимаем дважды кноку мыши 
+                //Активируем окно, прожимаем дважды кнопку мыши 
                 ActivateEsoWindow();
 
-                hero.turnCorner(esoWindow, textBoxCorner.Text, processHandle, txtTargetCorner.Text);
+                hero.turnCornerVer2(esoWindow, textBoxCorner.Text, processHandle, txtTargetCorner.Text);
 
                 esoWindow.CloseHandle(processHandle);
             })).Start();            
@@ -257,22 +257,8 @@ namespace FishHelper
                      {
                         //Бежим к цели и потом рыбачим
                         hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
-                         Thread.Sleep(random.Next(1000, 2000));
-                        //int attempt = 0;
-                        ////Делаем тридцать попыток начать рыбачить. А вдруг появится лунка )))
-                        //while (attempt < 30)
-                        //{
-                        //    if (hero.isFishHole())
-                        //    {
-                        //        attempt = 30;
-                        //    }
-                        //    else
-                        //    {
-                        //        Thread.Sleep(random.Next(500, 1500));
-                        //        attempt++;
-                        //    }
-                        //}
-                        hero.Fishing(esoWindow, hWnd);
+                         Thread.Sleep(random.Next(1000, 2000));                       
+                         hero.Fishing(esoWindow, hWnd);
                          Thread.Sleep(random.Next(1000, 2000));
                      }
                      else
@@ -380,12 +366,29 @@ namespace FishHelper
         private void btnGoSelect_Click(object sender, EventArgs e)
         {
             int count = 0;
+            bool fishCycle = false;
+            stopAction = false;
             foreach (DataGridViewCell oneCell in dataGridView1.SelectedCells)
             {
                 if (oneCell.Selected) count = oneCell.RowIndex;                   
-            }           
+            }            
+            do
+            {
+                if (stopAction) return;
+                RunAndFish(count);
+                if (cmbSelect.SelectedIndex == 1)
+                {
+                    count = 0;
+                    fishCycle = true;
+                }
+                if (cmbSelect.SelectedIndex == 2)
+                {
+                    RunAndFishBack(data.Count - 1);
+                    count = 0;
+                    fishCycle = true;
+                }
 
-            RunAndFish(count);
+            } while (fishCycle);
         }
 
         //Вариант рыбалки номер 2
@@ -414,11 +417,11 @@ namespace FishHelper
 
                 if (acturalCorner - 180 > 0)
                 {
-                    hero.turnCorner(esoWindow, textBoxCorner.Text, processHandle,Convert.ToString(acturalCorner - 180));
+                    hero.turnCornerVer2(esoWindow, textBoxCorner.Text, processHandle,Convert.ToString(acturalCorner - 180));
                 }
                 else
                 {
-                    hero.turnCorner(esoWindow, textBoxCorner.Text, processHandle, Convert.ToString(acturalCorner + 180));
+                    hero.turnCornerVer2(esoWindow, textBoxCorner.Text, processHandle, Convert.ToString(acturalCorner + 180));
                 }
 
                 Thread.Sleep(random.Next(1000, 2000));

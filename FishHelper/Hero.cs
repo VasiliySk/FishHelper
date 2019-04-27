@@ -58,25 +58,25 @@ namespace FishHelper
             //Поворачиваем к цели
             if ((targetX > actualX) && (targetY > actualY)) //Если оба целевых значения больше текущих
             {
-                turnCorner(esoWindow, cAdress, processHandle, Convert.ToString(270 - cornerA));
+                turnCornerVer2(esoWindow, cAdress, processHandle, Convert.ToString(270 - cornerA));
                 tStatus = TargetStatus.X_bigger_Y_bigger;
             }
 
             if ((targetX < actualX) && (targetY < actualY)) //Если оба целевых значения меньше текущих
             {
-                turnCorner(esoWindow, cAdress, processHandle, Convert.ToString(90-cornerA));
+                turnCornerVer2(esoWindow, cAdress, processHandle, Convert.ToString(90-cornerA));
                 tStatus = TargetStatus.X_less_Y_less;
             }
 
             if ((targetX > actualX) && (targetY < actualY)) //Если целевой X больше, а Y - меньше
             {
-                turnCorner(esoWindow, cAdress, processHandle, Convert.ToString(270 + cornerA));
+                turnCornerVer2(esoWindow, cAdress, processHandle, Convert.ToString(270 + cornerA));
                 tStatus = TargetStatus.X_bigger_Y_less;
             }
 
             if ((targetX < actualX) && (targetY > actualY)) //Если целевой X меньше, а Y - больше
             {
-                turnCorner(esoWindow, cAdress, processHandle, Convert.ToString(90 + cornerA));
+                turnCornerVer2(esoWindow, cAdress, processHandle, Convert.ToString(90 + cornerA));
                 tStatus = TargetStatus.X_less_Y_bigger;
             }
 
@@ -101,7 +101,7 @@ namespace FishHelper
             esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)Keys.W), new IntPtr(0));
             if (!Form1.stopAction&& cTarget!=null)
             {
-                if (!cTarget.Equals("")) turnCorner(esoWindow, cAdress, processHandle, cTarget);
+                if (!cTarget.Equals("")) turnCornerVer2(esoWindow, cAdress, processHandle, cTarget);
             }
         }
         
@@ -201,27 +201,83 @@ namespace FishHelper
 
             double trgCorner = Convert.ToDouble(targetCorner, nfi); //Целевой угол
             double acturalCorner = BitConverter.ToDouble(buffer, 0); //текущий угол
+            double previousCorner; //Предыдущее значение угла
+            double targetDistance; //Количество градусов, на которое нужно повернуть взгляд
+            double coveredDistance; //пройденное количесто градусов угла
 
             if (trgCorner > acturalCorner) //Целевой угол больше текущего
             {
                 if ((trgCorner - acturalCorner) < 180) //Если разница меньше 180, то поворачиваем по часовой стрелке
                 {
-
+                    result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
+                    previousCorner = BitConverter.ToDouble(buffer, 0);
+                    targetDistance = trgCorner - acturalCorner;
+                    coveredDistance = 0;
+                    while(targetDistance> coveredDistance)
+                    {
+                        if (Form1.stopAction) break;
+                        esoWindow.SetCursorPos(cursorPosition.X - 3, cursorPosition.Y);
+                        result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
+                        coveredDistance = BitConverter.ToDouble(buffer, 0) - previousCorner + coveredDistance;                       
+                        previousCorner = BitConverter.ToDouble(buffer, 0);
+                        Thread.Sleep(10);
+                    }
                 }
                 else //Если разница больше 180, то поворачиваем против часовой стрелки
                 {
-
+                    result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
+                    previousCorner = BitConverter.ToDouble(buffer, 0);
+                    targetDistance = CornerDistance(trgCorner, acturalCorner);
+                    coveredDistance = 0;
+                    while (targetDistance > coveredDistance)
+                    {
+                        if (Form1.stopAction) break;
+                        esoWindow.SetCursorPos(cursorPosition.X + 3, cursorPosition.Y);
+                        result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
+                        coveredDistance = CornerDistance(BitConverter.ToDouble(buffer, 0), previousCorner) + coveredDistance;
+                        Console.WriteLine("Дистанция: "+ Convert.ToString(coveredDistance));
+                        previousCorner = BitConverter.ToDouble(buffer, 0);
+                        Thread.Sleep(10);
+                    }
                 }
             }
             else //Целевой угол меньше текущего
             {
                 if ((acturalCorner - trgCorner) < 180) //Если разница меньше 180, то поворачиваем против часовой стрелки
                 {
-
+                    result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
+                    previousCorner = BitConverter.ToDouble(buffer, 0);
+                    targetDistance =  acturalCorner - trgCorner;
+                    coveredDistance = 0;
+                    while (targetDistance > coveredDistance)
+                    {
+                        if (Form1.stopAction) break;
+                        esoWindow.SetCursorPos(cursorPosition.X + 3, cursorPosition.Y);
+                        result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
+                        coveredDistance = previousCorner -BitConverter.ToDouble(buffer, 0)  + coveredDistance;
+                        previousCorner = BitConverter.ToDouble(buffer, 0);
+                        Thread.Sleep(10);
+                    }
                 }
                 else //Если разница больше 180, то поворачиваем по часовой стрелке
                 {
-
+                    result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
+                    previousCorner = BitConverter.ToDouble(buffer, 0);
+                    targetDistance = CornerDistance(acturalCorner, trgCorner);
+                    Console.WriteLine("Целевая дистанция: " + Convert.ToString(targetDistance));
+                    coveredDistance = 0;
+                    while (targetDistance > coveredDistance)
+                    {
+                        if (Form1.stopAction) break;
+                        esoWindow.SetCursorPos(cursorPosition.X - 3, cursorPosition.Y);
+                        result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
+                        coveredDistance = CornerDistance(BitConverter.ToDouble(buffer, 0), previousCorner) + coveredDistance;
+                        Console.WriteLine("Текущий угол: " + Convert.ToString(BitConverter.ToDouble(buffer, 0)));
+                        Console.WriteLine("Предыдущий угол: " + Convert.ToString(previousCorner));
+                        Console.WriteLine("Дистанция: " + Convert.ToString(coveredDistance));
+                        previousCorner = BitConverter.ToDouble(buffer, 0);
+                        Thread.Sleep(10);
+                    }
                 }
             }
         }
@@ -233,6 +289,12 @@ namespace FishHelper
             if((acturalCorner> trgCorner)&&((acturalCorner- trgCorner) > 180)) //Обрабатываем ситуацию перехода через 0, в случае если acturalCorner чуть меньше 360, а trgCorner больше 0 и двигаемся по часовой стрелке
             {
                 cornerDistance = 360 - acturalCorner + trgCorner;
+                return cornerDistance;
+            }
+
+            if ((trgCorner > acturalCorner) && ((trgCorner - acturalCorner) > 180)) //Обрабатываем ситуацию перехода через 0, в случае если acturalCorner чуть больше 0, а trgCorner меньше 360
+            {
+                cornerDistance = 360 - trgCorner + acturalCorner;
                 return cornerDistance;
             }
 
