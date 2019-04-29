@@ -31,16 +31,19 @@ namespace FishHelper
             data = new BindingList<FishPath>(); //Специальный список List с вызовом события обновления внутреннего состояния, необходимого для автообновления datagridview            
             InitializeComponent();
             stopAction = false;
-            dataGridView1.DataSource = data;           
+            dataGridView1.DataSource = data;
+            dataGridView1.Columns[0].Width = 70;
+            dataGridView1.Columns[1].Width = 70;
+            dataGridView1.Columns[2].Width = 70;
+            dataGridView1.Columns[3].Width = 70;
+            dataGridView1.Columns[4].Width = 70;
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, Screen.PrimaryScreen.Bounds.Height - Convert.ToInt32(this.Height*1.5));//Переносим окно в левый нижний угол
             this.TopMost = true;
             cmbSelect.SelectedIndex = 0; //По уполчанию в комбобох ставим первое значение
             //Инициализируем классы
             esoWindow = new EsoWindow();
-            esoWindow.SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED);//Запрещаем спящий режим во время работы программы
-            esoWindow.SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED);//Запрещаем спящий режим во время работы программы
-            esoWindow.SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED);//Запрещаем спящий режим во время работы программы
+            esoWindow.SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED);//Сбрасываем счетчик выключения монитора         
             hero = new Hero();
             fishHelperFile = new FishHelperFile();
         }
@@ -253,18 +256,26 @@ namespace FishHelper
                  for (int i = count; i < data.Count; i++)
                  {
                      if (stopAction) return;
+                     esoWindow.SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED);//Сбрасываем счетчик выключения монитора   
                      if (data[i].holeType == true)
                      {
-                        //Бежим к цели и потом рыбачим
-                        hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
-                         Thread.Sleep(random.Next(1000, 2000));                       
+                         //Бежим к цели и потом рыбачим
+                         hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
+                         Thread.Sleep(random.Next(1000, 2000));
                          hero.Fishing(esoWindow, hWnd);
                          Thread.Sleep(random.Next(1000, 2000));
+                     } else if (data[i].harvest == true)
+                     {
+                         //Бежим к цели и потом собираем ресурс
+                         hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
+                         Thread.Sleep(random.Next(500, 1000));
+                         hero.GatheringResources(esoWindow, hWnd);
+                         Thread.Sleep(random.Next(3000, 4000));
                      }
                      else
                      {
-                        //Бежим к цели
-                        hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
+                         //Бежим к цели
+                         hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
                          Thread.Sleep(random.Next(1000, 2000));
                      }
                  }
@@ -288,6 +299,7 @@ namespace FishHelper
                 for (int i = count; i >= 0; i--)
                 {
                     if (stopAction) return;
+                    esoWindow.SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED);//Сбрасываем счетчик выключения монитора   
                     if (data[i].holeType == true)
                     {
                         //Бежим к цели и потом рыбачим
@@ -295,6 +307,14 @@ namespace FishHelper
                         Thread.Sleep(random.Next(1000, 2000));                       
                         hero.Fishing(esoWindow, hWnd);
                         Thread.Sleep(random.Next(1000, 2000));
+                    }
+                    else if (data[i].harvest == true)
+                    {
+                        //Бежим к цели и потом собираем ресурс
+                        hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
+                        Thread.Sleep(random.Next(500, 1000));
+                        hero.GatheringResources(esoWindow, hWnd);
+                        Thread.Sleep(random.Next(3000, 4000));
                     }
                     else
                     {
@@ -442,6 +462,34 @@ namespace FishHelper
             object header = this.dataGridView1.Rows[index].HeaderCell.Value;
             if (header == null || !header.Equals(indexStr))
                 this.dataGridView1.Rows[index].HeaderCell.Value = indexStr;
+        }
+
+        private void btnBackSelect_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+            bool fishCycle = false;
+            stopAction = false;
+            foreach (DataGridViewCell oneCell in dataGridView1.SelectedCells)
+            {
+                if (oneCell.Selected) count = oneCell.RowIndex;
+            }
+            do
+            {
+                if (stopAction) return;
+                RunAndFishBack(count);
+                if (cmbSelect.SelectedIndex == 1)
+                {
+                    count = 0;
+                    fishCycle = true;
+                }
+                if (cmbSelect.SelectedIndex == 2)
+                {
+                    RunAndFishBack(data.Count - 1);
+                    count = 0;
+                    fishCycle = true;
+                }
+
+            } while (fishCycle);
         }
     }
 }

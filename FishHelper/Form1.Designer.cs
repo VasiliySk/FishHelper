@@ -70,6 +70,7 @@
             this.btnFishingVer2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbSelect = new System.Windows.Forms.ComboBox();
+            this.btnBackSelect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -127,7 +128,7 @@
             this.chkbAlwaysOnTop.AutoSize = true;
             this.chkbAlwaysOnTop.Checked = true;
             this.chkbAlwaysOnTop.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkbAlwaysOnTop.Location = new System.Drawing.Point(310, 537);
+            this.chkbAlwaysOnTop.Location = new System.Drawing.Point(310, 554);
             this.chkbAlwaysOnTop.Name = "chkbAlwaysOnTop";
             this.chkbAlwaysOnTop.Size = new System.Drawing.Size(126, 17);
             this.chkbAlwaysOnTop.TabIndex = 7;
@@ -138,7 +139,7 @@
             // lblCoordX
             // 
             this.lblCoordX.AutoSize = true;
-            this.lblCoordX.Location = new System.Drawing.Point(317, 26);
+            this.lblCoordX.Location = new System.Drawing.Point(305, 26);
             this.lblCoordX.Name = "lblCoordX";
             this.lblCoordX.Size = new System.Drawing.Size(131, 13);
             this.lblCoordX.TabIndex = 8;
@@ -147,7 +148,7 @@
             // lblCoordY
             // 
             this.lblCoordY.AutoSize = true;
-            this.lblCoordY.Location = new System.Drawing.Point(317, 52);
+            this.lblCoordY.Location = new System.Drawing.Point(305, 52);
             this.lblCoordY.Name = "lblCoordY";
             this.lblCoordY.Size = new System.Drawing.Size(131, 13);
             this.lblCoordY.TabIndex = 9;
@@ -156,7 +157,7 @@
             // lblCorner
             // 
             this.lblCorner.AutoSize = true;
-            this.lblCorner.Location = new System.Drawing.Point(317, 78);
+            this.lblCorner.Location = new System.Drawing.Point(305, 78);
             this.lblCorner.Name = "lblCorner";
             this.lblCorner.Size = new System.Drawing.Size(131, 13);
             this.lblCorner.TabIndex = 10;
@@ -164,9 +165,9 @@
             // 
             // btbTestAdress
             // 
-            this.btbTestAdress.Location = new System.Drawing.Point(320, 104);
+            this.btbTestAdress.Location = new System.Drawing.Point(310, 104);
             this.btbTestAdress.Name = "btbTestAdress";
-            this.btbTestAdress.Size = new System.Drawing.Size(116, 23);
+            this.btbTestAdress.Size = new System.Drawing.Size(126, 23);
             this.btbTestAdress.TabIndex = 11;
             this.btbTestAdress.Text = "Проверка адресов памяти";
             this.btbTestAdress.UseVisualStyleBackColor = true;
@@ -174,7 +175,7 @@
             // 
             // btnCameraCorner
             // 
-            this.btnCameraCorner.Location = new System.Drawing.Point(304, 505);
+            this.btnCameraCorner.Location = new System.Drawing.Point(304, 522);
             this.btnCameraCorner.Name = "btnCameraCorner";
             this.btnCameraCorner.Size = new System.Drawing.Size(132, 26);
             this.btnCameraCorner.TabIndex = 12;
@@ -184,7 +185,7 @@
             // 
             // txtTargetCorner
             // 
-            this.txtTargetCorner.Location = new System.Drawing.Point(304, 445);
+            this.txtTargetCorner.Location = new System.Drawing.Point(304, 462);
             this.txtTargetCorner.Name = "txtTargetCorner";
             this.txtTargetCorner.Size = new System.Drawing.Size(132, 20);
             this.txtTargetCorner.TabIndex = 13;
@@ -192,7 +193,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(301, 426);
+            this.label1.Location = new System.Drawing.Point(301, 443);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 13);
             this.label1.TabIndex = 14;
@@ -200,7 +201,7 @@
             // 
             // txtboxXTarget
             // 
-            this.txtboxXTarget.Location = new System.Drawing.Point(12, 445);
+            this.txtboxXTarget.Location = new System.Drawing.Point(12, 462);
             this.txtboxXTarget.Name = "txtboxXTarget";
             this.txtboxXTarget.Size = new System.Drawing.Size(132, 20);
             this.txtboxXTarget.TabIndex = 15;
@@ -208,7 +209,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 426);
+            this.label2.Location = new System.Drawing.Point(13, 443);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 16;
@@ -216,7 +217,7 @@
             // 
             // txtboxYTarget
             // 
-            this.txtboxYTarget.Location = new System.Drawing.Point(159, 445);
+            this.txtboxYTarget.Location = new System.Drawing.Point(159, 462);
             this.txtboxYTarget.Name = "txtboxYTarget";
             this.txtboxYTarget.Size = new System.Drawing.Size(132, 20);
             this.txtboxYTarget.TabIndex = 17;
@@ -224,7 +225,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(156, 426);
+            this.label3.Location = new System.Drawing.Point(156, 443);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 18;
@@ -232,7 +233,7 @@
             // 
             // btnTargetRun
             // 
-            this.btnTargetRun.Location = new System.Drawing.Point(12, 471);
+            this.btnTargetRun.Location = new System.Drawing.Point(12, 488);
             this.btnTargetRun.Name = "btnTargetRun";
             this.btnTargetRun.Size = new System.Drawing.Size(132, 28);
             this.btnTargetRun.TabIndex = 19;
@@ -243,7 +244,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 404);
+            this.label4.Location = new System.Drawing.Point(9, 421);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(229, 13);
             this.label4.TabIndex = 20;
@@ -251,7 +252,7 @@
             // 
             // btnFishing
             // 
-            this.btnFishing.Location = new System.Drawing.Point(159, 471);
+            this.btnFishing.Location = new System.Drawing.Point(159, 488);
             this.btnFishing.Name = "btnFishing";
             this.btnFishing.Size = new System.Drawing.Size(132, 28);
             this.btnFishing.TabIndex = 21;
@@ -261,7 +262,7 @@
             // 
             // btnRunAndFish
             // 
-            this.btnRunAndFish.Location = new System.Drawing.Point(304, 471);
+            this.btnRunAndFish.Location = new System.Drawing.Point(304, 488);
             this.btnRunAndFish.Name = "btnRunAndFish";
             this.btnRunAndFish.Size = new System.Drawing.Size(132, 28);
             this.btnRunAndFish.TabIndex = 22;
@@ -272,20 +273,20 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 133);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 130);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 50;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(436, 186);
+            this.dataGridView1.Size = new System.Drawing.Size(422, 179);
             this.dataGridView1.TabIndex = 23;
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint_1);
             // 
             // btnRemoveRow
             // 
-            this.btnRemoveRow.Location = new System.Drawing.Point(120, 325);
+            this.btnRemoveRow.Location = new System.Drawing.Point(144, 315);
             this.btnRemoveRow.Name = "btnRemoveRow";
-            this.btnRemoveRow.Size = new System.Drawing.Size(96, 28);
+            this.btnRemoveRow.Size = new System.Drawing.Size(119, 28);
             this.btnRemoveRow.TabIndex = 24;
             this.btnRemoveRow.Text = "Удалить строку";
             this.btnRemoveRow.UseVisualStyleBackColor = true;
@@ -293,7 +294,7 @@
             // 
             // btnConsol
             // 
-            this.btnConsol.Location = new System.Drawing.Point(12, 505);
+            this.btnConsol.Location = new System.Drawing.Point(12, 522);
             this.btnConsol.Name = "btnConsol";
             this.btnConsol.Size = new System.Drawing.Size(132, 28);
             this.btnConsol.TabIndex = 25;
@@ -303,9 +304,9 @@
             // 
             // btnAddRow
             // 
-            this.btnAddRow.Location = new System.Drawing.Point(12, 325);
+            this.btnAddRow.Location = new System.Drawing.Point(12, 315);
             this.btnAddRow.Name = "btnAddRow";
-            this.btnAddRow.Size = new System.Drawing.Size(102, 28);
+            this.btnAddRow.Size = new System.Drawing.Size(126, 28);
             this.btnAddRow.TabIndex = 26;
             this.btnAddRow.Text = "Добавить строку";
             this.btnAddRow.UseVisualStyleBackColor = true;
@@ -317,7 +318,7 @@
             this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(451, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(440, 24);
             this.menuStrip1.TabIndex = 27;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -371,9 +372,9 @@
             // 
             // btnGoGoGo
             // 
-            this.btnGoGoGo.Location = new System.Drawing.Point(222, 325);
+            this.btnGoGoGo.Location = new System.Drawing.Point(269, 315);
             this.btnGoGoGo.Name = "btnGoGoGo";
-            this.btnGoGoGo.Size = new System.Drawing.Size(108, 28);
+            this.btnGoGoGo.Size = new System.Drawing.Size(165, 28);
             this.btnGoGoGo.TabIndex = 28;
             this.btnGoGoGo.Text = "Вперед по списку!";
             this.btnGoGoGo.UseVisualStyleBackColor = true;
@@ -385,17 +386,17 @@
             // 
             // btnGoSelect
             // 
-            this.btnGoSelect.Location = new System.Drawing.Point(336, 325);
+            this.btnGoSelect.Location = new System.Drawing.Point(12, 349);
             this.btnGoSelect.Name = "btnGoSelect";
-            this.btnGoSelect.Size = new System.Drawing.Size(96, 28);
+            this.btnGoSelect.Size = new System.Drawing.Size(220, 28);
             this.btnGoSelect.TabIndex = 29;
-            this.btnGoSelect.Text = "Go from select";
+            this.btnGoSelect.Text = "Вперед с выбранного пункта";
             this.btnGoSelect.UseVisualStyleBackColor = true;
             this.btnGoSelect.Click += new System.EventHandler(this.btnGoSelect_Click);
             // 
             // btnFishingVer2
             // 
-            this.btnFishingVer2.Location = new System.Drawing.Point(159, 505);
+            this.btnFishingVer2.Location = new System.Drawing.Point(159, 522);
             this.btnFishingVer2.Name = "btnFishingVer2";
             this.btnFishingVer2.Size = new System.Drawing.Size(132, 28);
             this.btnFishingVer2.TabIndex = 30;
@@ -406,7 +407,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 369);
+            this.label5.Location = new System.Drawing.Point(12, 386);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(137, 13);
             this.label5.TabIndex = 31;
@@ -419,16 +420,27 @@
             "Ничего не делать",
             "Повторить с начала списка в конец.",
             "Повторить с конца списка в начало."});
-            this.cmbSelect.Location = new System.Drawing.Point(157, 366);
+            this.cmbSelect.Location = new System.Drawing.Point(157, 383);
             this.cmbSelect.Name = "cmbSelect";
             this.cmbSelect.Size = new System.Drawing.Size(279, 21);
             this.cmbSelect.TabIndex = 32;
+            // 
+            // btnBackSelect
+            // 
+            this.btnBackSelect.Location = new System.Drawing.Point(238, 349);
+            this.btnBackSelect.Name = "btnBackSelect";
+            this.btnBackSelect.Size = new System.Drawing.Size(196, 28);
+            this.btnBackSelect.TabIndex = 33;
+            this.btnBackSelect.Text = "Назад с выбранного пункта";
+            this.btnBackSelect.UseVisualStyleBackColor = true;
+            this.btnBackSelect.Click += new System.EventHandler(this.btnBackSelect_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 559);
+            this.ClientSize = new System.Drawing.Size(440, 570);
+            this.Controls.Add(this.btnBackSelect);
             this.Controls.Add(this.cmbSelect);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnFishingVer2);
@@ -520,6 +532,7 @@
         private System.Windows.Forms.Button btnFishingVer2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbSelect;
+        private System.Windows.Forms.Button btnBackSelect;
     }
 }
 

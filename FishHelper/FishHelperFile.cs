@@ -20,7 +20,8 @@ namespace FishHelper
         public void OpenFile(OpenFileDialog openFileDialog1, BindingList<FishPath> data, ToolStripMenuItem saveToolStripMenuItem)
         {            
             Stream mystr = null;
-            openFileDialog1.Filter = "Fish Helper files (*.fhf)|*.fhf";            
+            openFileDialog1.Filter = "Fish Helper files (*.fhf)|*.fhf";
+            openFileDialog1.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments)+ "\\My Cheat Tables\\";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 data.Clear();
@@ -39,7 +40,8 @@ namespace FishHelper
                         {
                             str = str1[i].Split(' ');
                             FishPath fishPath = new FishPath();
-                            for (int j = 0; j < 4; j++)
+                            string replacement;
+                            for (int j = 0; j < 5; j++)
                             {
                                 try
                                 {
@@ -55,7 +57,7 @@ namespace FishHelper
                                             fishPath.tCorner = str[j];
                                             break;
                                         case 3:
-                                            string replacement = Regex.Replace(str[j], @"\t|\n|\r", ""); //Удаляем знак перехода строки
+                                            replacement = Regex.Replace(str[j], @"\t|\n|\r", ""); //Удаляем знак перехода строки
                                             if (replacement.Equals("true"))
                                             {
                                                 fishPath.holeType = true;
@@ -64,6 +66,24 @@ namespace FishHelper
                                             {
                                                 fishPath.holeType = false;
                                             }
+                                            break;
+                                        case 4:
+                                            if (str.Length == 4)
+                                            {
+                                                fishPath.harvest = false;
+                                            }
+                                            else
+                                            {
+                                                replacement = Regex.Replace(str[j], @"\t|\n|\r", ""); //Удаляем знак перехода строки
+                                                if (replacement.Equals("true"))
+                                                {
+                                                    fishPath.harvest = true;
+                                                }
+                                                else
+                                                {
+                                                    fishPath.harvest = false;
+                                                }
+                                            }                                            
                                             break;
                                     }
                                 }
@@ -119,7 +139,7 @@ namespace FishHelper
             {                
                 for (int i = 0; i < data.Count; i++)
                 {                    
-                    for (int j = 0; j < 4; j++)
+                    for (int j = 0; j < 5; j++)
                     {
                         switch (j)
                         {
@@ -137,6 +157,17 @@ namespace FishHelper
                                 break;
                             case 3:
                                 if (data[i].holeType)
+                                {
+                                    myWriter.Write("true");
+                                }
+                                else
+                                {
+                                    myWriter.Write("false");
+                                }
+                                myWriter.Write(" ");
+                                break;
+                            case 4:
+                                if (data[i].harvest)
                                 {
                                     myWriter.Write("true");
                                 }
@@ -164,13 +195,14 @@ namespace FishHelper
         public void OpenAdressFile(OpenFileDialog openFileDialog2, TextBox textBoxCoordX, TextBox textBoxCoordY, TextBox textBoxCorner)
         {
             Stream mystr = null;
-
             openFileDialog2.Filter = "Cheat Engine files (*.CT)|*.CT";
+            openFileDialog2.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments) + "\\My Cheat Tables\\";
             if (openFileDialog2.ShowDialog() == DialogResult.OK)
             {                
                 if ((mystr = openFileDialog2.OpenFile()) != null)
                 {
-                    StreamReader myread = new StreamReader(mystr);                    
+                    StreamReader myread = new StreamReader(mystr);                 
+                        
                     int num = 0;
                     int adressCount = 0; 
                     try

@@ -13,13 +13,15 @@ namespace FishHelper
         public String yCoord { get; set; }
         public String tCorner { get; set; }
         public bool holeType { get; set; }
+        public bool harvest { get; set; }
 
-        public FishPath(String xcoord, String ycoord, String tcorner, bool holetype)
+        public FishPath(String xcoord, String ycoord, String tcorner, bool holetype, bool harvest)
         {
             this.xCoord = xcoord;
             this.yCoord = ycoord;
             this.tCorner = tcorner;
             this.holeType = holetype;
+            this.harvest = harvest;
         }
 
         public FishPath()

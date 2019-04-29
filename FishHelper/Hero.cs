@@ -422,6 +422,14 @@ namespace FishHelper
             return false;
 
         }
-    
+
+        //Собираем ресурс
+        public void GatheringResources(EsoWindow esoWindow, IntPtr hWnd)
+        {
+            Random random = new Random();
+            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)Keys.E), new IntPtr(0));
+            Thread.Sleep(random.Next(70, 100));
+            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)Keys.E), new IntPtr(0));
+        }
     }
 }
