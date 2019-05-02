@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static FishHelper.EsoWindow;
 
@@ -227,7 +228,9 @@ namespace FishHelper
         private void btnGoGoGo_Click(object sender, EventArgs e)
         {
             bool fishCycle = false;
-            stopAction = false;            
+            stopAction = false;
+            if (chkHideToNotify.Checked) Hide(); //Если выбрано, что скрывать в панель уведомлений, то скрываем
+
             do
             {
                 if (stopAction) return;
@@ -240,15 +243,20 @@ namespace FishHelper
                 }
 
             } while (fishCycle);
-            
+
+            if (chkHideToNotify.Checked)
+            {
+                Show();
+                WindowState = FormWindowState.Normal;
+            }
         }
 
         private void RunAndFish(int count)
-        {
+        {       
             //Запуск в отдельном потоке, что бы можно было слушать нажатие клавиш в основном потоке.
             Thread MyThread1 = new Thread(delegate ()
              {
-                 Random random = new Random();
+                 Random random = new Random();                 
 
                  //Активируем окно, прожимаем дважды кноку мыши 
                  ActivateEsoWindow();
@@ -256,7 +264,8 @@ namespace FishHelper
                  for (int i = count; i < data.Count; i++)
                  {
                      if (stopAction) return;
-                     esoWindow.SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED);//Сбрасываем счетчик выключения монитора   
+                     esoWindow.SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED);//Сбрасываем счетчик выключения монитора
+                     SetRowColor(i);
                      if (data[i].holeType == true)
                      {
                          //Бежим к цели и потом рыбачим
@@ -282,7 +291,8 @@ namespace FishHelper
                  esoWindow.CloseHandle(processHandle);
              });
             MyThread1.Start();
-            MyThread1.Join();
+            MyThread1.Join();           
+
         }
 
         //Бежим и рыбачим в обратном порядке
@@ -300,6 +310,7 @@ namespace FishHelper
                 {
                     if (stopAction) return;
                     esoWindow.SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED);//Сбрасываем счетчик выключения монитора   
+                    SetRowColor(i);
                     if (data[i].holeType == true)
                     {
                         //Бежим к цели и потом рыбачим
@@ -341,6 +352,7 @@ namespace FishHelper
         void _listener_OnKeyPressed(object sender, KeyPressedArgs e)        {
 
             if (e.KeyPressed == Keys.F12) stopAction = true;
+            if (e.KeyPressed == Keys.F11) btnGoGoGo_Click(null, null);
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -391,7 +403,8 @@ namespace FishHelper
             foreach (DataGridViewCell oneCell in dataGridView1.SelectedCells)
             {
                 if (oneCell.Selected) count = oneCell.RowIndex;                   
-            }            
+            }
+            if (chkHideToNotify.Checked) Hide(); //Если выбрано, что скрывать в панель уведомлений, то скрываем
             do
             {
                 if (stopAction) return;
@@ -409,6 +422,12 @@ namespace FishHelper
                 }
 
             } while (fishCycle);
+
+            if (chkHideToNotify.Checked)
+            {
+                Show();
+                WindowState = FormWindowState.Normal;
+            }
         }
 
         //Вариант рыбалки номер 2
@@ -473,6 +492,7 @@ namespace FishHelper
             {
                 if (oneCell.Selected) count = oneCell.RowIndex;
             }
+            if (chkHideToNotify.Checked) Hide(); //Если выбрано, что скрывать в панель уведомлений, то скрываем
             do
             {
                 if (stopAction) return;
@@ -490,6 +510,35 @@ namespace FishHelper
                 }
 
             } while (fishCycle);
+            if (chkHideToNotify.Checked)
+            {
+                Show();
+                WindowState = FormWindowState.Normal;
+            }
         }
+
+       //Задаем цвет строки
+       private void SetRowColor(int i)
+        {
+            for (int j = 0; j < data.Count; j++)
+            {
+                dataGridView1.Rows[j].DefaultCellStyle.BackColor = Color.White;
+            }
+            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Turquoise;            
+       }
+
+        //При сворачивании окна - отправляем его в трей
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized) Hide();
+        }
+
+        //Восстанавливаем окно
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
+        }
+       
     }
 }

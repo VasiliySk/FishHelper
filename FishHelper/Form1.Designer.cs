@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.labelTargetX = new System.Windows.Forms.Label();
             this.textBoxCoordX = new System.Windows.Forms.TextBox();
@@ -58,9 +59,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openAdressStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openAdressStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -71,6 +72,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cmbSelect = new System.Windows.Forms.ComboBox();
             this.btnBackSelect = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.chkHideToNotify = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -326,9 +329,9 @@
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
+            this.openAdressStripMenuItem,
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
-            this.openAdressStripMenuItem,
             this.exitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
@@ -340,6 +343,13 @@
             this.openToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.openToolStripMenuItem.Text = "Открыть";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenFileToolStripMenuItem_Click);
+            // 
+            // openAdressStripMenuItem
+            // 
+            this.openAdressStripMenuItem.Name = "openAdressStripMenuItem";
+            this.openAdressStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.openAdressStripMenuItem.Text = "Открыть файл с адресами";
+            this.openAdressStripMenuItem.Click += new System.EventHandler(this.openAdressStripMenuItem1_Click);
             // 
             // saveToolStripMenuItem
             // 
@@ -355,13 +365,6 @@
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.saveAsToolStripMenuItem.Text = "Сохранить как...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
-            // 
-            // openAdressStripMenuItem
-            // 
-            this.openAdressStripMenuItem.Name = "openAdressStripMenuItem";
-            this.openAdressStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.openAdressStripMenuItem.Text = "Открыть файл с адресами";
-            this.openAdressStripMenuItem.Click += new System.EventHandler(this.openAdressStripMenuItem1_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -435,11 +438,31 @@
             this.btnBackSelect.UseVisualStyleBackColor = true;
             this.btnBackSelect.Click += new System.EventHandler(this.btnBackSelect_Click);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Помощник рыболова";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
+            // 
+            // chkHideToNotify
+            // 
+            this.chkHideToNotify.AutoSize = true;
+            this.chkHideToNotify.Checked = true;
+            this.chkHideToNotify.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkHideToNotify.Location = new System.Drawing.Point(12, 554);
+            this.chkHideToNotify.Name = "chkHideToNotify";
+            this.chkHideToNotify.Size = new System.Drawing.Size(180, 17);
+            this.chkHideToNotify.TabIndex = 34;
+            this.chkHideToNotify.Text = "Скрывать при запуске списка";
+            this.chkHideToNotify.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 570);
+            this.Controls.Add(this.chkHideToNotify);
             this.Controls.Add(this.btnBackSelect);
             this.Controls.Add(this.cmbSelect);
             this.Controls.Add(this.label5);
@@ -476,12 +499,12 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Помощник рыболова";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -533,6 +556,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbSelect;
         private System.Windows.Forms.Button btnBackSelect;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.CheckBox chkHideToNotify;
     }
 }
 
