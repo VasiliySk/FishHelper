@@ -138,8 +138,7 @@ namespace FishHelper
         public void Fishing(EsoWindow esoWindow, IntPtr hWnd)
         {
             bool stopFish = false;
-            Random random = new Random();
-
+            Random random = new Random(); 
             Bitmap bitmap = new Bitmap(30, 3); //Задаем размер считываемой области
             Graphics graphics = Graphics.FromImage(bitmap as Image);
 

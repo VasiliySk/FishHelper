@@ -36,7 +36,6 @@
             this.textBoxCoordY = new System.Windows.Forms.TextBox();
             this.labelTargetCorner = new System.Windows.Forms.Label();
             this.textBoxCorner = new System.Windows.Forms.TextBox();
-            this.chkbAlwaysOnTop = new System.Windows.Forms.CheckBox();
             this.lblCoordX = new System.Windows.Forms.Label();
             this.lblCoordY = new System.Windows.Forms.Label();
             this.lblCorner = new System.Windows.Forms.Label();
@@ -63,6 +62,8 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OptionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnGoGoGo = new System.Windows.Forms.Button();
@@ -73,7 +74,6 @@
             this.cmbSelect = new System.Windows.Forms.ComboBox();
             this.btnBackSelect = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.chkHideToNotify = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -125,19 +125,6 @@
             this.textBoxCorner.Name = "textBoxCorner";
             this.textBoxCorner.Size = new System.Drawing.Size(122, 20);
             this.textBoxCorner.TabIndex = 6;
-            // 
-            // chkbAlwaysOnTop
-            // 
-            this.chkbAlwaysOnTop.AutoSize = true;
-            this.chkbAlwaysOnTop.Checked = true;
-            this.chkbAlwaysOnTop.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkbAlwaysOnTop.Location = new System.Drawing.Point(310, 554);
-            this.chkbAlwaysOnTop.Name = "chkbAlwaysOnTop";
-            this.chkbAlwaysOnTop.Size = new System.Drawing.Size(126, 17);
-            this.chkbAlwaysOnTop.TabIndex = 7;
-            this.chkbAlwaysOnTop.Text = "Поверх других окон";
-            this.chkbAlwaysOnTop.UseVisualStyleBackColor = true;
-            this.chkbAlwaysOnTop.CheckedChanged += new System.EventHandler(this.chkbAlwaysOnTop_CheckedChanged);
             // 
             // lblCoordX
             // 
@@ -318,7 +305,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.настройкиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(440, 24);
@@ -372,6 +360,21 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.exitToolStripMenuItem.Text = "Выход";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // настройкиToolStripMenuItem
+            // 
+            this.настройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OptionToolStripMenuItem1});
+            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.настройкиToolStripMenuItem.Text = "Настройки";
+            // 
+            // OptionToolStripMenuItem1
+            // 
+            this.OptionToolStripMenuItem1.Name = "OptionToolStripMenuItem1";
+            this.OptionToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.OptionToolStripMenuItem1.Text = "Настройки";
+            this.OptionToolStripMenuItem1.Click += new System.EventHandler(this.OptionToolStripMenuItem1_Click);
             // 
             // btnGoGoGo
             // 
@@ -445,24 +448,11 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
             // 
-            // chkHideToNotify
-            // 
-            this.chkHideToNotify.AutoSize = true;
-            this.chkHideToNotify.Checked = true;
-            this.chkHideToNotify.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkHideToNotify.Location = new System.Drawing.Point(12, 554);
-            this.chkHideToNotify.Name = "chkHideToNotify";
-            this.chkHideToNotify.Size = new System.Drawing.Size(180, 17);
-            this.chkHideToNotify.TabIndex = 34;
-            this.chkHideToNotify.Text = "Скрывать при запуске списка";
-            this.chkHideToNotify.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 570);
-            this.Controls.Add(this.chkHideToNotify);
+            this.ClientSize = new System.Drawing.Size(440, 557);
             this.Controls.Add(this.btnBackSelect);
             this.Controls.Add(this.cmbSelect);
             this.Controls.Add(this.label5);
@@ -488,7 +478,6 @@
             this.Controls.Add(this.lblCorner);
             this.Controls.Add(this.lblCoordY);
             this.Controls.Add(this.lblCoordX);
-            this.Controls.Add(this.chkbAlwaysOnTop);
             this.Controls.Add(this.textBoxCorner);
             this.Controls.Add(this.labelTargetCorner);
             this.Controls.Add(this.textBoxCoordY);
@@ -502,6 +491,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Помощник рыболова";
+            this.Activated += new System.EventHandler(this.Form1_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
@@ -520,7 +510,6 @@
         private System.Windows.Forms.TextBox textBoxCoordY;
         private System.Windows.Forms.Label labelTargetCorner;
         private System.Windows.Forms.TextBox textBoxCorner;
-        private System.Windows.Forms.CheckBox chkbAlwaysOnTop;
         private System.Windows.Forms.Label lblCoordX;
         private System.Windows.Forms.Label lblCoordY;
         private System.Windows.Forms.Label lblCorner;
@@ -557,7 +546,8 @@
         private System.Windows.Forms.ComboBox cmbSelect;
         private System.Windows.Forms.Button btnBackSelect;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.CheckBox chkHideToNotify;
+        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OptionToolStripMenuItem1;
     }
 }
 

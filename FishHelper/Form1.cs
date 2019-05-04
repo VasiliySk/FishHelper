@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static FishHelper.EsoWindow;
+using static FishHelper.UserOptions;
 
 namespace FishHelper
 {
@@ -19,7 +20,7 @@ namespace FishHelper
         int pid; //Идентификатор игры
         EsoWindow esoWindow;
         Hero hero;
-        FishHelperFile fishHelperFile;
+        FishHelperFile fishHelperFile;        
         IntPtr bytesRead;
         IntPtr hWnd;
         private IntPtr processHandle;
@@ -31,6 +32,7 @@ namespace FishHelper
         {
             data = new BindingList<FishPath>(); //Специальный список List с вызовом события обновления внутреннего состояния, необходимого для автообновления datagridview            
             InitializeComponent();
+            UserOptions.LoadSettings();//Загружаем настройки программы
             stopAction = false;
             dataGridView1.DataSource = data;
             dataGridView1.Columns[0].Width = 70;
@@ -41,18 +43,18 @@ namespace FishHelper
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, Screen.PrimaryScreen.Bounds.Height - Convert.ToInt32(this.Height*1.5));//Переносим окно в левый нижний угол
             this.TopMost = true;
-            cmbSelect.SelectedIndex = 0; //По уполчанию в комбобох ставим первое значение
+            cmbSelect.SelectedIndex = Properties.Settings.Default.SelectListAction; //Загружаем вариант по умолчанию из настроек
             //Инициализируем классы
             esoWindow = new EsoWindow();
             esoWindow.SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED);//Сбрасываем счетчик выключения монитора         
-            hero = new Hero();
+            hero = new Hero();            
             fishHelperFile = new FishHelperFile();
         }
 
         //Делаем окно Always on Top
         private void chkbAlwaysOnTop_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkbAlwaysOnTop.Checked)
+            if (UserOptions.alwaysOnTop)
             {
                 this.TopMost = true;
             }
@@ -182,11 +184,7 @@ namespace FishHelper
 
         private void btnConsol_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(data.Count);
-            for (int i = 0; i < data.Count; i++)
-            {
-                Console.WriteLine(data[i].tCorner);
-            }            
+           
         }
         
         //Добавляем строку
@@ -229,7 +227,7 @@ namespace FishHelper
         {
             bool fishCycle = false;
             stopAction = false;
-            if (chkHideToNotify.Checked) Hide(); //Если выбрано, что скрывать в панель уведомлений, то скрываем
+            if (UserOptions.hideToNotify) Hide(); //Если выбрано, что скрывать в панель уведомлений, то скрываем
 
             do
             {
@@ -244,7 +242,7 @@ namespace FishHelper
 
             } while (fishCycle);
 
-            if (chkHideToNotify.Checked)
+            if (UserOptions.hideToNotify)
             {
                 Show();
                 WindowState = FormWindowState.Normal;
@@ -344,15 +342,42 @@ namespace FishHelper
         {
             _listener = new LowLevelKeyboardListener();
             _listener.OnKeyPressed += _listener_OnKeyPressed;
-
-            _listener.HookKeyboard();
+            _listener.HookKeyboard();            
         }
 
-        //При нажатии на F12 останавливаем выполнение операции.
-        void _listener_OnKeyPressed(object sender, KeyPressedArgs e)        {
-
-            if (e.KeyPressed == Keys.F12) stopAction = true;
-            if (e.KeyPressed == Keys.F11) btnGoGoGo_Click(null, null);
+        //Обработка нажатия функциональных клавиш
+        void _listener_OnKeyPressed(object sender, KeyPressedArgs e){            
+            String ePress = Convert.ToString(e.KeyPressed);            
+            if (ePress.Equals(Convert.ToString((FunctionKeys)UserOptions.cancelAction)))
+            {
+                stopAction = true;
+                return;
+            }
+            if (ePress.Equals(Convert.ToString((FunctionKeys)UserOptions.goGoGo)))
+            {
+                btnGoGoGo_Click(null, null);
+                return;
+            }
+            if (ePress.Equals(Convert.ToString((FunctionKeys)UserOptions.goSelect)))
+            {
+                btnGoSelect_Click(null, null);
+                return;
+            }
+            if (ePress.Equals(Convert.ToString((FunctionKeys)UserOptions.backSelect)))
+            {
+                btnBackSelect_Click(null, null);
+                return;
+            }
+            if (ePress.Equals(Convert.ToString((FunctionKeys)UserOptions.fishing)))
+            {
+                btnFishing_Click(null, null);
+                return;
+            }
+            if (ePress.Equals(Convert.ToString((FunctionKeys)UserOptions.fishingVer2)))
+            {
+                btnFishingVer2_Click(null, null);
+                return;
+            }
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -404,7 +429,7 @@ namespace FishHelper
             {
                 if (oneCell.Selected) count = oneCell.RowIndex;                   
             }
-            if (chkHideToNotify.Checked) Hide(); //Если выбрано, что скрывать в панель уведомлений, то скрываем
+            if (UserOptions.hideToNotify) Hide(); //Если выбрано, что скрывать в панель уведомлений, то скрываем
             do
             {
                 if (stopAction) return;
@@ -423,7 +448,7 @@ namespace FishHelper
 
             } while (fishCycle);
 
-            if (chkHideToNotify.Checked)
+            if (UserOptions.hideToNotify)
             {
                 Show();
                 WindowState = FormWindowState.Normal;
@@ -492,7 +517,7 @@ namespace FishHelper
             {
                 if (oneCell.Selected) count = oneCell.RowIndex;
             }
-            if (chkHideToNotify.Checked) Hide(); //Если выбрано, что скрывать в панель уведомлений, то скрываем
+            if (UserOptions.hideToNotify) Hide(); //Если выбрано, что скрывать в панель уведомлений, то скрываем
             do
             {
                 if (stopAction) return;
@@ -510,7 +535,7 @@ namespace FishHelper
                 }
 
             } while (fishCycle);
-            if (chkHideToNotify.Checked)
+            if (UserOptions.hideToNotify)
             {
                 Show();
                 WindowState = FormWindowState.Normal;
@@ -530,7 +555,7 @@ namespace FishHelper
         //При сворачивании окна - отправляем его в трей
         private void Form1_Resize(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Minimized) Hide();
+            if (WindowState == FormWindowState.Minimized&&UserOptions.hideToNotify) Hide();
         }
 
         //Восстанавливаем окно
@@ -539,6 +564,32 @@ namespace FishHelper
             Show();
             WindowState = FormWindowState.Normal;
         }
-       
+
+        //Открываем форму настроек
+        private void OptionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OptionsForm optionsForm = new OptionsForm();            
+            optionsForm.Owner = this;
+            optionsForm.StartPosition = FormStartPosition.Manual;
+            optionsForm.Location = new Point(this.Location.X+(this.Width - optionsForm.Width)/2, this.Location.Y + (this.Height - optionsForm.Height) / 2);                
+            this.TopMost = false;
+            optionsForm.ShowDialog();
+        }
+
+        //Отрабатывает каждый раз, когда форме передается фокус
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            //Определяем, отображать форму поверх всех окон или нет
+            if (UserOptions.alwaysOnTop)
+            {
+                this.TopMost = true;
+            }
+            else
+            {
+                this.TopMost = false;
+            }
+
+            cmbSelect.SelectedIndex = Properties.Settings.Default.SelectListAction; //Загружаем вариант из настроек
+        }
     }
 }
