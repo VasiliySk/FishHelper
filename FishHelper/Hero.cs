@@ -151,7 +151,7 @@ namespace FishHelper
 
             while (!stopFish)
             {
-                if (Form1.stopAction) break;
+                if (Form1.stopAction) return;
                 graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size); // Задаем первыми двумя цифрами координаты начала (верхний левый угол) считываемого прямоугольника 
 
                 //Рассчитываем хэш код картинки            
@@ -214,7 +214,7 @@ namespace FishHelper
                     coveredDistance = 0;
                     while(targetDistance> coveredDistance)
                     {
-                        if (Form1.stopAction) break;
+                        if (Form1.stopAction) return;
                         esoWindow.SetCursorPos(cursorPosition.X - 3, cursorPosition.Y);
                         result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
                         coveredDistance = BitConverter.ToDouble(buffer, 0) - previousCorner + coveredDistance;                       
@@ -230,11 +230,10 @@ namespace FishHelper
                     coveredDistance = 0;
                     while (targetDistance > coveredDistance)
                     {
-                        if (Form1.stopAction) break;
+                        if (Form1.stopAction) return;
                         esoWindow.SetCursorPos(cursorPosition.X + 3, cursorPosition.Y);
                         result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
-                        coveredDistance = CornerDistance(BitConverter.ToDouble(buffer, 0), previousCorner) + coveredDistance;
-                        Console.WriteLine("Дистанция: "+ Convert.ToString(coveredDistance));
+                        coveredDistance = CornerDistance(BitConverter.ToDouble(buffer, 0), previousCorner) + coveredDistance;                        
                         previousCorner = BitConverter.ToDouble(buffer, 0);
                         Thread.Sleep(10);
                     }
@@ -250,7 +249,7 @@ namespace FishHelper
                     coveredDistance = 0;
                     while (targetDistance > coveredDistance)
                     {
-                        if (Form1.stopAction) break;
+                        if (Form1.stopAction) return;
                         esoWindow.SetCursorPos(cursorPosition.X + 3, cursorPosition.Y);
                         result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
                         coveredDistance = previousCorner -BitConverter.ToDouble(buffer, 0)  + coveredDistance;
@@ -262,18 +261,14 @@ namespace FishHelper
                 {
                     result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
                     previousCorner = BitConverter.ToDouble(buffer, 0);
-                    targetDistance = CornerDistance(acturalCorner, trgCorner);
-                    Console.WriteLine("Целевая дистанция: " + Convert.ToString(targetDistance));
+                    targetDistance = CornerDistance(acturalCorner, trgCorner);                    
                     coveredDistance = 0;
                     while (targetDistance > coveredDistance)
                     {
-                        if (Form1.stopAction) break;
+                        if (Form1.stopAction) return;
                         esoWindow.SetCursorPos(cursorPosition.X - 3, cursorPosition.Y);
                         result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
-                        coveredDistance = CornerDistance(BitConverter.ToDouble(buffer, 0), previousCorner) + coveredDistance;
-                        Console.WriteLine("Текущий угол: " + Convert.ToString(BitConverter.ToDouble(buffer, 0)));
-                        Console.WriteLine("Предыдущий угол: " + Convert.ToString(previousCorner));
-                        Console.WriteLine("Дистанция: " + Convert.ToString(coveredDistance));
+                        coveredDistance = CornerDistance(BitConverter.ToDouble(buffer, 0), previousCorner) + coveredDistance;                        
                         previousCorner = BitConverter.ToDouble(buffer, 0);
                         Thread.Sleep(10);
                     }

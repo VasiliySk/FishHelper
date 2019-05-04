@@ -143,7 +143,7 @@ namespace FishHelper
         }
 
         private void btnFishing_Click(object sender, EventArgs e)
-        {
+        {    
             //Запуск в отдельном потоке, что бы можно было слушать нажатие клавиш в основном потоке.
             (new Thread(delegate ()
             {
@@ -231,8 +231,9 @@ namespace FishHelper
 
             do
             {
-                if (stopAction) return;
+                if (stopAction) break;
                 RunAndFish(0);
+                if (stopAction) break;
                 if (cmbSelect.SelectedIndex == 1) fishCycle = true;
                 if(cmbSelect.SelectedIndex == 2)
                 {
@@ -432,8 +433,9 @@ namespace FishHelper
             if (UserOptions.hideToNotify) Hide(); //Если выбрано, что скрывать в панель уведомлений, то скрываем
             do
             {
-                if (stopAction) return;
+                if (stopAction) break;
                 RunAndFish(count);
+                if (stopAction) break;
                 if (cmbSelect.SelectedIndex == 1)
                 {
                     count = 0;
@@ -520,8 +522,9 @@ namespace FishHelper
             if (UserOptions.hideToNotify) Hide(); //Если выбрано, что скрывать в панель уведомлений, то скрываем
             do
             {
-                if (stopAction) return;
+                if (stopAction) break;
                 RunAndFishBack(count);
+                if (stopAction) break;
                 if (cmbSelect.SelectedIndex == 1)
                 {
                     count = 0;
