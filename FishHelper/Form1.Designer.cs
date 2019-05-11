@@ -30,16 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.labelTargetX = new System.Windows.Forms.Label();
-            this.textBoxCoordX = new System.Windows.Forms.TextBox();
-            this.labelTargetY = new System.Windows.Forms.Label();
-            this.textBoxCoordY = new System.Windows.Forms.TextBox();
-            this.labelTargetCorner = new System.Windows.Forms.Label();
-            this.textBoxCorner = new System.Windows.Forms.TextBox();
-            this.lblCoordX = new System.Windows.Forms.Label();
-            this.lblCoordY = new System.Windows.Forms.Label();
-            this.lblCorner = new System.Windows.Forms.Label();
-            this.btbTestAdress = new System.Windows.Forms.Button();
             this.btnCameraCorner = new System.Windows.Forms.Button();
             this.txtTargetCorner = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -74,98 +64,61 @@
             this.cmbSelect = new System.Windows.Forms.ComboBox();
             this.btnBackSelect = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.lvScanner = new System.Windows.Forms.ListView();
+            this.colAddress = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tbXAdressMax = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbXAdressMin = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnNextScan = new System.Windows.Forms.Button();
+            this.btnFirstScan = new System.Windows.Forms.Button();
+            this.btnNewScan = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dgvCAdressList = new System.Windows.Forms.DataGridView();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dgvYAdressList = new System.Windows.Forms.DataGridView();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dgvXAdressList = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbCAdressMin = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbCAdressMax = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbYAdressMin = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbYAdressMax = new System.Windows.Forms.TextBox();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.labelTargetX = new System.Windows.Forms.Label();
+            this.textBoxCoordX = new System.Windows.Forms.TextBox();
+            this.labelTargetY = new System.Windows.Forms.Label();
+            this.textBoxCoordY = new System.Windows.Forms.TextBox();
+            this.labelTargetCorner = new System.Windows.Forms.Label();
+            this.textBoxCorner = new System.Windows.Forms.TextBox();
+            this.lblCoordX = new System.Windows.Forms.Label();
+            this.lblCoordY = new System.Windows.Forms.Label();
+            this.lblCorner = new System.Windows.Forms.Label();
+            this.btbTestAdress = new System.Windows.Forms.Button();
+            this.btnXAdressCopy = new System.Windows.Forms.Button();
+            this.btnYAdressCopy = new System.Windows.Forms.Button();
+            this.btnCAdressCopy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCAdressList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvYAdressList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvXAdressList)).BeginInit();
             this.SuspendLayout();
-            // 
-            // labelTargetX
-            // 
-            this.labelTargetX.AutoSize = true;
-            this.labelTargetX.Location = new System.Drawing.Point(12, 26);
-            this.labelTargetX.Name = "labelTargetX";
-            this.labelTargetX.Size = new System.Drawing.Size(112, 13);
-            this.labelTargetX.TabIndex = 1;
-            this.labelTargetX.Text = "Адрес Х координаты";
-            // 
-            // textBoxCoordX
-            // 
-            this.textBoxCoordX.Location = new System.Drawing.Point(159, 23);
-            this.textBoxCoordX.Name = "textBoxCoordX";
-            this.textBoxCoordX.Size = new System.Drawing.Size(122, 20);
-            this.textBoxCoordX.TabIndex = 2;
-            // 
-            // labelTargetY
-            // 
-            this.labelTargetY.AutoSize = true;
-            this.labelTargetY.Location = new System.Drawing.Point(12, 52);
-            this.labelTargetY.Name = "labelTargetY";
-            this.labelTargetY.Size = new System.Drawing.Size(112, 13);
-            this.labelTargetY.TabIndex = 3;
-            this.labelTargetY.Text = "Адрес Y координаты";
-            // 
-            // textBoxCoordY
-            // 
-            this.textBoxCoordY.Location = new System.Drawing.Point(159, 49);
-            this.textBoxCoordY.Name = "textBoxCoordY";
-            this.textBoxCoordY.Size = new System.Drawing.Size(122, 20);
-            this.textBoxCoordY.TabIndex = 4;
-            // 
-            // labelTargetCorner
-            // 
-            this.labelTargetCorner.AutoSize = true;
-            this.labelTargetCorner.Location = new System.Drawing.Point(12, 78);
-            this.labelTargetCorner.Name = "labelTargetCorner";
-            this.labelTargetCorner.Size = new System.Drawing.Size(113, 13);
-            this.labelTargetCorner.TabIndex = 5;
-            this.labelTargetCorner.Text = "Адрес угла поворота";
-            // 
-            // textBoxCorner
-            // 
-            this.textBoxCorner.Location = new System.Drawing.Point(159, 75);
-            this.textBoxCorner.Name = "textBoxCorner";
-            this.textBoxCorner.Size = new System.Drawing.Size(122, 20);
-            this.textBoxCorner.TabIndex = 6;
-            // 
-            // lblCoordX
-            // 
-            this.lblCoordX.AutoSize = true;
-            this.lblCoordX.Location = new System.Drawing.Point(305, 26);
-            this.lblCoordX.Name = "lblCoordX";
-            this.lblCoordX.Size = new System.Drawing.Size(131, 13);
-            this.lblCoordX.TabIndex = 8;
-            this.lblCoordX.Text = "<-Задайте адрес памяти";
-            // 
-            // lblCoordY
-            // 
-            this.lblCoordY.AutoSize = true;
-            this.lblCoordY.Location = new System.Drawing.Point(305, 52);
-            this.lblCoordY.Name = "lblCoordY";
-            this.lblCoordY.Size = new System.Drawing.Size(131, 13);
-            this.lblCoordY.TabIndex = 9;
-            this.lblCoordY.Text = "<-Задайте адрес памяти";
-            // 
-            // lblCorner
-            // 
-            this.lblCorner.AutoSize = true;
-            this.lblCorner.Location = new System.Drawing.Point(305, 78);
-            this.lblCorner.Name = "lblCorner";
-            this.lblCorner.Size = new System.Drawing.Size(131, 13);
-            this.lblCorner.TabIndex = 10;
-            this.lblCorner.Text = "<-Задайте адрес памяти";
-            // 
-            // btbTestAdress
-            // 
-            this.btbTestAdress.Location = new System.Drawing.Point(310, 104);
-            this.btbTestAdress.Name = "btbTestAdress";
-            this.btbTestAdress.Size = new System.Drawing.Size(126, 23);
-            this.btbTestAdress.TabIndex = 11;
-            this.btbTestAdress.Text = "Проверка адресов памяти";
-            this.btbTestAdress.UseVisualStyleBackColor = true;
-            this.btbTestAdress.Click += new System.EventHandler(this.btbTestAdress_Click);
             // 
             // btnCameraCorner
             // 
-            this.btnCameraCorner.Location = new System.Drawing.Point(304, 522);
+            this.btnCameraCorner.Location = new System.Drawing.Point(295, 500);
             this.btnCameraCorner.Name = "btnCameraCorner";
             this.btnCameraCorner.Size = new System.Drawing.Size(132, 26);
             this.btnCameraCorner.TabIndex = 12;
@@ -175,7 +128,7 @@
             // 
             // txtTargetCorner
             // 
-            this.txtTargetCorner.Location = new System.Drawing.Point(304, 462);
+            this.txtTargetCorner.Location = new System.Drawing.Point(295, 440);
             this.txtTargetCorner.Name = "txtTargetCorner";
             this.txtTargetCorner.Size = new System.Drawing.Size(132, 20);
             this.txtTargetCorner.TabIndex = 13;
@@ -183,7 +136,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(301, 443);
+            this.label1.Location = new System.Drawing.Point(292, 421);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 13);
             this.label1.TabIndex = 14;
@@ -191,7 +144,7 @@
             // 
             // txtboxXTarget
             // 
-            this.txtboxXTarget.Location = new System.Drawing.Point(12, 462);
+            this.txtboxXTarget.Location = new System.Drawing.Point(3, 440);
             this.txtboxXTarget.Name = "txtboxXTarget";
             this.txtboxXTarget.Size = new System.Drawing.Size(132, 20);
             this.txtboxXTarget.TabIndex = 15;
@@ -199,7 +152,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 443);
+            this.label2.Location = new System.Drawing.Point(4, 421);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 16;
@@ -207,7 +160,7 @@
             // 
             // txtboxYTarget
             // 
-            this.txtboxYTarget.Location = new System.Drawing.Point(159, 462);
+            this.txtboxYTarget.Location = new System.Drawing.Point(150, 440);
             this.txtboxYTarget.Name = "txtboxYTarget";
             this.txtboxYTarget.Size = new System.Drawing.Size(132, 20);
             this.txtboxYTarget.TabIndex = 17;
@@ -215,7 +168,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(156, 443);
+            this.label3.Location = new System.Drawing.Point(147, 421);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 18;
@@ -223,7 +176,7 @@
             // 
             // btnTargetRun
             // 
-            this.btnTargetRun.Location = new System.Drawing.Point(12, 488);
+            this.btnTargetRun.Location = new System.Drawing.Point(3, 466);
             this.btnTargetRun.Name = "btnTargetRun";
             this.btnTargetRun.Size = new System.Drawing.Size(132, 28);
             this.btnTargetRun.TabIndex = 19;
@@ -234,7 +187,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 421);
+            this.label4.Location = new System.Drawing.Point(0, 399);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(229, 13);
             this.label4.TabIndex = 20;
@@ -242,7 +195,7 @@
             // 
             // btnFishing
             // 
-            this.btnFishing.Location = new System.Drawing.Point(159, 488);
+            this.btnFishing.Location = new System.Drawing.Point(150, 466);
             this.btnFishing.Name = "btnFishing";
             this.btnFishing.Size = new System.Drawing.Size(132, 28);
             this.btnFishing.TabIndex = 21;
@@ -252,7 +205,7 @@
             // 
             // btnRunAndFish
             // 
-            this.btnRunAndFish.Location = new System.Drawing.Point(304, 488);
+            this.btnRunAndFish.Location = new System.Drawing.Point(295, 466);
             this.btnRunAndFish.Name = "btnRunAndFish";
             this.btnRunAndFish.Size = new System.Drawing.Size(132, 28);
             this.btnRunAndFish.TabIndex = 22;
@@ -263,18 +216,18 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 130);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 50;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(422, 179);
+            this.dataGridView1.Size = new System.Drawing.Size(422, 285);
             this.dataGridView1.TabIndex = 23;
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint_1);
             // 
             // btnRemoveRow
             // 
-            this.btnRemoveRow.Location = new System.Drawing.Point(144, 315);
+            this.btnRemoveRow.Location = new System.Drawing.Point(135, 293);
             this.btnRemoveRow.Name = "btnRemoveRow";
             this.btnRemoveRow.Size = new System.Drawing.Size(119, 28);
             this.btnRemoveRow.TabIndex = 24;
@@ -284,7 +237,7 @@
             // 
             // btnConsol
             // 
-            this.btnConsol.Location = new System.Drawing.Point(12, 522);
+            this.btnConsol.Location = new System.Drawing.Point(3, 500);
             this.btnConsol.Name = "btnConsol";
             this.btnConsol.Size = new System.Drawing.Size(132, 28);
             this.btnConsol.TabIndex = 25;
@@ -294,7 +247,7 @@
             // 
             // btnAddRow
             // 
-            this.btnAddRow.Location = new System.Drawing.Point(12, 315);
+            this.btnAddRow.Location = new System.Drawing.Point(3, 293);
             this.btnAddRow.Name = "btnAddRow";
             this.btnAddRow.Size = new System.Drawing.Size(126, 28);
             this.btnAddRow.TabIndex = 26;
@@ -309,7 +262,7 @@
             this.настройкиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(440, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(435, 24);
             this.menuStrip1.TabIndex = 27;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -372,13 +325,13 @@
             // OptionToolStripMenuItem1
             // 
             this.OptionToolStripMenuItem1.Name = "OptionToolStripMenuItem1";
-            this.OptionToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.OptionToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
             this.OptionToolStripMenuItem1.Text = "Настройки";
             this.OptionToolStripMenuItem1.Click += new System.EventHandler(this.OptionToolStripMenuItem1_Click);
             // 
             // btnGoGoGo
             // 
-            this.btnGoGoGo.Location = new System.Drawing.Point(269, 315);
+            this.btnGoGoGo.Location = new System.Drawing.Point(260, 293);
             this.btnGoGoGo.Name = "btnGoGoGo";
             this.btnGoGoGo.Size = new System.Drawing.Size(165, 28);
             this.btnGoGoGo.TabIndex = 28;
@@ -392,7 +345,7 @@
             // 
             // btnGoSelect
             // 
-            this.btnGoSelect.Location = new System.Drawing.Point(12, 349);
+            this.btnGoSelect.Location = new System.Drawing.Point(3, 327);
             this.btnGoSelect.Name = "btnGoSelect";
             this.btnGoSelect.Size = new System.Drawing.Size(220, 28);
             this.btnGoSelect.TabIndex = 29;
@@ -402,7 +355,7 @@
             // 
             // btnFishingVer2
             // 
-            this.btnFishingVer2.Location = new System.Drawing.Point(159, 522);
+            this.btnFishingVer2.Location = new System.Drawing.Point(150, 500);
             this.btnFishingVer2.Name = "btnFishingVer2";
             this.btnFishingVer2.Size = new System.Drawing.Size(132, 28);
             this.btnFishingVer2.TabIndex = 30;
@@ -413,7 +366,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 386);
+            this.label5.Location = new System.Drawing.Point(3, 364);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(137, 13);
             this.label5.TabIndex = 31;
@@ -426,14 +379,14 @@
             "Ничего не делать",
             "Повторить с начала списка в конец.",
             "Повторить с конца списка в начало."});
-            this.cmbSelect.Location = new System.Drawing.Point(157, 383);
+            this.cmbSelect.Location = new System.Drawing.Point(148, 361);
             this.cmbSelect.Name = "cmbSelect";
             this.cmbSelect.Size = new System.Drawing.Size(279, 21);
             this.cmbSelect.TabIndex = 32;
             // 
             // btnBackSelect
             // 
-            this.btnBackSelect.Location = new System.Drawing.Point(238, 349);
+            this.btnBackSelect.Location = new System.Drawing.Point(229, 327);
             this.btnBackSelect.Name = "btnBackSelect";
             this.btnBackSelect.Size = new System.Drawing.Size(196, 28);
             this.btnBackSelect.TabIndex = 33;
@@ -448,42 +401,446 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
             // 
+            // lvScanner
+            // 
+            this.lvScanner.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colAddress,
+            this.colValue});
+            this.lvScanner.Location = new System.Drawing.Point(262, 55);
+            this.lvScanner.Name = "lvScanner";
+            this.lvScanner.Size = new System.Drawing.Size(166, 72);
+            this.lvScanner.TabIndex = 52;
+            this.lvScanner.UseCompatibleStateImageBehavior = false;
+            this.lvScanner.View = System.Windows.Forms.View.Details;
+            this.lvScanner.VirtualMode = true;
+            this.lvScanner.Visible = false;
+            this.lvScanner.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvScanner_RetrieveVirtualItem);
+            // 
+            // colAddress
+            // 
+            this.colAddress.Text = "Address";
+            this.colAddress.Width = 100;
+            // 
+            // colValue
+            // 
+            this.colValue.Text = "Value";
+            this.colValue.Width = 50;
+            // 
+            // tbXAdressMax
+            // 
+            this.tbXAdressMax.Location = new System.Drawing.Point(179, 55);
+            this.tbXAdressMax.Name = "tbXAdressMax";
+            this.tbXAdressMax.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tbXAdressMax.Size = new System.Drawing.Size(64, 20);
+            this.tbXAdressMax.TabIndex = 45;
+            this.tbXAdressMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbXAdressMax_KeyPress);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(134, 58);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(39, 13);
+            this.label10.TabIndex = 45;
+            this.label10.Text = "Х max:";
+            // 
+            // tbXAdressMin
+            // 
+            this.tbXAdressMin.Location = new System.Drawing.Point(54, 55);
+            this.tbXAdressMin.Name = "tbXAdressMin";
+            this.tbXAdressMin.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tbXAdressMin.Size = new System.Drawing.Size(64, 20);
+            this.tbXAdressMin.TabIndex = 44;
+            this.tbXAdressMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbXAdressMin_KeyPress);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 58);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(36, 13);
+            this.label11.TabIndex = 43;
+            this.label11.Text = "X min:";
+            // 
+            // btnNextScan
+            // 
+            this.btnNextScan.Enabled = false;
+            this.btnNextScan.Location = new System.Drawing.Point(221, 14);
+            this.btnNextScan.Name = "btnNextScan";
+            this.btnNextScan.Size = new System.Drawing.Size(116, 23);
+            this.btnNextScan.TabIndex = 42;
+            this.btnNextScan.Text = "Следующий поиск";
+            this.btnNextScan.UseVisualStyleBackColor = true;
+            this.btnNextScan.Click += new System.EventHandler(this.btnNextScan_Click);
+            // 
+            // btnFirstScan
+            // 
+            this.btnFirstScan.Enabled = false;
+            this.btnFirstScan.Location = new System.Drawing.Point(101, 14);
+            this.btnFirstScan.Name = "btnFirstScan";
+            this.btnFirstScan.Size = new System.Drawing.Size(114, 23);
+            this.btnFirstScan.TabIndex = 41;
+            this.btnFirstScan.Text = "Первый поиск";
+            this.btnFirstScan.UseVisualStyleBackColor = true;
+            this.btnFirstScan.Click += new System.EventHandler(this.btnFirstScan_Click);
+            // 
+            // btnNewScan
+            // 
+            this.btnNewScan.Enabled = false;
+            this.btnNewScan.Location = new System.Drawing.Point(6, 14);
+            this.btnNewScan.Name = "btnNewScan";
+            this.btnNewScan.Size = new System.Drawing.Size(89, 23);
+            this.btnNewScan.TabIndex = 40;
+            this.btnNewScan.Text = "Новый поиск";
+            this.btnNewScan.UseVisualStyleBackColor = true;
+            this.btnNewScan.Click += new System.EventHandler(this.btnNewScan_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(441, 565);
+            this.tabControl1.TabIndex = 55;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.btnBackSelect);
+            this.tabPage1.Controls.Add(this.cmbSelect);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.btnFishingVer2);
+            this.tabPage1.Controls.Add(this.btnGoSelect);
+            this.tabPage1.Controls.Add(this.btnGoGoGo);
+            this.tabPage1.Controls.Add(this.btnAddRow);
+            this.tabPage1.Controls.Add(this.btnConsol);
+            this.tabPage1.Controls.Add(this.btnRemoveRow);
+            this.tabPage1.Controls.Add(this.btnCameraCorner);
+            this.tabPage1.Controls.Add(this.btnRunAndFish);
+            this.tabPage1.Controls.Add(this.txtTargetCorner);
+            this.tabPage1.Controls.Add(this.btnFishing);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.txtboxXTarget);
+            this.tabPage1.Controls.Add(this.btnTargetRun);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.txtboxYTarget);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(433, 539);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Основное окно";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.btnCAdressCopy);
+            this.tabPage2.Controls.Add(this.btnYAdressCopy);
+            this.tabPage2.Controls.Add(this.btnXAdressCopy);
+            this.tabPage2.Controls.Add(this.btbTestAdress);
+            this.tabPage2.Controls.Add(this.lblCorner);
+            this.tabPage2.Controls.Add(this.lblCoordY);
+            this.tabPage2.Controls.Add(this.lblCoordX);
+            this.tabPage2.Controls.Add(this.textBoxCorner);
+            this.tabPage2.Controls.Add(this.labelTargetCorner);
+            this.tabPage2.Controls.Add(this.textBoxCoordY);
+            this.tabPage2.Controls.Add(this.labelTargetY);
+            this.tabPage2.Controls.Add(this.textBoxCoordX);
+            this.tabPage2.Controls.Add(this.labelTargetX);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.dgvCAdressList);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.dgvYAdressList);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.dgvXAdressList);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.tbCAdressMin);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.tbCAdressMax);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.tbYAdressMin);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.tbYAdressMax);
+            this.tabPage2.Controls.Add(this.lblStatus);
+            this.tabPage2.Controls.Add(this.btnFirstScan);
+            this.tabPage2.Controls.Add(this.lvScanner);
+            this.tabPage2.Controls.Add(this.btnNewScan);
+            this.tabPage2.Controls.Add(this.btnNextScan);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.tbXAdressMin);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.tbXAdressMax);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(433, 539);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Поиск адресов";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(8, 391);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(117, 13);
+            this.label14.TabIndex = 66;
+            this.label14.Text = "Найденные адреса C:";
+            // 
+            // dgvCAdressList
+            // 
+            this.dgvCAdressList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCAdressList.Location = new System.Drawing.Point(3, 407);
+            this.dgvCAdressList.Name = "dgvCAdressList";
+            this.dgvCAdressList.Size = new System.Drawing.Size(237, 104);
+            this.dgvCAdressList.TabIndex = 65;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 263);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(117, 13);
+            this.label13.TabIndex = 64;
+            this.label13.Text = "Найденные адреса Y:";
+            // 
+            // dgvYAdressList
+            // 
+            this.dgvYAdressList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvYAdressList.Location = new System.Drawing.Point(3, 279);
+            this.dgvYAdressList.Name = "dgvYAdressList";
+            this.dgvYAdressList.Size = new System.Drawing.Size(237, 109);
+            this.dgvYAdressList.TabIndex = 63;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(8, 133);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(117, 13);
+            this.label12.TabIndex = 62;
+            this.label12.Text = "Найденные адреса X:";
+            // 
+            // dgvXAdressList
+            // 
+            this.dgvXAdressList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvXAdressList.Location = new System.Drawing.Point(6, 149);
+            this.dgvXAdressList.Name = "dgvXAdressList";
+            this.dgvXAdressList.Size = new System.Drawing.Size(237, 111);
+            this.dgvXAdressList.TabIndex = 61;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 110);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 13);
+            this.label8.TabIndex = 58;
+            this.label8.Text = "C min:";
+            // 
+            // tbCAdressMin
+            // 
+            this.tbCAdressMin.Location = new System.Drawing.Point(54, 107);
+            this.tbCAdressMin.Name = "tbCAdressMin";
+            this.tbCAdressMin.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tbCAdressMin.Size = new System.Drawing.Size(64, 20);
+            this.tbCAdressMin.TabIndex = 48;
+            this.tbCAdressMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCAdressMin_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(134, 110);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.TabIndex = 60;
+            this.label9.Text = "C max:";
+            // 
+            // tbCAdressMax
+            // 
+            this.tbCAdressMax.Location = new System.Drawing.Point(179, 107);
+            this.tbCAdressMax.Name = "tbCAdressMax";
+            this.tbCAdressMax.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tbCAdressMax.Size = new System.Drawing.Size(64, 20);
+            this.tbCAdressMax.TabIndex = 49;
+            this.tbCAdressMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCAdressMax_KeyPress);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 84);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.TabIndex = 54;
+            this.label6.Text = "Y min:";
+            // 
+            // tbYAdressMin
+            // 
+            this.tbYAdressMin.Location = new System.Drawing.Point(54, 81);
+            this.tbYAdressMin.Name = "tbYAdressMin";
+            this.tbYAdressMin.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tbYAdressMin.Size = new System.Drawing.Size(64, 20);
+            this.tbYAdressMin.TabIndex = 46;
+            this.tbYAdressMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbYAdressMin_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(134, 84);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(39, 13);
+            this.label7.TabIndex = 56;
+            this.label7.Text = "Y max:";
+            // 
+            // tbYAdressMax
+            // 
+            this.tbYAdressMax.Location = new System.Drawing.Point(179, 81);
+            this.tbYAdressMax.Name = "tbYAdressMax";
+            this.tbYAdressMax.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tbYAdressMax.Size = new System.Drawing.Size(64, 20);
+            this.tbYAdressMax.TabIndex = 47;
+            this.tbYAdressMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbYAdressMax_KeyPress);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(8, 514);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(47, 13);
+            this.lblStatus.TabIndex = 53;
+            this.lblStatus.Text = "Статус: ";
+            // 
+            // labelTargetX
+            // 
+            this.labelTargetX.AutoSize = true;
+            this.labelTargetX.Location = new System.Drawing.Point(259, 133);
+            this.labelTargetX.Name = "labelTargetX";
+            this.labelTargetX.Size = new System.Drawing.Size(115, 13);
+            this.labelTargetX.TabIndex = 67;
+            this.labelTargetX.Text = "Адрес Х координаты:";
+            // 
+            // textBoxCoordX
+            // 
+            this.textBoxCoordX.Location = new System.Drawing.Point(262, 149);
+            this.textBoxCoordX.Name = "textBoxCoordX";
+            this.textBoxCoordX.Size = new System.Drawing.Size(122, 20);
+            this.textBoxCoordX.TabIndex = 68;
+            // 
+            // labelTargetY
+            // 
+            this.labelTargetY.AutoSize = true;
+            this.labelTargetY.Location = new System.Drawing.Point(259, 263);
+            this.labelTargetY.Name = "labelTargetY";
+            this.labelTargetY.Size = new System.Drawing.Size(115, 13);
+            this.labelTargetY.TabIndex = 69;
+            this.labelTargetY.Text = "Адрес Y координаты:";
+            // 
+            // textBoxCoordY
+            // 
+            this.textBoxCoordY.Location = new System.Drawing.Point(262, 279);
+            this.textBoxCoordY.Name = "textBoxCoordY";
+            this.textBoxCoordY.Size = new System.Drawing.Size(122, 20);
+            this.textBoxCoordY.TabIndex = 70;
+            // 
+            // labelTargetCorner
+            // 
+            this.labelTargetCorner.AutoSize = true;
+            this.labelTargetCorner.Location = new System.Drawing.Point(259, 391);
+            this.labelTargetCorner.Name = "labelTargetCorner";
+            this.labelTargetCorner.Size = new System.Drawing.Size(116, 13);
+            this.labelTargetCorner.TabIndex = 71;
+            this.labelTargetCorner.Text = "Адрес угла поворота:";
+            // 
+            // textBoxCorner
+            // 
+            this.textBoxCorner.Location = new System.Drawing.Point(262, 407);
+            this.textBoxCorner.Name = "textBoxCorner";
+            this.textBoxCorner.Size = new System.Drawing.Size(122, 20);
+            this.textBoxCorner.TabIndex = 72;
+            // 
+            // lblCoordX
+            // 
+            this.lblCoordX.AutoSize = true;
+            this.lblCoordX.Location = new System.Drawing.Point(259, 172);
+            this.lblCoordX.Name = "lblCoordX";
+            this.lblCoordX.Size = new System.Drawing.Size(139, 13);
+            this.lblCoordX.TabIndex = 73;
+            this.lblCoordX.Text = "<-Выберите адрес памяти";
+            // 
+            // lblCoordY
+            // 
+            this.lblCoordY.AutoSize = true;
+            this.lblCoordY.Location = new System.Drawing.Point(259, 302);
+            this.lblCoordY.Name = "lblCoordY";
+            this.lblCoordY.Size = new System.Drawing.Size(139, 13);
+            this.lblCoordY.TabIndex = 74;
+            this.lblCoordY.Text = "<-Выберите адрес памяти";
+            // 
+            // lblCorner
+            // 
+            this.lblCorner.AutoSize = true;
+            this.lblCorner.Location = new System.Drawing.Point(259, 430);
+            this.lblCorner.Name = "lblCorner";
+            this.lblCorner.Size = new System.Drawing.Size(139, 13);
+            this.lblCorner.TabIndex = 75;
+            this.lblCorner.Text = "<-Выберите адрес памяти";
+            // 
+            // btbTestAdress
+            // 
+            this.btbTestAdress.Location = new System.Drawing.Point(262, 488);
+            this.btbTestAdress.Name = "btbTestAdress";
+            this.btbTestAdress.Size = new System.Drawing.Size(122, 23);
+            this.btbTestAdress.TabIndex = 76;
+            this.btbTestAdress.Text = "Проверка адресов памяти";
+            this.btbTestAdress.UseVisualStyleBackColor = true;
+            this.btbTestAdress.Click += new System.EventHandler(this.btbTestAdress_Click);
+            // 
+            // btnXAdressCopy
+            // 
+            this.btnXAdressCopy.Location = new System.Drawing.Point(262, 189);
+            this.btnXAdressCopy.Name = "btnXAdressCopy";
+            this.btnXAdressCopy.Size = new System.Drawing.Size(122, 23);
+            this.btnXAdressCopy.TabIndex = 77;
+            this.btnXAdressCopy.Text = "Скопировать адрес";
+            this.btnXAdressCopy.UseVisualStyleBackColor = true;
+            this.btnXAdressCopy.Click += new System.EventHandler(this.btnXAdressCopy_Click);
+            // 
+            // btnYAdressCopy
+            // 
+            this.btnYAdressCopy.Location = new System.Drawing.Point(262, 318);
+            this.btnYAdressCopy.Name = "btnYAdressCopy";
+            this.btnYAdressCopy.Size = new System.Drawing.Size(122, 23);
+            this.btnYAdressCopy.TabIndex = 78;
+            this.btnYAdressCopy.Text = "Скопировать адрес";
+            this.btnYAdressCopy.UseVisualStyleBackColor = true;
+            this.btnYAdressCopy.Click += new System.EventHandler(this.btnYAdressCopy_Click);
+            // 
+            // btnCAdressCopy
+            // 
+            this.btnCAdressCopy.Location = new System.Drawing.Point(262, 446);
+            this.btnCAdressCopy.Name = "btnCAdressCopy";
+            this.btnCAdressCopy.Size = new System.Drawing.Size(122, 23);
+            this.btnCAdressCopy.TabIndex = 79;
+            this.btnCAdressCopy.Text = "Скопировать адрес";
+            this.btnCAdressCopy.UseVisualStyleBackColor = true;
+            this.btnCAdressCopy.Click += new System.EventHandler(this.btnCAdressCopy_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 557);
-            this.Controls.Add(this.btnBackSelect);
-            this.Controls.Add(this.cmbSelect);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnFishingVer2);
-            this.Controls.Add(this.btnGoSelect);
-            this.Controls.Add(this.btnGoGoGo);
-            this.Controls.Add(this.btnAddRow);
-            this.Controls.Add(this.btnConsol);
-            this.Controls.Add(this.btnRemoveRow);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnRunAndFish);
-            this.Controls.Add(this.btnFishing);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnTargetRun);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtboxYTarget);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtboxXTarget);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtTargetCorner);
-            this.Controls.Add(this.btnCameraCorner);
-            this.Controls.Add(this.btbTestAdress);
-            this.Controls.Add(this.lblCorner);
-            this.Controls.Add(this.lblCoordY);
-            this.Controls.Add(this.lblCoordX);
-            this.Controls.Add(this.textBoxCorner);
-            this.Controls.Add(this.labelTargetCorner);
-            this.Controls.Add(this.textBoxCoordY);
-            this.Controls.Add(this.labelTargetY);
-            this.Controls.Add(this.textBoxCoordX);
-            this.Controls.Add(this.labelTargetX);
+            this.ClientSize = new System.Drawing.Size(435, 586);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -498,22 +855,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCAdressList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvYAdressList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvXAdressList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label labelTargetX;
-        private System.Windows.Forms.TextBox textBoxCoordX;
-        private System.Windows.Forms.Label labelTargetY;
-        private System.Windows.Forms.TextBox textBoxCoordY;
-        private System.Windows.Forms.Label labelTargetCorner;
-        private System.Windows.Forms.TextBox textBoxCorner;
-        private System.Windows.Forms.Label lblCoordX;
-        private System.Windows.Forms.Label lblCoordY;
-        private System.Windows.Forms.Label lblCorner;
-        private System.Windows.Forms.Button btbTestAdress;
         private System.Windows.Forms.Button btnCameraCorner;
         private System.Windows.Forms.TextBox txtTargetCorner;
         private System.Windows.Forms.Label label1;
@@ -548,6 +903,48 @@
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OptionToolStripMenuItem1;
+        private System.Windows.Forms.ListView lvScanner;
+        private System.Windows.Forms.ColumnHeader colAddress;
+        private System.Windows.Forms.ColumnHeader colValue;
+        private System.Windows.Forms.TextBox tbXAdressMax;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbXAdressMin;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnNextScan;
+        private System.Windows.Forms.Button btnFirstScan;
+        private System.Windows.Forms.Button btnNewScan;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbYAdressMin;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbYAdressMax;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tbCAdressMin;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbCAdressMax;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DataGridView dgvCAdressList;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridView dgvYAdressList;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridView dgvXAdressList;
+        private System.Windows.Forms.Label labelTargetY;
+        public System.Windows.Forms.TextBox textBoxCoordX;
+        private System.Windows.Forms.Label labelTargetX;
+        private System.Windows.Forms.Label lblCorner;
+        private System.Windows.Forms.Label lblCoordY;
+        private System.Windows.Forms.Label lblCoordX;
+        private System.Windows.Forms.TextBox textBoxCorner;
+        private System.Windows.Forms.Label labelTargetCorner;
+        private System.Windows.Forms.TextBox textBoxCoordY;
+        private System.Windows.Forms.Button btbTestAdress;
+        private System.Windows.Forms.Button btnCAdressCopy;
+        private System.Windows.Forms.Button btnYAdressCopy;
+        private System.Windows.Forms.Button btnXAdressCopy;
     }
 }
 

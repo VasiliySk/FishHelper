@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CheatEngine;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -24,17 +26,145 @@ namespace FishHelper
         IntPtr bytesRead;
         IntPtr hWnd;
         private IntPtr processHandle;
-        BindingList<FishPath> data;
+        BindingList<FishPath> data;        
+        BindingList<AdressList> xAdressList, yAdressList, cAdressList; //Коллекции отфильтрованных адресов
+        bool firstScan;
         private LowLevelKeyboardListener _listener; //  Слушаем нажатие клавиш
         public static bool stopAction;
+        private CheatEngineLibrary lib;
+        private TScanOption scanopt;
+        private TVariableType varopt;   
+
+        private const int wm_scandone = 0x8000 + 2;
+        protected override void WndProc(ref Message m)
+        {            
+            int size, i;
+            if (m.Msg == wm_scandone)
+            {
+
+                lvScanner.VirtualListSize = 0;
+                lvScanner.Items.Clear();                
+                size = lib.iGetBinarySize();                
+                lib.iInitFoundList(varopt, size, false, false, false, false);
+                if (scanopt != TScanOption.soUnknownValue)
+                {
+                    i = Math.Min((int)lib.iCountAddressesFound(), 10000000);
+                    lvScanner.VirtualListSize = i;
+                }
+                lblStatus.Text ="Найдено "+  lib.iCountAddressesFound().ToString()+ " адресов.";
+                btnNextScan.Enabled = true;
+
+                double currentValue;
+                if (firstScan)
+                {                    
+                    double xMin = double.Parse(tbXAdressMin.Text, NumberStyles.AllowDecimalPoint);
+                    double xMax = double.Parse(tbXAdressMax.Text, NumberStyles.AllowDecimalPoint);
+                    double yMin = double.Parse(tbYAdressMin.Text, NumberStyles.AllowDecimalPoint);
+                    double yMax = double.Parse(tbYAdressMax.Text, NumberStyles.AllowDecimalPoint);
+                    double cMin = double.Parse(tbCAdressMin.Text, NumberStyles.AllowDecimalPoint);
+                    double cMax = double.Parse(tbCAdressMax.Text, NumberStyles.AllowDecimalPoint);
+
+                    for (int k = 0; k < lvScanner.Items.Count; k++)
+                    {                        
+                        Double.TryParse(lvScanner.Items[k].SubItems[1].Text, out currentValue);
+                        if ((currentValue >= xMin) && (currentValue <= xMax))
+                        {
+                            xAdressList.Add(new AdressList(lvScanner.Items[k].SubItems[0].Text, lvScanner.Items[k].SubItems[1].Text));
+                        }
+                        if ((currentValue >= yMin) && (currentValue <= yMax))
+                        {
+                            yAdressList.Add(new AdressList(lvScanner.Items[k].SubItems[0].Text, lvScanner.Items[k].SubItems[1].Text));
+                        }
+                        if ((currentValue >= cMin) && (currentValue <= cMax))
+                        {
+                            cAdressList.Add(new AdressList(lvScanner.Items[k].SubItems[0].Text, lvScanner.Items[k].SubItems[1].Text));
+                        }
+                    }
+                }
+                else
+                {    
+                    BindingList<AdressList> xFirstAdressList = new BindingList<AdressList>();
+                    for (int s = 0; s< xAdressList.Count; s++)
+                    {
+                        xFirstAdressList.Add(new AdressList(xAdressList[s].mAdress, xAdressList[s].mValue));
+                    }                    
+                    xAdressList.Clear();
+                    BindingList<AdressList> yFirstAdressList = new BindingList<AdressList>();
+                    for (int s = 0; s < yAdressList.Count; s++)
+                    {
+                        yFirstAdressList.Add(new AdressList(yAdressList[s].mAdress, yAdressList[s].mValue));
+                    }
+                    yAdressList.Clear();
+                    BindingList<AdressList> cFirstAdressList = new BindingList<AdressList>();
+                    for (int s = 0; s < cAdressList.Count; s++)
+                    {
+                        cFirstAdressList.Add(new AdressList(cAdressList[s].mAdress, cAdressList[s].mValue));
+                    }
+                    cAdressList.Clear();                    
+
+                    double xMin = double.Parse(tbXAdressMin.Text, NumberStyles.AllowDecimalPoint);
+                    double xMax = double.Parse(tbXAdressMax.Text, NumberStyles.AllowDecimalPoint);
+                    double yMin = double.Parse(tbYAdressMin.Text, NumberStyles.AllowDecimalPoint);
+                    double yMax = double.Parse(tbYAdressMax.Text, NumberStyles.AllowDecimalPoint);
+                    double cMin = double.Parse(tbCAdressMin.Text, NumberStyles.AllowDecimalPoint);
+                    double cMax = double.Parse(tbCAdressMax.Text, NumberStyles.AllowDecimalPoint);                    
+                    for (int k = 0; k < lvScanner.Items.Count; k++)
+                    {                        
+                        Double.TryParse(lvScanner.Items[k].SubItems[1].Text, out currentValue);
+                        if ((currentValue >= xMin) && (currentValue <= xMax))
+                        {
+                            for (int z=0;z< xFirstAdressList.Count; z++)
+                            {                                
+                                if (xFirstAdressList[z].mAdress.Equals(lvScanner.Items[k].SubItems[0].Text))
+                                {                                    
+                                    xAdressList.Add(new AdressList(lvScanner.Items[k].SubItems[0].Text, lvScanner.Items[k].SubItems[1].Text));
+                                }
+                            }                            
+                        }
+                        if ((currentValue >= yMin) && (currentValue <= yMax))
+                        {
+                            for (int z = 0; z < yFirstAdressList.Count; z++)
+                            {
+                                if (yFirstAdressList[z].mAdress.Equals(lvScanner.Items[k].SubItems[0].Text))
+                                {
+                                    yAdressList.Add(new AdressList(lvScanner.Items[k].SubItems[0].Text, lvScanner.Items[k].SubItems[1].Text));
+                                }
+                            }
+                        }
+                        if ((currentValue >= cMin) && (currentValue <= cMax))
+                        {
+                            for (int z = 0; z < cFirstAdressList.Count; z++)
+                            {
+                                if (cFirstAdressList[z].mAdress.Equals(lvScanner.Items[k].SubItems[0].Text))
+                                {
+                                    cAdressList.Add(new AdressList(lvScanner.Items[k].SubItems[0].Text, lvScanner.Items[k].SubItems[1].Text));
+                                }
+                            }
+                        }
+                    }
+                }                             
+                timer1.Enabled = true;
+            }
+            else
+            {
+                base.WndProc(ref m);
+            }
+        }
 
         public Form1()
         {
-            data = new BindingList<FishPath>(); //Специальный список List с вызовом события обновления внутреннего состояния, необходимого для автообновления datagridview            
+            data = new BindingList<FishPath>(); //Специальный список List с вызовом события обновления внутреннего состояния, необходимого для автообновления datagridview
+            xAdressList = new BindingList<AdressList>();
+            yAdressList = new BindingList<AdressList>();
+            cAdressList = new BindingList<AdressList>(); 
             InitializeComponent();
             UserOptions.LoadSettings();//Загружаем настройки программы
             stopAction = false;
+            //Подвязываем коллеции к таблицам
             dataGridView1.DataSource = data;
+            dgvXAdressList.DataSource = xAdressList;
+            dgvYAdressList.DataSource = yAdressList;
+            dgvCAdressList.DataSource = cAdressList;
             dataGridView1.Columns[0].Width = 70;
             dataGridView1.Columns[1].Width = 70;
             dataGridView1.Columns[2].Width = 70;
@@ -43,12 +173,14 @@ namespace FishHelper
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, Screen.PrimaryScreen.Bounds.Height - Convert.ToInt32(this.Height*1.5));//Переносим окно в левый нижний угол
             this.TopMost = true;
-            cmbSelect.SelectedIndex = Properties.Settings.Default.SelectListAction; //Загружаем вариант по умолчанию из настроек
+            cmbSelect.SelectedIndex = Properties.Settings.Default.SelectListAction; //Загружаем вариант по умолчанию из настроек           
             //Инициализируем классы
-            esoWindow = new EsoWindow();
+            esoWindow = new EsoWindow();            
             esoWindow.SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED);//Сбрасываем счетчик выключения монитора         
             hero = new Hero();            
             fishHelperFile = new FishHelperFile();
+            lib = new CheatEngineLibrary();
+            lib.loadEngine();
         }
 
         //Делаем окно Always on Top
@@ -143,9 +275,10 @@ namespace FishHelper
         }
 
         private void btnFishing_Click(object sender, EventArgs e)
-        {    
+        {
+            if (UserOptions.hideToNotify) Hide(); //Если выбрано, что скрывать в панель уведомлений, то скрываем
             //Запуск в отдельном потоке, что бы можно было слушать нажатие клавиш в основном потоке.
-            (new Thread(delegate ()
+            Thread MyThread1 = new Thread(delegate ()
             {
                 //Активируем окно, прожимаем дважды кноку мыши 
                 ActivateEsoWindow();
@@ -153,7 +286,14 @@ namespace FishHelper
             hero.Fishing(esoWindow, hWnd);
 
             esoWindow.CloseHandle(processHandle);
-            })).Start();
+            });
+            MyThread1.Start();
+            MyThread1.Join();
+            if (UserOptions.hideToNotify) //Восстанавливаем окно после того, как рыбалка закончена
+            {
+                Show();
+                WindowState = FormWindowState.Normal;
+            }
         }
 
         private void btnRunAndFish_Click(object sender, EventArgs e)
@@ -343,7 +483,7 @@ namespace FishHelper
         {
             _listener = new LowLevelKeyboardListener();
             _listener.OnKeyPressed += _listener_OnKeyPressed;
-            _listener.HookKeyboard();            
+            _listener.HookKeyboard();        
         }
 
         //Обработка нажатия функциональных клавиш
@@ -593,6 +733,312 @@ namespace FishHelper
             }
 
             cmbSelect.SelectedIndex = Properties.Settings.Default.SelectListAction; //Загружаем вариант из настроек
+        }
+       
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
+            ((Form1)this.Owner).textBoxCoordX.Text = "Работает"; //Передаем в родительскую форму данные.
+
+            Close();
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            lib.loadEngine();
+        }    
+               
+        private void lvScanner_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
+        {
+            string address, value;
+            try
+            {
+                ListViewItem lvi = new ListViewItem(); 	// create a listviewitem object
+                lib.iGetAddress(e.ItemIndex, out address, out value);
+                lvi.Text = address; 		// assign the text to the item
+                ListViewItem.ListViewSubItem lvsi = new ListViewItem.ListViewSubItem(); // subitem
+                lvsi.Text = value; 	// the subitem text
+                lvi.SubItems.Add(lvsi); 			// assign subitem to item
+                e.Item = lvi; 		// assign item to event argument's item-property
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //lib.iResetValues();
+            //lvScanner.Refresh();
+        }                 
+
+        private void btnNewScan_Click(object sender, EventArgs e)
+        {
+            lib.iNewScan();
+            btnNextScan.Enabled = false;
+            btnFirstScan.Enabled = true;
+            lvScanner.VirtualListSize = 0;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            lib.loadEngine();
+        }
+
+        private void btnFirstScan_Click(object sender, EventArgs e)
+        {
+            if (checkInputData()) {
+                firstScan = true;
+                double[] adressMassive = new double[6]
+                {
+                    double.Parse(tbXAdressMin.Text, NumberStyles.AllowDecimalPoint),                
+                    double.Parse(tbXAdressMax.Text, NumberStyles.AllowDecimalPoint),                
+                    double.Parse(tbYAdressMin.Text, NumberStyles.AllowDecimalPoint),                
+                    double.Parse(tbYAdressMax.Text, NumberStyles.AllowDecimalPoint),                
+                    double.Parse(tbCAdressMin.Text, NumberStyles.AllowDecimalPoint),                
+                    double.Parse(tbCAdressMax.Text, NumberStyles.AllowDecimalPoint) 
+                };
+                Tscanregionpreference writable = Tscanregionpreference.scanInclude,
+                    executable = Tscanregionpreference.scanDontCare, copyOnWrite = Tscanregionpreference.scanExclude;
+                timer1.Enabled = false;
+                btnFirstScan.Enabled = false;
+
+                writable = Tscanregionpreference.scanInclude;
+                executable = Tscanregionpreference.scanDontCare;
+                copyOnWrite = Tscanregionpreference.scanExclude;
+
+                lib.iConfigScanner(writable, executable, copyOnWrite);
+                lblStatus.Text = "Поиск начат. Ждите...";
+                lib.iFirstScan(TScanOption.soValueBetween, TVariableType.vtDouble, TRoundingType.rtRounded, minDouble(adressMassive),
+                 maxDouble(adressMassive), "$0000000000000000", "$7fffffffffffffff", false, false, false, false,
+                 TFastScanMethod.fsmAligned, "4");
+            }
+            else
+            {
+                lblStatus.Text = "Не все значения заполнены!!!";
+            }
+        }
+
+        //Определяем минимальное значение в массиве
+        private String minDouble(double[] adressMassive)
+        {
+            double min = adressMassive[0];
+            for (int i=0; i< adressMassive.Length; i++)
+            {
+                if (min > adressMassive[i])  min = adressMassive[i];
+            }
+            return Convert.ToString(min);
+        }
+
+        //Определяем максимальное значение в массиве
+        private String maxDouble(double[] adressMassive)
+        {
+            double max = adressMassive[0];
+            for (int i = 0; i < adressMassive.Length; i++)
+            {
+                if (max < adressMassive[i]) max = adressMassive[i];
+            }
+            return Convert.ToString(max);
+        }
+
+        //Проверяем, во все ли поля внесены данные.
+        private bool checkInputData()
+        {
+            if (tbXAdressMin.Text.Equals(""))
+            {
+                return false;
+            }
+            if (tbXAdressMax.Text.Equals(""))
+            {
+                return false;
+            }
+            if (tbYAdressMin.Text.Equals(""))
+            {
+                return false;
+            }
+            if (tbYAdressMax.Text.Equals(""))
+            {
+                return false;
+            }
+            if (tbCAdressMin.Text.Equals(""))
+            {
+                return false;
+            }
+            if (tbCAdressMax.Text.Equals(""))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void btnNextScan_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+            btnNextScan.Enabled = false;
+            firstScan = false;
+            double[] adressMassive = new double[6]
+                {
+                    double.Parse(tbXAdressMin.Text, NumberStyles.AllowDecimalPoint),
+                    double.Parse(tbXAdressMax.Text, NumberStyles.AllowDecimalPoint),
+                    double.Parse(tbYAdressMin.Text, NumberStyles.AllowDecimalPoint),
+                    double.Parse(tbYAdressMax.Text, NumberStyles.AllowDecimalPoint),
+                    double.Parse(tbCAdressMin.Text, NumberStyles.AllowDecimalPoint),
+                    double.Parse(tbCAdressMax.Text, NumberStyles.AllowDecimalPoint)
+                };
+            lib.iNextScan(TScanOption.soValueBetween, TRoundingType.rtRounded, minDouble(adressMassive), maxDouble(adressMassive),
+    false, false, false, false, false, false, "");
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TabPage selectedTab = tabControl1.SelectedTab;
+            int selectedIndex = tabControl1.SelectedIndex;   
+            if (selectedIndex == 1)
+            {
+                hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
+                var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd, out pid);
+                
+                if (pid!=0)
+                {
+                    lib.iOpenProcess(pid.ToString("X"));
+                    lib.iInitMemoryScanner(Process.GetCurrentProcess().MainWindowHandle.ToInt32());
+                    lblStatus.Text = "Процесс обнаружен.";                    
+                    scanopt = TScanOption.soValueBetween;
+                    varopt = TVariableType.vtDouble;
+                    btnNewScan.Enabled = true;
+                    btnFirstScan.Enabled = true;
+                }
+                else
+                {
+                    lblStatus.Text = "ESO не обнаружен.";
+                }
+            }            
+        }
+
+        private void tbXAdressMin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                switch (e.KeyChar) //Обрабатываем точку и запятую
+                {
+                    case '.':
+                        e.KeyChar = ',';
+                        return;
+                    case ',':
+                        return;
+                }
+                e.Handled = true;
+            }
+        }
+
+        private void tbXAdressMax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                switch (e.KeyChar) //Обрабатываем точку и запятую
+                {
+                    case '.':
+                        e.KeyChar = ',';
+                        return;
+                    case ',':
+                        return;
+                }
+                e.Handled = true;
+            }
+        }
+
+        private void tbYAdressMin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                switch (e.KeyChar) //Обрабатываем точку и запятую
+                {
+                    case '.':
+                        e.KeyChar = ',';
+                        return;
+                    case ',':
+                        return;
+                }
+                e.Handled = true;
+            }
+        }
+
+        private void tbYAdressMax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                switch (e.KeyChar) //Обрабатываем точку и запятую
+                {
+                    case '.':
+                        e.KeyChar = ',';
+                        return;
+                    case ',':
+                        return;
+                }
+                e.Handled = true;
+            }
+        }
+
+        private void btnXAdressCopy_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewCell oneCell in dgvXAdressList.SelectedCells)
+            {
+
+                if (oneCell.Selected)
+                    textBoxCoordX.Text = (String)dgvXAdressList[0, oneCell.RowIndex].Value; 
+            }
+        }
+
+        private void btnYAdressCopy_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewCell oneCell in dgvYAdressList.SelectedCells)
+            {
+
+                if (oneCell.Selected)
+                    textBoxCoordY.Text = (String)dgvYAdressList[0, oneCell.RowIndex].Value;
+            }
+        }
+
+        private void btnCAdressCopy_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewCell oneCell in dgvCAdressList.SelectedCells)
+            {
+
+                if (oneCell.Selected)
+                    textBoxCorner.Text = (String)dgvCAdressList[0, oneCell.RowIndex].Value;
+            }
+        }
+
+        private void tbCAdressMin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                switch (e.KeyChar) //Обрабатываем точку и запятую
+                {
+                    case '.':
+                        e.KeyChar = ',';
+                        return;
+                    case ',':
+                        return;
+                }
+                e.Handled = true;
+            }
+        }
+
+        private void tbCAdressMax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                switch (e.KeyChar) //Обрабатываем точку и запятую
+                {
+                    case '.':
+                        e.KeyChar = ',';
+                        return;
+                    case ',':
+                        return;
+                }
+                e.Handled = true;
+            }
         }
     }
 }
