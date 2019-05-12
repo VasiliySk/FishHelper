@@ -11,13 +11,16 @@ namespace FishHelper
     {
         public static bool alwaysOnTop { get; set; }
         public static bool hideToNotify { get; set; }
+        public static bool defaultFiles { get; set; }
         public static int selectListAction { get; set; }
+        public static String defaultPathFile { get; set; }
+        public static String defaultAdressFile { get; set; }
         public static int cancelAction { get; set; }
         public static int goGoGo { get; set; }
         public static int goSelect { get; set; }
         public static int backSelect { get; set; }
         public static int fishing { get; set; }
-        public static int fishingVer2 { get; set; }
+        public static int fishingVer2 { get; set; }        
 
         public enum FunctionKeys
         {
@@ -29,7 +32,10 @@ namespace FishHelper
         {
             Properties.Settings.Default.AlwaysOnTop = alwaysOnTop;
             Properties.Settings.Default.HideToNotify = hideToNotify;
+            Properties.Settings.Default.DefaultFiles = defaultFiles;
             Properties.Settings.Default.SelectListAction = selectListAction;
+            Properties.Settings.Default.DefaultPathFile = defaultPathFile;
+            Properties.Settings.Default.DefaultAdressFile = defaultAdressFile;
             Properties.Settings.Default.CancelAction = cancelAction;
             Properties.Settings.Default.GoGoGo = goGoGo;
             Properties.Settings.Default.GoSelect = goSelect;
@@ -44,7 +50,10 @@ namespace FishHelper
         {
             alwaysOnTop = Properties.Settings.Default.AlwaysOnTop;
             hideToNotify = Properties.Settings.Default.HideToNotify;
+            defaultFiles = Properties.Settings.Default.DefaultFiles;
             selectListAction = Properties.Settings.Default.SelectListAction;
+            defaultPathFile = Properties.Settings.Default.DefaultPathFile;
+            defaultAdressFile = Properties.Settings.Default.DefaultAdressFile;
             cancelAction = Properties.Settings.Default.CancelAction;
             goGoGo = Properties.Settings.Default.GoGoGo;
             goSelect = Properties.Settings.Default.GoSelect;

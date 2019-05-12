@@ -24,85 +24,92 @@ namespace FishHelper
             openFileDialog1.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments)+ "\\My Cheat Tables\\";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                data.Clear();
-                this.data = data;
+                
                 if ((mystr = openFileDialog1.OpenFile()) != null)
                 {
                     filePath = openFileDialog1.FileName;
-                    StreamReader myread = new StreamReader(mystr);
-                    string[] str;
-                    int num = 0;
-                    try
-                    {
-                        string[] str1 = myread.ReadToEnd().Split('\n');
-                        num = str1.Length;
-                        for (int i = 0; i < num; i++)
-                        {
-                            str = str1[i].Split(' ');
-                            FishPath fishPath = new FishPath();
-                            string replacement;
-                            for (int j = 0; j < 5; j++)
-                            {
-                                try
-                                {
-                                    switch (j)
-                                    {
-                                        case 0:
-                                            fishPath.xCoord = str[j];
-                                            break;
-                                        case 1:
-                                            fishPath.yCoord = str[j];
-                                            break;
-                                        case 2:
-                                            fishPath.tCorner = str[j];
-                                            break;
-                                        case 3:
-                                            replacement = Regex.Replace(str[j], @"\t|\n|\r", ""); //Удаляем знак перехода строки
-                                            if (replacement.Equals("true"))
-                                            {
-                                                fishPath.holeType = true;
-                                            }
-                                            else
-                                            {
-                                                fishPath.holeType = false;
-                                            }
-                                            break;
-                                        case 4:
-                                            if (str.Length == 4)
-                                            {
-                                                fishPath.harvest = false;
-                                            }
-                                            else
-                                            {
-                                                replacement = Regex.Replace(str[j], @"\t|\n|\r", ""); //Удаляем знак перехода строки
-                                                if (replacement.Equals("true"))
-                                                {
-                                                    fishPath.harvest = true;
-                                                }
-                                                else
-                                                {
-                                                    fishPath.harvest = false;
-                                                }
-                                            }                                            
-                                            break;
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine(ex.Message);
-                                }
-                                finally
-                                {
-                                    myread.Close();
-                                }
-                            }
-                            data.Add(fishPath);
-                        }
-                        saveToolStripMenuItem.Enabled = true;
-                    }
-                    catch { }
+                    OpenFilePath(filePath,data);
+                    saveToolStripMenuItem.Enabled = true;
                 }
             }
+        }
+
+        //Открываем файл с данными маршрута
+        public void OpenFilePath(String filePath, BindingList<FishPath> data)
+        {
+            data.Clear();
+            this.data = data;
+            StreamReader myread = new StreamReader(filePath);
+            string[] str;
+            int num = 0;
+            try
+            {
+                string[] str1 = myread.ReadToEnd().Split('\n');
+                num = str1.Length;
+                for (int i = 0; i < num; i++)
+                {
+                    str = str1[i].Split(' ');
+                    FishPath fishPath = new FishPath();
+                    string replacement;
+                    for (int j = 0; j < 5; j++)
+                    {
+                        try
+                        {
+                            switch (j)
+                            {
+                                case 0:
+                                    fishPath.xCoord = str[j];
+                                    break;
+                                case 1:
+                                    fishPath.yCoord = str[j];
+                                    break;
+                                case 2:
+                                    fishPath.tCorner = str[j];
+                                    break;
+                                case 3:
+                                    replacement = Regex.Replace(str[j], @"\t|\n|\r", ""); //Удаляем знак перехода строки
+                                    if (replacement.Equals("true"))
+                                    {
+                                        fishPath.holeType = true;
+                                    }
+                                    else
+                                    {
+                                        fishPath.holeType = false;
+                                    }
+                                    break;
+                                case 4:
+                                    if (str.Length == 4)
+                                    {
+                                        fishPath.harvest = false;
+                                    }
+                                    else
+                                    {
+                                        replacement = Regex.Replace(str[j], @"\t|\n|\r", ""); //Удаляем знак перехода строки
+                                        if (replacement.Equals("true"))
+                                        {
+                                            fishPath.harvest = true;
+                                        }
+                                        else
+                                        {
+                                            fishPath.harvest = false;
+                                        }
+                                    }
+                                    break;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        finally
+                        {
+                            myread.Close();
+                        }
+                    }
+                    data.Add(fishPath);
+                }                
+            }
+            catch { }
         }
 
         //Сохраняем файл
@@ -193,50 +200,99 @@ namespace FishHelper
 
         //Открываем файл с адресами CheatEngine и загружаем в программу
         public void OpenAdressFile(OpenFileDialog openFileDialog2, TextBox textBoxCoordX, TextBox textBoxCoordY, TextBox textBoxCorner)
-        {
-            Stream mystr = null;
+        {            
             openFileDialog2.Filter = "Cheat Engine files (*.CT)|*.CT";
             openFileDialog2.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments) + "\\My Cheat Tables\\";
             if (openFileDialog2.ShowDialog() == DialogResult.OK)
             {                
-                if ((mystr = openFileDialog2.OpenFile()) != null)
+                if ((openFileDialog2.OpenFile()) != null)
                 {
-                    StreamReader myread = new StreamReader(mystr);                 
-                        
-                    int num = 0;
-                    int adressCount = 0; 
-                    try
-                    {
-                        string[] str1 = myread.ReadToEnd().Split('\n');
-                        num = str1.Length;                        
-                        for (int i = 0; i < num; i++)
-                        {
-                            if (str1[i].Contains("RealAddress"))
-                            {
-                                int indexStartOfAdress = str1[i].IndexOf("RealAddress=") + 12; //Определяем место начала адреса
-                                int indexFinishOfAdress = str1[i].IndexOf("/>"); //Определяем место начала адреса                                
-
-                                switch (adressCount)
-                                {
-                                    case 0:
-                                        textBoxCoordX.Text = str1[i].Substring(indexStartOfAdress+1, indexFinishOfAdress- indexStartOfAdress-2); //Вырезаем адрес из найденной строки
-                                        adressCount++;
-                                        break;
-                                    case 1:
-                                        textBoxCoordY.Text = str1[i].Substring(indexStartOfAdress + 1, indexFinishOfAdress - indexStartOfAdress - 2); //Вырезаем адрес из найденной строки
-                                        adressCount++;
-                                        break;
-                                    case 2:
-                                        textBoxCorner.Text = str1[i].Substring(indexStartOfAdress + 1, indexFinishOfAdress - indexStartOfAdress - 2); //Вырезаем адрес из найденной строки
-                                        adressCount++;
-                                        break;
-                                }
-                            }
-                        }                                                
-                    }
-                    catch { }
+                    OpenAdressFileAction(openFileDialog2.FileName, textBoxCoordX, textBoxCoordY, textBoxCorner);
                 }
             }
+        }
+
+        public void OpenAdressFileAction(String path, TextBox textBoxCoordX, TextBox textBoxCoordY, TextBox textBoxCorner)
+        {
+            StreamReader myread = new StreamReader(path);
+
+            int num = 0;
+            int adressCount = 0;
+            try
+            {
+                string[] str1 = myread.ReadToEnd().Split('\n');
+                num = str1.Length;
+                for (int i = 0; i < num; i++)
+                {
+                    if (str1[i].Contains("RealAddress"))
+                    {
+                        int indexStartOfAdress = str1[i].IndexOf("RealAddress=") + 12; //Определяем место начала адреса
+                        int indexFinishOfAdress = str1[i].IndexOf("/>"); //Определяем место начала адреса                                
+
+                        switch (adressCount)
+                        {
+                            case 0:
+                                textBoxCoordX.Text = str1[i].Substring(indexStartOfAdress + 1, indexFinishOfAdress - indexStartOfAdress - 2); //Вырезаем адрес из найденной строки
+                                adressCount++;
+                                break;
+                            case 1:
+                                textBoxCoordY.Text = str1[i].Substring(indexStartOfAdress + 1, indexFinishOfAdress - indexStartOfAdress - 2); //Вырезаем адрес из найденной строки
+                                adressCount++;
+                                break;
+                            case 2:
+                                textBoxCorner.Text = str1[i].Substring(indexStartOfAdress + 1, indexFinishOfAdress - indexStartOfAdress - 2); //Вырезаем адрес из найденной строки
+                                adressCount++;
+                                break;
+                        }
+                    }
+                }
+            }
+            catch { }
+            finally { myread.Close(); }
+        }
+
+        //Сохраняем в файл данные об адресах.
+        public void SaveAdressFileAs(SaveFileDialog saveFileDialog, String xAdress, String yAdress, String cAdress)
+        {
+            Stream myStream = null;
+            saveFileDialog.Filter = "Cheat Engine files (*.CT)|*.CT";
+            saveFileDialog.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments) + "\\My Cheat Tables\\"; 
+            saveFileDialog.AddExtension = true;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream= saveFileDialog.OpenFile()) != null)
+                {
+                    SaveAdressFileAction(myStream, xAdress, yAdress, cAdress);
+                    myStream.Close();
+                }
+            }          
+        }
+
+        public void SaveAdressFileAction (String path, String xAdress, String yAdress, String cAdress)
+        {
+            const string quote = "\"";
+            StreamWriter myWriter = new StreamWriter(path);
+            myWriter.Write("<RealAddress=" + quote + xAdress + quote + "/>");
+            myWriter.WriteLine();
+            myWriter.Write("<RealAddress=" + quote + yAdress + quote + "/>");
+            myWriter.WriteLine();
+            myWriter.Write("<RealAddress=" + quote + cAdress + quote + "/>");
+            myWriter.WriteLine();
+            myWriter.Close();
+            
+        }
+        public void SaveAdressFileAction(Stream myStream, String xAdress, String yAdress, String cAdress)
+        {
+            const string quote = "\"";
+            StreamWriter myWriter = new StreamWriter(myStream);
+            myWriter.Write("<RealAddress=" + quote + xAdress + quote + "/>");
+            myWriter.WriteLine();
+            myWriter.Write("<RealAddress=" + quote + yAdress + quote + "/>");
+            myWriter.WriteLine();
+            myWriter.Write("<RealAddress=" + quote + cAdress + quote + "/>");
+            myWriter.WriteLine();
+            myWriter.Close();
+
         }
     }
 }

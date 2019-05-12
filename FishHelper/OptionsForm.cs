@@ -27,7 +27,10 @@ namespace FishHelper
             //Загружаем настройки
             chkbAlwaysOnTop.Checked = UserOptions.alwaysOnTop;
             chkHideToNotify.Checked = UserOptions.hideToNotify;
+            chkDefaultFiles.Checked = UserOptions.defaultFiles;
             cmbSelect.SelectedIndex = UserOptions.selectListAction;
+            txtDefaultFilePath.Text = UserOptions.defaultPathFile;
+            txtDefaultFileAdress.Text = UserOptions.defaultAdressFile;
             cmbCancel.SelectedIndex = UserOptions.cancelAction;
             cmbGoGoGo.SelectedIndex = UserOptions.goGoGo;
             cmbGoSelect.SelectedIndex = UserOptions.goSelect;
@@ -40,7 +43,10 @@ namespace FishHelper
         {
             UserOptions.alwaysOnTop = chkbAlwaysOnTop.Checked;
             UserOptions.hideToNotify = chkHideToNotify.Checked;
+            UserOptions.defaultFiles = chkDefaultFiles.Checked;
             UserOptions.selectListAction = cmbSelect.SelectedIndex;
+            UserOptions.defaultPathFile = txtDefaultFilePath.Text;
+            UserOptions.defaultAdressFile = txtDefaultFileAdress.Text;
             UserOptions.cancelAction = cmbCancel.SelectedIndex;
             UserOptions.goGoGo = cmbGoGoGo.SelectedIndex;
             UserOptions.goSelect = cmbGoSelect.SelectedIndex;
@@ -59,6 +65,26 @@ namespace FishHelper
         private void OptionsForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSetDefaultFilePath_Click(object sender, EventArgs e)
+        {
+            openFileDialogPath.Filter = "Fish Helper files (*.fhf)|*.fhf";
+            openFileDialogPath.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments) + "\\My Cheat Tables\\";
+            if (openFileDialogPath.ShowDialog() == DialogResult.OK)
+            {
+                txtDefaultFilePath.Text = openFileDialogPath.FileName;
+            }
+        }
+
+        private void btnSetDefaultFileAdress_Click(object sender, EventArgs e)
+        {
+            openFileDialogAdress.Filter = "Cheat Engine files (*.CT)|*.CT";
+            openFileDialogAdress.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments) + "\\My Cheat Tables\\";
+            if (openFileDialogAdress.ShowDialog() == DialogResult.OK)
+            {
+                txtDefaultFileAdress.Text = openFileDialogAdress.FileName;
+            }
         }
     }
 }

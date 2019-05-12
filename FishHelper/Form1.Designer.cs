@@ -48,9 +48,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openAdressStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openAdressStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAdressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OptionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,10 +75,22 @@
             this.btnNextScan = new System.Windows.Forms.Button();
             this.btnFirstScan = new System.Windows.Forms.Button();
             this.btnNewScan = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnCAdressCopy = new System.Windows.Forms.Button();
+            this.btnYAdressCopy = new System.Windows.Forms.Button();
+            this.btnXAdressCopy = new System.Windows.Forms.Button();
+            this.btbTestAdress = new System.Windows.Forms.Button();
+            this.lblCorner = new System.Windows.Forms.Label();
+            this.lblCoordY = new System.Windows.Forms.Label();
+            this.lblCoordX = new System.Windows.Forms.Label();
+            this.textBoxCorner = new System.Windows.Forms.TextBox();
+            this.labelTargetCorner = new System.Windows.Forms.Label();
+            this.textBoxCoordY = new System.Windows.Forms.TextBox();
+            this.labelTargetY = new System.Windows.Forms.Label();
+            this.textBoxCoordX = new System.Windows.Forms.TextBox();
+            this.labelTargetX = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.dgvCAdressList = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
@@ -93,19 +106,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tbYAdressMax = new System.Windows.Forms.TextBox();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.labelTargetX = new System.Windows.Forms.Label();
-            this.textBoxCoordX = new System.Windows.Forms.TextBox();
-            this.labelTargetY = new System.Windows.Forms.Label();
-            this.textBoxCoordY = new System.Windows.Forms.TextBox();
-            this.labelTargetCorner = new System.Windows.Forms.Label();
-            this.textBoxCorner = new System.Windows.Forms.TextBox();
-            this.lblCoordX = new System.Windows.Forms.Label();
-            this.lblCoordY = new System.Windows.Forms.Label();
-            this.lblCorner = new System.Windows.Forms.Label();
-            this.btbTestAdress = new System.Windows.Forms.Button();
-            this.btnXAdressCopy = new System.Windows.Forms.Button();
-            this.btnYAdressCopy = new System.Windows.Forms.Button();
-            this.btnCAdressCopy = new System.Windows.Forms.Button();
+            this.saveFileDialogAdressFile = new System.Windows.Forms.SaveFileDialog();
+            this.btnSaveToDefaultAdressFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -270,9 +272,10 @@
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
-            this.openAdressStripMenuItem,
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
+            this.openAdressStripMenuItem,
+            this.saveAdressToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
@@ -281,36 +284,43 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.openToolStripMenuItem.Text = "Открыть";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenFileToolStripMenuItem_Click);
-            // 
-            // openAdressStripMenuItem
-            // 
-            this.openAdressStripMenuItem.Name = "openAdressStripMenuItem";
-            this.openAdressStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.openAdressStripMenuItem.Text = "Открыть файл с адресами";
-            this.openAdressStripMenuItem.Click += new System.EventHandler(this.openAdressStripMenuItem1_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.saveToolStripMenuItem.Text = "Сохранить";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.saveAsToolStripMenuItem.Text = "Сохранить как...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
+            // 
+            // openAdressStripMenuItem
+            // 
+            this.openAdressStripMenuItem.Name = "openAdressStripMenuItem";
+            this.openAdressStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.openAdressStripMenuItem.Text = "Открыть файл с адресами";
+            this.openAdressStripMenuItem.Click += new System.EventHandler(this.openAdressStripMenuItem1_Click);
+            // 
+            // saveAdressToolStripMenuItem
+            // 
+            this.saveAdressToolStripMenuItem.Name = "saveAdressToolStripMenuItem";
+            this.saveAdressToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.saveAdressToolStripMenuItem.Text = "Сохранить файл с адресами";
+            this.saveAdressToolStripMenuItem.Click += new System.EventHandler(this.saveAdressToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.exitToolStripMenuItem.Text = "Выход";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -495,11 +505,6 @@
             this.btnNewScan.UseVisualStyleBackColor = true;
             this.btnNewScan.Click += new System.EventHandler(this.btnNewScan_Click);
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -544,6 +549,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnSaveToDefaultAdressFile);
             this.tabPage2.Controls.Add(this.btnCAdressCopy);
             this.tabPage2.Controls.Add(this.btnYAdressCopy);
             this.tabPage2.Controls.Add(this.btnXAdressCopy);
@@ -587,6 +593,121 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Поиск адресов";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnCAdressCopy
+            // 
+            this.btnCAdressCopy.Location = new System.Drawing.Point(262, 446);
+            this.btnCAdressCopy.Name = "btnCAdressCopy";
+            this.btnCAdressCopy.Size = new System.Drawing.Size(122, 23);
+            this.btnCAdressCopy.TabIndex = 79;
+            this.btnCAdressCopy.Text = "Скопировать адрес";
+            this.btnCAdressCopy.UseVisualStyleBackColor = true;
+            this.btnCAdressCopy.Click += new System.EventHandler(this.btnCAdressCopy_Click);
+            // 
+            // btnYAdressCopy
+            // 
+            this.btnYAdressCopy.Location = new System.Drawing.Point(262, 318);
+            this.btnYAdressCopy.Name = "btnYAdressCopy";
+            this.btnYAdressCopy.Size = new System.Drawing.Size(122, 23);
+            this.btnYAdressCopy.TabIndex = 78;
+            this.btnYAdressCopy.Text = "Скопировать адрес";
+            this.btnYAdressCopy.UseVisualStyleBackColor = true;
+            this.btnYAdressCopy.Click += new System.EventHandler(this.btnYAdressCopy_Click);
+            // 
+            // btnXAdressCopy
+            // 
+            this.btnXAdressCopy.Location = new System.Drawing.Point(262, 189);
+            this.btnXAdressCopy.Name = "btnXAdressCopy";
+            this.btnXAdressCopy.Size = new System.Drawing.Size(122, 23);
+            this.btnXAdressCopy.TabIndex = 77;
+            this.btnXAdressCopy.Text = "Скопировать адрес";
+            this.btnXAdressCopy.UseVisualStyleBackColor = true;
+            this.btnXAdressCopy.Click += new System.EventHandler(this.btnXAdressCopy_Click);
+            // 
+            // btbTestAdress
+            // 
+            this.btbTestAdress.Location = new System.Drawing.Point(243, 475);
+            this.btbTestAdress.Name = "btbTestAdress";
+            this.btbTestAdress.Size = new System.Drawing.Size(184, 23);
+            this.btbTestAdress.TabIndex = 76;
+            this.btbTestAdress.Text = "Проверка адресов памяти";
+            this.btbTestAdress.UseVisualStyleBackColor = true;
+            this.btbTestAdress.Click += new System.EventHandler(this.btbTestAdress_Click);
+            // 
+            // lblCorner
+            // 
+            this.lblCorner.AutoSize = true;
+            this.lblCorner.Location = new System.Drawing.Point(259, 430);
+            this.lblCorner.Name = "lblCorner";
+            this.lblCorner.Size = new System.Drawing.Size(139, 13);
+            this.lblCorner.TabIndex = 75;
+            this.lblCorner.Text = "<-Выберите адрес памяти";
+            // 
+            // lblCoordY
+            // 
+            this.lblCoordY.AutoSize = true;
+            this.lblCoordY.Location = new System.Drawing.Point(259, 302);
+            this.lblCoordY.Name = "lblCoordY";
+            this.lblCoordY.Size = new System.Drawing.Size(139, 13);
+            this.lblCoordY.TabIndex = 74;
+            this.lblCoordY.Text = "<-Выберите адрес памяти";
+            // 
+            // lblCoordX
+            // 
+            this.lblCoordX.AutoSize = true;
+            this.lblCoordX.Location = new System.Drawing.Point(259, 172);
+            this.lblCoordX.Name = "lblCoordX";
+            this.lblCoordX.Size = new System.Drawing.Size(139, 13);
+            this.lblCoordX.TabIndex = 73;
+            this.lblCoordX.Text = "<-Выберите адрес памяти";
+            // 
+            // textBoxCorner
+            // 
+            this.textBoxCorner.Location = new System.Drawing.Point(262, 407);
+            this.textBoxCorner.Name = "textBoxCorner";
+            this.textBoxCorner.Size = new System.Drawing.Size(122, 20);
+            this.textBoxCorner.TabIndex = 72;
+            // 
+            // labelTargetCorner
+            // 
+            this.labelTargetCorner.AutoSize = true;
+            this.labelTargetCorner.Location = new System.Drawing.Point(259, 391);
+            this.labelTargetCorner.Name = "labelTargetCorner";
+            this.labelTargetCorner.Size = new System.Drawing.Size(116, 13);
+            this.labelTargetCorner.TabIndex = 71;
+            this.labelTargetCorner.Text = "Адрес угла поворота:";
+            // 
+            // textBoxCoordY
+            // 
+            this.textBoxCoordY.Location = new System.Drawing.Point(262, 279);
+            this.textBoxCoordY.Name = "textBoxCoordY";
+            this.textBoxCoordY.Size = new System.Drawing.Size(122, 20);
+            this.textBoxCoordY.TabIndex = 70;
+            // 
+            // labelTargetY
+            // 
+            this.labelTargetY.AutoSize = true;
+            this.labelTargetY.Location = new System.Drawing.Point(259, 263);
+            this.labelTargetY.Name = "labelTargetY";
+            this.labelTargetY.Size = new System.Drawing.Size(115, 13);
+            this.labelTargetY.TabIndex = 69;
+            this.labelTargetY.Text = "Адрес Y координаты:";
+            // 
+            // textBoxCoordX
+            // 
+            this.textBoxCoordX.Location = new System.Drawing.Point(262, 149);
+            this.textBoxCoordX.Name = "textBoxCoordX";
+            this.textBoxCoordX.Size = new System.Drawing.Size(122, 20);
+            this.textBoxCoordX.TabIndex = 68;
+            // 
+            // labelTargetX
+            // 
+            this.labelTargetX.AutoSize = true;
+            this.labelTargetX.Location = new System.Drawing.Point(259, 133);
+            this.labelTargetX.Name = "labelTargetX";
+            this.labelTargetX.Size = new System.Drawing.Size(115, 13);
+            this.labelTargetX.TabIndex = 67;
+            this.labelTargetX.Text = "Адрес Х координаты:";
             // 
             // label14
             // 
@@ -720,120 +841,15 @@
             this.lblStatus.TabIndex = 53;
             this.lblStatus.Text = "Статус: ";
             // 
-            // labelTargetX
+            // btnSaveToDefaultAdressFile
             // 
-            this.labelTargetX.AutoSize = true;
-            this.labelTargetX.Location = new System.Drawing.Point(259, 133);
-            this.labelTargetX.Name = "labelTargetX";
-            this.labelTargetX.Size = new System.Drawing.Size(115, 13);
-            this.labelTargetX.TabIndex = 67;
-            this.labelTargetX.Text = "Адрес Х координаты:";
-            // 
-            // textBoxCoordX
-            // 
-            this.textBoxCoordX.Location = new System.Drawing.Point(262, 149);
-            this.textBoxCoordX.Name = "textBoxCoordX";
-            this.textBoxCoordX.Size = new System.Drawing.Size(122, 20);
-            this.textBoxCoordX.TabIndex = 68;
-            // 
-            // labelTargetY
-            // 
-            this.labelTargetY.AutoSize = true;
-            this.labelTargetY.Location = new System.Drawing.Point(259, 263);
-            this.labelTargetY.Name = "labelTargetY";
-            this.labelTargetY.Size = new System.Drawing.Size(115, 13);
-            this.labelTargetY.TabIndex = 69;
-            this.labelTargetY.Text = "Адрес Y координаты:";
-            // 
-            // textBoxCoordY
-            // 
-            this.textBoxCoordY.Location = new System.Drawing.Point(262, 279);
-            this.textBoxCoordY.Name = "textBoxCoordY";
-            this.textBoxCoordY.Size = new System.Drawing.Size(122, 20);
-            this.textBoxCoordY.TabIndex = 70;
-            // 
-            // labelTargetCorner
-            // 
-            this.labelTargetCorner.AutoSize = true;
-            this.labelTargetCorner.Location = new System.Drawing.Point(259, 391);
-            this.labelTargetCorner.Name = "labelTargetCorner";
-            this.labelTargetCorner.Size = new System.Drawing.Size(116, 13);
-            this.labelTargetCorner.TabIndex = 71;
-            this.labelTargetCorner.Text = "Адрес угла поворота:";
-            // 
-            // textBoxCorner
-            // 
-            this.textBoxCorner.Location = new System.Drawing.Point(262, 407);
-            this.textBoxCorner.Name = "textBoxCorner";
-            this.textBoxCorner.Size = new System.Drawing.Size(122, 20);
-            this.textBoxCorner.TabIndex = 72;
-            // 
-            // lblCoordX
-            // 
-            this.lblCoordX.AutoSize = true;
-            this.lblCoordX.Location = new System.Drawing.Point(259, 172);
-            this.lblCoordX.Name = "lblCoordX";
-            this.lblCoordX.Size = new System.Drawing.Size(139, 13);
-            this.lblCoordX.TabIndex = 73;
-            this.lblCoordX.Text = "<-Выберите адрес памяти";
-            // 
-            // lblCoordY
-            // 
-            this.lblCoordY.AutoSize = true;
-            this.lblCoordY.Location = new System.Drawing.Point(259, 302);
-            this.lblCoordY.Name = "lblCoordY";
-            this.lblCoordY.Size = new System.Drawing.Size(139, 13);
-            this.lblCoordY.TabIndex = 74;
-            this.lblCoordY.Text = "<-Выберите адрес памяти";
-            // 
-            // lblCorner
-            // 
-            this.lblCorner.AutoSize = true;
-            this.lblCorner.Location = new System.Drawing.Point(259, 430);
-            this.lblCorner.Name = "lblCorner";
-            this.lblCorner.Size = new System.Drawing.Size(139, 13);
-            this.lblCorner.TabIndex = 75;
-            this.lblCorner.Text = "<-Выберите адрес памяти";
-            // 
-            // btbTestAdress
-            // 
-            this.btbTestAdress.Location = new System.Drawing.Point(262, 488);
-            this.btbTestAdress.Name = "btbTestAdress";
-            this.btbTestAdress.Size = new System.Drawing.Size(122, 23);
-            this.btbTestAdress.TabIndex = 76;
-            this.btbTestAdress.Text = "Проверка адресов памяти";
-            this.btbTestAdress.UseVisualStyleBackColor = true;
-            this.btbTestAdress.Click += new System.EventHandler(this.btbTestAdress_Click);
-            // 
-            // btnXAdressCopy
-            // 
-            this.btnXAdressCopy.Location = new System.Drawing.Point(262, 189);
-            this.btnXAdressCopy.Name = "btnXAdressCopy";
-            this.btnXAdressCopy.Size = new System.Drawing.Size(122, 23);
-            this.btnXAdressCopy.TabIndex = 77;
-            this.btnXAdressCopy.Text = "Скопировать адрес";
-            this.btnXAdressCopy.UseVisualStyleBackColor = true;
-            this.btnXAdressCopy.Click += new System.EventHandler(this.btnXAdressCopy_Click);
-            // 
-            // btnYAdressCopy
-            // 
-            this.btnYAdressCopy.Location = new System.Drawing.Point(262, 318);
-            this.btnYAdressCopy.Name = "btnYAdressCopy";
-            this.btnYAdressCopy.Size = new System.Drawing.Size(122, 23);
-            this.btnYAdressCopy.TabIndex = 78;
-            this.btnYAdressCopy.Text = "Скопировать адрес";
-            this.btnYAdressCopy.UseVisualStyleBackColor = true;
-            this.btnYAdressCopy.Click += new System.EventHandler(this.btnYAdressCopy_Click);
-            // 
-            // btnCAdressCopy
-            // 
-            this.btnCAdressCopy.Location = new System.Drawing.Point(262, 446);
-            this.btnCAdressCopy.Name = "btnCAdressCopy";
-            this.btnCAdressCopy.Size = new System.Drawing.Size(122, 23);
-            this.btnCAdressCopy.TabIndex = 79;
-            this.btnCAdressCopy.Text = "Скопировать адрес";
-            this.btnCAdressCopy.UseVisualStyleBackColor = true;
-            this.btnCAdressCopy.Click += new System.EventHandler(this.btnCAdressCopy_Click);
+            this.btnSaveToDefaultAdressFile.Location = new System.Drawing.Point(243, 502);
+            this.btnSaveToDefaultAdressFile.Name = "btnSaveToDefaultAdressFile";
+            this.btnSaveToDefaultAdressFile.Size = new System.Drawing.Size(184, 23);
+            this.btnSaveToDefaultAdressFile.TabIndex = 80;
+            this.btnSaveToDefaultAdressFile.Text = "Сохранить в файл по умолчанию";
+            this.btnSaveToDefaultAdressFile.UseVisualStyleBackColor = true;
+            this.btnSaveToDefaultAdressFile.Click += new System.EventHandler(this.btnSaveToDefaultAdressFile_Click);
             // 
             // Form1
             // 
@@ -913,7 +929,6 @@
         private System.Windows.Forms.Button btnNextScan;
         private System.Windows.Forms.Button btnFirstScan;
         private System.Windows.Forms.Button btnNewScan;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -945,6 +960,9 @@
         private System.Windows.Forms.Button btnCAdressCopy;
         private System.Windows.Forms.Button btnYAdressCopy;
         private System.Windows.Forms.Button btnXAdressCopy;
+        private System.Windows.Forms.ToolStripMenuItem saveAdressToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialogAdressFile;
+        private System.Windows.Forms.Button btnSaveToDefaultAdressFile;
     }
 }
 

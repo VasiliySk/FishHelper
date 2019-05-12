@@ -142,8 +142,7 @@ namespace FishHelper
                             }
                         }
                     }
-                }                             
-                timer1.Enabled = true;
+                }
             }
             else
             {
@@ -170,6 +169,12 @@ namespace FishHelper
             dataGridView1.Columns[2].Width = 70;
             dataGridView1.Columns[3].Width = 70;
             dataGridView1.Columns[4].Width = 70;
+            dgvXAdressList.Columns[0].Width = 90;
+            dgvXAdressList.Columns[1].Width = 90;
+            dgvYAdressList.Columns[0].Width = 90;
+            dgvYAdressList.Columns[1].Width = 90;
+            dgvCAdressList.Columns[0].Width = 90;
+            dgvCAdressList.Columns[1].Width = 90;
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, Screen.PrimaryScreen.Bounds.Height - Convert.ToInt32(this.Height*1.5));//Переносим окно в левый нижний угол
             this.TopMost = true;
@@ -181,6 +186,11 @@ namespace FishHelper
             fishHelperFile = new FishHelperFile();
             lib = new CheatEngineLibrary();
             lib.loadEngine();
+            if (UserOptions.defaultFiles)
+            {
+                fishHelperFile.OpenFilePath(UserOptions.defaultPathFile, data);
+                fishHelperFile.OpenAdressFileAction(UserOptions.defaultAdressFile, textBoxCoordX, textBoxCoordY, textBoxCorner);
+            }
         }
 
         //Делаем окно Always on Top
@@ -799,8 +809,7 @@ namespace FishHelper
                     double.Parse(tbCAdressMax.Text, NumberStyles.AllowDecimalPoint) 
                 };
                 Tscanregionpreference writable = Tscanregionpreference.scanInclude,
-                    executable = Tscanregionpreference.scanDontCare, copyOnWrite = Tscanregionpreference.scanExclude;
-                timer1.Enabled = false;
+                    executable = Tscanregionpreference.scanDontCare, copyOnWrite = Tscanregionpreference.scanExclude;                
                 btnFirstScan.Enabled = false;
 
                 writable = Tscanregionpreference.scanInclude;
@@ -872,8 +881,7 @@ namespace FishHelper
         }
 
         private void btnNextScan_Click(object sender, EventArgs e)
-        {
-            timer1.Enabled = false;
+        {            
             btnNextScan.Enabled = false;
             firstScan = false;
             double[] adressMassive = new double[6]
@@ -1007,6 +1015,16 @@ namespace FishHelper
                 if (oneCell.Selected)
                     textBoxCorner.Text = (String)dgvCAdressList[0, oneCell.RowIndex].Value;
             }
+        }
+
+        private void saveAdressToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fishHelperFile.SaveAdressFileAs(saveFileDialogAdressFile, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text);
+        }
+
+        private void btnSaveToDefaultAdressFile_Click(object sender, EventArgs e)
+        {
+            fishHelperFile.SaveAdressFileAction(UserOptions.defaultAdressFile, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text);
         }
 
         private void tbCAdressMin_KeyPress(object sender, KeyPressEventArgs e)

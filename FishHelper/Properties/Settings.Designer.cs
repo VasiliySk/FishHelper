@@ -130,5 +130,41 @@ namespace FishHelper.Properties {
                 this["CancelAction"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DefaultFiles {
+            get {
+                return ((bool)(this["DefaultFiles"]));
+            }
+            set {
+                this["DefaultFiles"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DefaultPathFile {
+            get {
+                return ((string)(this["DefaultPathFile"]));
+            }
+            set {
+                this["DefaultPathFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DefaultAdressFile {
+            get {
+                return ((string)(this["DefaultAdressFile"]));
+            }
+            set {
+                this["DefaultAdressFile"] = value;
+            }
+        }
     }
 }

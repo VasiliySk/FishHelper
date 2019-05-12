@@ -48,11 +48,21 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cmbCancel = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.chkDefaultFiles = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtDefaultFilePath = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnSetDefaultFilePath = new System.Windows.Forms.Button();
+            this.btnSetDefaultFileAdress = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtDefaultFileAdress = new System.Windows.Forms.TextBox();
+            this.openFileDialogPath = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialogAdress = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(15, 322);
+            this.btnOk.Location = new System.Drawing.Point(15, 416);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(99, 23);
             this.btnOk.TabIndex = 0;
@@ -95,7 +105,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(155, 322);
+            this.btnCancel.Location = new System.Drawing.Point(155, 416);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(86, 23);
             this.btnCancel.TabIndex = 37;
@@ -110,7 +120,7 @@
             "Ничего не делать",
             "Повторить с начала списка в конец.",
             "Повторить с конца списка в начало."});
-            this.cmbSelect.Location = new System.Drawing.Point(15, 114);
+            this.cmbSelect.Location = new System.Drawing.Point(15, 132);
             this.cmbSelect.Name = "cmbSelect";
             this.cmbSelect.Size = new System.Drawing.Size(224, 21);
             this.cmbSelect.TabIndex = 38;
@@ -118,7 +128,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 87);
+            this.label5.Location = new System.Drawing.Point(12, 105);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(176, 13);
             this.label5.TabIndex = 39;
@@ -127,7 +137,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 149);
+            this.label2.Location = new System.Drawing.Point(12, 242);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(150, 13);
             this.label2.TabIndex = 40;
@@ -136,7 +146,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 196);
+            this.label3.Location = new System.Drawing.Point(14, 290);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 13);
             this.label3.TabIndex = 41;
@@ -145,7 +155,7 @@
             // cmbGoGoGo
             // 
             this.cmbGoGoGo.FormattingEnabled = true;
-            this.cmbGoGoGo.Location = new System.Drawing.Point(177, 193);
+            this.cmbGoGoGo.Location = new System.Drawing.Point(177, 287);
             this.cmbGoGoGo.Name = "cmbGoGoGo";
             this.cmbGoGoGo.Size = new System.Drawing.Size(64, 21);
             this.cmbGoGoGo.TabIndex = 42;
@@ -153,7 +163,7 @@
             // cmbGoSelect
             // 
             this.cmbGoSelect.FormattingEnabled = true;
-            this.cmbGoSelect.Location = new System.Drawing.Point(177, 218);
+            this.cmbGoSelect.Location = new System.Drawing.Point(177, 312);
             this.cmbGoSelect.Name = "cmbGoSelect";
             this.cmbGoSelect.Size = new System.Drawing.Size(64, 21);
             this.cmbGoSelect.TabIndex = 44;
@@ -161,7 +171,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 221);
+            this.label4.Location = new System.Drawing.Point(14, 315);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(157, 13);
             this.label4.TabIndex = 43;
@@ -170,7 +180,7 @@
             // cmbBackSelect
             // 
             this.cmbBackSelect.FormattingEnabled = true;
-            this.cmbBackSelect.Location = new System.Drawing.Point(177, 243);
+            this.cmbBackSelect.Location = new System.Drawing.Point(177, 337);
             this.cmbBackSelect.Name = "cmbBackSelect";
             this.cmbBackSelect.Size = new System.Drawing.Size(64, 21);
             this.cmbBackSelect.TabIndex = 46;
@@ -178,7 +188,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 246);
+            this.label6.Location = new System.Drawing.Point(14, 340);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(152, 13);
             this.label6.TabIndex = 45;
@@ -187,7 +197,7 @@
             // cmbFishing
             // 
             this.cmbFishing.FormattingEnabled = true;
-            this.cmbFishing.Location = new System.Drawing.Point(177, 268);
+            this.cmbFishing.Location = new System.Drawing.Point(177, 362);
             this.cmbFishing.Name = "cmbFishing";
             this.cmbFishing.Size = new System.Drawing.Size(64, 21);
             this.cmbFishing.TabIndex = 48;
@@ -195,7 +205,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 271);
+            this.label7.Location = new System.Drawing.Point(14, 365);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 47;
@@ -204,7 +214,7 @@
             // cmbFishingVer2
             // 
             this.cmbFishingVer2.FormattingEnabled = true;
-            this.cmbFishingVer2.Location = new System.Drawing.Point(177, 295);
+            this.cmbFishingVer2.Location = new System.Drawing.Point(177, 389);
             this.cmbFishingVer2.Name = "cmbFishingVer2";
             this.cmbFishingVer2.Size = new System.Drawing.Size(64, 21);
             this.cmbFishingVer2.TabIndex = 50;
@@ -212,7 +222,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 298);
+            this.label8.Location = new System.Drawing.Point(14, 392);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 13);
             this.label8.TabIndex = 49;
@@ -221,7 +231,7 @@
             // cmbCancel
             // 
             this.cmbCancel.FormattingEnabled = true;
-            this.cmbCancel.Location = new System.Drawing.Point(177, 168);
+            this.cmbCancel.Location = new System.Drawing.Point(177, 262);
             this.cmbCancel.Name = "cmbCancel";
             this.cmbCancel.Size = new System.Drawing.Size(64, 21);
             this.cmbCancel.TabIndex = 52;
@@ -229,17 +239,106 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(14, 171);
+            this.label9.Location = new System.Drawing.Point(14, 265);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(99, 13);
             this.label9.TabIndex = 51;
             this.label9.Text = "Отмена действия:";
             // 
+            // chkDefaultFiles
+            // 
+            this.chkDefaultFiles.AutoSize = true;
+            this.chkDefaultFiles.Checked = true;
+            this.chkDefaultFiles.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDefaultFiles.Location = new System.Drawing.Point(15, 80);
+            this.chkDefaultFiles.Name = "chkDefaultFiles";
+            this.chkDefaultFiles.Size = new System.Drawing.Size(193, 17);
+            this.chkDefaultFiles.TabIndex = 53;
+            this.chkDefaultFiles.Text = "Открывать файлы по умолчанию";
+            this.chkDefaultFiles.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 165);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(121, 13);
+            this.label10.TabIndex = 54;
+            this.label10.Text = "Файлы по умолчанию:";
+            // 
+            // txtDefaultFilePath
+            // 
+            this.txtDefaultFilePath.Location = new System.Drawing.Point(73, 184);
+            this.txtDefaultFilePath.Name = "txtDefaultFilePath";
+            this.txtDefaultFilePath.Size = new System.Drawing.Size(115, 20);
+            this.txtDefaultFilePath.TabIndex = 55;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 187);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(55, 13);
+            this.label11.TabIndex = 56;
+            this.label11.Text = "Маршрут:";
+            // 
+            // btnSetDefaultFilePath
+            // 
+            this.btnSetDefaultFilePath.Location = new System.Drawing.Point(192, 182);
+            this.btnSetDefaultFilePath.Name = "btnSetDefaultFilePath";
+            this.btnSetDefaultFilePath.Size = new System.Drawing.Size(53, 23);
+            this.btnSetDefaultFilePath.TabIndex = 57;
+            this.btnSetDefaultFilePath.Text = "Задать";
+            this.btnSetDefaultFilePath.UseVisualStyleBackColor = true;
+            this.btnSetDefaultFilePath.Click += new System.EventHandler(this.btnSetDefaultFilePath_Click);
+            // 
+            // btnSetDefaultFileAdress
+            // 
+            this.btnSetDefaultFileAdress.Location = new System.Drawing.Point(192, 208);
+            this.btnSetDefaultFileAdress.Name = "btnSetDefaultFileAdress";
+            this.btnSetDefaultFileAdress.Size = new System.Drawing.Size(53, 23);
+            this.btnSetDefaultFileAdress.TabIndex = 60;
+            this.btnSetDefaultFileAdress.Text = "Задать";
+            this.btnSetDefaultFileAdress.UseVisualStyleBackColor = true;
+            this.btnSetDefaultFileAdress.Click += new System.EventHandler(this.btnSetDefaultFileAdress_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(12, 213);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(47, 13);
+            this.label12.TabIndex = 59;
+            this.label12.Text = "Адреса:";
+            // 
+            // txtDefaultFileAdress
+            // 
+            this.txtDefaultFileAdress.Location = new System.Drawing.Point(73, 210);
+            this.txtDefaultFileAdress.Name = "txtDefaultFileAdress";
+            this.txtDefaultFileAdress.Size = new System.Drawing.Size(115, 20);
+            this.txtDefaultFileAdress.TabIndex = 58;
+            // 
+            // openFileDialogPath
+            // 
+            this.openFileDialogPath.FileName = "openFileDialog1";
+            // 
+            // openFileDialogAdress
+            // 
+            this.openFileDialogAdress.FileName = "openFileDialog2";
+            // 
             // OptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(257, 354);
+            this.ClientSize = new System.Drawing.Size(257, 445);
+            this.Controls.Add(this.btnSetDefaultFileAdress);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.txtDefaultFileAdress);
+            this.Controls.Add(this.btnSetDefaultFilePath);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtDefaultFilePath);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.chkDefaultFiles);
             this.Controls.Add(this.cmbCancel);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.cmbFishingVer2);
@@ -294,5 +393,15 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbCancel;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox chkDefaultFiles;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtDefaultFilePath;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnSetDefaultFilePath;
+        private System.Windows.Forms.Button btnSetDefaultFileAdress;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtDefaultFileAdress;
+        private System.Windows.Forms.OpenFileDialog openFileDialogPath;
+        private System.Windows.Forms.OpenFileDialog openFileDialogAdress;
     }
 }
