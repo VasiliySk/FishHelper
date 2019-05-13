@@ -68,9 +68,6 @@
             this.lvScanner = new System.Windows.Forms.ListView();
             this.colAddress = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tbXAdressMax = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tbXAdressMin = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.btnNextScan = new System.Windows.Forms.Button();
             this.btnFirstScan = new System.Windows.Forms.Button();
@@ -78,6 +75,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnSaveToDefaultAdressFile = new System.Windows.Forms.Button();
             this.btnCAdressCopy = new System.Windows.Forms.Button();
             this.btnYAdressCopy = new System.Windows.Forms.Button();
             this.btnXAdressCopy = new System.Windows.Forms.Button();
@@ -98,16 +96,12 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dgvXAdressList = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
-            this.tbCAdressMin = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tbCAdressMax = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.tbYAdressMin = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbYAdressMax = new System.Windows.Forms.TextBox();
             this.lblStatus = new System.Windows.Forms.Label();
             this.saveFileDialogAdressFile = new System.Windows.Forms.SaveFileDialog();
-            this.btnSaveToDefaultAdressFile = new System.Windows.Forms.Button();
+            this.txtXValue = new System.Windows.Forms.TextBox();
+            this.txtYValue = new System.Windows.Forms.TextBox();
+            this.txtCValue = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -418,12 +412,11 @@
             this.colValue});
             this.lvScanner.Location = new System.Drawing.Point(262, 55);
             this.lvScanner.Name = "lvScanner";
-            this.lvScanner.Size = new System.Drawing.Size(166, 72);
+            this.lvScanner.Size = new System.Drawing.Size(1, 1);
             this.lvScanner.TabIndex = 52;
             this.lvScanner.UseCompatibleStateImageBehavior = false;
             this.lvScanner.View = System.Windows.Forms.View.Details;
             this.lvScanner.VirtualMode = true;
-            this.lvScanner.Visible = false;
             this.lvScanner.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvScanner_RetrieveVirtualItem);
             // 
             // colAddress
@@ -436,41 +429,14 @@
             this.colValue.Text = "Value";
             this.colValue.Width = 50;
             // 
-            // tbXAdressMax
-            // 
-            this.tbXAdressMax.Location = new System.Drawing.Point(179, 55);
-            this.tbXAdressMax.Name = "tbXAdressMax";
-            this.tbXAdressMax.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tbXAdressMax.Size = new System.Drawing.Size(64, 20);
-            this.tbXAdressMax.TabIndex = 45;
-            this.tbXAdressMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbXAdressMax_KeyPress);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(134, 58);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(39, 13);
-            this.label10.TabIndex = 45;
-            this.label10.Text = "Х max:";
-            // 
-            // tbXAdressMin
-            // 
-            this.tbXAdressMin.Location = new System.Drawing.Point(54, 55);
-            this.tbXAdressMin.Name = "tbXAdressMin";
-            this.tbXAdressMin.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tbXAdressMin.Size = new System.Drawing.Size(64, 20);
-            this.tbXAdressMin.TabIndex = 44;
-            this.tbXAdressMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbXAdressMin_KeyPress);
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(6, 58);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(36, 13);
+            this.label11.Size = new System.Drawing.Size(68, 13);
             this.label11.TabIndex = 43;
-            this.label11.Text = "X min:";
+            this.label11.Text = "Значение X:";
             // 
             // btnNextScan
             // 
@@ -549,6 +515,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.txtCValue);
+            this.tabPage2.Controls.Add(this.txtYValue);
+            this.tabPage2.Controls.Add(this.txtXValue);
             this.tabPage2.Controls.Add(this.btnSaveToDefaultAdressFile);
             this.tabPage2.Controls.Add(this.btnCAdressCopy);
             this.tabPage2.Controls.Add(this.btnYAdressCopy);
@@ -570,22 +539,13 @@
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.dgvXAdressList);
             this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.tbCAdressMin);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.tbCAdressMax);
             this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.tbYAdressMin);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.tbYAdressMax);
             this.tabPage2.Controls.Add(this.lblStatus);
             this.tabPage2.Controls.Add(this.btnFirstScan);
             this.tabPage2.Controls.Add(this.lvScanner);
             this.tabPage2.Controls.Add(this.btnNewScan);
             this.tabPage2.Controls.Add(this.btnNextScan);
             this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.tbXAdressMin);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.tbXAdressMax);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -593,6 +553,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Поиск адресов";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnSaveToDefaultAdressFile
+            // 
+            this.btnSaveToDefaultAdressFile.Location = new System.Drawing.Point(243, 502);
+            this.btnSaveToDefaultAdressFile.Name = "btnSaveToDefaultAdressFile";
+            this.btnSaveToDefaultAdressFile.Size = new System.Drawing.Size(184, 23);
+            this.btnSaveToDefaultAdressFile.TabIndex = 80;
+            this.btnSaveToDefaultAdressFile.Text = "Сохранить в файл по умолчанию";
+            this.btnSaveToDefaultAdressFile.UseVisualStyleBackColor = true;
+            this.btnSaveToDefaultAdressFile.Click += new System.EventHandler(this.btnSaveToDefaultAdressFile_Click);
             // 
             // btnCAdressCopy
             // 
@@ -765,72 +735,18 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(6, 110);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 13);
+            this.label8.Size = new System.Drawing.Size(68, 13);
             this.label8.TabIndex = 58;
-            this.label8.Text = "C min:";
-            // 
-            // tbCAdressMin
-            // 
-            this.tbCAdressMin.Location = new System.Drawing.Point(54, 107);
-            this.tbCAdressMin.Name = "tbCAdressMin";
-            this.tbCAdressMin.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tbCAdressMin.Size = new System.Drawing.Size(64, 20);
-            this.tbCAdressMin.TabIndex = 48;
-            this.tbCAdressMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCAdressMin_KeyPress);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(134, 110);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(39, 13);
-            this.label9.TabIndex = 60;
-            this.label9.Text = "C max:";
-            // 
-            // tbCAdressMax
-            // 
-            this.tbCAdressMax.Location = new System.Drawing.Point(179, 107);
-            this.tbCAdressMax.Name = "tbCAdressMax";
-            this.tbCAdressMax.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tbCAdressMax.Size = new System.Drawing.Size(64, 20);
-            this.tbCAdressMax.TabIndex = 49;
-            this.tbCAdressMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCAdressMax_KeyPress);
+            this.label8.Text = "Значение C:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(6, 84);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.Size = new System.Drawing.Size(68, 13);
             this.label6.TabIndex = 54;
-            this.label6.Text = "Y min:";
-            // 
-            // tbYAdressMin
-            // 
-            this.tbYAdressMin.Location = new System.Drawing.Point(54, 81);
-            this.tbYAdressMin.Name = "tbYAdressMin";
-            this.tbYAdressMin.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tbYAdressMin.Size = new System.Drawing.Size(64, 20);
-            this.tbYAdressMin.TabIndex = 46;
-            this.tbYAdressMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbYAdressMin_KeyPress);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(134, 84);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 13);
-            this.label7.TabIndex = 56;
-            this.label7.Text = "Y max:";
-            // 
-            // tbYAdressMax
-            // 
-            this.tbYAdressMax.Location = new System.Drawing.Point(179, 81);
-            this.tbYAdressMax.Name = "tbYAdressMax";
-            this.tbYAdressMax.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tbYAdressMax.Size = new System.Drawing.Size(64, 20);
-            this.tbYAdressMax.TabIndex = 47;
-            this.tbYAdressMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbYAdressMax_KeyPress);
+            this.label6.Text = "Значение Y:";
             // 
             // lblStatus
             // 
@@ -841,15 +757,32 @@
             this.lblStatus.TabIndex = 53;
             this.lblStatus.Text = "Статус: ";
             // 
-            // btnSaveToDefaultAdressFile
+            // txtXValue
             // 
-            this.btnSaveToDefaultAdressFile.Location = new System.Drawing.Point(243, 502);
-            this.btnSaveToDefaultAdressFile.Name = "btnSaveToDefaultAdressFile";
-            this.btnSaveToDefaultAdressFile.Size = new System.Drawing.Size(184, 23);
-            this.btnSaveToDefaultAdressFile.TabIndex = 80;
-            this.btnSaveToDefaultAdressFile.Text = "Сохранить в файл по умолчанию";
-            this.btnSaveToDefaultAdressFile.UseVisualStyleBackColor = true;
-            this.btnSaveToDefaultAdressFile.Click += new System.EventHandler(this.btnSaveToDefaultAdressFile_Click);
+            this.txtXValue.Location = new System.Drawing.Point(80, 55);
+            this.txtXValue.Name = "txtXValue";
+            this.txtXValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtXValue.Size = new System.Drawing.Size(64, 20);
+            this.txtXValue.TabIndex = 81;
+            this.txtXValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnXValue_KeyPress);
+            // 
+            // txtYValue
+            // 
+            this.txtYValue.Location = new System.Drawing.Point(80, 81);
+            this.txtYValue.Name = "txtYValue";
+            this.txtYValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtYValue.Size = new System.Drawing.Size(64, 20);
+            this.txtYValue.TabIndex = 82;
+            this.txtYValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnYValue_KeyPress);
+            // 
+            // txtCValue
+            // 
+            this.txtCValue.Location = new System.Drawing.Point(80, 107);
+            this.txtCValue.Name = "txtCValue";
+            this.txtCValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtCValue.Size = new System.Drawing.Size(64, 20);
+            this.txtCValue.TabIndex = 83;
+            this.txtCValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnCValue_KeyPress);
             // 
             // Form1
             // 
@@ -922,9 +855,6 @@
         private System.Windows.Forms.ListView lvScanner;
         private System.Windows.Forms.ColumnHeader colAddress;
         private System.Windows.Forms.ColumnHeader colValue;
-        private System.Windows.Forms.TextBox tbXAdressMax;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox tbXAdressMin;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnNextScan;
         private System.Windows.Forms.Button btnFirstScan;
@@ -934,13 +864,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tbYAdressMin;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tbYAdressMax;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox tbCAdressMin;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox tbCAdressMax;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView dgvCAdressList;
         private System.Windows.Forms.Label label13;
@@ -963,6 +887,9 @@
         private System.Windows.Forms.ToolStripMenuItem saveAdressToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialogAdressFile;
         private System.Windows.Forms.Button btnSaveToDefaultAdressFile;
+        private System.Windows.Forms.TextBox txtCValue;
+        private System.Windows.Forms.TextBox txtYValue;
+        private System.Windows.Forms.TextBox txtXValue;
     }
 }
 

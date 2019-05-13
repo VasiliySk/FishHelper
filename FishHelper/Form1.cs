@@ -57,12 +57,12 @@ namespace FishHelper
                 double currentValue;
                 if (firstScan)
                 {                    
-                    double xMin = double.Parse(tbXAdressMin.Text, NumberStyles.AllowDecimalPoint);
-                    double xMax = double.Parse(tbXAdressMax.Text, NumberStyles.AllowDecimalPoint);
-                    double yMin = double.Parse(tbYAdressMin.Text, NumberStyles.AllowDecimalPoint);
-                    double yMax = double.Parse(tbYAdressMax.Text, NumberStyles.AllowDecimalPoint);
-                    double cMin = double.Parse(tbCAdressMin.Text, NumberStyles.AllowDecimalPoint);
-                    double cMax = double.Parse(tbCAdressMax.Text, NumberStyles.AllowDecimalPoint);
+                    double xMin = double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint)-0.01d;
+                    double xMax = double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint)+0.01d;
+                    double yMin = double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint)-0.01d;
+                    double yMax = double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint)+0.01d;
+                    double cMin = double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint)-0.01d;
+                    double cMax = double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint)+0.01d;
 
                     for (int k = 0; k < lvScanner.Items.Count; k++)
                     {                        
@@ -100,14 +100,14 @@ namespace FishHelper
                     {
                         cFirstAdressList.Add(new AdressList(cAdressList[s].mAdress, cAdressList[s].mValue));
                     }
-                    cAdressList.Clear();                    
+                    cAdressList.Clear();
 
-                    double xMin = double.Parse(tbXAdressMin.Text, NumberStyles.AllowDecimalPoint);
-                    double xMax = double.Parse(tbXAdressMax.Text, NumberStyles.AllowDecimalPoint);
-                    double yMin = double.Parse(tbYAdressMin.Text, NumberStyles.AllowDecimalPoint);
-                    double yMax = double.Parse(tbYAdressMax.Text, NumberStyles.AllowDecimalPoint);
-                    double cMin = double.Parse(tbCAdressMin.Text, NumberStyles.AllowDecimalPoint);
-                    double cMax = double.Parse(tbCAdressMax.Text, NumberStyles.AllowDecimalPoint);                    
+                    double xMin = double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint) - 0.01d;
+                    double xMax = double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint) + 0.01d;
+                    double yMin = double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint) - 0.01d;
+                    double yMax = double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint) + 0.01d;
+                    double cMin = double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint) - 0.01d;
+                    double cMax = double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint) + 0.01d;
                     for (int k = 0; k < lvScanner.Items.Count; k++)
                     {                        
                         Double.TryParse(lvScanner.Items[k].SubItems[1].Text, out currentValue);
@@ -801,12 +801,12 @@ namespace FishHelper
                 firstScan = true;
                 double[] adressMassive = new double[6]
                 {
-                    double.Parse(tbXAdressMin.Text, NumberStyles.AllowDecimalPoint),                
-                    double.Parse(tbXAdressMax.Text, NumberStyles.AllowDecimalPoint),                
-                    double.Parse(tbYAdressMin.Text, NumberStyles.AllowDecimalPoint),                
-                    double.Parse(tbYAdressMax.Text, NumberStyles.AllowDecimalPoint),                
-                    double.Parse(tbCAdressMin.Text, NumberStyles.AllowDecimalPoint),                
-                    double.Parse(tbCAdressMax.Text, NumberStyles.AllowDecimalPoint) 
+                    double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint)-0.01d,
+                    double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint)+0.01d,
+                    double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint)-0.01d,
+                    double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint)+0.01d,
+                    double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint)-0.01d,
+                    double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint)+0.01d
                 };
                 Tscanregionpreference writable = Tscanregionpreference.scanInclude,
                     executable = Tscanregionpreference.scanDontCare, copyOnWrite = Tscanregionpreference.scanExclude;                
@@ -853,30 +853,18 @@ namespace FishHelper
         //Проверяем, во все ли поля внесены данные.
         private bool checkInputData()
         {
-            if (tbXAdressMin.Text.Equals(""))
+            if (txtXValue.Text.Equals(""))
             {
                 return false;
             }
-            if (tbXAdressMax.Text.Equals(""))
+            if (txtYValue.Text.Equals(""))
             {
                 return false;
             }
-            if (tbYAdressMin.Text.Equals(""))
+            if (txtCValue.Text.Equals(""))
             {
                 return false;
-            }
-            if (tbYAdressMax.Text.Equals(""))
-            {
-                return false;
-            }
-            if (tbCAdressMin.Text.Equals(""))
-            {
-                return false;
-            }
-            if (tbCAdressMax.Text.Equals(""))
-            {
-                return false;
-            }
+            }            
             return true;
         }
 
@@ -886,12 +874,12 @@ namespace FishHelper
             firstScan = false;
             double[] adressMassive = new double[6]
                 {
-                    double.Parse(tbXAdressMin.Text, NumberStyles.AllowDecimalPoint),
-                    double.Parse(tbXAdressMax.Text, NumberStyles.AllowDecimalPoint),
-                    double.Parse(tbYAdressMin.Text, NumberStyles.AllowDecimalPoint),
-                    double.Parse(tbYAdressMax.Text, NumberStyles.AllowDecimalPoint),
-                    double.Parse(tbCAdressMin.Text, NumberStyles.AllowDecimalPoint),
-                    double.Parse(tbCAdressMax.Text, NumberStyles.AllowDecimalPoint)
+                    double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint)-0.01d,
+                    double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint)+0.01d,
+                    double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint)-0.01d,
+                    double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint)+0.01d,
+                    double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint)-0.01d,
+                    double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint)+0.01d
                 };
             lib.iNextScan(TScanOption.soValueBetween, TRoundingType.rtRounded, minDouble(adressMassive), maxDouble(adressMassive),
     false, false, false, false, false, false, "");
@@ -921,71 +909,7 @@ namespace FishHelper
                     lblStatus.Text = "ESO не обнаружен.";
                 }
             }            
-        }
-
-        private void tbXAdressMin_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                switch (e.KeyChar) //Обрабатываем точку и запятую
-                {
-                    case '.':
-                        e.KeyChar = ',';
-                        return;
-                    case ',':
-                        return;
-                }
-                e.Handled = true;
-            }
-        }
-
-        private void tbXAdressMax_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                switch (e.KeyChar) //Обрабатываем точку и запятую
-                {
-                    case '.':
-                        e.KeyChar = ',';
-                        return;
-                    case ',':
-                        return;
-                }
-                e.Handled = true;
-            }
-        }
-
-        private void tbYAdressMin_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                switch (e.KeyChar) //Обрабатываем точку и запятую
-                {
-                    case '.':
-                        e.KeyChar = ',';
-                        return;
-                    case ',':
-                        return;
-                }
-                e.Handled = true;
-            }
-        }
-
-        private void tbYAdressMax_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                switch (e.KeyChar) //Обрабатываем точку и запятую
-                {
-                    case '.':
-                        e.KeyChar = ',';
-                        return;
-                    case ',':
-                        return;
-                }
-                e.Handled = true;
-            }
-        }
+        }                           
 
         private void btnXAdressCopy_Click(object sender, EventArgs e)
         {
@@ -1027,7 +951,7 @@ namespace FishHelper
             fishHelperFile.SaveAdressFileAction(UserOptions.defaultAdressFile, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text);
         }
 
-        private void tbCAdressMin_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnXValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
@@ -1043,7 +967,7 @@ namespace FishHelper
             }
         }
 
-        private void tbCAdressMax_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnYValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
@@ -1058,5 +982,21 @@ namespace FishHelper
                 e.Handled = true;
             }
         }
+
+        private void btnCValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                switch (e.KeyChar) //Обрабатываем точку и запятую
+                {
+                    case '.':
+                        e.KeyChar = ',';
+                        return;
+                    case ',':
+                        return;
+                }
+                e.Handled = true;
+            }
+        }            
     }
 }
