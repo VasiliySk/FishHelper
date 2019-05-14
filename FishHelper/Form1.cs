@@ -788,6 +788,9 @@ namespace FishHelper
             btnNextScan.Enabled = false;
             btnFirstScan.Enabled = true;
             lvScanner.VirtualListSize = 0;
+            xAdressList.Clear();
+            yAdressList.Clear();
+            cAdressList.Clear();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -965,6 +968,13 @@ namespace FishHelper
                 }
                 e.Handled = true;
             }
+        }
+
+        private void btnClean_Click(object sender, EventArgs e)
+        {
+            txtXValue.Text = "";
+            txtYValue.Text = "";
+            txtCValue.Text = "";
         }
 
         private void btnYValue_KeyPress(object sender, KeyPressEventArgs e)

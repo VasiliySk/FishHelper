@@ -75,6 +75,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtCValue = new System.Windows.Forms.TextBox();
+            this.txtYValue = new System.Windows.Forms.TextBox();
+            this.txtXValue = new System.Windows.Forms.TextBox();
             this.btnSaveToDefaultAdressFile = new System.Windows.Forms.Button();
             this.btnCAdressCopy = new System.Windows.Forms.Button();
             this.btnYAdressCopy = new System.Windows.Forms.Button();
@@ -99,9 +102,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.saveFileDialogAdressFile = new System.Windows.Forms.SaveFileDialog();
-            this.txtXValue = new System.Windows.Forms.TextBox();
-            this.txtYValue = new System.Windows.Forms.TextBox();
-            this.txtCValue = new System.Windows.Forms.TextBox();
+            this.btnClean = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -515,6 +516,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnClean);
             this.tabPage2.Controls.Add(this.txtCValue);
             this.tabPage2.Controls.Add(this.txtYValue);
             this.tabPage2.Controls.Add(this.txtXValue);
@@ -553,6 +555,33 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Поиск адресов";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // txtCValue
+            // 
+            this.txtCValue.Location = new System.Drawing.Point(80, 107);
+            this.txtCValue.Name = "txtCValue";
+            this.txtCValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtCValue.Size = new System.Drawing.Size(64, 20);
+            this.txtCValue.TabIndex = 83;
+            this.txtCValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnCValue_KeyPress);
+            // 
+            // txtYValue
+            // 
+            this.txtYValue.Location = new System.Drawing.Point(80, 81);
+            this.txtYValue.Name = "txtYValue";
+            this.txtYValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtYValue.Size = new System.Drawing.Size(64, 20);
+            this.txtYValue.TabIndex = 82;
+            this.txtYValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnYValue_KeyPress);
+            // 
+            // txtXValue
+            // 
+            this.txtXValue.Location = new System.Drawing.Point(80, 55);
+            this.txtXValue.Name = "txtXValue";
+            this.txtXValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtXValue.Size = new System.Drawing.Size(64, 20);
+            this.txtXValue.TabIndex = 81;
+            this.txtXValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnXValue_KeyPress);
             // 
             // btnSaveToDefaultAdressFile
             // 
@@ -757,32 +786,15 @@
             this.lblStatus.TabIndex = 53;
             this.lblStatus.Text = "Статус: ";
             // 
-            // txtXValue
+            // btnClean
             // 
-            this.txtXValue.Location = new System.Drawing.Point(80, 55);
-            this.txtXValue.Name = "txtXValue";
-            this.txtXValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtXValue.Size = new System.Drawing.Size(64, 20);
-            this.txtXValue.TabIndex = 81;
-            this.txtXValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnXValue_KeyPress);
-            // 
-            // txtYValue
-            // 
-            this.txtYValue.Location = new System.Drawing.Point(80, 81);
-            this.txtYValue.Name = "txtYValue";
-            this.txtYValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtYValue.Size = new System.Drawing.Size(64, 20);
-            this.txtYValue.TabIndex = 82;
-            this.txtYValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnYValue_KeyPress);
-            // 
-            // txtCValue
-            // 
-            this.txtCValue.Location = new System.Drawing.Point(80, 107);
-            this.txtCValue.Name = "txtCValue";
-            this.txtCValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtCValue.Size = new System.Drawing.Size(64, 20);
-            this.txtCValue.TabIndex = 83;
-            this.txtCValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnCValue_KeyPress);
+            this.btnClean.Location = new System.Drawing.Point(261, 81);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(123, 23);
+            this.btnClean.TabIndex = 84;
+            this.btnClean.Text = "Очистить значания";
+            this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
             // Form1
             // 
@@ -890,6 +902,7 @@
         private System.Windows.Forms.TextBox txtCValue;
         private System.Windows.Forms.TextBox txtYValue;
         private System.Windows.Forms.TextBox txtXValue;
+        private System.Windows.Forms.Button btnClean;
     }
 }
 
