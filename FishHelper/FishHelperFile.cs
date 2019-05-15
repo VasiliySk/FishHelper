@@ -39,7 +39,16 @@ namespace FishHelper
         {
             data.Clear();
             this.data = data;
-            StreamReader myread = new StreamReader(filePath);
+            StreamReader myread;
+            //Обработка ошибки, если файл не найден
+            try
+            {
+                myread = new StreamReader(filePath);
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                return;
+            }
             string[] str;
             int num = 0;
             try
@@ -214,7 +223,16 @@ namespace FishHelper
 
         public void OpenAdressFileAction(String path, TextBox textBoxCoordX, TextBox textBoxCoordY, TextBox textBoxCorner)
         {
-            StreamReader myread = new StreamReader(path);
+            StreamReader myread;
+            //Обработка ошибки, если файл не найден
+            try
+            {
+                myread = new StreamReader(path);
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                return;
+            }
 
             int num = 0;
             int adressCount = 0;

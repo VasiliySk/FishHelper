@@ -75,6 +75,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnClean = new System.Windows.Forms.Button();
             this.txtCValue = new System.Windows.Forms.TextBox();
             this.txtYValue = new System.Windows.Forms.TextBox();
             this.txtXValue = new System.Windows.Forms.TextBox();
@@ -102,7 +103,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.saveFileDialogAdressFile = new System.Windows.Forms.SaveFileDialog();
-            this.btnClean = new System.Windows.Forms.Button();
+            this.btnCopyAdresses = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -516,6 +517,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnCopyAdresses);
             this.tabPage2.Controls.Add(this.btnClean);
             this.tabPage2.Controls.Add(this.txtCValue);
             this.tabPage2.Controls.Add(this.txtYValue);
@@ -555,6 +557,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Поиск адресов";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnClean
+            // 
+            this.btnClean.Location = new System.Drawing.Point(160, 79);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(113, 23);
+            this.btnClean.TabIndex = 84;
+            this.btnClean.Text = "Очистить значания";
+            this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
             // txtCValue
             // 
@@ -786,15 +798,15 @@
             this.lblStatus.TabIndex = 53;
             this.lblStatus.Text = "Статус: ";
             // 
-            // btnClean
+            // btnCopyAdresses
             // 
-            this.btnClean.Location = new System.Drawing.Point(261, 81);
-            this.btnClean.Name = "btnClean";
-            this.btnClean.Size = new System.Drawing.Size(123, 23);
-            this.btnClean.TabIndex = 84;
-            this.btnClean.Text = "Очистить значания";
-            this.btnClean.UseVisualStyleBackColor = true;
-            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
+            this.btnCopyAdresses.Location = new System.Drawing.Point(296, 79);
+            this.btnCopyAdresses.Name = "btnCopyAdresses";
+            this.btnCopyAdresses.Size = new System.Drawing.Size(123, 23);
+            this.btnCopyAdresses.TabIndex = 85;
+            this.btnCopyAdresses.Text = "Скопировать адреса";
+            this.btnCopyAdresses.UseVisualStyleBackColor = true;
+            this.btnCopyAdresses.Click += new System.EventHandler(this.btnCopyAdresses_Click);
             // 
             // Form1
             // 
@@ -903,6 +915,7 @@
         private System.Windows.Forms.TextBox txtYValue;
         private System.Windows.Forms.TextBox txtXValue;
         private System.Windows.Forms.Button btnClean;
+        private System.Windows.Forms.Button btnCopyAdresses;
     }
 }
 

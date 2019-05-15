@@ -188,7 +188,7 @@ namespace FishHelper
             lib.loadEngine();
             if (UserOptions.defaultFiles)
             {
-                fishHelperFile.OpenFilePath(UserOptions.defaultPathFile, data);
+                fishHelperFile.OpenFilePath(UserOptions.defaultPathFile, data);                
                 fishHelperFile.OpenAdressFileAction(UserOptions.defaultAdressFile, textBoxCoordX, textBoxCoordY, textBoxCorner);
             }
         }
@@ -975,6 +975,13 @@ namespace FishHelper
             txtXValue.Text = "";
             txtYValue.Text = "";
             txtCValue.Text = "";
+        }
+
+        private void btnCopyAdresses_Click(object sender, EventArgs e)
+        {
+            textBoxCoordX.Text = xAdressList[xAdressList.Count - 1].mAdress;
+            textBoxCoordY.Text = yAdressList[yAdressList.Count - 1].mAdress;
+            textBoxCorner.Text = cAdressList[cAdressList.Count - 1].mAdress;
         }
 
         private void btnYValue_KeyPress(object sender, KeyPressEventArgs e)
