@@ -31,6 +31,8 @@ namespace FishHelper
             cmbSelect.SelectedIndex = UserOptions.selectListAction;
             txtDefaultFilePath.Text = UserOptions.defaultPathFile;
             txtDefaultFileAdress.Text = UserOptions.defaultAdressFile;
+            txtESOlocateX.Text = Convert.ToString(UserOptions.esoLocateX);
+            txtESOlocateY.Text = Convert.ToString(UserOptions.esoLocateY);
             cmbCancel.SelectedIndex = UserOptions.cancelAction;
             cmbGoGoGo.SelectedIndex = UserOptions.goGoGo;
             cmbGoSelect.SelectedIndex = UserOptions.goSelect;
@@ -47,6 +49,8 @@ namespace FishHelper
             UserOptions.selectListAction = cmbSelect.SelectedIndex;
             UserOptions.defaultPathFile = txtDefaultFilePath.Text;
             UserOptions.defaultAdressFile = txtDefaultFileAdress.Text;
+            UserOptions.esoLocateX = Convert.ToInt32(txtESOlocateX.Text);
+            UserOptions.esoLocateY = Convert.ToInt32(txtESOlocateY.Text);
             UserOptions.cancelAction = cmbCancel.SelectedIndex;
             UserOptions.goGoGo = cmbGoGoGo.SelectedIndex;
             UserOptions.goSelect = cmbGoSelect.SelectedIndex;

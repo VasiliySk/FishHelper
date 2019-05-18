@@ -15,6 +15,8 @@ namespace FishHelper
         public static int selectListAction { get; set; }
         public static String defaultPathFile { get; set; }
         public static String defaultAdressFile { get; set; }
+        public static int esoLocateX { get; set; }
+        public static int esoLocateY { get; set; }
         public static int cancelAction { get; set; }
         public static int goGoGo { get; set; }
         public static int goSelect { get; set; }
@@ -36,6 +38,8 @@ namespace FishHelper
             Properties.Settings.Default.SelectListAction = selectListAction;
             Properties.Settings.Default.DefaultPathFile = defaultPathFile;
             Properties.Settings.Default.DefaultAdressFile = defaultAdressFile;
+            Properties.Settings.Default.ESOlocateX = esoLocateX;
+            Properties.Settings.Default.ESOlocateY = esoLocateY;
             Properties.Settings.Default.CancelAction = cancelAction;
             Properties.Settings.Default.GoGoGo = goGoGo;
             Properties.Settings.Default.GoSelect = goSelect;
@@ -54,6 +58,8 @@ namespace FishHelper
             selectListAction = Properties.Settings.Default.SelectListAction;
             defaultPathFile = Properties.Settings.Default.DefaultPathFile;
             defaultAdressFile = Properties.Settings.Default.DefaultAdressFile;
+            esoLocateX = Properties.Settings.Default.ESOlocateX;
+            esoLocateY = Properties.Settings.Default.ESOlocateY;
             cancelAction = Properties.Settings.Default.CancelAction;
             goGoGo = Properties.Settings.Default.GoGoGo;
             goSelect = Properties.Settings.Default.GoSelect;

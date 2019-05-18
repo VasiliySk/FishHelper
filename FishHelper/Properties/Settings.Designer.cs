@@ -166,5 +166,29 @@ namespace FishHelper.Properties {
                 this["DefaultAdressFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ESOlocateX {
+            get {
+                return ((int)(this["ESOlocateX"]));
+            }
+            set {
+                this["ESOlocateX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ESOlocateY {
+            get {
+                return ((int)(this["ESOlocateY"]));
+            }
+            set {
+                this["ESOlocateY"] = value;
+            }
+        }
     }
 }

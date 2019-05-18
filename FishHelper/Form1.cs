@@ -1,4 +1,5 @@
 ﻿using CheatEngine;
+using IronOcr;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -334,7 +335,7 @@ namespace FishHelper
 
         private void btnConsol_Click(object sender, EventArgs e)
         {
-           
+            
         }
         
         //Добавляем строку
@@ -419,22 +420,22 @@ namespace FishHelper
                      {
                          //Бежим к цели и потом рыбачим
                          hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
-                         Thread.Sleep(random.Next(1000, 2000));
+                         //Thread.Sleep(random.Next(1000, 2000));
                          hero.Fishing(esoWindow, hWnd);
-                         Thread.Sleep(random.Next(1000, 2000));
+                         //Thread.Sleep(random.Next(1000, 2000));
                      } else if (data[i].harvest == true)
                      {
                          //Бежим к цели и потом собираем ресурс
                          hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
-                         Thread.Sleep(random.Next(500, 1000));
+                         //Thread.Sleep(random.Next(500, 1000));
                          hero.GatheringResources(esoWindow, hWnd);
-                         Thread.Sleep(random.Next(3000, 4000));
+                         Thread.Sleep(random.Next(3000, 4000)); //Дожидаемся, пока ресурс соберется
                      }
                      else
                      {
                          //Бежим к цели
                          hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
-                         Thread.Sleep(random.Next(1000, 2000));
+                         //Thread.Sleep(random.Next(1000, 2000));
                      }
                  }
                  esoWindow.CloseHandle(processHandle);
@@ -464,23 +465,23 @@ namespace FishHelper
                     {
                         //Бежим к цели и потом рыбачим
                         hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
-                        Thread.Sleep(random.Next(1000, 2000));                       
+                        //Thread.Sleep(random.Next(1000, 2000));                       
                         hero.Fishing(esoWindow, hWnd);
-                        Thread.Sleep(random.Next(1000, 2000));
+                        //Thread.Sleep(random.Next(1000, 2000));
                     }
                     else if (data[i].harvest == true)
                     {
                         //Бежим к цели и потом собираем ресурс
                         hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
-                        Thread.Sleep(random.Next(500, 1000));
+                        //Thread.Sleep(random.Next(500, 1000));
                         hero.GatheringResources(esoWindow, hWnd);
-                        Thread.Sleep(random.Next(3000, 4000));
+                        Thread.Sleep(random.Next(3000, 4000)); //Дожидаемся, пока ресурс соберется
                     }
                     else
                     {
                         //Бежим к цели
                         hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
-                        Thread.Sleep(random.Next(1000, 2000));
+                        //Thread.Sleep(random.Next(1000, 2000));
                     }
                 }
                 esoWindow.CloseHandle(processHandle);
@@ -982,6 +983,35 @@ namespace FishHelper
             textBoxCoordX.Text = xAdressList[xAdressList.Count - 1].mAdress;
             textBoxCoordY.Text = yAdressList[yAdressList.Count - 1].mAdress;
             textBoxCorner.Text = cAdressList[cAdressList.Count - 1].mAdress;
+        }
+
+        //Переводим графические значения в текстовые
+        private void btnOCR_Click(object sender, EventArgs e)
+        {
+            var Ocr = new AutoOcr();
+            txtXValue.Text = "";
+            txtYValue.Text = "";
+            txtCValue.Text = "";
+            Bitmap bitmap = new Bitmap(148, 28); //Задаем размер считываемой области
+            Graphics graphics = Graphics.FromImage(bitmap as Image);
+            graphics.CopyFromScreen(UserOptions.esoLocateX, UserOptions.esoLocateY, 0, 0, bitmap.Size); // Задаем первыми двумя цифрами координаты начала (верхний левый угол) считываемого прямоугольника            
+            var Result = Ocr.Read(bitmap);
+            string[] str = Result.Text.Split(' ');
+            for (int i=0;i<str.Length;i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        txtXValue.Text = str[i].Replace('.',',');
+                        break;
+                    case 1:
+                        txtYValue.Text = str[i].Replace('.', ',');
+                        break;
+                    case 2:
+                        txtCValue.Text = str[i].Replace('.', ',');
+                        break;
+                }
+            }            
         }
 
         private void btnYValue_KeyPress(object sender, KeyPressEventArgs e)
