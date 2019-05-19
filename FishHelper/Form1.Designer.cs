@@ -75,6 +75,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnOCR = new System.Windows.Forms.Button();
             this.btnCopyAdresses = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
             this.txtCValue = new System.Windows.Forms.TextBox();
@@ -104,7 +105,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.saveFileDialogAdressFile = new System.Windows.Forms.SaveFileDialog();
-            this.btnOCR = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -113,6 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCAdressList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvYAdressList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvXAdressList)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCameraCorner
@@ -478,6 +482,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(0, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -559,6 +564,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Поиск адресов";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnOCR
+            // 
+            this.btnOCR.Location = new System.Drawing.Point(161, 62);
+            this.btnOCR.Name = "btnOCR";
+            this.btnOCR.Size = new System.Drawing.Size(113, 23);
+            this.btnOCR.TabIndex = 86;
+            this.btnOCR.Text = "OCR";
+            this.btnOCR.UseVisualStyleBackColor = true;
+            this.btnOCR.Click += new System.EventHandler(this.btnOCR_Click);
             // 
             // btnCopyAdresses
             // 
@@ -810,15 +825,37 @@
             this.lblStatus.TabIndex = 53;
             this.lblStatus.Text = "Статус: ";
             // 
-            // btnOCR
+            // tabPage3
             // 
-            this.btnOCR.Location = new System.Drawing.Point(161, 62);
-            this.btnOCR.Name = "btnOCR";
-            this.btnOCR.Size = new System.Drawing.Size(113, 23);
-            this.btnOCR.TabIndex = 86;
-            this.btnOCR.Text = "OCR";
-            this.btnOCR.UseVisualStyleBackColor = true;
-            this.btnOCR.Click += new System.EventHandler(this.btnOCR_Click);
+            this.tabPage3.Controls.Add(this.label7);
+            this.tabPage3.Controls.Add(this.linkLabel1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(433, 539);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Онлайн трансляция";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(113, 42);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(55, 13);
+            this.linkLabel1.TabIndex = 0;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "linkLabel1";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(21, 42);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(86, 13);
+            this.label7.TabIndex = 44;
+            this.label7.Text = "Адрес сервера:";
             // 
             // Form1
             // 
@@ -848,6 +885,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCAdressList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvYAdressList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvXAdressList)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -929,6 +968,9 @@
         private System.Windows.Forms.Button btnClean;
         private System.Windows.Forms.Button btnCopyAdresses;
         private System.Windows.Forms.Button btnOCR;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label label7;
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using CheatEngine;
+﻿using Chantzaras.Media.Streaming.Screencast;
+using CheatEngine;
 using IronOcr;
 using System;
 using System.Collections.Generic;
@@ -34,9 +35,12 @@ namespace FishHelper
         public static bool stopAction;
         private CheatEngineLibrary lib;
         private TScanOption scanopt;
-        private TVariableType varopt;   
-
+        private TVariableType varopt; 
         private const int wm_scandone = 0x8000 + 2;
+        //Переменные для онлайн трансляции
+        const int port = 8080; 
+        private ScreenCaptureStreamer _Server;
+
         protected override void WndProc(ref Message m)
         {            
             int size, i;
@@ -192,6 +196,7 @@ namespace FishHelper
                 fishHelperFile.OpenFilePath(UserOptions.defaultPathFile, data);                
                 fishHelperFile.OpenAdressFileAction(UserOptions.defaultAdressFile, textBoxCoordX, textBoxCoordY, textBoxCorner);
             }
+            this.linkLabel1.Text = string.Format("http://{0}:{1}", Environment.MachineName, port); //Ссылка на онлайн трансляцию
         }
 
         //Делаем окно Always on Top
@@ -494,7 +499,8 @@ namespace FishHelper
         {
             _listener = new LowLevelKeyboardListener();
             _listener.OnKeyPressed += _listener_OnKeyPressed;
-            _listener.HookKeyboard();        
+            _listener.HookKeyboard();
+            StartServer(); //Запускаем онлайн сервер трансляции
         }
 
         //Обработка нажатия функциональных клавиш
@@ -1030,6 +1036,11 @@ namespace FishHelper
             }
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(this.linkLabel1.Text);
+        }
+
         private void btnCValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -1044,6 +1055,12 @@ namespace FishHelper
                 }
                 e.Handled = true;
             }
-        }            
+        }
+        //Запуск сервера онлайн трансляции
+        public void StartServer()
+        {
+            _Server = new ScreenCaptureStreamer(640, 360, true);
+            _Server.Start(port);
+        }
     }
 }

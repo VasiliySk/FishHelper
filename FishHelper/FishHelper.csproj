@@ -79,6 +79,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screencast\IImageStreamer.cs" />
+    <Compile Include="Screencast\JpegStreaming.cs" />
+    <Compile Include="Screencast\MjpegStreamer.cs" />
+    <Compile Include="Screencast\MjpegWriter.cs" />
+    <Compile Include="Screencast\ScreenCapture.cs" />
+    <Compile Include="Screencast\ScreenCaptureStreamer.cs" />
     <Compile Include="UserOptions.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -109,5 +115,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
