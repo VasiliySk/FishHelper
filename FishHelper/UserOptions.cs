@@ -22,7 +22,10 @@ namespace FishHelper
         public static int goSelect { get; set; }
         public static int backSelect { get; set; }
         public static int fishing { get; set; }
-        public static int fishingVer2 { get; set; }        
+        public static int fishingVer2 { get; set; }
+        public static bool autoStartServer { get; set; }
+        public static int widthServer { get; set; }
+        public static int heightServer { get; set; }
 
         public enum FunctionKeys
         {
@@ -46,6 +49,9 @@ namespace FishHelper
             Properties.Settings.Default.BackSelect = backSelect;
             Properties.Settings.Default.Fishing = fishing;
             Properties.Settings.Default.FishingVer2 = fishingVer2;
+            Properties.Settings.Default.AutoStartServer = autoStartServer;
+            Properties.Settings.Default.WidthServer = widthServer;
+            Properties.Settings.Default.HeightServer = heightServer;
             Properties.Settings.Default.Save();
         }
 
@@ -66,6 +72,9 @@ namespace FishHelper
             backSelect = Properties.Settings.Default.BackSelect;
             fishing = Properties.Settings.Default.Fishing;
             fishingVer2 = Properties.Settings.Default.FishingVer2;
+            autoStartServer = Properties.Settings.Default.AutoStartServer;
+            widthServer = Properties.Settings.Default.WidthServer;
+            heightServer = Properties.Settings.Default.HeightServer;
         }
     }
 }

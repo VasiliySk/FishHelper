@@ -104,10 +104,19 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.saveFileDialogAdressFile = new System.Windows.Forms.SaveFileDialog();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnSaveServerSettings = new System.Windows.Forms.Button();
+            this.chkbAutoStartServer = new System.Windows.Forms.CheckBox();
+            this.txtHeightServer = new System.Windows.Forms.TextBox();
+            this.txtWidthServer = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.saveFileDialogAdressFile = new System.Windows.Forms.SaveFileDialog();
+            this.btnStartServer = new System.Windows.Forms.Button();
+            this.lblStatusServer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -827,6 +836,15 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.lblStatusServer);
+            this.tabPage3.Controls.Add(this.btnStartServer);
+            this.tabPage3.Controls.Add(this.label15);
+            this.tabPage3.Controls.Add(this.btnSaveServerSettings);
+            this.tabPage3.Controls.Add(this.chkbAutoStartServer);
+            this.tabPage3.Controls.Add(this.txtHeightServer);
+            this.tabPage3.Controls.Add(this.txtWidthServer);
+            this.tabPage3.Controls.Add(this.label9);
+            this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.label7);
             this.tabPage3.Controls.Add(this.linkLabel1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -837,10 +855,87 @@
             this.tabPage3.Text = "Онлайн трансляция";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.Location = new System.Drawing.Point(8, 145);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(346, 13);
+            this.label15.TabIndex = 89;
+            this.label15.Text = "*Изменение настроек применится после перезапуска программы";
+            // 
+            // btnSaveServerSettings
+            // 
+            this.btnSaveServerSettings.Location = new System.Drawing.Point(11, 119);
+            this.btnSaveServerSettings.Name = "btnSaveServerSettings";
+            this.btnSaveServerSettings.Size = new System.Drawing.Size(130, 23);
+            this.btnSaveServerSettings.TabIndex = 88;
+            this.btnSaveServerSettings.Text = "Сохранить настройки";
+            this.btnSaveServerSettings.UseVisualStyleBackColor = true;
+            this.btnSaveServerSettings.Click += new System.EventHandler(this.btnSaveServerSettings_Click);
+            // 
+            // chkbAutoStartServer
+            // 
+            this.chkbAutoStartServer.AutoSize = true;
+            this.chkbAutoStartServer.Checked = true;
+            this.chkbAutoStartServer.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkbAutoStartServer.Location = new System.Drawing.Point(11, 96);
+            this.chkbAutoStartServer.Name = "chkbAutoStartServer";
+            this.chkbAutoStartServer.Size = new System.Drawing.Size(130, 17);
+            this.chkbAutoStartServer.TabIndex = 87;
+            this.chkbAutoStartServer.Text = "Автозапуск сервера";
+            this.chkbAutoStartServer.UseVisualStyleBackColor = true;
+            // 
+            // txtHeightServer
+            // 
+            this.txtHeightServer.Location = new System.Drawing.Point(161, 65);
+            this.txtHeightServer.Name = "txtHeightServer";
+            this.txtHeightServer.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtHeightServer.Size = new System.Drawing.Size(64, 20);
+            this.txtHeightServer.TabIndex = 86;
+            this.txtHeightServer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHeightServer_KeyPress);
+            // 
+            // txtWidthServer
+            // 
+            this.txtWidthServer.Location = new System.Drawing.Point(161, 39);
+            this.txtWidthServer.Name = "txtWidthServer";
+            this.txtWidthServer.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtWidthServer.Size = new System.Drawing.Size(64, 20);
+            this.txtWidthServer.TabIndex = 85;
+            this.txtWidthServer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWidthServer_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 68);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(146, 13);
+            this.label9.TabIndex = 84;
+            this.label9.Text = "Высота экрана трансляции";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 42);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(147, 13);
+            this.label10.TabIndex = 83;
+            this.label10.Text = "Ширина экрана трансляции";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(86, 13);
+            this.label7.TabIndex = 44;
+            this.label7.Text = "Адрес сервера:";
+            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(113, 42);
+            this.linkLabel1.Location = new System.Drawing.Point(100, 16);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(55, 13);
             this.linkLabel1.TabIndex = 0;
@@ -848,14 +943,24 @@
             this.linkLabel1.Text = "linkLabel1";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // label7
+            // btnStartServer
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 42);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 13);
-            this.label7.TabIndex = 44;
-            this.label7.Text = "Адрес сервера:";
+            this.btnStartServer.Location = new System.Drawing.Point(143, 119);
+            this.btnStartServer.Name = "btnStartServer";
+            this.btnStartServer.Size = new System.Drawing.Size(134, 23);
+            this.btnStartServer.TabIndex = 90;
+            this.btnStartServer.Text = "Старт сервера";
+            this.btnStartServer.UseVisualStyleBackColor = true;
+            this.btnStartServer.Click += new System.EventHandler(this.btnStartServer_Click);
+            // 
+            // lblStatusServer
+            // 
+            this.lblStatusServer.AutoSize = true;
+            this.lblStatusServer.Location = new System.Drawing.Point(8, 523);
+            this.lblStatusServer.Name = "lblStatusServer";
+            this.lblStatusServer.Size = new System.Drawing.Size(47, 13);
+            this.lblStatusServer.TabIndex = 92;
+            this.lblStatusServer.Text = "Статус: ";
             // 
             // Form1
             // 
@@ -971,6 +1076,15 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtHeightServer;
+        private System.Windows.Forms.TextBox txtWidthServer;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnSaveServerSettings;
+        private System.Windows.Forms.CheckBox chkbAutoStartServer;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnStartServer;
+        private System.Windows.Forms.Label lblStatusServer;
     }
 }
 

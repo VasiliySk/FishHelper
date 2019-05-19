@@ -190,5 +190,41 @@ namespace FishHelper.Properties {
                 this["ESOlocateY"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AutoStartServer {
+            get {
+                return ((bool)(this["AutoStartServer"]));
+            }
+            set {
+                this["AutoStartServer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("640")]
+        public int WidthServer {
+            get {
+                return ((int)(this["WidthServer"]));
+            }
+            set {
+                this["WidthServer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("360")]
+        public int HeightServer {
+            get {
+                return ((int)(this["HeightServer"]));
+            }
+            set {
+                this["HeightServer"] = value;
+            }
+        }
     }
 }

@@ -196,7 +196,17 @@ namespace FishHelper
                 fishHelperFile.OpenFilePath(UserOptions.defaultPathFile, data);                
                 fishHelperFile.OpenAdressFileAction(UserOptions.defaultAdressFile, textBoxCoordX, textBoxCoordY, textBoxCorner);
             }
+            //Загрузка опций сервера трансляций
             this.linkLabel1.Text = string.Format("http://{0}:{1}", Environment.MachineName, port); //Ссылка на онлайн трансляцию
+            txtWidthServer.Text = Convert.ToString(UserOptions.widthServer);
+            txtHeightServer.Text = Convert.ToString(UserOptions.heightServer);
+            chkbAutoStartServer.Checked = UserOptions.autoStartServer;
+            if (UserOptions.autoStartServer)
+            {
+                StartServer(); //Запускаем онлайн сервер трансляции
+            }else{
+                lblStatusServer.Text = "Статус: Сервер остановлен.";
+            }
         }
 
         //Делаем окно Always on Top
@@ -499,8 +509,7 @@ namespace FishHelper
         {
             _listener = new LowLevelKeyboardListener();
             _listener.OnKeyPressed += _listener_OnKeyPressed;
-            _listener.HookKeyboard();
-            StartServer(); //Запускаем онлайн сервер трансляции
+            _listener.HookKeyboard();            
         }
 
         //Обработка нажатия функциональных клавиш
@@ -1041,6 +1050,55 @@ namespace FishHelper
             System.Diagnostics.Process.Start(this.linkLabel1.Text);
         }
 
+        private void txtWidthServer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                switch (e.KeyChar) //Обрабатываем точку и запятую
+                {
+                    case '.':
+                        e.KeyChar = ',';
+                        return;
+                    case ',':
+                        return;
+                }
+                e.Handled = true;
+            }
+        }
+
+        private void txtHeightServer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                switch (e.KeyChar) //Обрабатываем точку и запятую
+                {
+                    case '.':
+                        e.KeyChar = ',';
+                        return;
+                    case ',':
+                        return;
+                }
+                e.Handled = true;
+            }
+        }
+
+        private void btnSaveServerSettings_Click(object sender, EventArgs e)
+        {
+            UserOptions.widthServer = Convert.ToInt32(txtWidthServer.Text);
+            UserOptions.heightServer = Convert.ToInt32(txtHeightServer.Text);
+            UserOptions.autoStartServer = chkbAutoStartServer.Checked;
+            UserOptions.SaveSettings();
+            lblStatusServer.Text = "Статус: Настройки сохранены.";
+        }
+
+        private void btnStartServer_Click(object sender, EventArgs e)
+        {
+            if (_Server == null|| !_Server.IsRunning)
+            {
+                StartServer();
+            }
+        }
+
         private void btnCValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -1059,8 +1117,9 @@ namespace FishHelper
         //Запуск сервера онлайн трансляции
         public void StartServer()
         {
-            _Server = new ScreenCaptureStreamer(640, 360, true);
+            _Server = new ScreenCaptureStreamer(UserOptions.widthServer, UserOptions.heightServer, true);
             _Server.Start(port);
+            lblStatusServer.Text = "Статус: Сервер запущен.";
         }
     }
 }
