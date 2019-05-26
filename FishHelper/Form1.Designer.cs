@@ -105,6 +105,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnOpenInBrowser = new System.Windows.Forms.Button();
+            this.cmbServerIPList = new System.Windows.Forms.ComboBox();
+            this.txtPortServer = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.lblStatusServer = new System.Windows.Forms.Label();
+            this.btnStartServer = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.btnSaveServerSettings = new System.Windows.Forms.Button();
             this.chkbAutoStartServer = new System.Windows.Forms.CheckBox();
@@ -113,10 +119,32 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCaviarCalculate = new System.Windows.Forms.Button();
+            this.txtProfitCaviar = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtBaitChance = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtBaitPrice = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtCaviarPrice = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.saveFileDialogAdressFile = new System.Windows.Forms.SaveFileDialog();
-            this.btnStartServer = new System.Windows.Forms.Button();
-            this.lblStatusServer = new System.Windows.Forms.Label();
+            this.txtBaitChance2 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtBaitPrice2 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtAmbroziaPrice = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtMiriamPrice = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtBervezPrice = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.btnAmbroziaCalculate = new System.Windows.Forms.Button();
+            this.txtProfitAmbrozia = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -126,6 +154,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvYAdressList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvXAdressList)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCameraCorner
@@ -144,6 +175,7 @@
             this.txtTargetCorner.Name = "txtTargetCorner";
             this.txtTargetCorner.Size = new System.Drawing.Size(132, 20);
             this.txtTargetCorner.TabIndex = 13;
+            this.txtTargetCorner.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
             // 
             // label1
             // 
@@ -160,6 +192,7 @@
             this.txtboxXTarget.Name = "txtboxXTarget";
             this.txtboxXTarget.Size = new System.Drawing.Size(132, 20);
             this.txtboxXTarget.TabIndex = 15;
+            this.txtboxXTarget.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
             // 
             // label2
             // 
@@ -176,6 +209,7 @@
             this.txtboxYTarget.Name = "txtboxYTarget";
             this.txtboxYTarget.Size = new System.Drawing.Size(132, 20);
             this.txtboxYTarget.TabIndex = 17;
+            this.txtboxYTarget.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
             // 
             // label3
             // 
@@ -492,6 +526,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(0, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -611,7 +646,7 @@
             this.txtCValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtCValue.Size = new System.Drawing.Size(64, 20);
             this.txtCValue.TabIndex = 83;
-            this.txtCValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnCValue_KeyPress);
+            this.txtCValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
             // 
             // txtYValue
             // 
@@ -620,7 +655,7 @@
             this.txtYValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtYValue.Size = new System.Drawing.Size(64, 20);
             this.txtYValue.TabIndex = 82;
-            this.txtYValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnYValue_KeyPress);
+            this.txtYValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
             // 
             // txtXValue
             // 
@@ -629,7 +664,7 @@
             this.txtXValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtXValue.Size = new System.Drawing.Size(64, 20);
             this.txtXValue.TabIndex = 81;
-            this.txtXValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnXValue_KeyPress);
+            this.txtXValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
             // 
             // btnSaveToDefaultAdressFile
             // 
@@ -836,6 +871,10 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnOpenInBrowser);
+            this.tabPage3.Controls.Add(this.cmbServerIPList);
+            this.tabPage3.Controls.Add(this.txtPortServer);
+            this.tabPage3.Controls.Add(this.label16);
             this.tabPage3.Controls.Add(this.lblStatusServer);
             this.tabPage3.Controls.Add(this.btnStartServer);
             this.tabPage3.Controls.Add(this.label15);
@@ -846,7 +885,6 @@
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.label7);
-            this.tabPage3.Controls.Add(this.linkLabel1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -855,11 +893,66 @@
             this.tabPage3.Text = "Онлайн трансляция";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btnOpenInBrowser
+            // 
+            this.btnOpenInBrowser.Location = new System.Drawing.Point(297, 13);
+            this.btnOpenInBrowser.Name = "btnOpenInBrowser";
+            this.btnOpenInBrowser.Size = new System.Drawing.Size(130, 23);
+            this.btnOpenInBrowser.TabIndex = 96;
+            this.btnOpenInBrowser.Text = "Открыть в браузере";
+            this.btnOpenInBrowser.UseVisualStyleBackColor = true;
+            this.btnOpenInBrowser.Click += new System.EventHandler(this.btnOpenInBrowser_Click);
+            // 
+            // cmbServerIPList
+            // 
+            this.cmbServerIPList.FormattingEnabled = true;
+            this.cmbServerIPList.Location = new System.Drawing.Point(161, 13);
+            this.cmbServerIPList.Name = "cmbServerIPList";
+            this.cmbServerIPList.Size = new System.Drawing.Size(121, 21);
+            this.cmbServerIPList.TabIndex = 95;
+            // 
+            // txtPortServer
+            // 
+            this.txtPortServer.Location = new System.Drawing.Point(161, 39);
+            this.txtPortServer.Name = "txtPortServer";
+            this.txtPortServer.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtPortServer.Size = new System.Drawing.Size(64, 20);
+            this.txtPortServer.TabIndex = 94;
+            this.txtPortServer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(8, 42);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(32, 13);
+            this.label16.TabIndex = 93;
+            this.label16.Text = "Порт";
+            // 
+            // lblStatusServer
+            // 
+            this.lblStatusServer.AutoSize = true;
+            this.lblStatusServer.Location = new System.Drawing.Point(8, 523);
+            this.lblStatusServer.Name = "lblStatusServer";
+            this.lblStatusServer.Size = new System.Drawing.Size(47, 13);
+            this.lblStatusServer.TabIndex = 92;
+            this.lblStatusServer.Text = "Статус: ";
+            // 
+            // btnStartServer
+            // 
+            this.btnStartServer.Location = new System.Drawing.Point(143, 144);
+            this.btnStartServer.Name = "btnStartServer";
+            this.btnStartServer.Size = new System.Drawing.Size(134, 23);
+            this.btnStartServer.TabIndex = 90;
+            this.btnStartServer.Text = "Старт сервера";
+            this.btnStartServer.UseVisualStyleBackColor = true;
+            this.btnStartServer.Click += new System.EventHandler(this.btnStartServer_Click);
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(8, 145);
+            this.label15.Location = new System.Drawing.Point(8, 170);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(346, 13);
             this.label15.TabIndex = 89;
@@ -867,7 +960,7 @@
             // 
             // btnSaveServerSettings
             // 
-            this.btnSaveServerSettings.Location = new System.Drawing.Point(11, 119);
+            this.btnSaveServerSettings.Location = new System.Drawing.Point(11, 144);
             this.btnSaveServerSettings.Name = "btnSaveServerSettings";
             this.btnSaveServerSettings.Size = new System.Drawing.Size(130, 23);
             this.btnSaveServerSettings.TabIndex = 88;
@@ -880,7 +973,7 @@
             this.chkbAutoStartServer.AutoSize = true;
             this.chkbAutoStartServer.Checked = true;
             this.chkbAutoStartServer.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkbAutoStartServer.Location = new System.Drawing.Point(11, 96);
+            this.chkbAutoStartServer.Location = new System.Drawing.Point(11, 121);
             this.chkbAutoStartServer.Name = "chkbAutoStartServer";
             this.chkbAutoStartServer.Size = new System.Drawing.Size(130, 17);
             this.chkbAutoStartServer.TabIndex = 87;
@@ -889,26 +982,26 @@
             // 
             // txtHeightServer
             // 
-            this.txtHeightServer.Location = new System.Drawing.Point(161, 65);
+            this.txtHeightServer.Location = new System.Drawing.Point(161, 90);
             this.txtHeightServer.Name = "txtHeightServer";
             this.txtHeightServer.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtHeightServer.Size = new System.Drawing.Size(64, 20);
             this.txtHeightServer.TabIndex = 86;
-            this.txtHeightServer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHeightServer_KeyPress);
+            this.txtHeightServer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
             // 
             // txtWidthServer
             // 
-            this.txtWidthServer.Location = new System.Drawing.Point(161, 39);
+            this.txtWidthServer.Location = new System.Drawing.Point(161, 64);
             this.txtWidthServer.Name = "txtWidthServer";
             this.txtWidthServer.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtWidthServer.Size = new System.Drawing.Size(64, 20);
             this.txtWidthServer.TabIndex = 85;
-            this.txtWidthServer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWidthServer_KeyPress);
+            this.txtWidthServer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 68);
+            this.label9.Location = new System.Drawing.Point(8, 93);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(146, 13);
             this.label9.TabIndex = 84;
@@ -917,7 +1010,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(8, 42);
+            this.label10.Location = new System.Drawing.Point(8, 67);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(147, 13);
             this.label10.TabIndex = 83;
@@ -932,35 +1025,255 @@
             this.label7.TabIndex = 44;
             this.label7.Text = "Адрес сервера:";
             // 
-            // linkLabel1
+            // tabPage4
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(100, 16);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(55, 13);
-            this.linkLabel1.TabIndex = 0;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "linkLabel1";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.tabPage4.Controls.Add(this.groupBox2);
+            this.tabPage4.Controls.Add(this.groupBox1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(433, 539);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Экономика";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // btnStartServer
+            // groupBox2
             // 
-            this.btnStartServer.Location = new System.Drawing.Point(143, 119);
-            this.btnStartServer.Name = "btnStartServer";
-            this.btnStartServer.Size = new System.Drawing.Size(134, 23);
-            this.btnStartServer.TabIndex = 90;
-            this.btnStartServer.Text = "Старт сервера";
-            this.btnStartServer.UseVisualStyleBackColor = true;
-            this.btnStartServer.Click += new System.EventHandler(this.btnStartServer_Click);
+            this.groupBox2.Controls.Add(this.txtProfitAmbrozia);
+            this.groupBox2.Controls.Add(this.label26);
+            this.groupBox2.Controls.Add(this.btnAmbroziaCalculate);
+            this.groupBox2.Controls.Add(this.txtBervezPrice);
+            this.groupBox2.Controls.Add(this.label25);
+            this.groupBox2.Controls.Add(this.txtMiriamPrice);
+            this.groupBox2.Controls.Add(this.label24);
+            this.groupBox2.Controls.Add(this.txtBaitChance2);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.txtBaitPrice2);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.txtAmbroziaPrice);
+            this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Location = new System.Drawing.Point(219, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 216);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Амброзия";
             // 
-            // lblStatusServer
+            // groupBox1
             // 
-            this.lblStatusServer.AutoSize = true;
-            this.lblStatusServer.Location = new System.Drawing.Point(8, 523);
-            this.lblStatusServer.Name = "lblStatusServer";
-            this.lblStatusServer.Size = new System.Drawing.Size(47, 13);
-            this.lblStatusServer.TabIndex = 92;
-            this.lblStatusServer.Text = "Статус: ";
+            this.groupBox1.Controls.Add(this.btnCaviarCalculate);
+            this.groupBox1.Controls.Add(this.txtProfitCaviar);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.txtBaitChance);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.txtBaitPrice);
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.txtCaviarPrice);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Location = new System.Drawing.Point(8, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 216);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Икра";
+            // 
+            // btnCaviarCalculate
+            // 
+            this.btnCaviarCalculate.Location = new System.Drawing.Point(19, 158);
+            this.btnCaviarCalculate.Name = "btnCaviarCalculate";
+            this.btnCaviarCalculate.Size = new System.Drawing.Size(155, 23);
+            this.btnCaviarCalculate.TabIndex = 103;
+            this.btnCaviarCalculate.Text = "Рассчить прибыль от икры";
+            this.btnCaviarCalculate.UseVisualStyleBackColor = true;
+            this.btnCaviarCalculate.Click += new System.EventHandler(this.btnCaviarCalculate_Click);
+            // 
+            // txtProfitCaviar
+            // 
+            this.txtProfitCaviar.Location = new System.Drawing.Point(130, 187);
+            this.txtProfitCaviar.Name = "txtProfitCaviar";
+            this.txtProfitCaviar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtProfitCaviar.Size = new System.Drawing.Size(64, 20);
+            this.txtProfitCaviar.TabIndex = 102;
+            this.txtProfitCaviar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 190);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(96, 13);
+            this.label20.TabIndex = 101;
+            this.label20.Text = "Прибыль от икры";
+            this.label20.Click += new System.EventHandler(this.label20_Click);
+            // 
+            // txtBaitChance
+            // 
+            this.txtBaitChance.Location = new System.Drawing.Point(130, 77);
+            this.txtBaitChance.Name = "txtBaitChance";
+            this.txtBaitChance.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtBaitChance.Size = new System.Drawing.Size(64, 20);
+            this.txtBaitChance.TabIndex = 100;
+            this.txtBaitChance.TextChanged += new System.EventHandler(this.txtBaitChance_TextChanged);
+            this.txtBaitChance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 80);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(78, 13);
+            this.label19.TabIndex = 99;
+            this.label19.Text = "Шанс. Один к ";
+            // 
+            // txtBaitPrice
+            // 
+            this.txtBaitPrice.Location = new System.Drawing.Point(130, 48);
+            this.txtBaitPrice.Name = "txtBaitPrice";
+            this.txtBaitPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtBaitPrice.Size = new System.Drawing.Size(64, 20);
+            this.txtBaitPrice.TabIndex = 98;
+            this.txtBaitPrice.TextChanged += new System.EventHandler(this.txtBaitPrice_TextChanged);
+            this.txtBaitPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 51);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(88, 13);
+            this.label18.TabIndex = 97;
+            this.label18.Text = "Наживка. Цена.";
+            // 
+            // txtCaviarPrice
+            // 
+            this.txtCaviarPrice.Location = new System.Drawing.Point(130, 19);
+            this.txtCaviarPrice.Name = "txtCaviarPrice";
+            this.txtCaviarPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtCaviarPrice.Size = new System.Drawing.Size(64, 20);
+            this.txtCaviarPrice.TabIndex = 96;
+            this.txtCaviarPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 22);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(68, 13);
+            this.label17.TabIndex = 95;
+            this.label17.Text = "Икра. Цена.";
+            // 
+            // txtBaitChance2
+            // 
+            this.txtBaitChance2.Location = new System.Drawing.Point(130, 74);
+            this.txtBaitChance2.Name = "txtBaitChance2";
+            this.txtBaitChance2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtBaitChance2.Size = new System.Drawing.Size(64, 20);
+            this.txtBaitChance2.TabIndex = 106;
+            this.txtBaitChance2.TextChanged += new System.EventHandler(this.txtBaitChance2_TextChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 77);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(78, 13);
+            this.label21.TabIndex = 105;
+            this.label21.Text = "Шанс. Один к ";
+            // 
+            // txtBaitPrice2
+            // 
+            this.txtBaitPrice2.Location = new System.Drawing.Point(130, 45);
+            this.txtBaitPrice2.Name = "txtBaitPrice2";
+            this.txtBaitPrice2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtBaitPrice2.Size = new System.Drawing.Size(64, 20);
+            this.txtBaitPrice2.TabIndex = 104;
+            this.txtBaitPrice2.TextChanged += new System.EventHandler(this.txtBaitPrice2_TextChanged);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 48);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(88, 13);
+            this.label22.TabIndex = 103;
+            this.label22.Text = "Наживка. Цена.";
+            // 
+            // txtAmbroziaPrice
+            // 
+            this.txtAmbroziaPrice.Location = new System.Drawing.Point(130, 16);
+            this.txtAmbroziaPrice.Name = "txtAmbroziaPrice";
+            this.txtAmbroziaPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtAmbroziaPrice.Size = new System.Drawing.Size(64, 20);
+            this.txtAmbroziaPrice.TabIndex = 102;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 19);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(93, 13);
+            this.label23.TabIndex = 101;
+            this.label23.Text = "Амброзия. Цена.";
+            // 
+            // txtMiriamPrice
+            // 
+            this.txtMiriamPrice.Location = new System.Drawing.Point(145, 105);
+            this.txtMiriamPrice.Name = "txtMiriamPrice";
+            this.txtMiriamPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtMiriamPrice.Size = new System.Drawing.Size(49, 20);
+            this.txtMiriamPrice.TabIndex = 108;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 108);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(133, 13);
+            this.label24.TabIndex = 107;
+            this.label24.Text = "Морозная мириам. Цена";
+            // 
+            // txtBervezPrice
+            // 
+            this.txtBervezPrice.Location = new System.Drawing.Point(145, 132);
+            this.txtBervezPrice.Name = "txtBervezPrice";
+            this.txtBervezPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtBervezPrice.Size = new System.Drawing.Size(49, 20);
+            this.txtBervezPrice.TabIndex = 110;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 135);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(117, 13);
+            this.label25.TabIndex = 109;
+            this.label25.Text = "Бервезный сок. Цена";
+            // 
+            // btnAmbroziaCalculate
+            // 
+            this.btnAmbroziaCalculate.Location = new System.Drawing.Point(9, 158);
+            this.btnAmbroziaCalculate.Name = "btnAmbroziaCalculate";
+            this.btnAmbroziaCalculate.Size = new System.Drawing.Size(185, 23);
+            this.btnAmbroziaCalculate.TabIndex = 111;
+            this.btnAmbroziaCalculate.Text = "Рассчить прибыль от 4 амброзий";
+            this.btnAmbroziaCalculate.UseVisualStyleBackColor = true;
+            this.btnAmbroziaCalculate.Click += new System.EventHandler(this.btnAmbroziaCalculate_Click);
+            // 
+            // txtProfitAmbrozia
+            // 
+            this.txtProfitAmbrozia.Location = new System.Drawing.Point(130, 187);
+            this.txtProfitAmbrozia.Name = "txtProfitAmbrozia";
+            this.txtProfitAmbrozia.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtProfitAmbrozia.Size = new System.Drawing.Size(64, 20);
+            this.txtProfitAmbrozia.TabIndex = 113;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(6, 190);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(120, 13);
+            this.label26.TabIndex = 112;
+            this.label26.Text = "Прибыль от амброзий";
             // 
             // Form1
             // 
@@ -992,6 +1305,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvXAdressList)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1074,7 +1392,6 @@
         private System.Windows.Forms.Button btnCopyAdresses;
         private System.Windows.Forms.Button btnOCR;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtHeightServer;
         private System.Windows.Forms.TextBox txtWidthServer;
@@ -1085,6 +1402,35 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnStartServer;
         private System.Windows.Forms.Label lblStatusServer;
+        private System.Windows.Forms.TextBox txtPortServer;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox cmbServerIPList;
+        private System.Windows.Forms.Button btnOpenInBrowser;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtProfitCaviar;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtBaitChance;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txtBaitPrice;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtCaviarPrice;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button btnCaviarCalculate;
+        private System.Windows.Forms.TextBox txtProfitAmbrozia;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button btnAmbroziaCalculate;
+        private System.Windows.Forms.TextBox txtBervezPrice;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox txtMiriamPrice;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtBaitChance2;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtBaitPrice2;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtAmbroziaPrice;
+        private System.Windows.Forms.Label label23;
     }
 }
 

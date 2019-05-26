@@ -8,6 +8,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
@@ -18,9 +20,9 @@ using static FishHelper.EsoWindow;
 using static FishHelper.UserOptions;
 
 namespace FishHelper
-{
+       {
     public partial class Form1 : Form
-    {     
+    {       
         int pid; //Идентификатор игры
         EsoWindow esoWindow;
         Hero hero;
@@ -41,6 +43,7 @@ namespace FishHelper
         const int port = 8080; 
         private ScreenCaptureStreamer _Server;
 
+        //Обработка ответа Cheat Engine Dll
         protected override void WndProc(ref Message m)
         {            
             int size, i;
@@ -197,7 +200,11 @@ namespace FishHelper
                 fishHelperFile.OpenAdressFileAction(UserOptions.defaultAdressFile, textBoxCoordX, textBoxCoordY, textBoxCorner);
             }
             //Загрузка опций сервера трансляций
-            this.linkLabel1.Text = string.Format("http://{0}:{1}", Environment.MachineName, port); //Ссылка на онлайн трансляцию
+            IPAddress[] addresses = Dns.GetHostAddresses(Dns.GetHostName()).Where(a => a.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).ToArray();
+            cmbServerIPList.Items.Add(Environment.MachineName);
+            cmbServerIPList.Items.AddRange(addresses);
+            cmbServerIPList.SelectedIndex = 0;            
+            txtPortServer.Text = Convert.ToString(UserOptions.portServer);
             txtWidthServer.Text = Convert.ToString(UserOptions.widthServer);
             txtHeightServer.Text = Convert.ToString(UserOptions.heightServer);
             chkbAutoStartServer.Checked = UserOptions.autoStartServer;
@@ -207,6 +214,15 @@ namespace FishHelper
             }else{
                 lblStatusServer.Text = "Статус: Сервер остановлен.";
             }
+            //Загрузка данных по экономике
+            txtCaviarPrice.Text = UserOptions.caviarPrice;
+            txtAmbroziaPrice.Text = UserOptions.ambroziaPrice;
+            txtBaitPrice.Text = UserOptions.baitPrice;
+            txtBaitPrice2.Text = UserOptions.baitPrice;
+            txtBaitChance.Text = UserOptions.baitChance;
+            txtBaitChance2.Text = UserOptions.baitChance;
+            txtMiriamPrice.Text = UserOptions.miriamPrice;
+            txtBervezPrice.Text = UserOptions.bervezPrice;
         }
 
         //Делаем окно Always on Top
@@ -429,7 +445,7 @@ namespace FishHelper
                  for (int i = count; i < data.Count; i++)
                  {
                      if (stopAction) return;
-                     esoWindow.SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED);//Сбрасываем счетчик выключения монитора
+                     esoWindow.SetThreadExecutionState(EXECUTION_STATE.ES_DISPLAY_REQUIRED);//Сбрасываем счетчик выключения монитора   
                      SetRowColor(i);
                      if (data[i].holeType == true)
                      {
@@ -787,16 +803,10 @@ namespace FishHelper
                 lvi.SubItems.Add(lvsi); 			// assign subitem to item
                 e.Item = lvi; 		// assign item to event argument's item-property
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            //lib.iResetValues();
-            //lvScanner.Refresh();
-        }                 
+        }                        
 
         private void btnNewScan_Click(object sender, EventArgs e)
         {
@@ -901,7 +911,7 @@ namespace FishHelper
                     double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint)+0.01d
                 };
             lib.iNextScan(TScanOption.soValueBetween, TRoundingType.rtRounded, minDouble(adressMassive), maxDouble(adressMassive),
-    false, false, false, false, false, false, "");
+            false, false, false, false, false, false, "");
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -968,23 +978,7 @@ namespace FishHelper
         private void btnSaveToDefaultAdressFile_Click(object sender, EventArgs e)
         {
             fishHelperFile.SaveAdressFileAction(UserOptions.defaultAdressFile, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text);
-        }
-
-        private void btnXValue_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                switch (e.KeyChar) //Обрабатываем точку и запятую
-                {
-                    case '.':
-                        e.KeyChar = ',';
-                        return;
-                    case ',':
-                        return;
-                }
-                e.Handled = true;
-            }
-        }
+        }        
 
         private void btnClean_Click(object sender, EventArgs e)
         {
@@ -1027,63 +1021,11 @@ namespace FishHelper
                         break;
                 }
             }            
-        }
-
-        private void btnYValue_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                switch (e.KeyChar) //Обрабатываем точку и запятую
-                {
-                    case '.':
-                        e.KeyChar = ',';
-                        return;
-                    case ',':
-                        return;
-                }
-                e.Handled = true;
-            }
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start(this.linkLabel1.Text);
-        }
-
-        private void txtWidthServer_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                switch (e.KeyChar) //Обрабатываем точку и запятую
-                {
-                    case '.':
-                        e.KeyChar = ',';
-                        return;
-                    case ',':
-                        return;
-                }
-                e.Handled = true;
-            }
-        }
-
-        private void txtHeightServer_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                switch (e.KeyChar) //Обрабатываем точку и запятую
-                {
-                    case '.':
-                        e.KeyChar = ',';
-                        return;
-                    case ',':
-                        return;
-                }
-                e.Handled = true;
-            }
-        }
+        }    
 
         private void btnSaveServerSettings_Click(object sender, EventArgs e)
         {
+            UserOptions.portServer = Convert.ToInt32(txtPortServer.Text);
             UserOptions.widthServer = Convert.ToInt32(txtWidthServer.Text);
             UserOptions.heightServer = Convert.ToInt32(txtHeightServer.Text);
             UserOptions.autoStartServer = chkbAutoStartServer.Checked;
@@ -1099,26 +1041,79 @@ namespace FishHelper
             }
         }
 
-        private void btnCValue_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnOpenInBrowser_Click(object sender, EventArgs e)
+        {
+            Process.Start(string.Format("http://{0}:{1}", cmbServerIPList.SelectedItem, UserOptions.portServer));
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+        //Рассчитываем прибыль от икры и сохраняем данные
+        private void btnCaviarCalculate_Click(object sender, EventArgs e)
+        {
+            txtProfitCaviar.Text = Convert.ToString(Convert.ToDouble(txtCaviarPrice.Text) * 0.92 - Convert.ToDouble(txtBaitPrice.Text) * Convert.ToDouble(txtBaitChance.Text));
+            UserOptions.caviarPrice = txtCaviarPrice.Text;
+            UserOptions.baitPrice = txtBaitPrice.Text;
+            UserOptions.baitChance = txtBaitChance.Text;
+            UserOptions.SaveSettings();
+        }
+        //Рассчитываем прибыль от амброзий и сохраняем данные
+        private void btnAmbroziaCalculate_Click(object sender, EventArgs e)
+        {
+            txtProfitAmbrozia.Text = Convert.ToString(Convert.ToDouble(txtAmbroziaPrice.Text)*4*0.92- Convert.ToDouble(txtBaitPrice2.Text) * Convert.ToDouble(txtBaitChance2.Text)
+                - Convert.ToDouble(txtMiriamPrice.Text)- Convert.ToDouble(txtBervezPrice.Text));
+            UserOptions.ambroziaPrice= txtAmbroziaPrice.Text;            
+            UserOptions.baitPrice= txtBaitPrice2.Text;            
+            UserOptions.baitChance= txtBaitChance2.Text;
+            UserOptions.miriamPrice= txtMiriamPrice.Text;
+            UserOptions.bervezPrice= txtBervezPrice.Text;
+            UserOptions.SaveSettings();
+        }
+
+        private void txtBaitPrice2_TextChanged(object sender, EventArgs e)
+        {
+            txtBaitPrice.Text = txtBaitPrice2.Text;
+        }
+
+        private void txtBaitPrice_TextChanged(object sender, EventArgs e)
+        {
+            txtBaitPrice2.Text = txtBaitPrice.Text;
+        }
+
+        private void txtBaitChance_TextChanged(object sender, EventArgs e)
+        {
+            txtBaitChance2.Text = txtBaitChance.Text;
+        }
+
+        private void txtBaitChance2_TextChanged(object sender, EventArgs e)
+        {
+            txtBaitChance.Text = txtBaitChance2.Text;
+        }
+
+        //Обрабатываем нажатие клавиш. Только цифры и запятая
+        private void btnOnlyNumbers_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 switch (e.KeyChar) //Обрабатываем точку и запятую
                 {
                     case '.':
-                        e.KeyChar = ',';
+                        e.KeyChar = ',';                        
                         return;
-                    case ',':
+                    case ',':                        
                         return;
-                }
+                }                
                 e.Handled = true;
             }
         }
+
         //Запуск сервера онлайн трансляции
         public void StartServer()
         {
-            _Server = new ScreenCaptureStreamer(UserOptions.widthServer, UserOptions.heightServer, true);
-            _Server.Start(port);
+            _Server = new ScreenCaptureStreamer(UserOptions.widthServer, UserOptions.heightServer, false);
+            _Server.Start(UserOptions.portServer);
             lblStatusServer.Text = "Статус: Сервер запущен.";
         }
     }

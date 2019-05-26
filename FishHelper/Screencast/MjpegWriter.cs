@@ -61,8 +61,8 @@ namespace Chantzaras.Media.Streaming.Mjpeg
         {
 
             StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine();
+            
+            sb.AppendLine();            
             sb.AppendLine(this.Boundary);
             sb.AppendLine("Content-Type: image/jpeg");
             sb.AppendLine("Content-Length: " + imageStream.Length.ToString());

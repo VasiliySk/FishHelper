@@ -27,7 +27,7 @@ namespace FishHelper
             //Загружаем настройки
             chkbAlwaysOnTop.Checked = UserOptions.alwaysOnTop;
             chkHideToNotify.Checked = UserOptions.hideToNotify;
-            chkDefaultFiles.Checked = UserOptions.defaultFiles;
+            chkDefaultFiles.Checked = UserOptions.defaultFiles;            
             cmbSelect.SelectedIndex = UserOptions.selectListAction;
             txtDefaultFilePath.Text = UserOptions.defaultPathFile;
             txtDefaultFileAdress.Text = UserOptions.defaultAdressFile;
@@ -45,7 +45,7 @@ namespace FishHelper
         {
             UserOptions.alwaysOnTop = chkbAlwaysOnTop.Checked;
             UserOptions.hideToNotify = chkHideToNotify.Checked;
-            UserOptions.defaultFiles = chkDefaultFiles.Checked;
+            UserOptions.defaultFiles = chkDefaultFiles.Checked;            
             UserOptions.selectListAction = cmbSelect.SelectedIndex;
             UserOptions.defaultPathFile = txtDefaultFilePath.Text;
             UserOptions.defaultAdressFile = txtDefaultFileAdress.Text;
@@ -64,12 +64,7 @@ namespace FishHelper
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void OptionsForm_Load(object sender, EventArgs e)
-        {
-
-        }
+        }       
 
         private void btnSetDefaultFilePath_Click(object sender, EventArgs e)
         {

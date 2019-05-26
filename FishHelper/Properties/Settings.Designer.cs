@@ -226,5 +226,89 @@ namespace FishHelper.Properties {
                 this["HeightServer"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8080")]
+        public int PortServer {
+            get {
+                return ((int)(this["PortServer"]));
+            }
+            set {
+                this["PortServer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string CaviarPrice {
+            get {
+                return ((string)(this["CaviarPrice"]));
+            }
+            set {
+                this["CaviarPrice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string AmbroziaPrice {
+            get {
+                return ((string)(this["AmbroziaPrice"]));
+            }
+            set {
+                this["AmbroziaPrice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string BaitPrice {
+            get {
+                return ((string)(this["BaitPrice"]));
+            }
+            set {
+                this["BaitPrice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string BaitChance {
+            get {
+                return ((string)(this["BaitChance"]));
+            }
+            set {
+                this["BaitChance"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string MiriamPrice {
+            get {
+                return ((string)(this["MiriamPrice"]));
+            }
+            set {
+                this["MiriamPrice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string BervezPrice {
+            get {
+                return ((string)(this["BervezPrice"]));
+            }
+            set {
+                this["BervezPrice"] = value;
+            }
+        }
     }
 }
