@@ -33,6 +33,7 @@ namespace FishHelper
         BindingList<FishPath> data;        
         BindingList<AdressList> xAdressList, yAdressList, cAdressList; //Коллекции отфильтрованных адресов
         bool firstScan;
+        bool autoSearch;
         private LowLevelKeyboardListener _listener; //  Слушаем нажатие клавиш
         public static bool stopAction;
         private CheatEngineLibrary lib;
@@ -60,7 +61,7 @@ namespace FishHelper
                     lvScanner.VirtualListSize = i;
                 }
                 lblStatus.Text ="Найдено "+  lib.iCountAddressesFound().ToString()+ " адресов.";
-                btnNextScan.Enabled = true;
+                
 
                 double currentValue;
                 if (firstScan)
@@ -88,9 +89,28 @@ namespace FishHelper
                             cAdressList.Add(new AdressList(lvScanner.Items[k].SubItems[0].Text, lvScanner.Items[k].SubItems[1].Text));
                         }
                     }
+                    btnNextScan.Enabled = true;
+                    if (autoSearch)
+                    {
+                        ActivateEsoWindow();
+                        esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)Keys.W), new IntPtr(0));
+                        Thread.Sleep(1000);
+                        esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)Keys.W), new IntPtr(0));
+                        Thread.Sleep(100);
+                        esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)Keys.A), new IntPtr(0));
+                        Thread.Sleep(1000);
+                        esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)Keys.A), new IntPtr(0));
+                        Thread.Sleep(100);
+                        Point cursorPosition = new Point();
+                        esoWindow.GetCursorPos(out cursorPosition);
+                        esoWindow.SetCursorPos(cursorPosition.X - 20, cursorPosition.Y);
+                        Thread.Sleep(500);
+                        btnOCR_Click(null, null);
+                        btnNextScan_Click(null, null);
+                    }
                 }
                 else
-                {    
+                {                    
                     BindingList<AdressList> xFirstAdressList = new BindingList<AdressList>();
                     for (int s = 0; s< xAdressList.Count; s++)
                     {
@@ -150,6 +170,11 @@ namespace FishHelper
                             }
                         }
                     }
+                    if (autoSearch) {
+                        btnCopyAdresses_Click(null, null);
+                        autoSearch = false;
+                        lblStatus.Text = "Автопоиск закончен.";
+                    }
                 }
             }
             else
@@ -194,6 +219,7 @@ namespace FishHelper
             fishHelperFile = new FishHelperFile();
             lib = new CheatEngineLibrary();
             lib.loadEngine();
+            autoSearch = false;
             if (UserOptions.defaultFiles)
             {
                 fishHelperFile.OpenFilePath(UserOptions.defaultPathFile, data);                
@@ -223,20 +249,7 @@ namespace FishHelper
             txtBaitChance2.Text = UserOptions.baitChance;
             txtMiriamPrice.Text = UserOptions.miriamPrice;
             txtBervezPrice.Text = UserOptions.bervezPrice;
-        }
-
-        //Делаем окно Always on Top
-        private void chkbAlwaysOnTop_CheckedChanged(object sender, EventArgs e)
-        {
-            if (UserOptions.alwaysOnTop)
-            {
-                this.TopMost = true;
-            }
-            else
-            {
-                this.TopMost = false;
-            }
-        }
+        }   
 
         private void btbTestAdress_Click(object sender, EventArgs e)
         {            
@@ -775,20 +788,7 @@ namespace FishHelper
             }
 
             cmbSelect.SelectedIndex = Properties.Settings.Default.SelectListAction; //Загружаем вариант из настроек
-        }
-       
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-
-            ((Form1)this.Owner).textBoxCoordX.Text = "Работает"; //Передаем в родительскую форму данные.
-
-            Close();
-        }
-
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-            lib.loadEngine();
-        }    
+        }                      
                
         private void lvScanner_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
@@ -817,12 +817,7 @@ namespace FishHelper
             xAdressList.Clear();
             yAdressList.Clear();
             cAdressList.Clear();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            lib.loadEngine();
-        }
+        }        
 
         private void btnFirstScan_Click(object sender, EventArgs e)
         {
@@ -1045,11 +1040,6 @@ namespace FishHelper
         {
             Process.Start(string.Format("http://{0}:{1}", cmbServerIPList.SelectedItem, UserOptions.portServer));
         }
-
-        private void label20_Click(object sender, EventArgs e)
-        {
-
-        }
         //Рассчитываем прибыль от икры и сохраняем данные
         private void btnCaviarCalculate_Click(object sender, EventArgs e)
         {
@@ -1090,6 +1080,18 @@ namespace FishHelper
         private void txtBaitChance2_TextChanged(object sender, EventArgs e)
         {
             txtBaitChance.Text = txtBaitChance2.Text;
+        }
+
+        private void btnAutoAdressFinder_Click(object sender, EventArgs e)
+        {
+            lblStatus.Text = "Запущен автопоиск. Ждите.";
+            textBoxCoordX.Text = "";
+            textBoxCoordY.Text = "";
+            textBoxCorner.Text = "";
+            btnNewScan_Click(null, null);
+            btnOCR_Click(null, null);            
+            autoSearch = true;
+            btnFirstScan_Click(null, null);            
         }
 
         //Обрабатываем нажатие клавиш. Только цифры и запятая

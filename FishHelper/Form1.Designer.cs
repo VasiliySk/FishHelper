@@ -75,9 +75,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnOCR = new System.Windows.Forms.Button();
             this.btnCopyAdresses = new System.Windows.Forms.Button();
-            this.btnClean = new System.Windows.Forms.Button();
             this.txtCValue = new System.Windows.Forms.TextBox();
             this.txtYValue = new System.Windows.Forms.TextBox();
             this.txtXValue = new System.Windows.Forms.TextBox();
@@ -121,6 +119,19 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtProfitAmbrozia = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.btnAmbroziaCalculate = new System.Windows.Forms.Button();
+            this.txtBervezPrice = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtMiriamPrice = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtBaitChance2 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtBaitPrice2 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtAmbroziaPrice = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCaviarCalculate = new System.Windows.Forms.Button();
             this.txtProfitCaviar = new System.Windows.Forms.TextBox();
@@ -132,19 +143,11 @@
             this.txtCaviarPrice = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.saveFileDialogAdressFile = new System.Windows.Forms.SaveFileDialog();
-            this.txtBaitChance2 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtBaitPrice2 = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtAmbroziaPrice = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtMiriamPrice = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtBervezPrice = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.btnAmbroziaCalculate = new System.Windows.Forms.Button();
-            this.txtProfitAmbrozia = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnAutoAdressFinder = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnOCR = new System.Windows.Forms.Button();
+            this.btnClean = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -157,6 +160,8 @@
             this.tabPage4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCameraCorner
@@ -567,9 +572,8 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.btnOCR);
-            this.tabPage2.Controls.Add(this.btnCopyAdresses);
-            this.tabPage2.Controls.Add(this.btnClean);
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.txtCValue);
             this.tabPage2.Controls.Add(this.txtYValue);
             this.tabPage2.Controls.Add(this.txtXValue);
@@ -609,35 +613,15 @@
             this.tabPage2.Text = "Поиск адресов";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // btnOCR
-            // 
-            this.btnOCR.Location = new System.Drawing.Point(161, 62);
-            this.btnOCR.Name = "btnOCR";
-            this.btnOCR.Size = new System.Drawing.Size(113, 23);
-            this.btnOCR.TabIndex = 86;
-            this.btnOCR.Text = "OCR";
-            this.btnOCR.UseVisualStyleBackColor = true;
-            this.btnOCR.Click += new System.EventHandler(this.btnOCR_Click);
-            // 
             // btnCopyAdresses
             // 
-            this.btnCopyAdresses.Location = new System.Drawing.Point(296, 79);
+            this.btnCopyAdresses.Location = new System.Drawing.Point(7, 68);
             this.btnCopyAdresses.Name = "btnCopyAdresses";
-            this.btnCopyAdresses.Size = new System.Drawing.Size(123, 23);
+            this.btnCopyAdresses.Size = new System.Drawing.Size(130, 23);
             this.btnCopyAdresses.TabIndex = 85;
             this.btnCopyAdresses.Text = "Скопировать адреса";
             this.btnCopyAdresses.UseVisualStyleBackColor = true;
             this.btnCopyAdresses.Click += new System.EventHandler(this.btnCopyAdresses_Click);
-            // 
-            // btnClean
-            // 
-            this.btnClean.Location = new System.Drawing.Point(161, 91);
-            this.btnClean.Name = "btnClean";
-            this.btnClean.Size = new System.Drawing.Size(113, 23);
-            this.btnClean.TabIndex = 84;
-            this.btnClean.Text = "Очистить значания";
-            this.btnClean.UseVisualStyleBackColor = true;
-            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
             // txtCValue
             // 
@@ -1058,6 +1042,120 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Амброзия";
             // 
+            // txtProfitAmbrozia
+            // 
+            this.txtProfitAmbrozia.Location = new System.Drawing.Point(130, 187);
+            this.txtProfitAmbrozia.Name = "txtProfitAmbrozia";
+            this.txtProfitAmbrozia.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtProfitAmbrozia.Size = new System.Drawing.Size(64, 20);
+            this.txtProfitAmbrozia.TabIndex = 113;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(6, 190);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(120, 13);
+            this.label26.TabIndex = 112;
+            this.label26.Text = "Прибыль от амброзий";
+            // 
+            // btnAmbroziaCalculate
+            // 
+            this.btnAmbroziaCalculate.Location = new System.Drawing.Point(9, 158);
+            this.btnAmbroziaCalculate.Name = "btnAmbroziaCalculate";
+            this.btnAmbroziaCalculate.Size = new System.Drawing.Size(185, 23);
+            this.btnAmbroziaCalculate.TabIndex = 111;
+            this.btnAmbroziaCalculate.Text = "Рассчить прибыль от 4 амброзий";
+            this.btnAmbroziaCalculate.UseVisualStyleBackColor = true;
+            this.btnAmbroziaCalculate.Click += new System.EventHandler(this.btnAmbroziaCalculate_Click);
+            // 
+            // txtBervezPrice
+            // 
+            this.txtBervezPrice.Location = new System.Drawing.Point(145, 132);
+            this.txtBervezPrice.Name = "txtBervezPrice";
+            this.txtBervezPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtBervezPrice.Size = new System.Drawing.Size(49, 20);
+            this.txtBervezPrice.TabIndex = 110;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 135);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(117, 13);
+            this.label25.TabIndex = 109;
+            this.label25.Text = "Бервезный сок. Цена";
+            // 
+            // txtMiriamPrice
+            // 
+            this.txtMiriamPrice.Location = new System.Drawing.Point(145, 105);
+            this.txtMiriamPrice.Name = "txtMiriamPrice";
+            this.txtMiriamPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtMiriamPrice.Size = new System.Drawing.Size(49, 20);
+            this.txtMiriamPrice.TabIndex = 108;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 108);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(133, 13);
+            this.label24.TabIndex = 107;
+            this.label24.Text = "Морозная мириам. Цена";
+            // 
+            // txtBaitChance2
+            // 
+            this.txtBaitChance2.Location = new System.Drawing.Point(130, 74);
+            this.txtBaitChance2.Name = "txtBaitChance2";
+            this.txtBaitChance2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtBaitChance2.Size = new System.Drawing.Size(64, 20);
+            this.txtBaitChance2.TabIndex = 106;
+            this.txtBaitChance2.TextChanged += new System.EventHandler(this.txtBaitChance2_TextChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 77);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(78, 13);
+            this.label21.TabIndex = 105;
+            this.label21.Text = "Шанс. Один к ";
+            // 
+            // txtBaitPrice2
+            // 
+            this.txtBaitPrice2.Location = new System.Drawing.Point(130, 45);
+            this.txtBaitPrice2.Name = "txtBaitPrice2";
+            this.txtBaitPrice2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtBaitPrice2.Size = new System.Drawing.Size(64, 20);
+            this.txtBaitPrice2.TabIndex = 104;
+            this.txtBaitPrice2.TextChanged += new System.EventHandler(this.txtBaitPrice2_TextChanged);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 48);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(88, 13);
+            this.label22.TabIndex = 103;
+            this.label22.Text = "Наживка. Цена.";
+            // 
+            // txtAmbroziaPrice
+            // 
+            this.txtAmbroziaPrice.Location = new System.Drawing.Point(130, 16);
+            this.txtAmbroziaPrice.Name = "txtAmbroziaPrice";
+            this.txtAmbroziaPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtAmbroziaPrice.Size = new System.Drawing.Size(64, 20);
+            this.txtAmbroziaPrice.TabIndex = 102;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 19);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(93, 13);
+            this.label23.TabIndex = 101;
+            this.label23.Text = "Амброзия. Цена.";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnCaviarCalculate);
@@ -1103,7 +1201,6 @@
             this.label20.Size = new System.Drawing.Size(96, 13);
             this.label20.TabIndex = 101;
             this.label20.Text = "Прибыль от икры";
-            this.label20.Click += new System.EventHandler(this.label20_Click);
             // 
             // txtBaitChance
             // 
@@ -1161,119 +1258,57 @@
             this.label17.TabIndex = 95;
             this.label17.Text = "Икра. Цена.";
             // 
-            // txtBaitChance2
+            // groupBox3
             // 
-            this.txtBaitChance2.Location = new System.Drawing.Point(130, 74);
-            this.txtBaitChance2.Name = "txtBaitChance2";
-            this.txtBaitChance2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtBaitChance2.Size = new System.Drawing.Size(64, 20);
-            this.txtBaitChance2.TabIndex = 106;
-            this.txtBaitChance2.TextChanged += new System.EventHandler(this.txtBaitChance2_TextChanged);
+            this.groupBox3.Controls.Add(this.btnAutoAdressFinder);
+            this.groupBox3.Location = new System.Drawing.Point(150, 36);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(93, 97);
+            this.groupBox3.TabIndex = 88;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Автопоиск";
             // 
-            // label21
+            // btnAutoAdressFinder
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 77);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(78, 13);
-            this.label21.TabIndex = 105;
-            this.label21.Text = "Шанс. Один к ";
+            this.btnAutoAdressFinder.Location = new System.Drawing.Point(6, 38);
+            this.btnAutoAdressFinder.Name = "btnAutoAdressFinder";
+            this.btnAutoAdressFinder.Size = new System.Drawing.Size(81, 23);
+            this.btnAutoAdressFinder.TabIndex = 88;
+            this.btnAutoAdressFinder.Text = "Автопоиск";
+            this.btnAutoAdressFinder.UseVisualStyleBackColor = true;
+            this.btnAutoAdressFinder.Click += new System.EventHandler(this.btnAutoAdressFinder_Click);
             // 
-            // txtBaitPrice2
+            // groupBox4
             // 
-            this.txtBaitPrice2.Location = new System.Drawing.Point(130, 45);
-            this.txtBaitPrice2.Name = "txtBaitPrice2";
-            this.txtBaitPrice2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtBaitPrice2.Size = new System.Drawing.Size(64, 20);
-            this.txtBaitPrice2.TabIndex = 104;
-            this.txtBaitPrice2.TextChanged += new System.EventHandler(this.txtBaitPrice2_TextChanged);
+            this.groupBox4.Controls.Add(this.btnClean);
+            this.groupBox4.Controls.Add(this.btnOCR);
+            this.groupBox4.Controls.Add(this.btnCopyAdresses);
+            this.groupBox4.Location = new System.Drawing.Point(262, 36);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(146, 97);
+            this.groupBox4.TabIndex = 89;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Ручной поиск";
             // 
-            // label22
+            // btnOCR
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 48);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(88, 13);
-            this.label22.TabIndex = 103;
-            this.label22.Text = "Наживка. Цена.";
+            this.btnOCR.Location = new System.Drawing.Point(7, 16);
+            this.btnOCR.Name = "btnOCR";
+            this.btnOCR.Size = new System.Drawing.Size(130, 23);
+            this.btnOCR.TabIndex = 87;
+            this.btnOCR.Text = "OCR";
+            this.btnOCR.UseVisualStyleBackColor = true;
+            this.btnOCR.Click += new System.EventHandler(this.btnOCR_Click);
             // 
-            // txtAmbroziaPrice
+            // btnClean
             // 
-            this.txtAmbroziaPrice.Location = new System.Drawing.Point(130, 16);
-            this.txtAmbroziaPrice.Name = "txtAmbroziaPrice";
-            this.txtAmbroziaPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtAmbroziaPrice.Size = new System.Drawing.Size(64, 20);
-            this.txtAmbroziaPrice.TabIndex = 102;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 19);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(93, 13);
-            this.label23.TabIndex = 101;
-            this.label23.Text = "Амброзия. Цена.";
-            // 
-            // txtMiriamPrice
-            // 
-            this.txtMiriamPrice.Location = new System.Drawing.Point(145, 105);
-            this.txtMiriamPrice.Name = "txtMiriamPrice";
-            this.txtMiriamPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtMiriamPrice.Size = new System.Drawing.Size(49, 20);
-            this.txtMiriamPrice.TabIndex = 108;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(6, 108);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(133, 13);
-            this.label24.TabIndex = 107;
-            this.label24.Text = "Морозная мириам. Цена";
-            // 
-            // txtBervezPrice
-            // 
-            this.txtBervezPrice.Location = new System.Drawing.Point(145, 132);
-            this.txtBervezPrice.Name = "txtBervezPrice";
-            this.txtBervezPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtBervezPrice.Size = new System.Drawing.Size(49, 20);
-            this.txtBervezPrice.TabIndex = 110;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 135);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(117, 13);
-            this.label25.TabIndex = 109;
-            this.label25.Text = "Бервезный сок. Цена";
-            // 
-            // btnAmbroziaCalculate
-            // 
-            this.btnAmbroziaCalculate.Location = new System.Drawing.Point(9, 158);
-            this.btnAmbroziaCalculate.Name = "btnAmbroziaCalculate";
-            this.btnAmbroziaCalculate.Size = new System.Drawing.Size(185, 23);
-            this.btnAmbroziaCalculate.TabIndex = 111;
-            this.btnAmbroziaCalculate.Text = "Рассчить прибыль от 4 амброзий";
-            this.btnAmbroziaCalculate.UseVisualStyleBackColor = true;
-            this.btnAmbroziaCalculate.Click += new System.EventHandler(this.btnAmbroziaCalculate_Click);
-            // 
-            // txtProfitAmbrozia
-            // 
-            this.txtProfitAmbrozia.Location = new System.Drawing.Point(130, 187);
-            this.txtProfitAmbrozia.Name = "txtProfitAmbrozia";
-            this.txtProfitAmbrozia.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtProfitAmbrozia.Size = new System.Drawing.Size(64, 20);
-            this.txtProfitAmbrozia.TabIndex = 113;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(6, 190);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(120, 13);
-            this.label26.TabIndex = 112;
-            this.label26.Text = "Прибыль от амброзий";
+            this.btnClean.Location = new System.Drawing.Point(7, 42);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(130, 23);
+            this.btnClean.TabIndex = 88;
+            this.btnClean.Text = "Очистить значания";
+            this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
             // Form1
             // 
@@ -1310,6 +1345,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1388,9 +1425,7 @@
         private System.Windows.Forms.TextBox txtCValue;
         private System.Windows.Forms.TextBox txtYValue;
         private System.Windows.Forms.TextBox txtXValue;
-        private System.Windows.Forms.Button btnClean;
         private System.Windows.Forms.Button btnCopyAdresses;
-        private System.Windows.Forms.Button btnOCR;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtHeightServer;
@@ -1431,6 +1466,11 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txtAmbroziaPrice;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnClean;
+        private System.Windows.Forms.Button btnOCR;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnAutoAdressFinder;
     }
 }
 
