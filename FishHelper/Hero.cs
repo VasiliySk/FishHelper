@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoIt;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
@@ -58,25 +59,25 @@ namespace FishHelper
             //Поворачиваем к цели
             if ((targetX > actualX) && (targetY > actualY)) //Если оба целевых значения больше текущих
             {
-                turnCornerVer2(esoWindow, cAdress, processHandle, Convert.ToString(270 - cornerA));
+                turnCornerVer3(esoWindow, cAdress, processHandle, Convert.ToString(270 - cornerA));
                 tStatus = TargetStatus.X_bigger_Y_bigger;
             }
 
             if ((targetX < actualX) && (targetY < actualY)) //Если оба целевых значения меньше текущих
             {
-                turnCornerVer2(esoWindow, cAdress, processHandle, Convert.ToString(90-cornerA));
+                turnCornerVer3(esoWindow, cAdress, processHandle, Convert.ToString(90-cornerA));
                 tStatus = TargetStatus.X_less_Y_less;
             }
 
             if ((targetX > actualX) && (targetY < actualY)) //Если целевой X больше, а Y - меньше
             {
-                turnCornerVer2(esoWindow, cAdress, processHandle, Convert.ToString(270 + cornerA));
+                turnCornerVer3(esoWindow, cAdress, processHandle, Convert.ToString(270 + cornerA));
                 tStatus = TargetStatus.X_bigger_Y_less;
             }
 
             if ((targetX < actualX) && (targetY > actualY)) //Если целевой X меньше, а Y - больше
             {
-                turnCornerVer2(esoWindow, cAdress, processHandle, Convert.ToString(90 + cornerA));
+                turnCornerVer3(esoWindow, cAdress, processHandle, Convert.ToString(90 + cornerA));
                 tStatus = TargetStatus.X_less_Y_bigger;
             }
 
@@ -101,7 +102,7 @@ namespace FishHelper
             esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)Keys.W), new IntPtr(0));
             if (!Form1.stopAction&& cTarget!=null)
             {
-                if (!cTarget.Equals("")) turnCornerVer2(esoWindow, cAdress, processHandle, cTarget);
+                if (!cTarget.Equals("")) turnCornerVer3(esoWindow, cAdress, processHandle, cTarget);
             }
         }
         
@@ -273,6 +274,64 @@ namespace FishHelper
                         Thread.Sleep(10);
                     }
                 }
+            }
+        }
+
+
+        public void turnCornerVer3(EsoWindow esoWindow, String addrText, IntPtr processHandle, String targetCorner)
+        {
+            Point cursorPosition = new Point();
+
+            esoWindow.GetCursorPos(out cursorPosition);
+
+            var buffer = new byte[8];
+            var addr = long.Parse(addrText, NumberStyles.HexNumber);
+            IntPtr bytesRead;
+            var result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
+
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ","; //Задаем запятую, как разделитель между числом и дробной частью
+
+            double trgCorner = Convert.ToDouble(targetCorner, nfi); //Целевой угол
+            double acturalCorner = BitConverter.ToDouble(buffer, 0); //текущий угол 
+            int screenX = Screen.PrimaryScreen.Bounds.Width;
+            int numberОfTurns = 0;  
+
+            if (trgCorner > acturalCorner) //Целевой угол больше текущего
+            {
+                int X = AutoItX.MouseGetPos().X;
+                int Y = AutoItX.MouseGetPos().Y;
+                if (((trgCorner - acturalCorner) * 8.7184d) > (Screen.PrimaryScreen.Bounds.Width / 2))
+                {
+                    numberОfTurns = Convert.ToInt32(Math.Truncate(((trgCorner - acturalCorner) * 8.7184d) / (Screen.PrimaryScreen.Bounds.Width / 2)));                    
+                    for (int i = 0; i < numberОfTurns; i++)
+                    {
+                        AutoItX.MouseMove(X - screenX/2 + 1, Y, 1);
+                        Thread.Sleep(50);                        ;
+                    }
+                    result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
+                    acturalCorner = BitConverter.ToDouble(buffer, 0);                    
+                }
+                Thread.Sleep(500);
+                AutoItX.MouseMove(X - Convert.ToInt32((trgCorner- acturalCorner)*8.7184d), Y, 1); //8.7184 - коэффициент, полученный эксперементальным расчетным путем
+            }
+            else //Целевой угол меньше текущего
+            {
+                int X = AutoItX.MouseGetPos().X;
+                int Y = AutoItX.MouseGetPos().Y;
+                if (((acturalCorner - trgCorner) * 8.7184d) > (Screen.PrimaryScreen.Bounds.Width / 2))
+                {
+                    numberОfTurns = Convert.ToInt32(Math.Truncate(((acturalCorner - trgCorner) * 8.7184d) / (Screen.PrimaryScreen.Bounds.Width / 2)));
+                    for (int i = 0; i < numberОfTurns; i++)
+                    {
+                        AutoItX.MouseMove(X + screenX / 2 - 1, Y, 1);
+                        Thread.Sleep(50);
+                    }
+                    result = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addr), buffer, (uint)buffer.Length, out bytesRead);
+                    acturalCorner = BitConverter.ToDouble(buffer, 0);
+                }
+                Thread.Sleep(500);
+                AutoItX.MouseMove(X + Convert.ToInt32((acturalCorner - trgCorner) * 8.7184d), Y, 1); //8.7184 - коэффициент, полученный эксперементальным расчетным путем
             }
         }
 

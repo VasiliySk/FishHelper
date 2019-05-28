@@ -1,20 +1,15 @@
-﻿using Chantzaras.Media.Streaming.Screencast;
+﻿using AutoIt;
+using Chantzaras.Media.Streaming.Screencast;
 using CheatEngine;
 using IronOcr;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Net;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography;
-using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static FishHelper.EsoWindow;
 using static FishHelper.UserOptions;
@@ -307,8 +302,11 @@ namespace FishHelper
             {
                 //Активируем окно, прожимаем дважды кнопку мыши 
                 ActivateEsoWindow();
+                //int X = AutoItX.MouseGetPos().X;
+                //int Y = AutoItX.MouseGetPos().Y;
+                //AutoItX.MouseMove(X - 784, Y, 1);
 
-                hero.turnCornerVer2(esoWindow, textBoxCorner.Text, processHandle, txtTargetCorner.Text);
+                hero.turnCornerVer3(esoWindow, textBoxCorner.Text, processHandle, txtTargetCorner.Text);
 
                 esoWindow.CloseHandle(processHandle);
             })).Start();            
@@ -464,14 +462,14 @@ namespace FishHelper
                      {
                          //Бежим к цели и потом рыбачим
                          hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
-                         //Thread.Sleep(random.Next(1000, 2000));
+                         Thread.Sleep(random.Next(500, 700));
                          hero.Fishing(esoWindow, hWnd);
-                         //Thread.Sleep(random.Next(1000, 2000));
+                         Thread.Sleep(random.Next(500, 700));
                      } else if (data[i].harvest == true)
                      {
                          //Бежим к цели и потом собираем ресурс
                          hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
-                         //Thread.Sleep(random.Next(500, 1000));
+                         Thread.Sleep(random.Next(500, 700));
                          hero.GatheringResources(esoWindow, hWnd);
                          Thread.Sleep(random.Next(3000, 4000)); //Дожидаемся, пока ресурс соберется
                      }
@@ -509,15 +507,15 @@ namespace FishHelper
                     {
                         //Бежим к цели и потом рыбачим
                         hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
-                        //Thread.Sleep(random.Next(1000, 2000));                       
+                        Thread.Sleep(random.Next(500, 700));                       
                         hero.Fishing(esoWindow, hWnd);
-                        //Thread.Sleep(random.Next(1000, 2000));
+                        Thread.Sleep(random.Next(500, 700));
                     }
                     else if (data[i].harvest == true)
                     {
                         //Бежим к цели и потом собираем ресурс
                         hero.Run(esoWindow, processHandle, hWnd, textBoxCoordX.Text, textBoxCoordY.Text, textBoxCorner.Text, data[i].xCoord, data[i].yCoord, data[i].tCorner);
-                        //Thread.Sleep(random.Next(500, 1000));
+                        Thread.Sleep(random.Next(500, 700));
                         hero.GatheringResources(esoWindow, hWnd);
                         Thread.Sleep(random.Next(3000, 4000)); //Дожидаемся, пока ресурс соберется
                     }
@@ -678,11 +676,11 @@ namespace FishHelper
 
                 if (acturalCorner - 180 > 0)
                 {
-                    hero.turnCornerVer2(esoWindow, textBoxCorner.Text, processHandle,Convert.ToString(acturalCorner - 180));
+                    hero.turnCornerVer3(esoWindow, textBoxCorner.Text, processHandle,Convert.ToString(acturalCorner - 180));
                 }
                 else
                 {
-                    hero.turnCornerVer2(esoWindow, textBoxCorner.Text, processHandle, Convert.ToString(acturalCorner + 180));
+                    hero.turnCornerVer3(esoWindow, textBoxCorner.Text, processHandle, Convert.ToString(acturalCorner + 180));
                 }
 
                 Thread.Sleep(random.Next(1000, 2000));
