@@ -14,6 +14,7 @@ namespace FishHelper
     class FishHelperFile
     {
         private String filePath;
+        private String filePathPackage;
         private BindingList<FishPath> data;
 
         //Открываем файл
@@ -312,5 +313,193 @@ namespace FishHelper
             myWriter.Close();
 
         }
+
+        //Сохраняем файл пакета
+        public void SaveFilePackage(Form form)
+        {
+            StreamWriter myWriter = new StreamWriter(filePathPackage);
+            WriteToFilePackage(myWriter, form);
+            myWriter.Close();
+        }
+
+        //Сохраняем файл пакета как...
+        public void SaveFilePackageAs(SaveFileDialog saveFileDialog,Form form, ToolStripMenuItem saveToolStripMenuItem)
+        {
+            //TextBox textBoxes = (TextBox) form.Controls.Find("txtPackageOneFile", true).First();
+            //Console.WriteLine(textBoxes.GetType());
+            
+            Stream myStream;            
+            saveFileDialog.Filter = "Fish Helper package files (*.fpf)|*.fpf";
+            saveFileDialog.DefaultExt = "fpf";
+            saveFileDialog.AddExtension = true;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = saveFileDialog.OpenFile()) != null)
+                {
+                    filePathPackage = saveFileDialog.FileName;
+                    StreamWriter myWriter = new StreamWriter(myStream);
+                    WriteToFilePackage(myWriter, form);
+                    myStream.Close();
+                    saveToolStripMenuItem.Enabled = true;
+                }
+            }
+
+        }
+
+        //Сохраняем пакетный файл
+        private void WriteToFilePackage(StreamWriter myWriter, Form form)
+        {
+            try
+            {
+                String packageCount="";
+                for (int i=0; i < 5; i++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            packageCount = "One";
+                            break;
+                        case 1:
+                            packageCount = "Two";
+                            break;
+                        case 2:
+                            packageCount = "Three";
+                            break;
+                        case 3:
+                            packageCount = "Four";
+                            break;
+                        case 4:
+                            packageCount = "Five";
+                            break;
+                    }
+
+                    myWriter.Write(((TextBox)form.Controls.Find("txtPackage" + packageCount + "File", true).First()).GetType());
+                    myWriter.Write("*");
+                    myWriter.Write(((TextBox)form.Controls.Find("txtPackage"+ packageCount + "File", true).First()).Name);
+                    myWriter.Write("*");
+                    myWriter.Write(((TextBox)form.Controls.Find("txtPackage" + packageCount + "File", true).First()).Text);
+                    myWriter.WriteLine();
+
+                    myWriter.Write(((TextBox)form.Controls.Find("txtPackage" + packageCount + "X", true).First()).GetType());
+                    myWriter.Write("*");
+                    myWriter.Write(((TextBox)form.Controls.Find("txtPackage"+ packageCount + "X", true).First()).Name);
+                    myWriter.Write("*");
+                    myWriter.Write(((TextBox)form.Controls.Find("txtPackage" + packageCount + "X", true).First()).Text);
+                    myWriter.WriteLine();
+
+                    myWriter.Write(((TextBox)form.Controls.Find("txtPackage" + packageCount + "Y", true).First()).GetType());
+                    myWriter.Write("*");
+                    myWriter.Write(((TextBox)form.Controls.Find("txtPackage" + packageCount + "Y", true).First()).Name);
+                    myWriter.Write("*");
+                    myWriter.Write(((TextBox)form.Controls.Find("txtPackage" + packageCount + "Y", true).First()).Text);
+                    myWriter.WriteLine();
+
+                    myWriter.Write(((CheckBox)form.Controls.Find("chkbPackage" + packageCount + "Use", true).First()).GetType());
+                    myWriter.Write("*");
+                    myWriter.Write(((CheckBox)form.Controls.Find("chkbPackage"+ packageCount + "Use", true).First()).Name);
+                    myWriter.Write("*");
+                    myWriter.Write(((CheckBox)form.Controls.Find("chkbPackage" + packageCount + "Use", true).First()).Checked);
+                    if (!packageCount.Equals("Five"))myWriter.WriteLine();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myWriter.Close();
+            }
+        }
+
+        //Открываем файл пакета
+        public void OpenFilePackage(OpenFileDialog openFileDialog1,Form form, ToolStripMenuItem saveToolStripMenuItem)
+        {
+            Stream mystr = null;
+            openFileDialog1.Filter = "Fish Helper package files (*.fpf)|*.fpf";
+            openFileDialog1.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments) + "\\My Cheat Tables\\";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+                if ((mystr = openFileDialog1.OpenFile()) != null)
+                {
+                    filePathPackage = openFileDialog1.FileName;
+                    OpenFilePathPackage(filePathPackage, form);
+                    saveToolStripMenuItem.Enabled = true;
+                    mystr.Close();
+                }
+            }
+        }
+
+        private void OpenFilePathPackage(String filePathPackage, Form form)
+        {
+            StreamReader myread;
+            //Обработка ошибки, если файл не найден
+            try
+            {
+                myread = new StreamReader(filePathPackage);
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                return;
+            }
+            string[] str;            
+            String controlType = "";
+            String controlName = "";
+            String controlValue = "";
+            int num = 0;
+            try
+            {
+                string[] str1 = myread.ReadToEnd().Split('\n');
+                num = str1.Length;
+                for (int i = 0; i < num; i++)
+                {
+                    str = str1[i].Split('*');                    
+                    for (int j = 0; j < 3; j++)
+                    {
+                        try
+                        {
+                            switch (j)
+                            {
+                                case 0:                                    
+                                    controlType = Regex.Replace(str[j], @"\t|\n|\r", ""); //Удаляем знак перехода строки
+                                    break;
+                                case 1:
+                                    controlName = Regex.Replace(str[j], @"\t|\n|\r", ""); //Удаляем знак перехода строки
+                                    break;
+                                case 2:
+                                    controlValue = Regex.Replace(str[j], @"\t|\n|\r", ""); //Удаляем знак перехода строки
+                                    break;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        
+                    }  
+                    
+                    if (controlType.Equals("System.Windows.Forms.TextBox"))
+                    {
+                        TextBox textBox = (TextBox)form.Controls.Find(controlName, true).First();
+                        textBox.Text = controlValue;
+                    }
+
+                    if (controlType.Equals("System.Windows.Forms.CheckBox"))
+                    {
+                        CheckBox checkBox = (CheckBox)form.Controls.Find(controlName, true).First();
+                        checkBox.Checked = Convert.ToBoolean(controlValue);
+                    }
+
+                }
+            }
+            catch { }
+            finally
+            {
+                myread.Close();
+            }
+        }
+
     }
 }

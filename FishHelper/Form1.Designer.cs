@@ -74,8 +74,65 @@
             this.btnNewScan = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnPackageStart = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.chkbPackageFiveUse = new System.Windows.Forms.CheckBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.txtPackageFiveY = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.txtPackageFiveX = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.btnPackageFive = new System.Windows.Forms.Button();
+            this.label46 = new System.Windows.Forms.Label();
+            this.txtPackageFiveFile = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.chkbPackageFourUse = new System.Windows.Forms.CheckBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.txtPackageFourY = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.txtPackageFourX = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.btnPackageFour = new System.Windows.Forms.Button();
+            this.label42 = new System.Windows.Forms.Label();
+            this.txtPackageFourFile = new System.Windows.Forms.TextBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.chkbPackageThreeUse = new System.Windows.Forms.CheckBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.txtPackageThreeY = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtPackageThreeX = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.btnPackageThree = new System.Windows.Forms.Button();
+            this.label38 = new System.Windows.Forms.Label();
+            this.txtPackageThreeFile = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.chkbPackageTwoUse = new System.Windows.Forms.CheckBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtPackageTwoY = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtPackageTwoX = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.btnPackageTwo = new System.Windows.Forms.Button();
+            this.label34 = new System.Windows.Forms.Label();
+            this.txtPackageTwoFile = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.chkbPackageOneUse = new System.Windows.Forms.CheckBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.txtPackageOneY = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtPackageOneX = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.btnPackageOne = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtPackageOneFile = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnClean = new System.Windows.Forms.Button();
+            this.btnOCR = new System.Windows.Forms.Button();
             this.btnCopyAdresses = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnAutoAdressFinder = new System.Windows.Forms.Button();
             this.txtCValue = new System.Windows.Forms.TextBox();
             this.txtYValue = new System.Windows.Forms.TextBox();
             this.txtXValue = new System.Windows.Forms.TextBox();
@@ -143,16 +200,26 @@
             this.txtCaviarPrice = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.saveFileDialogAdressFile = new System.Windows.Forms.SaveFileDialog();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnAutoAdressFinder = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnOCR = new System.Windows.Forms.Button();
-            this.btnClean = new System.Windows.Forms.Button();
+            this.openFileDialogPackage = new System.Windows.Forms.OpenFileDialog();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemOpenPackage = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemSavePackage = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemSavePackageAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCAdressList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvYAdressList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvXAdressList)).BeginInit();
@@ -160,8 +227,6 @@
             this.tabPage4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCameraCorner
@@ -323,8 +388,14 @@
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
+            this.toolStripSeparator1,
             this.openAdressStripMenuItem,
             this.saveAdressToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.menuItemOpenPackage,
+            this.menuItemSavePackage,
+            this.menuItemSavePackageAs,
+            this.toolStripSeparator3,
             this.exitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
@@ -384,7 +455,7 @@
             // OptionToolStripMenuItem1
             // 
             this.OptionToolStripMenuItem1.Name = "OptionToolStripMenuItem1";
-            this.OptionToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.OptionToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.OptionToolStripMenuItem1.Text = "Настройки";
             this.OptionToolStripMenuItem1.Click += new System.EventHandler(this.OptionToolStripMenuItem1_Click);
             // 
@@ -529,6 +600,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
@@ -569,6 +641,515 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Основное окно";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.btnPackageStart);
+            this.tabPage5.Controls.Add(this.groupBox9);
+            this.tabPage5.Controls.Add(this.groupBox8);
+            this.tabPage5.Controls.Add(this.groupBox7);
+            this.tabPage5.Controls.Add(this.groupBox6);
+            this.tabPage5.Controls.Add(this.groupBox5);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(433, 539);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Пакетный режим";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btnPackageStart
+            // 
+            this.btnPackageStart.Location = new System.Drawing.Point(139, 502);
+            this.btnPackageStart.Name = "btnPackageStart";
+            this.btnPackageStart.Size = new System.Drawing.Size(154, 23);
+            this.btnPackageStart.TabIndex = 61;
+            this.btnPackageStart.Text = "Вперед по перечню пакетов";
+            this.btnPackageStart.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.chkbPackageFiveUse);
+            this.groupBox9.Controls.Add(this.label43);
+            this.groupBox9.Controls.Add(this.txtPackageFiveY);
+            this.groupBox9.Controls.Add(this.label44);
+            this.groupBox9.Controls.Add(this.txtPackageFiveX);
+            this.groupBox9.Controls.Add(this.label45);
+            this.groupBox9.Controls.Add(this.btnPackageFive);
+            this.groupBox9.Controls.Add(this.label46);
+            this.groupBox9.Controls.Add(this.txtPackageFiveFile);
+            this.groupBox9.Location = new System.Drawing.Point(9, 392);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(410, 91);
+            this.groupBox9.TabIndex = 4;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Пакет №5";
+            // 
+            // chkbPackageFiveUse
+            // 
+            this.chkbPackageFiveUse.AutoSize = true;
+            this.chkbPackageFiveUse.Location = new System.Drawing.Point(274, 61);
+            this.chkbPackageFiveUse.Name = "chkbPackageFiveUse";
+            this.chkbPackageFiveUse.Size = new System.Drawing.Size(131, 17);
+            this.chkbPackageFiveUse.TabIndex = 88;
+            this.chkbPackageFiveUse.Text = "Использовать пакет";
+            this.chkbPackageFiveUse.UseVisualStyleBackColor = true;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(127, 62);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(17, 13);
+            this.label43.TabIndex = 65;
+            this.label43.Text = "Y:";
+            // 
+            // txtPackageFiveY
+            // 
+            this.txtPackageFiveY.Location = new System.Drawing.Point(150, 59);
+            this.txtPackageFiveY.Name = "txtPackageFiveY";
+            this.txtPackageFiveY.Size = new System.Drawing.Size(79, 20);
+            this.txtPackageFiveY.TabIndex = 64;
+            this.txtPackageFiveY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(7, 62);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(17, 13);
+            this.label44.TabIndex = 63;
+            this.label44.Text = "X:";
+            // 
+            // txtPackageFiveX
+            // 
+            this.txtPackageFiveX.Location = new System.Drawing.Point(30, 59);
+            this.txtPackageFiveX.Name = "txtPackageFiveX";
+            this.txtPackageFiveX.Size = new System.Drawing.Size(79, 20);
+            this.txtPackageFiveX.TabIndex = 62;
+            this.txtPackageFiveX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(7, 40);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(178, 13);
+            this.label45.TabIndex = 61;
+            this.label45.Text = "Координаты мыши для телепорта";
+            // 
+            // btnPackageFive
+            // 
+            this.btnPackageFive.Location = new System.Drawing.Point(352, 15);
+            this.btnPackageFive.Name = "btnPackageFive";
+            this.btnPackageFive.Size = new System.Drawing.Size(53, 23);
+            this.btnPackageFive.TabIndex = 60;
+            this.btnPackageFive.Text = "Задать";
+            this.btnPackageFive.UseVisualStyleBackColor = true;
+            this.btnPackageFive.Click += new System.EventHandler(this.btnPackageFive_Click);
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(7, 20);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(41, 13);
+            this.label46.TabIndex = 59;
+            this.label46.Text = "Пакет:";
+            // 
+            // txtPackageFiveFile
+            // 
+            this.txtPackageFiveFile.Location = new System.Drawing.Point(54, 17);
+            this.txtPackageFiveFile.Name = "txtPackageFiveFile";
+            this.txtPackageFiveFile.Size = new System.Drawing.Size(292, 20);
+            this.txtPackageFiveFile.TabIndex = 58;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.chkbPackageFourUse);
+            this.groupBox8.Controls.Add(this.label39);
+            this.groupBox8.Controls.Add(this.txtPackageFourY);
+            this.groupBox8.Controls.Add(this.label40);
+            this.groupBox8.Controls.Add(this.txtPackageFourX);
+            this.groupBox8.Controls.Add(this.label41);
+            this.groupBox8.Controls.Add(this.btnPackageFour);
+            this.groupBox8.Controls.Add(this.label42);
+            this.groupBox8.Controls.Add(this.txtPackageFourFile);
+            this.groupBox8.Location = new System.Drawing.Point(9, 295);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(410, 91);
+            this.groupBox8.TabIndex = 3;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Пакет №4";
+            // 
+            // chkbPackageFourUse
+            // 
+            this.chkbPackageFourUse.AutoSize = true;
+            this.chkbPackageFourUse.Location = new System.Drawing.Point(274, 61);
+            this.chkbPackageFourUse.Name = "chkbPackageFourUse";
+            this.chkbPackageFourUse.Size = new System.Drawing.Size(131, 17);
+            this.chkbPackageFourUse.TabIndex = 88;
+            this.chkbPackageFourUse.Text = "Использовать пакет";
+            this.chkbPackageFourUse.UseVisualStyleBackColor = true;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(127, 62);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(17, 13);
+            this.label39.TabIndex = 65;
+            this.label39.Text = "Y:";
+            // 
+            // txtPackageFourY
+            // 
+            this.txtPackageFourY.Location = new System.Drawing.Point(150, 59);
+            this.txtPackageFourY.Name = "txtPackageFourY";
+            this.txtPackageFourY.Size = new System.Drawing.Size(79, 20);
+            this.txtPackageFourY.TabIndex = 64;
+            this.txtPackageFourY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(7, 62);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(17, 13);
+            this.label40.TabIndex = 63;
+            this.label40.Text = "X:";
+            // 
+            // txtPackageFourX
+            // 
+            this.txtPackageFourX.Location = new System.Drawing.Point(30, 59);
+            this.txtPackageFourX.Name = "txtPackageFourX";
+            this.txtPackageFourX.Size = new System.Drawing.Size(79, 20);
+            this.txtPackageFourX.TabIndex = 62;
+            this.txtPackageFourX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(7, 40);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(178, 13);
+            this.label41.TabIndex = 61;
+            this.label41.Text = "Координаты мыши для телепорта";
+            // 
+            // btnPackageFour
+            // 
+            this.btnPackageFour.Location = new System.Drawing.Point(352, 15);
+            this.btnPackageFour.Name = "btnPackageFour";
+            this.btnPackageFour.Size = new System.Drawing.Size(53, 23);
+            this.btnPackageFour.TabIndex = 60;
+            this.btnPackageFour.Text = "Задать";
+            this.btnPackageFour.UseVisualStyleBackColor = true;
+            this.btnPackageFour.Click += new System.EventHandler(this.btnPackageFour_Click);
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(7, 20);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(41, 13);
+            this.label42.TabIndex = 59;
+            this.label42.Text = "Пакет:";
+            // 
+            // txtPackageFourFile
+            // 
+            this.txtPackageFourFile.Location = new System.Drawing.Point(54, 17);
+            this.txtPackageFourFile.Name = "txtPackageFourFile";
+            this.txtPackageFourFile.Size = new System.Drawing.Size(292, 20);
+            this.txtPackageFourFile.TabIndex = 58;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.chkbPackageThreeUse);
+            this.groupBox7.Controls.Add(this.label35);
+            this.groupBox7.Controls.Add(this.txtPackageThreeY);
+            this.groupBox7.Controls.Add(this.label36);
+            this.groupBox7.Controls.Add(this.txtPackageThreeX);
+            this.groupBox7.Controls.Add(this.label37);
+            this.groupBox7.Controls.Add(this.btnPackageThree);
+            this.groupBox7.Controls.Add(this.label38);
+            this.groupBox7.Controls.Add(this.txtPackageThreeFile);
+            this.groupBox7.Location = new System.Drawing.Point(9, 198);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(410, 91);
+            this.groupBox7.TabIndex = 2;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Пакет №3";
+            // 
+            // chkbPackageThreeUse
+            // 
+            this.chkbPackageThreeUse.AutoSize = true;
+            this.chkbPackageThreeUse.Location = new System.Drawing.Point(274, 61);
+            this.chkbPackageThreeUse.Name = "chkbPackageThreeUse";
+            this.chkbPackageThreeUse.Size = new System.Drawing.Size(131, 17);
+            this.chkbPackageThreeUse.TabIndex = 88;
+            this.chkbPackageThreeUse.Text = "Использовать пакет";
+            this.chkbPackageThreeUse.UseVisualStyleBackColor = true;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(127, 62);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(17, 13);
+            this.label35.TabIndex = 65;
+            this.label35.Text = "Y:";
+            // 
+            // txtPackageThreeY
+            // 
+            this.txtPackageThreeY.Location = new System.Drawing.Point(150, 59);
+            this.txtPackageThreeY.Name = "txtPackageThreeY";
+            this.txtPackageThreeY.Size = new System.Drawing.Size(79, 20);
+            this.txtPackageThreeY.TabIndex = 64;
+            this.txtPackageThreeY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(7, 62);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(17, 13);
+            this.label36.TabIndex = 63;
+            this.label36.Text = "X:";
+            // 
+            // txtPackageThreeX
+            // 
+            this.txtPackageThreeX.Location = new System.Drawing.Point(30, 59);
+            this.txtPackageThreeX.Name = "txtPackageThreeX";
+            this.txtPackageThreeX.Size = new System.Drawing.Size(79, 20);
+            this.txtPackageThreeX.TabIndex = 62;
+            this.txtPackageThreeX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(7, 40);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(178, 13);
+            this.label37.TabIndex = 61;
+            this.label37.Text = "Координаты мыши для телепорта";
+            // 
+            // btnPackageThree
+            // 
+            this.btnPackageThree.Location = new System.Drawing.Point(352, 15);
+            this.btnPackageThree.Name = "btnPackageThree";
+            this.btnPackageThree.Size = new System.Drawing.Size(53, 23);
+            this.btnPackageThree.TabIndex = 60;
+            this.btnPackageThree.Text = "Задать";
+            this.btnPackageThree.UseVisualStyleBackColor = true;
+            this.btnPackageThree.Click += new System.EventHandler(this.btnPackageThree_Click);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(7, 20);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(41, 13);
+            this.label38.TabIndex = 59;
+            this.label38.Text = "Пакет:";
+            // 
+            // txtPackageThreeFile
+            // 
+            this.txtPackageThreeFile.Location = new System.Drawing.Point(54, 17);
+            this.txtPackageThreeFile.Name = "txtPackageThreeFile";
+            this.txtPackageThreeFile.Size = new System.Drawing.Size(292, 20);
+            this.txtPackageThreeFile.TabIndex = 58;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.chkbPackageTwoUse);
+            this.groupBox6.Controls.Add(this.label31);
+            this.groupBox6.Controls.Add(this.txtPackageTwoY);
+            this.groupBox6.Controls.Add(this.label32);
+            this.groupBox6.Controls.Add(this.txtPackageTwoX);
+            this.groupBox6.Controls.Add(this.label33);
+            this.groupBox6.Controls.Add(this.btnPackageTwo);
+            this.groupBox6.Controls.Add(this.label34);
+            this.groupBox6.Controls.Add(this.txtPackageTwoFile);
+            this.groupBox6.Location = new System.Drawing.Point(9, 101);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(410, 91);
+            this.groupBox6.TabIndex = 1;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Пакет №2";
+            // 
+            // chkbPackageTwoUse
+            // 
+            this.chkbPackageTwoUse.AutoSize = true;
+            this.chkbPackageTwoUse.Location = new System.Drawing.Point(274, 61);
+            this.chkbPackageTwoUse.Name = "chkbPackageTwoUse";
+            this.chkbPackageTwoUse.Size = new System.Drawing.Size(131, 17);
+            this.chkbPackageTwoUse.TabIndex = 88;
+            this.chkbPackageTwoUse.Text = "Использовать пакет";
+            this.chkbPackageTwoUse.UseVisualStyleBackColor = true;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(127, 62);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(17, 13);
+            this.label31.TabIndex = 65;
+            this.label31.Text = "Y:";
+            // 
+            // txtPackageTwoY
+            // 
+            this.txtPackageTwoY.Location = new System.Drawing.Point(150, 59);
+            this.txtPackageTwoY.Name = "txtPackageTwoY";
+            this.txtPackageTwoY.Size = new System.Drawing.Size(79, 20);
+            this.txtPackageTwoY.TabIndex = 64;
+            this.txtPackageTwoY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(7, 62);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(17, 13);
+            this.label32.TabIndex = 63;
+            this.label32.Text = "X:";
+            // 
+            // txtPackageTwoX
+            // 
+            this.txtPackageTwoX.Location = new System.Drawing.Point(30, 59);
+            this.txtPackageTwoX.Name = "txtPackageTwoX";
+            this.txtPackageTwoX.Size = new System.Drawing.Size(79, 20);
+            this.txtPackageTwoX.TabIndex = 62;
+            this.txtPackageTwoX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(7, 40);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(178, 13);
+            this.label33.TabIndex = 61;
+            this.label33.Text = "Координаты мыши для телепорта";
+            // 
+            // btnPackageTwo
+            // 
+            this.btnPackageTwo.Location = new System.Drawing.Point(352, 15);
+            this.btnPackageTwo.Name = "btnPackageTwo";
+            this.btnPackageTwo.Size = new System.Drawing.Size(53, 23);
+            this.btnPackageTwo.TabIndex = 60;
+            this.btnPackageTwo.Text = "Задать";
+            this.btnPackageTwo.UseVisualStyleBackColor = true;
+            this.btnPackageTwo.Click += new System.EventHandler(this.btnPackageTwo_Click);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(7, 20);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(41, 13);
+            this.label34.TabIndex = 59;
+            this.label34.Text = "Пакет:";
+            // 
+            // txtPackageTwoFile
+            // 
+            this.txtPackageTwoFile.Location = new System.Drawing.Point(54, 17);
+            this.txtPackageTwoFile.Name = "txtPackageTwoFile";
+            this.txtPackageTwoFile.Size = new System.Drawing.Size(292, 20);
+            this.txtPackageTwoFile.TabIndex = 58;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.chkbPackageOneUse);
+            this.groupBox5.Controls.Add(this.label30);
+            this.groupBox5.Controls.Add(this.txtPackageOneY);
+            this.groupBox5.Controls.Add(this.label29);
+            this.groupBox5.Controls.Add(this.txtPackageOneX);
+            this.groupBox5.Controls.Add(this.label28);
+            this.groupBox5.Controls.Add(this.btnPackageOne);
+            this.groupBox5.Controls.Add(this.label27);
+            this.groupBox5.Controls.Add(this.txtPackageOneFile);
+            this.groupBox5.Location = new System.Drawing.Point(9, 4);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(410, 91);
+            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Пакет №1";
+            // 
+            // chkbPackageOneUse
+            // 
+            this.chkbPackageOneUse.AutoSize = true;
+            this.chkbPackageOneUse.Location = new System.Drawing.Point(274, 61);
+            this.chkbPackageOneUse.Name = "chkbPackageOneUse";
+            this.chkbPackageOneUse.Size = new System.Drawing.Size(131, 17);
+            this.chkbPackageOneUse.TabIndex = 88;
+            this.chkbPackageOneUse.Text = "Использовать пакет";
+            this.chkbPackageOneUse.UseVisualStyleBackColor = true;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(127, 62);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(17, 13);
+            this.label30.TabIndex = 65;
+            this.label30.Text = "Y:";
+            // 
+            // txtPackageOneY
+            // 
+            this.txtPackageOneY.Location = new System.Drawing.Point(150, 59);
+            this.txtPackageOneY.Name = "txtPackageOneY";
+            this.txtPackageOneY.Size = new System.Drawing.Size(79, 20);
+            this.txtPackageOneY.TabIndex = 64;
+            this.txtPackageOneY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(7, 62);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(17, 13);
+            this.label29.TabIndex = 63;
+            this.label29.Text = "X:";
+            // 
+            // txtPackageOneX
+            // 
+            this.txtPackageOneX.Location = new System.Drawing.Point(30, 59);
+            this.txtPackageOneX.Name = "txtPackageOneX";
+            this.txtPackageOneX.Size = new System.Drawing.Size(79, 20);
+            this.txtPackageOneX.TabIndex = 62;
+            this.txtPackageOneX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnOnlyNumbers_KeyPress);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(7, 40);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(178, 13);
+            this.label28.TabIndex = 61;
+            this.label28.Text = "Координаты мыши для телепорта";
+            // 
+            // btnPackageOne
+            // 
+            this.btnPackageOne.Location = new System.Drawing.Point(352, 15);
+            this.btnPackageOne.Name = "btnPackageOne";
+            this.btnPackageOne.Size = new System.Drawing.Size(53, 23);
+            this.btnPackageOne.TabIndex = 60;
+            this.btnPackageOne.Text = "Задать";
+            this.btnPackageOne.UseVisualStyleBackColor = true;
+            this.btnPackageOne.Click += new System.EventHandler(this.btnPackageOne_Click);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(7, 20);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(41, 13);
+            this.label27.TabIndex = 59;
+            this.label27.Text = "Пакет:";
+            // 
+            // txtPackageOneFile
+            // 
+            this.txtPackageOneFile.Location = new System.Drawing.Point(54, 17);
+            this.txtPackageOneFile.Name = "txtPackageOneFile";
+            this.txtPackageOneFile.Size = new System.Drawing.Size(292, 20);
+            this.txtPackageOneFile.TabIndex = 58;
             // 
             // tabPage2
             // 
@@ -613,6 +1194,38 @@
             this.tabPage2.Text = "Поиск адресов";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnClean);
+            this.groupBox4.Controls.Add(this.btnOCR);
+            this.groupBox4.Controls.Add(this.btnCopyAdresses);
+            this.groupBox4.Location = new System.Drawing.Point(262, 36);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(146, 97);
+            this.groupBox4.TabIndex = 89;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Ручной поиск";
+            // 
+            // btnClean
+            // 
+            this.btnClean.Location = new System.Drawing.Point(7, 42);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(130, 23);
+            this.btnClean.TabIndex = 88;
+            this.btnClean.Text = "Очистить значания";
+            this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
+            // 
+            // btnOCR
+            // 
+            this.btnOCR.Location = new System.Drawing.Point(7, 16);
+            this.btnOCR.Name = "btnOCR";
+            this.btnOCR.Size = new System.Drawing.Size(130, 23);
+            this.btnOCR.TabIndex = 87;
+            this.btnOCR.Text = "OCR";
+            this.btnOCR.UseVisualStyleBackColor = true;
+            this.btnOCR.Click += new System.EventHandler(this.btnOCR_Click);
+            // 
             // btnCopyAdresses
             // 
             this.btnCopyAdresses.Location = new System.Drawing.Point(7, 68);
@@ -622,6 +1235,26 @@
             this.btnCopyAdresses.Text = "Скопировать адреса";
             this.btnCopyAdresses.UseVisualStyleBackColor = true;
             this.btnCopyAdresses.Click += new System.EventHandler(this.btnCopyAdresses_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnAutoAdressFinder);
+            this.groupBox3.Location = new System.Drawing.Point(150, 36);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(93, 97);
+            this.groupBox3.TabIndex = 88;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Автопоиск";
+            // 
+            // btnAutoAdressFinder
+            // 
+            this.btnAutoAdressFinder.Location = new System.Drawing.Point(6, 38);
+            this.btnAutoAdressFinder.Name = "btnAutoAdressFinder";
+            this.btnAutoAdressFinder.Size = new System.Drawing.Size(81, 23);
+            this.btnAutoAdressFinder.TabIndex = 88;
+            this.btnAutoAdressFinder.Text = "Автопоиск";
+            this.btnAutoAdressFinder.UseVisualStyleBackColor = true;
+            this.btnAutoAdressFinder.Click += new System.EventHandler(this.btnAutoAdressFinder_Click);
             // 
             // txtCValue
             // 
@@ -1258,57 +1891,42 @@
             this.label17.TabIndex = 95;
             this.label17.Text = "Икра. Цена.";
             // 
-            // groupBox3
+            // toolStripSeparator1
             // 
-            this.groupBox3.Controls.Add(this.btnAutoAdressFinder);
-            this.groupBox3.Location = new System.Drawing.Point(150, 36);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(93, 97);
-            this.groupBox3.TabIndex = 88;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Автопоиск";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(226, 6);
             // 
-            // btnAutoAdressFinder
+            // toolStripSeparator2
             // 
-            this.btnAutoAdressFinder.Location = new System.Drawing.Point(6, 38);
-            this.btnAutoAdressFinder.Name = "btnAutoAdressFinder";
-            this.btnAutoAdressFinder.Size = new System.Drawing.Size(81, 23);
-            this.btnAutoAdressFinder.TabIndex = 88;
-            this.btnAutoAdressFinder.Text = "Автопоиск";
-            this.btnAutoAdressFinder.UseVisualStyleBackColor = true;
-            this.btnAutoAdressFinder.Click += new System.EventHandler(this.btnAutoAdressFinder_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(226, 6);
             // 
-            // groupBox4
+            // menuItemOpenPackage
             // 
-            this.groupBox4.Controls.Add(this.btnClean);
-            this.groupBox4.Controls.Add(this.btnOCR);
-            this.groupBox4.Controls.Add(this.btnCopyAdresses);
-            this.groupBox4.Location = new System.Drawing.Point(262, 36);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(146, 97);
-            this.groupBox4.TabIndex = 89;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Ручной поиск";
+            this.menuItemOpenPackage.Name = "menuItemOpenPackage";
+            this.menuItemOpenPackage.Size = new System.Drawing.Size(229, 22);
+            this.menuItemOpenPackage.Text = "Открыть пакет";
+            this.menuItemOpenPackage.Click += new System.EventHandler(this.menuItemOpenPackage_Click);
             // 
-            // btnOCR
+            // menuItemSavePackage
             // 
-            this.btnOCR.Location = new System.Drawing.Point(7, 16);
-            this.btnOCR.Name = "btnOCR";
-            this.btnOCR.Size = new System.Drawing.Size(130, 23);
-            this.btnOCR.TabIndex = 87;
-            this.btnOCR.Text = "OCR";
-            this.btnOCR.UseVisualStyleBackColor = true;
-            this.btnOCR.Click += new System.EventHandler(this.btnOCR_Click);
+            this.menuItemSavePackage.Enabled = false;
+            this.menuItemSavePackage.Name = "menuItemSavePackage";
+            this.menuItemSavePackage.Size = new System.Drawing.Size(229, 22);
+            this.menuItemSavePackage.Text = "Сохранить пакет";
+            this.menuItemSavePackage.Click += new System.EventHandler(this.menuItemSavePackage_Click);
             // 
-            // btnClean
+            // menuItemSavePackageAs
             // 
-            this.btnClean.Location = new System.Drawing.Point(7, 42);
-            this.btnClean.Name = "btnClean";
-            this.btnClean.Size = new System.Drawing.Size(130, 23);
-            this.btnClean.TabIndex = 88;
-            this.btnClean.Text = "Очистить значания";
-            this.btnClean.UseVisualStyleBackColor = true;
-            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
+            this.menuItemSavePackageAs.Name = "menuItemSavePackageAs";
+            this.menuItemSavePackageAs.Size = new System.Drawing.Size(229, 22);
+            this.menuItemSavePackageAs.Text = "Сохранить пакет как...";
+            this.menuItemSavePackageAs.Click += new System.EventHandler(this.menuItemSavePackageAs_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(226, 6);
             // 
             // Form1
             // 
@@ -1333,8 +1951,21 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCAdressList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvYAdressList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvXAdressList)).EndInit();
@@ -1345,8 +1976,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1471,6 +2100,65 @@
         private System.Windows.Forms.Button btnOCR;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnAutoAdressFinder;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.OpenFileDialog openFileDialogPackage;
+        private System.Windows.Forms.Button btnPackageOne;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox txtPackageOneFile;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox txtPackageOneX;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox txtPackageOneY;
+        private System.Windows.Forms.CheckBox chkbPackageOneUse;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox chkbPackageTwoUse;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox txtPackageTwoY;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox txtPackageTwoX;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Button btnPackageTwo;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox txtPackageTwoFile;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.CheckBox chkbPackageThreeUse;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox txtPackageThreeY;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox txtPackageThreeX;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Button btnPackageThree;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox txtPackageThreeFile;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.CheckBox chkbPackageFourUse;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TextBox txtPackageFourY;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox txtPackageFourX;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Button btnPackageFour;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.TextBox txtPackageFourFile;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.CheckBox chkbPackageFiveUse;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.TextBox txtPackageFiveY;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox txtPackageFiveX;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Button btnPackageFive;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.TextBox txtPackageFiveFile;
+        private System.Windows.Forms.Button btnPackageStart;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem menuItemOpenPackage;
+        private System.Windows.Forms.ToolStripMenuItem menuItemSavePackage;
+        private System.Windows.Forms.ToolStripMenuItem menuItemSavePackageAs;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 

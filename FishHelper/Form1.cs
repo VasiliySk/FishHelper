@@ -1092,6 +1092,80 @@ namespace FishHelper
             btnFirstScan_Click(null, null);            
         }
 
+        private void btnPackageOne_Click(object sender, EventArgs e)
+        {
+            openFileDialogPackage.Filter = "Fish Helper files (*.fhf)|*.fhf";
+            openFileDialogPackage.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments) + "\\My Cheat Tables\\";
+            if (openFileDialogPackage.ShowDialog() == DialogResult.OK)
+            {
+                txtPackageOneFile.Text = openFileDialogPackage.FileName;
+                openFileDialogPackage.Reset();
+            }
+        }
+
+        private void btnPackageTwo_Click(object sender, EventArgs e)
+        {
+            openFileDialogPackage.Filter = "Fish Helper files (*.fhf)|*.fhf";
+            openFileDialogPackage.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments) + "\\My Cheat Tables\\";
+            if (openFileDialogPackage.ShowDialog() == DialogResult.OK)
+            {
+                txtPackageTwoFile.Text = openFileDialogPackage.FileName;
+                openFileDialogPackage.Reset();
+            }
+        }
+
+        private void btnPackageThree_Click(object sender, EventArgs e)
+        {
+            openFileDialogPackage.Filter = "Fish Helper files (*.fhf)|*.fhf";
+            openFileDialogPackage.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments) + "\\My Cheat Tables\\";
+            if (openFileDialogPackage.ShowDialog() == DialogResult.OK)
+            {
+                txtPackageThreeFile.Text = openFileDialogPackage.FileName;
+                openFileDialogPackage.Reset();
+            }
+        }
+
+        private void btnPackageFour_Click(object sender, EventArgs e)
+        {
+            openFileDialogPackage.Filter = "Fish Helper files (*.fhf)|*.fhf";
+            openFileDialogPackage.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments) + "\\My Cheat Tables\\";
+            if (openFileDialogPackage.ShowDialog() == DialogResult.OK)
+            {
+                txtPackageFourFile.Text = openFileDialogPackage.FileName;
+                openFileDialogPackage.Reset();
+            }
+        }
+
+        private void btnPackageFive_Click(object sender, EventArgs e)
+        {
+            openFileDialogPackage.Filter = "Fish Helper files (*.fhf)|*.fhf";
+            openFileDialogPackage.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments) + "\\My Cheat Tables\\";
+            if (openFileDialogPackage.ShowDialog() == DialogResult.OK)
+            {
+                txtPackageFiveFile.Text = openFileDialogPackage.FileName;
+                openFileDialogPackage.Reset();
+            }
+        }
+        
+        //Сохраняем файл пакета в новый файл
+        private void menuItemSavePackageAs_Click(object sender, EventArgs e)
+        {
+            fishHelperFile.SaveFilePackageAs(saveFileDialog1, this, menuItemSavePackage);
+            saveFileDialog1.Reset();
+        }
+
+        //Открываем файл пакета
+        private void menuItemOpenPackage_Click(object sender, EventArgs e)
+        {
+            fishHelperFile.OpenFilePackage(openFileDialog1, this, menuItemSavePackage);
+            openFileDialog1.Reset();
+        }
+
+        private void menuItemSavePackage_Click(object sender, EventArgs e)
+        {
+            fishHelperFile.SaveFilePackage(this);
+        }
+
         //Обрабатываем нажатие клавиш. Только цифры и запятая
         private void btnOnlyNumbers_KeyPress(object sender, KeyPressEventArgs e)
         {
