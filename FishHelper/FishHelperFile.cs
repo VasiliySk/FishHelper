@@ -127,6 +127,7 @@ namespace FishHelper
         {            
             StreamWriter myWriter = new StreamWriter(filePath);
             WriteToFile(myWriter);
+            myWriter.Close();
         }
 
         //Сохраняем файл как...

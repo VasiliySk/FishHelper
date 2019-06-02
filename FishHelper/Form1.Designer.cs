@@ -50,8 +50,14 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.openAdressStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAdressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemOpenPackage = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemSavePackage = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemSavePackageAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OptionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -201,12 +207,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.saveFileDialogAdressFile = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialogPackage = new System.Windows.Forms.OpenFileDialog();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItemOpenPackage = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemSavePackage = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemSavePackageAs = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -423,6 +423,11 @@
             this.saveAsToolStripMenuItem.Text = "Сохранить как...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(226, 6);
+            // 
             // openAdressStripMenuItem
             // 
             this.openAdressStripMenuItem.Name = "openAdressStripMenuItem";
@@ -436,6 +441,38 @@
             this.saveAdressToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.saveAdressToolStripMenuItem.Text = "Сохранить файл с адресами";
             this.saveAdressToolStripMenuItem.Click += new System.EventHandler(this.saveAdressToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(226, 6);
+            // 
+            // menuItemOpenPackage
+            // 
+            this.menuItemOpenPackage.Name = "menuItemOpenPackage";
+            this.menuItemOpenPackage.Size = new System.Drawing.Size(229, 22);
+            this.menuItemOpenPackage.Text = "Открыть пакет";
+            this.menuItemOpenPackage.Click += new System.EventHandler(this.menuItemOpenPackage_Click);
+            // 
+            // menuItemSavePackage
+            // 
+            this.menuItemSavePackage.Enabled = false;
+            this.menuItemSavePackage.Name = "menuItemSavePackage";
+            this.menuItemSavePackage.Size = new System.Drawing.Size(229, 22);
+            this.menuItemSavePackage.Text = "Сохранить пакет";
+            this.menuItemSavePackage.Click += new System.EventHandler(this.menuItemSavePackage_Click);
+            // 
+            // menuItemSavePackageAs
+            // 
+            this.menuItemSavePackageAs.Name = "menuItemSavePackageAs";
+            this.menuItemSavePackageAs.Size = new System.Drawing.Size(229, 22);
+            this.menuItemSavePackageAs.Text = "Сохранить пакет как...";
+            this.menuItemSavePackageAs.Click += new System.EventHandler(this.menuItemSavePackageAs_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(226, 6);
             // 
             // exitToolStripMenuItem
             // 
@@ -455,7 +492,7 @@
             // OptionToolStripMenuItem1
             // 
             this.OptionToolStripMenuItem1.Name = "OptionToolStripMenuItem1";
-            this.OptionToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.OptionToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
             this.OptionToolStripMenuItem1.Text = "Настройки";
             this.OptionToolStripMenuItem1.Click += new System.EventHandler(this.OptionToolStripMenuItem1_Click);
             // 
@@ -665,6 +702,7 @@
             this.btnPackageStart.TabIndex = 61;
             this.btnPackageStart.Text = "Вперед по перечню пакетов";
             this.btnPackageStart.UseVisualStyleBackColor = true;
+            this.btnPackageStart.Click += new System.EventHandler(this.btnPackageStart_Click);
             // 
             // groupBox9
             // 
@@ -1890,43 +1928,6 @@
             this.label17.Size = new System.Drawing.Size(68, 13);
             this.label17.TabIndex = 95;
             this.label17.Text = "Икра. Цена.";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(226, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(226, 6);
-            // 
-            // menuItemOpenPackage
-            // 
-            this.menuItemOpenPackage.Name = "menuItemOpenPackage";
-            this.menuItemOpenPackage.Size = new System.Drawing.Size(229, 22);
-            this.menuItemOpenPackage.Text = "Открыть пакет";
-            this.menuItemOpenPackage.Click += new System.EventHandler(this.menuItemOpenPackage_Click);
-            // 
-            // menuItemSavePackage
-            // 
-            this.menuItemSavePackage.Enabled = false;
-            this.menuItemSavePackage.Name = "menuItemSavePackage";
-            this.menuItemSavePackage.Size = new System.Drawing.Size(229, 22);
-            this.menuItemSavePackage.Text = "Сохранить пакет";
-            this.menuItemSavePackage.Click += new System.EventHandler(this.menuItemSavePackage_Click);
-            // 
-            // menuItemSavePackageAs
-            // 
-            this.menuItemSavePackageAs.Name = "menuItemSavePackageAs";
-            this.menuItemSavePackageAs.Size = new System.Drawing.Size(229, 22);
-            this.menuItemSavePackageAs.Text = "Сохранить пакет как...";
-            this.menuItemSavePackageAs.Click += new System.EventHandler(this.menuItemSavePackageAs_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(226, 6);
             // 
             // Form1
             // 

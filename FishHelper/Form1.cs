@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Threading;
 using System.Windows.Forms;
 using static FishHelper.EsoWindow;
@@ -38,6 +39,9 @@ namespace FishHelper
         //Переменные для онлайн трансляции
         const int port = 8080; 
         private ScreenCaptureStreamer _Server;
+        //Переменные для пакетного режима
+        private const String loadScreen = "C1-AD-96-70-5C-EC-9B-07-65-A3-E2-81-D8-A5-32-44"; //Загрузочный экран       
+
 
         //Обработка ответа Cheat Engine Dll
         protected override void WndProc(ref Message m)
@@ -243,7 +247,7 @@ namespace FishHelper
             txtBaitChance.Text = UserOptions.baitChance;
             txtBaitChance2.Text = UserOptions.baitChance;
             txtMiriamPrice.Text = UserOptions.miriamPrice;
-            txtBervezPrice.Text = UserOptions.bervezPrice;
+            txtBervezPrice.Text = UserOptions.bervezPrice;            
         }   
 
         private void btbTestAdress_Click(object sender, EventArgs e)
@@ -377,9 +381,10 @@ namespace FishHelper
 
         private void btnConsol_Click(object sender, EventArgs e)
         {
-            
+           
+            ActivateEsoWindow();            
         }
-        
+
         //Добавляем строку
         private void btnAddRow_Click(object sender, EventArgs e)
         {
@@ -450,7 +455,7 @@ namespace FishHelper
              {
                  Random random = new Random();                 
 
-                 //Активируем окно, прожимаем дважды кноку мыши 
+                 //Активируем окно, прожимаем дважды кнопку мыши 
                  ActivateEsoWindow();
 
                  for (int i = count; i < data.Count; i++)
@@ -1164,6 +1169,89 @@ namespace FishHelper
         private void menuItemSavePackage_Click(object sender, EventArgs e)
         {
             fishHelperFile.SaveFilePackage(this);
+        }
+        //Пакетный режим
+        private void btnPackageStart_Click(object sender, EventArgs e)
+        {
+            stopAction = false;
+            Hide(); //Скрываем помощника в панель уведомления
+            Thread.Sleep(1000);
+            String packageCount = "";
+            while (!stopAction) {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (stopAction) break;
+                    //Определяем блок, в котором работаем 
+                    switch (i)
+                    {
+                        case 0:
+                            packageCount = "One";
+                            break;
+                        case 1:
+                            packageCount = "Two";
+                            break;
+                        case 2:
+                            packageCount = "Three";
+                            break;
+                        case 3:
+                            packageCount = "Four";
+                            break;
+                        case 4:
+                            packageCount = "Five";
+                            break;
+                    }
+
+                    CheckBox checkBox = (CheckBox)this.Controls.Find("chkbPackage" + packageCount + "Use", true).First();
+                    if (checkBox.Checked)
+                    {
+                        TextBox txtPackageFile = (TextBox)this.Controls.Find("txtPackage" + packageCount + "File", true).First();
+                        TextBox txtPackageX = (TextBox)this.Controls.Find("txtPackage" + packageCount + "X", true).First();
+                        TextBox txtPackageY = (TextBox)this.Controls.Find("txtPackage" + packageCount + "Y", true).First();
+
+                        fishHelperFile.OpenFilePath(txtPackageFile.Text, data);
+                        AutoItX.MouseMove(Convert.ToInt32(txtPackageX.Text), Convert.ToInt32(txtPackageY.Text), 1);
+                        AutoItX.MouseClick();
+                        Thread.Sleep(2000);
+
+                        //Код для определения того, загрузился ли экран
+                        bool loadScreenFinish = false;
+                        Bitmap bitmap = new Bitmap(30, 3); //Задаем размер считываемой области
+                        Graphics graphics = Graphics.FromImage(bitmap as Image);
+
+                        //Объекты для расчета хэш кода картинки
+                        ImageConverter converter = new ImageConverter();
+                        MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+                        byte[] rawImageData;
+                        byte[] hash;
+                        String actualHash;
+
+                        //Дожидаемся, пока загрузится локация
+                        while (!loadScreenFinish)
+                        {
+                            if (stopAction) break;
+                            graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size); // Задаем первыми двумя цифрами координаты начала (верхний левый угол) считываемого прямоугольника 
+                            //Рассчитываем хэш код картинки            
+                            rawImageData = converter.ConvertTo(bitmap, typeof(byte[])) as byte[];
+                            hash = md5.ComputeHash(rawImageData);
+                            //конвертируем в строку
+                            actualHash = BitConverter.ToString(hash);
+                            if (!actualHash.Equals(loadScreen)) loadScreenFinish = true;
+                            Thread.Sleep(2000);
+                        }
+                        if (stopAction) break;
+                        //Опускаем взгляд вниз
+                        int X = AutoItX.MouseGetPos().X;
+                        int Y = AutoItX.MouseGetPos().Y;
+                        AutoItX.MouseMove(X, Y + 300, 1);
+                        RunAndFish(0);
+                    }
+                }
+            }
+            if (UserOptions.hideToNotify)
+            {
+                Show();
+                WindowState = FormWindowState.Normal;
+            }
         }
 
         //Обрабатываем нажатие клавиш. Только цифры и запятая
