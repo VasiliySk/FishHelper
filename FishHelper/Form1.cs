@@ -911,7 +911,7 @@ namespace FishHelper
         {
             TabPage selectedTab = tabControl1.SelectedTab;
             int selectedIndex = tabControl1.SelectedIndex;   
-            if (selectedIndex == 1)
+            if (selectedIndex == 2)
             {
                 hWnd = esoWindow.FindWindow(null, "Elder Scrolls Online"); //Определяем идентификатор процесса
                 var wHwnd = esoWindow.GetWindowThreadProcessId(hWnd, out pid);
