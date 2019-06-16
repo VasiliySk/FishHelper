@@ -426,7 +426,7 @@ namespace FishHelper
         {
             if (tStatus == TargetStatus.X_bigger_Y_bigger)
             {
-                if((СoordinateСomparison(targetX, actualX,true)) || (СoordinateСomparison(targetY, actualY, true)))
+                if ((targetX > actualX) || (targetY > actualY))
                 {
                     return true;
                 }
@@ -438,7 +438,7 @@ namespace FishHelper
 
             if (tStatus == TargetStatus.X_less_Y_less)
             {
-                if ((СoordinateСomparison(targetX, actualX, false)) || (СoordinateСomparison(targetY, actualY, false)))
+                if ((targetX < actualX) || (targetY < actualY))
                 {
                     return true;
                 }
@@ -450,7 +450,7 @@ namespace FishHelper
 
             if (tStatus == TargetStatus.X_bigger_Y_less)
             {
-                if ((СoordinateСomparison(targetX, actualX, true)) || (СoordinateСomparison(targetY, actualY, false)))
+                if ((targetX > actualX) || (targetY < actualY))
                 {
                     return true;
                 }
@@ -462,7 +462,7 @@ namespace FishHelper
 
             if (tStatus == TargetStatus.X_less_Y_bigger)
             {
-                if ((СoordinateСomparison(targetX, actualX, false)) || (СoordinateСomparison(targetY, actualY, true)))
+                if ((targetX < actualX) || (targetY > actualY))
                 {
                     return true;
                 }
@@ -474,24 +474,7 @@ namespace FishHelper
 
             return false;
 
-        }
-
-        //Сравнение с приближением 0,01
-        private bool СoordinateСomparison(double target, double actual, bool theFirstBig)
-        {
-            if (theFirstBig)
-            {
-                if (target - 0.01d > actual) return true;
-                if (target + 0.01d > actual) return true;
-                return false;
-            }
-            else
-            {
-                if (actual > target - 0.01d) return true;
-                if (actual > target + 0.01d) return true;
-                return false;
-            }
-        }
+        }      
 
         //Собираем ресурс
         public void GatheringResources(EsoWindow esoWindow, IntPtr hWnd)
