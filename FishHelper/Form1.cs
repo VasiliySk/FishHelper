@@ -170,9 +170,8 @@ namespace FishHelper
                         }
                     }
                     if (autoSearch) {
-                        btnCopyAdresses_Click(null, null);
                         autoSearch = false;
-                        lblStatus.Text = "Автопоиск закончен.";
+                        if (CopyAdress()) lblStatus.Text = "Автопоиск закончен.";
                     }
                 }
             }
@@ -987,9 +986,27 @@ namespace FishHelper
 
         private void btnCopyAdresses_Click(object sender, EventArgs e)
         {
+            CopyAdress();
+        }
+        //Копируем адреса в отдельные ячейки
+        private bool CopyAdress()
+        {
+            if ((xAdressList.Count - 1) < 0) {
+                lblStatus.Text = "X адрес не найден! Повторите поиск!";
+                return false;
+            }
+            if ((yAdressList.Count - 1) < 0) {
+                lblStatus.Text = "Y адрес не найден! Повторите поиск!";
+                return false;
+            }
+            if ((cAdressList.Count - 1) < 0) {
+                lblStatus.Text = "C адрес не найден! Повторите поиск!";
+                return false;
+            }
             textBoxCoordX.Text = xAdressList[xAdressList.Count - 1].mAdress;
             textBoxCoordY.Text = yAdressList[yAdressList.Count - 1].mAdress;
             textBoxCorner.Text = cAdressList[cAdressList.Count - 1].mAdress;
+            return true;
         }
 
         //Переводим графические значения в текстовые
