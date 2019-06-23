@@ -50,6 +50,10 @@ namespace FishHelper
             {
                 return;
             }
+            catch (System.ArgumentException)
+            {
+                return;
+            }
             string[] str;
             int num = 0;
             try
@@ -232,6 +236,10 @@ namespace FishHelper
                 myread = new StreamReader(path);
             }
             catch (System.IO.FileNotFoundException)
+            {
+                return;
+            }
+            catch (System.ArgumentException)
             {
                 return;
             }
@@ -442,6 +450,10 @@ namespace FishHelper
                 myread = new StreamReader(filePathPackage);
             }
             catch (System.IO.FileNotFoundException)
+            {
+                return;
+            }
+            catch (System.ArgumentException)
             {
                 return;
             }
