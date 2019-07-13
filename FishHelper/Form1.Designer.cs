@@ -357,7 +357,7 @@
             this.btnConsol.Name = "btnConsol";
             this.btnConsol.Size = new System.Drawing.Size(132, 28);
             this.btnConsol.TabIndex = 25;
-            this.btnConsol.Text = "Консоль";
+            this.btnConsol.Text = "Telegram";
             this.btnConsol.UseVisualStyleBackColor = true;
             this.btnConsol.Click += new System.EventHandler(this.btnConsol_Click);
             // 

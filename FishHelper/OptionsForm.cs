@@ -21,6 +21,7 @@ namespace FishHelper
             cmbGoGoGo.DataSource = Enum.GetValues(typeof(FunctionKeys));
             cmbGoSelect.DataSource = Enum.GetValues(typeof(FunctionKeys));
             cmbBackSelect.DataSource = Enum.GetValues(typeof(FunctionKeys));
+            cmbAutoSearch.DataSource = Enum.GetValues(typeof(FunctionKeys));
             cmbFishing.DataSource = Enum.GetValues(typeof(FunctionKeys));
             cmbFishingVer2.DataSource = Enum.GetValues(typeof(FunctionKeys));
 
@@ -37,6 +38,7 @@ namespace FishHelper
             cmbGoGoGo.SelectedIndex = UserOptions.goGoGo;
             cmbGoSelect.SelectedIndex = UserOptions.goSelect;
             cmbBackSelect.SelectedIndex = UserOptions.backSelect;
+            cmbAutoSearch.SelectedIndex = UserOptions.autoSearch;
             cmbFishing.SelectedIndex = UserOptions.fishing;
             cmbFishingVer2.SelectedIndex = UserOptions.fishingVer2;           
         }
@@ -55,6 +57,7 @@ namespace FishHelper
             UserOptions.goGoGo = cmbGoGoGo.SelectedIndex;
             UserOptions.goSelect = cmbGoSelect.SelectedIndex;
             UserOptions.backSelect = cmbBackSelect.SelectedIndex;
+            UserOptions.autoSearch = cmbAutoSearch.SelectedIndex;
             UserOptions.fishing = cmbFishing.SelectedIndex;
             UserOptions.fishingVer2 = cmbFishingVer2.SelectedIndex;
             UserOptions.SaveSettings();
@@ -84,6 +87,11 @@ namespace FishHelper
             {
                 txtDefaultFileAdress.Text = openFileDialogAdress.FileName;
             }
+        }
+
+        private void OptionsForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

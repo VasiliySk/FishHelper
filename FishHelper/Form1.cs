@@ -380,8 +380,7 @@ namespace FishHelper
 
         private void btnConsol_Click(object sender, EventArgs e)
         {
-           
-            ActivateEsoWindow();            
+            
         }
 
         //Добавляем строку
@@ -566,6 +565,11 @@ namespace FishHelper
                 btnBackSelect_Click(null, null);
                 return;
             }
+            if (ePress.Equals(Convert.ToString((FunctionKeys)UserOptions.autoSearch)))
+            {
+                AutoSearchKeyPress();
+                return;
+            }
             if (ePress.Equals(Convert.ToString((FunctionKeys)UserOptions.fishing)))
             {
                 btnFishing_Click(null, null);
@@ -576,6 +580,13 @@ namespace FishHelper
                 btnFishingVer2_Click(null, null);
                 return;
             }
+        }
+        
+        // Запускаем автопоиск с клавиши
+        private void AutoSearchKeyPress()
+        {
+            tabControl1.SelectedIndex = 2;
+            btnAutoAdressFinder_Click(null, null);
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)

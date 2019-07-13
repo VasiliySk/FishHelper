@@ -63,11 +63,13 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtESOlocateY = new System.Windows.Forms.TextBox();
             this.txtESOlocateX = new System.Windows.Forms.TextBox();
+            this.cmbAutoSearch = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(12, 449);
+            this.btnOk.Location = new System.Drawing.Point(12, 471);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(99, 23);
             this.btnOk.TabIndex = 0;
@@ -110,7 +112,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(152, 449);
+            this.btnCancel.Location = new System.Drawing.Point(152, 471);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(86, 23);
             this.btnCancel.TabIndex = 37;
@@ -202,7 +204,7 @@
             // cmbFishing
             // 
             this.cmbFishing.FormattingEnabled = true;
-            this.cmbFishing.Location = new System.Drawing.Point(174, 395);
+            this.cmbFishing.Location = new System.Drawing.Point(174, 417);
             this.cmbFishing.Name = "cmbFishing";
             this.cmbFishing.Size = new System.Drawing.Size(64, 21);
             this.cmbFishing.TabIndex = 48;
@@ -210,7 +212,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 398);
+            this.label7.Location = new System.Drawing.Point(11, 420);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 47;
@@ -219,7 +221,7 @@
             // cmbFishingVer2
             // 
             this.cmbFishingVer2.FormattingEnabled = true;
-            this.cmbFishingVer2.Location = new System.Drawing.Point(174, 422);
+            this.cmbFishingVer2.Location = new System.Drawing.Point(174, 444);
             this.cmbFishingVer2.Name = "cmbFishingVer2";
             this.cmbFishingVer2.Size = new System.Drawing.Size(64, 21);
             this.cmbFishingVer2.TabIndex = 50;
@@ -227,7 +229,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 425);
+            this.label8.Location = new System.Drawing.Point(11, 447);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 13);
             this.label8.TabIndex = 49;
@@ -372,11 +374,30 @@
             this.txtESOlocateX.Size = new System.Drawing.Size(115, 20);
             this.txtESOlocateX.TabIndex = 64;
             // 
+            // cmbAutoSearch
+            // 
+            this.cmbAutoSearch.FormattingEnabled = true;
+            this.cmbAutoSearch.Location = new System.Drawing.Point(174, 394);
+            this.cmbAutoSearch.Name = "cmbAutoSearch";
+            this.cmbAutoSearch.Size = new System.Drawing.Size(64, 21);
+            this.cmbAutoSearch.TabIndex = 67;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(11, 397);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(64, 13);
+            this.label16.TabIndex = 66;
+            this.label16.Text = "Автопоиск:";
+            // 
             // OptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(257, 480);
+            this.ClientSize = new System.Drawing.Size(257, 506);
+            this.Controls.Add(this.cmbAutoSearch);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.txtESOlocateY);
             this.Controls.Add(this.txtESOlocateX);
             this.Controls.Add(this.label14);
@@ -416,6 +437,7 @@
             this.Name = "OptionsForm";
             this.ShowInTaskbar = false;
             this.Text = "Настройки";
+            this.Load += new System.EventHandler(this.OptionsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,5 +480,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtESOlocateY;
         private System.Windows.Forms.TextBox txtESOlocateX;
+        private System.Windows.Forms.ComboBox cmbAutoSearch;
+        private System.Windows.Forms.Label label16;
     }
 }

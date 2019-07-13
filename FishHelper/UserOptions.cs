@@ -21,6 +21,7 @@ namespace FishHelper
         public static int goGoGo { get; set; }
         public static int goSelect { get; set; }
         public static int backSelect { get; set; }
+        public static int autoSearch { get; set; }
         public static int fishing { get; set; }
         public static int fishingVer2 { get; set; }
         public static bool autoStartServer { get; set; }
@@ -55,6 +56,7 @@ namespace FishHelper
             Properties.Settings.Default.GoGoGo = goGoGo;
             Properties.Settings.Default.GoSelect = goSelect;
             Properties.Settings.Default.BackSelect = backSelect;
+            Properties.Settings.Default.AutoSearch = autoSearch;
             Properties.Settings.Default.Fishing = fishing;
             Properties.Settings.Default.FishingVer2 = fishingVer2;
             Properties.Settings.Default.AutoStartServer = autoStartServer;
@@ -85,6 +87,7 @@ namespace FishHelper
             goGoGo = Properties.Settings.Default.GoGoGo;
             goSelect = Properties.Settings.Default.GoSelect;
             backSelect = Properties.Settings.Default.BackSelect;
+            autoSearch = Properties.Settings.Default.AutoSearch;
             fishing = Properties.Settings.Default.Fishing;
             fishingVer2 = Properties.Settings.Default.FishingVer2;
             autoStartServer = Properties.Settings.Default.AutoStartServer;

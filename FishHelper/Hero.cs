@@ -48,6 +48,10 @@ namespace FishHelper
             double actualX = BitConverter.ToDouble(bufferX, 0);
             double actualY = BitConverter.ToDouble(bufferY, 0);
             double actualC = BitConverter.ToDouble(bufferC, 0);
+
+            Console.WriteLine("Целевые координаты: "+"X: "+ xTarget + " Y: " + yTarget + " C: " + cTarget);
+            Console.WriteLine("Текущие координаты: " + "X: " + Convert.ToString(actualX) + " Y: " + Convert.ToString(actualY) + " C: " + Convert.ToString(actualC));
+
             //Переводим целевые значения из String в Double с использованием заданного
             double targetX = Convert.ToDouble(xTarget, nfi);
             double targetY = Convert.ToDouble(yTarget, nfi);          
