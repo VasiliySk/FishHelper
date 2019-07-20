@@ -32,6 +32,7 @@ namespace FishHelper
             cmbSelect.SelectedIndex = UserOptions.selectListAction;
             txtDefaultFilePath.Text = UserOptions.defaultPathFile;
             txtDefaultFileAdress.Text = UserOptions.defaultAdressFile;
+            txtDefaultFilePackage.Text = UserOptions.defaultFilePackage;
             txtESOlocateX.Text = Convert.ToString(UserOptions.esoLocateX);
             txtESOlocateY.Text = Convert.ToString(UserOptions.esoLocateY);
             cmbCancel.SelectedIndex = UserOptions.cancelAction;
@@ -51,6 +52,7 @@ namespace FishHelper
             UserOptions.selectListAction = cmbSelect.SelectedIndex;
             UserOptions.defaultPathFile = txtDefaultFilePath.Text;
             UserOptions.defaultAdressFile = txtDefaultFileAdress.Text;
+            UserOptions.defaultFilePackage = txtDefaultFilePackage.Text;
             UserOptions.esoLocateX = Convert.ToInt32(txtESOlocateX.Text);
             UserOptions.esoLocateY = Convert.ToInt32(txtESOlocateY.Text);
             UserOptions.cancelAction = cmbCancel.SelectedIndex;
@@ -92,6 +94,16 @@ namespace FishHelper
         private void OptionsForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSetDefaultFilePackage_Click(object sender, EventArgs e)
+        {
+            openFileDialogPackage.Filter = "Fish Helper package (*.fpf)|*.fpf";
+            openFileDialogPackage.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments) + "\\My Cheat Tables\\";
+            if (openFileDialogPackage.ShowDialog() == DialogResult.OK)
+            {
+                txtDefaultFilePackage.Text = openFileDialogPackage.FileName;
+            }
         }
     }
 }

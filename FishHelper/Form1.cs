@@ -222,6 +222,7 @@ namespace FishHelper
             {
                 fishHelperFile.OpenFilePath(UserOptions.defaultPathFile, data);                
                 fishHelperFile.OpenAdressFileAction(UserOptions.defaultAdressFile, textBoxCoordX, textBoxCoordY, textBoxCorner);
+                fishHelperFile.OpenFilePathPackage(UserOptions.defaultFilePackage, this);
             }
             //Загрузка опций сервера трансляций
             IPAddress[] addresses = Dns.GetHostAddresses(Dns.GetHostName()).Where(a => a.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).ToArray();

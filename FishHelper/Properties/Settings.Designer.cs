@@ -322,5 +322,17 @@ namespace FishHelper.Properties {
                 this["AutoSearch"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DefaultFilePackage {
+            get {
+                return ((string)(this["DefaultFilePackage"]));
+            }
+            set {
+                this["DefaultFilePackage"] = value;
+            }
+        }
     }
 }

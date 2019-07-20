@@ -65,11 +65,15 @@
             this.txtESOlocateX = new System.Windows.Forms.TextBox();
             this.cmbAutoSearch = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.openFileDialogPackage = new System.Windows.Forms.OpenFileDialog();
+            this.btnSetDefaultFilePackage = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtDefaultFilePackage = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(12, 471);
+            this.btnOk.Location = new System.Drawing.Point(13, 501);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(99, 23);
             this.btnOk.TabIndex = 0;
@@ -112,7 +116,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(152, 471);
+            this.btnCancel.Location = new System.Drawing.Point(153, 501);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(86, 23);
             this.btnCancel.TabIndex = 37;
@@ -144,7 +148,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 275);
+            this.label2.Location = new System.Drawing.Point(10, 305);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(150, 13);
             this.label2.TabIndex = 40;
@@ -153,7 +157,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 323);
+            this.label3.Location = new System.Drawing.Point(12, 353);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 13);
             this.label3.TabIndex = 41;
@@ -162,7 +166,7 @@
             // cmbGoGoGo
             // 
             this.cmbGoGoGo.FormattingEnabled = true;
-            this.cmbGoGoGo.Location = new System.Drawing.Point(174, 320);
+            this.cmbGoGoGo.Location = new System.Drawing.Point(175, 350);
             this.cmbGoGoGo.Name = "cmbGoGoGo";
             this.cmbGoGoGo.Size = new System.Drawing.Size(64, 21);
             this.cmbGoGoGo.TabIndex = 42;
@@ -170,7 +174,7 @@
             // cmbGoSelect
             // 
             this.cmbGoSelect.FormattingEnabled = true;
-            this.cmbGoSelect.Location = new System.Drawing.Point(174, 345);
+            this.cmbGoSelect.Location = new System.Drawing.Point(175, 375);
             this.cmbGoSelect.Name = "cmbGoSelect";
             this.cmbGoSelect.Size = new System.Drawing.Size(64, 21);
             this.cmbGoSelect.TabIndex = 44;
@@ -178,7 +182,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 348);
+            this.label4.Location = new System.Drawing.Point(12, 378);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(157, 13);
             this.label4.TabIndex = 43;
@@ -187,7 +191,7 @@
             // cmbBackSelect
             // 
             this.cmbBackSelect.FormattingEnabled = true;
-            this.cmbBackSelect.Location = new System.Drawing.Point(174, 370);
+            this.cmbBackSelect.Location = new System.Drawing.Point(175, 400);
             this.cmbBackSelect.Name = "cmbBackSelect";
             this.cmbBackSelect.Size = new System.Drawing.Size(64, 21);
             this.cmbBackSelect.TabIndex = 46;
@@ -195,7 +199,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 373);
+            this.label6.Location = new System.Drawing.Point(12, 403);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(152, 13);
             this.label6.TabIndex = 45;
@@ -204,7 +208,7 @@
             // cmbFishing
             // 
             this.cmbFishing.FormattingEnabled = true;
-            this.cmbFishing.Location = new System.Drawing.Point(174, 417);
+            this.cmbFishing.Location = new System.Drawing.Point(175, 447);
             this.cmbFishing.Name = "cmbFishing";
             this.cmbFishing.Size = new System.Drawing.Size(64, 21);
             this.cmbFishing.TabIndex = 48;
@@ -212,7 +216,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 420);
+            this.label7.Location = new System.Drawing.Point(12, 450);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 47;
@@ -221,7 +225,7 @@
             // cmbFishingVer2
             // 
             this.cmbFishingVer2.FormattingEnabled = true;
-            this.cmbFishingVer2.Location = new System.Drawing.Point(174, 444);
+            this.cmbFishingVer2.Location = new System.Drawing.Point(175, 474);
             this.cmbFishingVer2.Name = "cmbFishingVer2";
             this.cmbFishingVer2.Size = new System.Drawing.Size(64, 21);
             this.cmbFishingVer2.TabIndex = 50;
@@ -229,7 +233,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 447);
+            this.label8.Location = new System.Drawing.Point(12, 477);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 13);
             this.label8.TabIndex = 49;
@@ -238,7 +242,7 @@
             // cmbCancel
             // 
             this.cmbCancel.FormattingEnabled = true;
-            this.cmbCancel.Location = new System.Drawing.Point(174, 295);
+            this.cmbCancel.Location = new System.Drawing.Point(175, 325);
             this.cmbCancel.Name = "cmbCancel";
             this.cmbCancel.Size = new System.Drawing.Size(64, 21);
             this.cmbCancel.TabIndex = 52;
@@ -246,7 +250,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(11, 298);
+            this.label9.Location = new System.Drawing.Point(12, 328);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(99, 13);
             this.label9.TabIndex = 51;
@@ -336,7 +340,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 207);
+            this.label13.Location = new System.Drawing.Point(10, 237);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(125, 13);
             this.label13.TabIndex = 61;
@@ -345,7 +349,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(11, 255);
+            this.label14.Location = new System.Drawing.Point(12, 285);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(17, 13);
             this.label14.TabIndex = 63;
@@ -354,7 +358,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(11, 229);
+            this.label15.Location = new System.Drawing.Point(12, 259);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(17, 13);
             this.label15.TabIndex = 62;
@@ -362,14 +366,14 @@
             // 
             // txtESOlocateY
             // 
-            this.txtESOlocateY.Location = new System.Drawing.Point(67, 252);
+            this.txtESOlocateY.Location = new System.Drawing.Point(68, 282);
             this.txtESOlocateY.Name = "txtESOlocateY";
             this.txtESOlocateY.Size = new System.Drawing.Size(115, 20);
             this.txtESOlocateY.TabIndex = 65;
             // 
             // txtESOlocateX
             // 
-            this.txtESOlocateX.Location = new System.Drawing.Point(67, 226);
+            this.txtESOlocateX.Location = new System.Drawing.Point(68, 256);
             this.txtESOlocateX.Name = "txtESOlocateX";
             this.txtESOlocateX.Size = new System.Drawing.Size(115, 20);
             this.txtESOlocateX.TabIndex = 64;
@@ -377,7 +381,7 @@
             // cmbAutoSearch
             // 
             this.cmbAutoSearch.FormattingEnabled = true;
-            this.cmbAutoSearch.Location = new System.Drawing.Point(174, 394);
+            this.cmbAutoSearch.Location = new System.Drawing.Point(175, 424);
             this.cmbAutoSearch.Name = "cmbAutoSearch";
             this.cmbAutoSearch.Size = new System.Drawing.Size(64, 21);
             this.cmbAutoSearch.TabIndex = 67;
@@ -385,17 +389,50 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(11, 397);
+            this.label16.Location = new System.Drawing.Point(12, 427);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(64, 13);
             this.label16.TabIndex = 66;
             this.label16.Text = "Автопоиск:";
             // 
+            // openFileDialogPackage
+            // 
+            this.openFileDialogPackage.FileName = "openFileDialog3";
+            // 
+            // btnSetDefaultFilePackage
+            // 
+            this.btnSetDefaultFilePackage.Location = new System.Drawing.Point(189, 211);
+            this.btnSetDefaultFilePackage.Name = "btnSetDefaultFilePackage";
+            this.btnSetDefaultFilePackage.Size = new System.Drawing.Size(53, 23);
+            this.btnSetDefaultFilePackage.TabIndex = 70;
+            this.btnSetDefaultFilePackage.Text = "Задать";
+            this.btnSetDefaultFilePackage.UseVisualStyleBackColor = true;
+            this.btnSetDefaultFilePackage.Click += new System.EventHandler(this.btnSetDefaultFilePackage_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(9, 216);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(41, 13);
+            this.label17.TabIndex = 69;
+            this.label17.Text = "Пакет:";
+            // 
+            // txtDefaultFilePackage
+            // 
+            this.txtDefaultFilePackage.Location = new System.Drawing.Point(70, 213);
+            this.txtDefaultFilePackage.Name = "txtDefaultFilePackage";
+            this.txtDefaultFilePackage.Size = new System.Drawing.Size(115, 20);
+            this.txtDefaultFilePackage.TabIndex = 68;
+            // 
             // OptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(257, 506);
+            this.ClientSize = new System.Drawing.Size(257, 529);
+            this.Controls.Add(this.btnSetDefaultFilePackage);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.txtDefaultFilePackage);
             this.Controls.Add(this.cmbAutoSearch);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtESOlocateY);
@@ -482,5 +519,9 @@
         private System.Windows.Forms.TextBox txtESOlocateX;
         private System.Windows.Forms.ComboBox cmbAutoSearch;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.OpenFileDialog openFileDialogPackage;
+        private System.Windows.Forms.Button btnSetDefaultFilePackage;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtDefaultFilePackage;
     }
 }

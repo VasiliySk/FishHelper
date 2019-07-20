@@ -441,7 +441,7 @@ namespace FishHelper
             }
         }
 
-        private void OpenFilePathPackage(String filePathPackage, Form form)
+        public void OpenFilePathPackage(String filePathPackage, Form form)
         {
             StreamReader myread;
             //Обработка ошибки, если файл не найден
