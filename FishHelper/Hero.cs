@@ -1,13 +1,9 @@
 ﻿using AutoIt;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static FishHelper.EsoWindow;
 
@@ -18,10 +14,30 @@ namespace FishHelper
     {
         enum TargetStatus {X_bigger_Y_bigger,X_less_Y_less, X_bigger_Y_less, X_less_Y_bigger };
         TargetStatus tStatus;
+        Random random;
+        //Переменные для анализа картинки
+        Bitmap bitmap;
+        Graphics graphics;
+        ImageConverter converter;
+        MD5CryptoServiceProvider md5;
+        byte[] rawImageData;
+        byte[] hash;
+        String actualHash;
         private const String fishHole = "81-32-3C-53-F9-56-8E-3A-52-79-B2-EA-7B-CD-EA-F0"; //Рыбное место
         private const String waitFish = "DC-EF-62-B0-A3-E0-24-C6-44-6D-0C-2A-2C-D1-95-51"; //Закинули удочку, ждем рыбу.
         private const String catchFish = "F5-65-2C-94-18-EB-D4-6F-36-BE-EC-60-31-1C-3C-6B"; //Вытягиваем рыбу
+        private const String fightStatus = "7F-D3-50-1E-95-D7-BA-C7-61-F9-D5-9D-62-57-FE-BE"; //Персонаж в бою
 
+        //конструктор
+        public Hero()
+        {
+            bitmap = new Bitmap(30, 3); //Задаем размер считываемой области
+            graphics = Graphics.FromImage(bitmap as Image);
+            converter = new ImageConverter();
+            md5 = new MD5CryptoServiceProvider();
+            random = new Random();
+        }
+        
         //Заготовка под бег
         public void Run(EsoWindow esoWindow, IntPtr processHandle, IntPtr hWnd, String xAddress, String yAdress, String cAdress, String xTarget, String yTarget, String cTarget) {
 
@@ -94,6 +110,10 @@ namespace FishHelper
                     Form1.stopAction = true;
                     break;
                 }
+                if (isFight()) {
+                    esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)Keys.W), new IntPtr(0));
+                    Fight(esoWindow, hWnd); //Если в бою, то воюем.
+                } 
                 esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)System.Windows.Forms.Keys.W), new IntPtr(0));
                 Thread.Sleep(50);
                 timeCount = timeCount + 50;
@@ -110,18 +130,9 @@ namespace FishHelper
             }
         }
         
+        //Определяем, рыбное ли это место или нет
         public bool isFishHole()
-        {
-            Bitmap bitmap = new Bitmap(30, 3); //Задаем размер считываемой области
-            Graphics graphics = Graphics.FromImage(bitmap as Image);
-
-            //Объекты для расчета хэш кода картинки
-            ImageConverter converter = new ImageConverter();
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            byte[] rawImageData;
-            byte[] hash;
-            String actualHash;
-
+        {         
             graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size); // Задаем первыми двумя цифрами координаты начала (верхний левый угол) считываемого прямоугольника 
 
             //Рассчитываем хэш код картинки            
@@ -139,20 +150,30 @@ namespace FishHelper
             }
         }
 
+        //Определяем, в бою мы или нет
+        public bool isFight()
+        {
+            graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size); // Задаем первыми двумя цифрами координаты начала (верхний левый угол) считываемого прямоугольника 
+
+            //Рассчитываем хэш код картинки            
+            rawImageData = converter.ConvertTo(bitmap, typeof(byte[])) as byte[];
+            hash = md5.ComputeHash(rawImageData);
+            //конвертируем в строку
+            actualHash = BitConverter.ToString(hash);
+
+            switch (actualHash)
+            {
+                case fightStatus:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
         //Рыбачим
         public void Fishing(EsoWindow esoWindow, IntPtr hWnd)
         {
-            bool stopFish = false;
-            Random random = new Random(); 
-            Bitmap bitmap = new Bitmap(30, 3); //Задаем размер считываемой области
-            Graphics graphics = Graphics.FromImage(bitmap as Image);
-
-            //Объекты для расчета хэш кода картинки
-            ImageConverter converter = new ImageConverter();
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            byte[] rawImageData;
-            byte[] hash;
-            String actualHash;
+            bool stopFish = false;                       
 
             while (!stopFish)
             {
@@ -179,6 +200,16 @@ namespace FishHelper
                         Thread.Sleep(random.Next(70, 100));
                         esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)System.Windows.Forms.Keys.E), new IntPtr(0));
                         Thread.Sleep(random.Next(3000, 4000));
+                        break;
+                    case fightStatus:
+                        Fight(esoWindow,hWnd);
+                        esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)System.Windows.Forms.Keys.S), new IntPtr(0));
+                        Thread.Sleep(random.Next(2000));
+                        esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)System.Windows.Forms.Keys.S), new IntPtr(0));
+                        Thread.Sleep(random.Next(70, 100));
+                        esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)System.Windows.Forms.Keys.W), new IntPtr(0));
+                        Thread.Sleep(random.Next(1500));
+                        esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)System.Windows.Forms.Keys.W), new IntPtr(0));
                         break;
                     default:                        
                         stopFish = true;
@@ -482,11 +513,26 @@ namespace FishHelper
 
         //Собираем ресурс
         public void GatheringResources(EsoWindow esoWindow, IntPtr hWnd)
-        {
-            Random random = new Random();
+        {            
             esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)Keys.E), new IntPtr(0));
             Thread.Sleep(random.Next(70, 100));
             esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)Keys.E), new IntPtr(0));
+        }
+        //Воюем
+        public void Fight(EsoWindow esoWindow, IntPtr hWnd)
+        {
+            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)Keys.D1), new IntPtr(0));
+            Thread.Sleep(random.Next(70, 100));
+            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)Keys.D1), new IntPtr(0));
+            Thread.Sleep(2000);
+            //Пока в бое, жмем клавишу 1 раз в 2 секунды
+            while (isFight())
+            {
+                esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)Keys.D1), new IntPtr(0));
+                Thread.Sleep(random.Next(70, 100));
+                esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)Keys.D1), new IntPtr(0));
+                Thread.Sleep(2000);
+            }
         }
     }
 }

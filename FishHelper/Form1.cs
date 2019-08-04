@@ -381,7 +381,29 @@ namespace FishHelper
 
         private void btnConsol_Click(object sender, EventArgs e)
         {
-            
+            Bitmap bitmap = new Bitmap(30, 3); //Задаем размер считываемой области
+            Graphics graphics = Graphics.FromImage(bitmap as Image);
+
+            //Объекты для расчета хэш кода картинки
+            ImageConverter converter = new ImageConverter();
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+
+            byte[] rawImageData;
+            byte[] hash;
+            String actualHash;
+
+            graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size); // Задаем первыми двумя цифрами координаты начала (верхний левый угол) считываемого прямоугольника 
+
+            //Рассчитываем хэш код картинки            
+            rawImageData = converter.ConvertTo(bitmap, typeof(byte[])) as byte[];
+            hash = md5.ComputeHash(rawImageData);
+            //конвертируем в строку
+            actualHash = BitConverter.ToString(hash);
+            Console.WriteLine(actualHash);
+            ActivateEsoWindow();
+            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)Keys.D1), new IntPtr(0));
+            Thread.Sleep(100);
+            esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYUP, new IntPtr((ushort)Keys.D1), new IntPtr(0));
         }
 
         //Добавляем строку

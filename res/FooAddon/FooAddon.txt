@@ -1,0 +1,5 @@
+## Title: Foo Addon
+## APIVersion: 100018
+
+FooAddon.xml
+FooAddon.lua
