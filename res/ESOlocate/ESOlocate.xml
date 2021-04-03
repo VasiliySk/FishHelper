@@ -1,0 +1,28 @@
+<GuiXml>
+	<Controls>
+		<TopLevelControl name="ESOlocateUI" mouseEnabled="true" movable="true">
+			<Dimensions x="150" y="30" offsetX = "5" offsetY = "0" />
+			<Anchor point="TOPLEFT" relativeTo="GuiRoot" relativePoint="CENTER" />
+ 
+				<OnUpdate>
+					ESOlocate.Update()
+				</OnUpdate>
+
+	<Controls>
+	
+	</Controls>	
+	<Controls>
+	<Texture textureFile="ESOlocate/white.dds" name="$(parent)Texture">
+  <Anchor relativeTo="$(parent)" /> 
+  <Dimensions x="300" y="40" /> 
+  </Texture>
+		<Label name="$(parent)coords" width="150" font="ZoFontAnnounceLargeNoShadow" inheritAlpha="true" color="000000"
+			wrapMode="TRUNCATE" verticalAlignment="CENTER" horizontalAlignment="CENTER" text="ESOLocate">
+			<Anchor relativeTo="$(parent)" /> 
+			<Dimensions x="300" y="40" /> 			
+        </Label>	
+	</Controls>
+
+		</TopLevelControl>
+	</Controls>
+</GuiXml>

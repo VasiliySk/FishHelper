@@ -115,8 +115,8 @@ namespace FishHelper
                     Fight(esoWindow, hWnd); //Если в бою, то воюем.
                 } 
                 esoWindow.SendMessage(hWnd, (uint)WindowMessages.WM_KEYDOWN, new IntPtr((ushort)System.Windows.Forms.Keys.W), new IntPtr(0));
-                Thread.Sleep(50);
-                timeCount = timeCount + 50;
+                Thread.Sleep(150);
+                timeCount = timeCount + 150;
                 resultX = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addrX), bufferX, (uint)bufferX.Length, out bytesRead);
                 resultY = esoWindow.ReadProcessMemory(processHandle, new IntPtr(addrY), bufferY, (uint)bufferY.Length, out bytesRead);
                 actualX = BitConverter.ToDouble(bufferX, 0);

@@ -1046,13 +1046,13 @@ namespace FishHelper
         //Переводим графические значения в текстовые
         private void btnOCR_Click(object sender, EventArgs e)
         {
-            var Ocr = new AutoOcr();
+            var Ocr = new IronOcr.IronTesseract();
             txtXValue.Text = "";
             txtYValue.Text = "";
             txtCValue.Text = "";
-            Bitmap bitmap = new Bitmap(148, 28); //Задаем размер считываемой области
+            Bitmap bitmap = new Bitmap(298, 38); //Задаем размер считываемой области
             Graphics graphics = Graphics.FromImage(bitmap as Image);
-            graphics.CopyFromScreen(UserOptions.esoLocateX, UserOptions.esoLocateY, 0, 0, bitmap.Size); // Задаем первыми двумя цифрами координаты начала (верхний левый угол) считываемого прямоугольника            
+            graphics.CopyFromScreen(UserOptions.esoLocateX+1, UserOptions.esoLocateY+1, 0, 0, bitmap.Size); // Задаем первыми двумя цифрами координаты начала (верхний левый угол) считываемого прямоугольника            
             var Result = Ocr.Read(bitmap);
             string[] str = Result.Text.Split(' ');
             for (int i=0;i<str.Length;i++)
@@ -1145,7 +1145,7 @@ namespace FishHelper
             btnNewScan_Click(null, null);
             btnOCR_Click(null, null);            
             autoSearch = true;
-            btnFirstScan_Click(null, null);            
+            btnFirstScan_Click(null, null);
         }
 
         private void btnPackageOne_Click(object sender, EventArgs e)
