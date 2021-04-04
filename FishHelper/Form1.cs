@@ -1,7 +1,6 @@
 ﻿using AutoIt;
 using Chantzaras.Media.Streaming.Screencast;
 using CheatEngine;
-using IronOcr;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -12,8 +11,10 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Windows.Forms;
+using Patagames.Ocr;
 using static FishHelper.EsoWindow;
 using static FishHelper.UserOptions;
+using System.Text.RegularExpressions;
 
 namespace FishHelper
        {
@@ -64,13 +65,16 @@ namespace FishHelper
 
                 double currentValue;
                 if (firstScan)
-                {                    
-                    double xMin = double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint)-0.01d;
-                    double xMax = double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint)+0.01d;
-                    double yMin = double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint)-0.01d;
-                    double yMax = double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint)+0.01d;
-                    double cMin = double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint)-0.01d;
-                    double cMax = double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint)+0.01d;
+                {
+                    string xText = Regex.Replace(txtXValue.Text, @"[^\d,.]+", "");
+                    string yText = Regex.Replace(txtYValue.Text, @"[^\d,.]+", "");
+                    string cText = Regex.Replace(txtCValue.Text, @"[^\d,.]+", "");
+                    double xMin = double.Parse(xText, NumberStyles.AllowDecimalPoint)-0.01d;
+                    double xMax = double.Parse(xText, NumberStyles.AllowDecimalPoint)+0.01d;
+                    double yMin = double.Parse(yText, NumberStyles.AllowDecimalPoint)-0.01d;
+                    double yMax = double.Parse(yText, NumberStyles.AllowDecimalPoint)+0.01d;
+                    double cMin = double.Parse(cText, NumberStyles.AllowDecimalPoint)-0.01d;
+                    double cMax = double.Parse(cText, NumberStyles.AllowDecimalPoint)+0.01d;
 
                     for (int k = 0; k < lvScanner.Items.Count; k++)
                     {                        
@@ -129,12 +133,15 @@ namespace FishHelper
                     }
                     cAdressList.Clear();
 
-                    double xMin = double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint) - 0.01d;
-                    double xMax = double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint) + 0.01d;
-                    double yMin = double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint) - 0.01d;
-                    double yMax = double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint) + 0.01d;
-                    double cMin = double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint) - 0.01d;
-                    double cMax = double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint) + 0.01d;
+                    string xText = Regex.Replace(txtXValue.Text, @"[^\d,.]+", "");
+                    string yText = Regex.Replace(txtYValue.Text, @"[^\d,.]+", "");
+                    string cText = Regex.Replace(txtCValue.Text, @"[^\d,.]+", "");
+                    double xMin = double.Parse(xText, NumberStyles.AllowDecimalPoint) - 0.01d;
+                    double xMax = double.Parse(xText, NumberStyles.AllowDecimalPoint) + 0.01d;
+                    double yMin = double.Parse(yText, NumberStyles.AllowDecimalPoint) - 0.01d;
+                    double yMax = double.Parse(yText, NumberStyles.AllowDecimalPoint) + 0.01d;
+                    double cMin = double.Parse(cText, NumberStyles.AllowDecimalPoint) - 0.01d;
+                    double cMax = double.Parse(cText, NumberStyles.AllowDecimalPoint) + 0.01d;
                     for (int k = 0; k < lvScanner.Items.Count; k++)
                     {                        
                         Double.TryParse(lvScanner.Items[k].SubItems[1].Text, out currentValue);
@@ -859,14 +866,17 @@ namespace FishHelper
         {
             if (checkInputData()) {
                 firstScan = true;
-                double[] adressMassive = new double[6]
+                string xText = Regex.Replace(txtXValue.Text, @"[^\d,.]+", "");
+                string yText = Regex.Replace(txtYValue.Text, @"[^\d,.]+", "");
+                string cText = Regex.Replace(txtCValue.Text, @"[^\d,.]+", "");
+                double[] adressMassive = new double[6]                
                 {
-                    double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint)-0.01d,
-                    double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint)+0.01d,
-                    double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint)-0.01d,
-                    double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint)+0.01d,
-                    double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint)-0.01d,
-                    double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint)+0.01d
+                    double.Parse(xText, NumberStyles.AllowDecimalPoint)-0.01d,
+                    double.Parse(xText, NumberStyles.AllowDecimalPoint)+0.01d,
+                    double.Parse(yText, NumberStyles.AllowDecimalPoint)-0.01d,
+                    double.Parse(yText, NumberStyles.AllowDecimalPoint)+0.01d,
+                    double.Parse(cText, NumberStyles.AllowDecimalPoint)-0.01d,
+                    double.Parse(cText, NumberStyles.AllowDecimalPoint)+0.01d
                 };
                 Tscanregionpreference writable = Tscanregionpreference.scanInclude,
                     executable = Tscanregionpreference.scanDontCare, copyOnWrite = Tscanregionpreference.scanExclude;                
@@ -932,14 +942,17 @@ namespace FishHelper
         {            
             btnNextScan.Enabled = false;
             firstScan = false;
+            string xText = Regex.Replace(txtXValue.Text, @"[^\d,.]+", "");
+            string yText = Regex.Replace(txtYValue.Text, @"[^\d,.]+", "");
+            string cText = Regex.Replace(txtCValue.Text, @"[^\d,.]+", "");
             double[] adressMassive = new double[6]
                 {
-                    double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint)-0.01d,
-                    double.Parse(txtXValue.Text, NumberStyles.AllowDecimalPoint)+0.01d,
-                    double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint)-0.01d,
-                    double.Parse(txtYValue.Text, NumberStyles.AllowDecimalPoint)+0.01d,
-                    double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint)-0.01d,
-                    double.Parse(txtCValue.Text, NumberStyles.AllowDecimalPoint)+0.01d
+                    double.Parse(xText, NumberStyles.AllowDecimalPoint)-0.01d,
+                    double.Parse(xText, NumberStyles.AllowDecimalPoint)+0.01d,
+                    double.Parse(yText, NumberStyles.AllowDecimalPoint)-0.01d,
+                    double.Parse(yText, NumberStyles.AllowDecimalPoint)+0.01d,
+                    double.Parse(cText, NumberStyles.AllowDecimalPoint)-0.01d,
+                    double.Parse(cText, NumberStyles.AllowDecimalPoint)+0.01d
                 };
             lib.iNextScan(TScanOption.soValueBetween, TRoundingType.rtRounded, minDouble(adressMassive), maxDouble(adressMassive),
             false, false, false, false, false, false, "");
@@ -1046,15 +1059,25 @@ namespace FishHelper
         //Переводим графические значения в текстовые
         private void btnOCR_Click(object sender, EventArgs e)
         {
-            var Ocr = new IronOcr.IronTesseract();
+            //var Ocr = new IronOcr.IronTesseract();
+            
             txtXValue.Text = "";
             txtYValue.Text = "";
             txtCValue.Text = "";
             Bitmap bitmap = new Bitmap(298, 38); //Задаем размер считываемой области
             Graphics graphics = Graphics.FromImage(bitmap as Image);
             graphics.CopyFromScreen(UserOptions.esoLocateX+1, UserOptions.esoLocateY+1, 0, 0, bitmap.Size); // Задаем первыми двумя цифрами координаты начала (верхний левый угол) считываемого прямоугольника            
-            var Result = Ocr.Read(bitmap);
-            string[] str = Result.Text.Split(' ');
+                                                                                                            //var Result = Ocr.Read(bitmap);
+            string[] str;
+            using (var objOcr = OcrApi.Create())
+            {
+                objOcr.Init(Patagames.Ocr.Enums.Languages.English);
+                string plainText = objOcr.GetTextFromImage(bitmap);
+                str = plainText.Split(' ');
+            }
+
+
+                //string[] str = Result.Text.Split(' ');
             for (int i=0;i<str.Length;i++)
             {
                 switch (i)
